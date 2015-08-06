@@ -18,6 +18,7 @@ angular.module('swarmApp').directive 'clicker', (game) ->
     $scope.game = game_
     $scope.units = game_.units()
     $scope.race = $scope.units.race
+    $scope.races = $scope.units.races
     $scope.driving = $scope.units.driving
 
     $scope.doClick = ($event) =>
@@ -25,3 +26,4 @@ angular.module('swarmApp').directive 'clicker', (game) ->
       commands.buyUnit
         unit: $scope.race
         num: $scope.driving.count()
+      $scope.races._addCount 1

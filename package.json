@@ -1,7 +1,7 @@
 {
-  "name": "swarm",
-  "version": "1.0.59",
-  "description": "Swarm Simulator - an incremental/idle game. Starting with only a few larvae and a small pile of meat, build a merciless swarm of giant alien bugs.",
+  "name": "racing",
+  "version": "0.0.1",
+  "description": "Racing Simulator - An incremental game. Starting with just a few buck and big balls, grow a massive racing empire.",
   "repository": {
     "url": "http://github.com/erosson/swarm.git",
     "type": "git"
