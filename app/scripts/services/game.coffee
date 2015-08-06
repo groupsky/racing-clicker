@@ -351,4 +351,4 @@ angular.module('swarmApp').factory 'Game', (unittypes, upgradetypes, achievement
     util.assert mutagen.spent().isZero(), "respec didn't refund all mutagen!"
 
 angular.module('swarmApp').factory 'game', (Game, session) ->
-  new Game session
+  window.game = new Game session

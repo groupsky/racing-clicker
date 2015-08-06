@@ -82,7 +82,7 @@ angular.module('swarmApp').factory 'ProducerPaths', ($log, ProducerPath) -> clas
 
   getCoefficientsNow: ->
     return @_getCoefficients true
-  
+
   count: (secs) ->
     ret = new Decimal 0
     for coeff, degree in @getCoefficients()
@@ -354,7 +354,7 @@ angular.module('swarmApp').factory 'Unit', (util, $log, Effect, ProducerPaths, U
         max = Decimal.min max, cost.unit.velocity().dividedBy cost.val
     #util.assert max.greaterThanOrEqualTo(0), "invalid unit cost max", @name
     return max
-  
+
   isVisible: ->
     if @unittype.disabled
       return false
@@ -387,11 +387,11 @@ angular.module('swarmApp').factory 'Unit', (util, $log, Effect, ProducerPaths, U
   maxCostMet: (percent=1) ->
     return @game.cache.unitMaxCostMet["#{@name}:#{percent}"] ?= do =>
       @_costMetPercent().times(percent).floor()
-      
+
   maxCostMetOfVelocity: () ->
     return @game.cache.unitMaxCostMetOfVelocity["#{@name}"] ?= do =>
       @_costMetPercentOfVelocity()
-  
+
   maxCostMetOfVelocityReciprocal: () ->
     (new Decimal 1).dividedBy(@maxCostMetOfVelocity())
 
@@ -408,7 +408,7 @@ angular.module('swarmApp').factory 'Unit', (util, $log, Effect, ProducerPaths, U
     ret = new Decimal 1
     ret = ret.plus @stat 'twinbase', 0
     ret = ret.times @stat 'twin', 1
-    return ret
+    return Decimal.max 1, ret
   buy: (num=1) ->
     if not @isCostMet()
       throw new Error "We require more resources"
@@ -420,6 +420,12 @@ angular.module('swarmApp').factory 'Unit', (util, $log, Effect, ProducerPaths, U
         cost.unit._subtractCount cost.val.times num
       twinnum = num.times @twinMult()
       @_addCount twinnum
+
+      # limited to buying less than 1e300 upgrades at once. cost-factors, etc. ensure this is okay.
+      # (not to mention 1e300 onBuy()s would take forever)
+      for effect in @effect
+        effect.onBuy twinnum
+
       return {num:num, twinnum:twinnum}
 
   isNewlyUpgradable: ->

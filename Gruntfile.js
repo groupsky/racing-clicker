@@ -193,7 +193,7 @@ module.exports = function (grunt) {
     ngconstant: ngconstant,
 
     preloadSpreadsheet: {
-      'v0.2': 'https://docs.google.com/spreadsheets/d/1ughCy983eK-SPIcDYPsjOitVZzY10WdI2MGGrmxzxF4/pubhtml',
+      'v0.2': 'https://docs.google.com/spreadsheets/d/1JhTtmHFy3E1VQ7v4Ov4IIut3X5bb7FpyivQUOzYYYL4/pubhtml',
     },
     mxmlc: {
       options: {
@@ -238,7 +238,7 @@ module.exports = function (grunt) {
       dev: {
         options:{
           basePath: '<%= yeoman.app %>',
-        },  
+        },
         src: [
           'views/*.html',
           'scripts/*.js',
@@ -281,6 +281,9 @@ module.exports = function (grunt) {
       bower: {
         files: ['bower.json'],
         tasks: ['wiredep']
+      },
+      javascript: {
+        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
       },
       coffee: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.{coffee,litcoffee,coffee.md}'],
@@ -326,7 +329,7 @@ module.exports = function (grunt) {
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: '0.0.0.0',
         //livereload: 55728  // ngrok won't bind remote ports below 50000
-        livereload: 35728 
+        livereload: 35728
       },
       livereload: {
         options: {
@@ -380,7 +383,7 @@ module.exports = function (grunt) {
       }
     },
     coffeelint: {
-    
+
       options: {
         configFile: 'coffeelint.json'
       },
@@ -765,7 +768,7 @@ module.exports = function (grunt) {
     var directory = 'app/scripts/spreadsheetpreload/';
     var url = this.data;
     var key = this.target;
-    
+
     var done = this.async();
     Tabletop.init({
       key: url,
@@ -834,7 +837,7 @@ module.exports = function (grunt) {
         'mxmlc:prod',
         'ngconstant:prod','writeVersionJson', 'ngtemplates:dist',
         'manifest:prod',
-        'wiredep', 
+        'wiredep',
         'concurrent:server',
         'autoprefixer',
         'connect:livereload',

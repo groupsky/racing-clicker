@@ -46,6 +46,7 @@ angular.module('swarmApp').directive 'buyupgrade', ($log, game, commands) ->
   templateUrl: 'views/buyunit.html'
   scope:
     num: '=?'
+    fixednum: '=?'
     upgrade: '='
   restrict: 'E'
   link: (scope, element, attrs) ->
@@ -54,6 +55,9 @@ angular.module('swarmApp').directive 'buyupgrade', ($log, game, commands) ->
       mcm25 = scope.resource.maxCostMet(0.25)
       return scope.resource.maxCostMet().greaterThan(mcm25) and mcm25.greaterThan(1)
     scope.fullnum = ->
+      if scope.fixednum?
+        fixednum = new Decimal(scope.fixednum+'').dividedBy(scope.unit.twinMult())
+        return fixednum
       num = scope.num ? 1
       num = Decimal.max 1, Decimal.min scope.resource.maxCostMet(), new Decimal(num+'').floor()
       if num.isNaN()

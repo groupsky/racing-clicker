@@ -20,6 +20,9 @@ angular.module('swarmApp').controller 'LoadSaveCtrl', ($scope, $log, game, sessi
   $scope.contactUrl = ->
     "#/contact?#{$.param error:$scope.form.error}"
 
+  game.reset true
+  return
+
   try
     exportedsave = session.getStoredSaveData()
   catch e

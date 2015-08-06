@@ -21,7 +21,9 @@ angular.module('swarmApp').factory 'Upgrade', (util, Effect, $log) -> class Upgr
       ret.val = new Decimal ret.val
       return ret
     @effect = _.map @type.effect, (effect) =>
-      return new Effect @game, this, effect
+      ret = new Effect @game, this, effect
+      ret.unit.affectedBy.push ret
+      return ret
   # TODO refactor counting to share with unit
   count: ->
     ret = @game.session.state.upgrades[@name] ? 0
@@ -146,7 +148,7 @@ angular.module('swarmApp').factory 'Upgrade', (util, Effect, $log) -> class Upgr
       delete @game.cache.upgradeEstimateSecsUntilBuyablePeriodic[@name]
       ret = @estimateSecsUntilBuyable true
     return ret
-    
+
   _estimateSecsUntilBuyable: ->
     costOfMet = _.indexBy @sumCost(@maxCostMet()), (c) -> c.unit.name
     cacheSafe = true

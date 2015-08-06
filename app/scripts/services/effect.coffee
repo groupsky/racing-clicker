@@ -92,10 +92,10 @@ angular.module('swarmApp').factory 'effecttypes', (EffectType, EffectTypes, util
     util.assert schema[stat] == operation, "conflicting stat operations. expected #{operation}, got #{schema[stat]}", stat, schema, operation
   effecttypes.register
     name: 'addUnit'
-    onBuy: (effect, game) ->
-      effect.unit._addCount @output effect, game
-    output: (effect, game) ->
-      effect.power().times effect.val
+    onBuy: (effect, game, parent, level) ->
+      effect.unit._addCount @output effect, game, parent, level
+    output: (effect, game, parent=effect.parent, level=parent.count()) ->
+      effect.power().times(effect.val).times(level)
   effecttypes.register
     name: 'addUnitByVelocity'
     onBuy: (effect, game) ->

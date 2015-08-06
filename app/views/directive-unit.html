@@ -110,7 +110,7 @@ Numbers with suffixes work: '23 billion', '23b', or '23e9'.">
         <span ng-if="cur.maxCostMetOfVelocity().times(cur.twinMult()).times(options.getVelocityUnit({unit:cur}).mult).lessThan(1)">
           You can {{cur.unittype.verb}} one {{cur.unittype.label}} every {{cur.maxCostMetOfVelocityReciprocal().dividedBy(cur.twinMult()).dividedBy(options.getVelocityUnit({unit:cur}).mult)|longnum}} {{cur.maxCostMetOfVelocityReciprocal().dividedBy(cur.twinMult()).dividedBy(options.getVelocityUnit({unit:cur}).mult).equals(1) ? options.getVelocityUnit({unit:cur}).label : options.getVelocityUnit({unit:cur}).plural}}, using
         </span>
-        
+
         <span ng-repeat="cost in cur.eachCost()">
           <span ng-if="!$first && $last"> and </span>
           <span>{{unitCostAsPercentOfVelocity(cur, cost) | percent:0}} of your {{cost.unit.unittype.label}} income</span><span ng-if="$last">.</span><span ng-if="!$last && cur.eachCost().length > 2">, </span>
@@ -118,6 +118,35 @@ Numbers with suffixes work: '23 billion', '23b', or '23e9'.">
       </p>
       <buyunit unit="cur" num="buyCount()"></buyunit>
     </div>
+  </div>
+  <div ng-if="(visibleBuys = (cur.upgrades.byClass.buy | filter:filterVisible)).length > 0">
+    <hr>
+    <h4>Buy</h4>
+    <ul class="list-unstyled">
+      <li ng-repeat="abil in visibleBuys">
+        <h5 ng-class="{'text-muted':abil.isManuallyHidden()}">
+          {{abil.type.label}}
+          <div class="pull-right">
+            <input type="checkbox" class="checkbox-inline" style="margin:0" ng-model="watched[abil.name]" ng-change="updateWatchedAbility(abil)">
+          </div>
+          <div style="clear:right"></div>
+        </h5>
+        <div ng-hide="abil.isManuallyHidden()">
+          <upgradedesc title="{{abil.type.lol}}" upgrade="abil"></upgradedesc>
+          <p>
+            This car costs
+            <cost costlist="abil.totalCost()"></cost>
+          </p>
+
+          <div class="progress" style="margin-bottom:0">
+            <div class="progress-bar" role="progressbar" aria-valuenow="{{abil.costMetPercent().times(1000)}}" aria-valuemin="0" aria-valuemax="1000" ng-style="{width:abil.costMetPercent().times(100)+'%'}">
+              {{abil.costMetPercent()|percent:{floor:true} }} {{estimateUpgradeSecs(abil)|duration}}
+            </div>
+          </div>
+          <buyupgrade upgrade="abil"></buyupgrade>
+        </div>
+      </li>
+    </ul>
   </div>
   <div ng-if="(visibleUpgrades = (cur.upgrades.byClass.upgrade | filter:filterVisible)).length > 0">
     <hr>
