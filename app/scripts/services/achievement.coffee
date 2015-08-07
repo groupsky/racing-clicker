@@ -127,6 +127,24 @@ angular.module('swarmApp').factory 'AchievementsListener', (util, $log) -> class
   constructor: (@game, @scope) ->
     @_listen @scope
 
+  achieveAny: ->
+    for achieve in @game.achievementlist()
+      if not achieve.isEarned()
+        for require in achieve.requires
+          if not require.event and require.upgrade and require.val
+            count = require.upgrade.count()
+            $log.debug 'achievement check: upgradecount after command', require.upgrade.name, count, count? && count >= require.val
+            if count? && count.greaterThanOrEqualTo(require.val)
+              $log.debug 'earned', achieve.name, achieve
+              # requirements are 'or'ed
+              achieve.earn()
+          if not require.event and require.unit and require.val
+            count = require.unit.count()
+            $log.debug 'achievement check: unitcount after command', require.unit.name, count, count? && count >= require.val
+            if count? && count.greaterThanOrEqualTo(require.val)
+              $log.debug 'earned', achieve.name, achieve
+              # requirements are 'or'ed
+              achieve.earn()
   achieveUnit: (unitname, rawcount=false) ->
     # TODO index these better, check on only the current unit
     for achieve in @game.achievementlist()
@@ -183,10 +201,13 @@ angular.module('swarmApp').factory 'AchievementsListener', (util, $log) -> class
 
     @scope.$on 'command', (event, cmd) =>
       $log.debug 'checking achievements for command', cmd
-      if cmd.unitname?
-        @achieveUnit cmd.unitname
-      if cmd.upgradename?
-        @achieveUpgrade cmd.upgradename
+#      if cmd.unitname?
+#        @achieveUnit cmd.unitname
+#      if cmd.upgradename?
+#        @achieveUpgrade cmd.upgradename
+
+      if cmd.unitname? or cmd.upgradename?
+        @achieveAny()
       if cmd.name == 'ascension'
         $log.debug 'ascending!', @game.unit('ascension').count()
         @achieveUnit 'ascension', true
