@@ -550,9 +550,9 @@ angular.module('swarmApp').factory 'UnitTypes', (spreadsheetUtil, UnitType, util
       unittype.slug = unittype.label
       for prod in unittype.prod
         prod.unittype.producedBy.push unittype
-        util.assert prod.val > 0, "unittype prod.val must be positive", prod
+        util.assert prod.val >= 0, "unittype prod.val must be non-negative", prod
       for cost in unittype.cost
-        util.assert cost.val > 0 or (unittype.unbuyable and unittype.disabled), "unittype cost.val must be positive", cost
+        util.assert cost.val >= 0 or (unittype.unbuyable and unittype.disabled), "unittype cost.val must be non-negative", cost
     for unittype in ret.list
       for producer in unittype.producedBy
         @_buildProducerPath unittype, producer, []
