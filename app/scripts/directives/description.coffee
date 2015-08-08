@@ -21,6 +21,8 @@ angular.module('swarmApp').directive 'unitdesc', (game, commands, options) ->
     scope.options = options
     scope.desc = scope.unit.unittype.description
     scope.templateUrl = do ->
+      if scope.unit.unittype.template
+        return "views/desc/unit/#{scope.unit.unittype.template}.html"
       if scope.desc == '-' or not scope.desc
         return "views/desc/unit/#{scope.unit.name}.html"
       return ''
@@ -37,6 +39,8 @@ angular.module('swarmApp').directive 'upgradedesc', (game, commands, options) ->
     scope.options = options
     scope.desc = scope.upgrade.type.description
     scope.templateUrl = do ->
+      if scope.upgrade.type.template
+        return "views/desc/upgrade/#{scope.upgrade.type.template}.html"
       if scope.desc == '-' or not scope.desc
         return "views/desc/upgrade/#{scope.upgrade.name}.html"
       return ''
