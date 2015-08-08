@@ -22,7 +22,7 @@ angular.module('swarmApp').factory 'Upgrade', (util, Effect, $log) -> class Upgr
       return ret
     @effect = _.map @type.effect, (effect) =>
       ret = new Effect @game, this, effect
-      ret.unit.affectedBy.push ret
+      ret.unit?.affectedBy.push ret
       return ret
   # TODO refactor counting to share with unit
   count: ->
@@ -190,18 +190,19 @@ angular.module('swarmApp').factory 'Upgrade', (util, Effect, $log) -> class Upgr
   isBuyable: ->
     return @isCostMet() and @isVisible()
 
-  buy: (num=1) ->
-    if not @isCostMet()
+  buy: (num=1, free=false) ->
+    if not free and not @isCostMet()
       throw new Error "We require more resources"
-    if not @isBuyable()
+    if not free and not @isBuyable()
       throw new Error "Cannot buy that upgrade"
-    num = Decimal.min num, @maxCostMet()
+    num = Decimal.min num, @maxCostMet() if not free
     $log.debug 'buy', @name, num
     @game.withSave =>
-      for cost in @sumCost num
-        util.assert cost.unit.count().greaterThanOrEqualTo(cost.val), "tried to buy more than we can afford. upgrade.maxCostMet is broken!", @name, name, cost
-        util.assert cost.val.greaterThan(0), "zero cost from sumCost, yet cost was met?", @name, name, cost
-        cost.unit._subtractCount cost.val
+      if not free
+        for cost in @sumCost num
+          util.assert cost.unit.count().greaterThanOrEqualTo(cost.val), "tried to buy more than we can afford. upgrade.maxCostMet is broken!", @name, name, cost
+          util.assert cost.val.greaterThan(0), "zero cost from sumCost, yet cost was met?", @name, name, cost
+          cost.unit._subtractCount cost.val
       count = @count()
       @_addCount num
       # limited to buying less than 1e300 upgrades at once. cost-factors, etc. ensure this is okay.

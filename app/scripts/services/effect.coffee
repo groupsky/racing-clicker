@@ -167,7 +167,7 @@ angular.module('swarmApp').factory 'effecttypes', (EffectType, EffectTypes, util
   effecttypes.register
     name: 'addUpgrade'
     onBuy: (effect, game) ->
-      effect.upgrade._addCount @output effect, game
+      effect.upgrade.buy @output(effect, game), true
     output: (effect, game) ->
       effect.power().times(effect.val)
   effecttypes.register
