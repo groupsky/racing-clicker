@@ -476,7 +476,7 @@ angular.module('swarmApp').factory 'Unit', (util, $log, Effect, ProducerPaths, U
       stats = {}
       schema = {}
       for upgrade in @upgrades.list
-        upgrade.calcStats stats, schema
+        upgrade.calcStats stats, schema, this
       for uniteffect in @affectedBy
         uniteffect.calcStats stats, schema, uniteffect.parent.count()
       return stats

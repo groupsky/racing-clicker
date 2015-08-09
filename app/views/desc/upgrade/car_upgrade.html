@@ -1,12 +1,22 @@
 <p>
   Next upgrade
-  <span ng-if="upgrade.unit.totalProduction().money.greaterThan(0)">doubles the {{upgrade.unit.prod[0].unittype.plural}} produced by the driver and</span>
+  <span ng-if="upgrade.unit.totalProduction().money.greaterThan(0)">adds x{{upgrade.effect[0].val}} bonus to the {{upgrade.unit.prod[0].unittype.plural}} produced by the driver and</span>
   <span>increases the bucks per race with
 
-    <span ng-repeat="(name, val) in upgrade.effect[2].unit.totalProduction()">
-      <span ng-if="!$first && !$last">, </span><span ng-if="!$first && $last"> and </span>
-      <span>{{val.times(upgrade.effect[2].val).minus(val)|longnum:2}}
-        <ng-pluralize count="val.times(upgrade.effect[2].val).minus(val)"
-                      when="{'one':game.unit(name).unittype.label, 'other':game.unit(name).unittype.plural}"></ng-pluralize></span></span>.
+    <span ng-init="
+      effect=upgrade.effect[2];
+      driving=effect.unit;
+      stat=driving.stat(effect.stat);
+    ">
+      <span ng-repeat="(name, val) in driving.totalProduction()">
+        <span ng-if="!$first && !$last">, </span><span ng-if="!$first && $last"> and </span>
+        <!--<span>val = {{val}}</span>-->
+        <!--<span>effect.stat = {{effect.stat}}</span>-->
+        <!--<span>driving.stat = {{stat}}</span>-->
+        <!--<span>effect.val = {{effect.val}}</span>-->
+        <span>{{stat.plus(effect.val).times(val).dividedBy(stat).minus(val)|longnum:2}}
+          <ng-pluralize count="val.times(upgrade.effect[2].val).minus(val)"
+                        when="{'one':game.unit(name).unittype.label, 'other':game.unit(name).unittype.plural}"></ng-pluralize></span></span>.
+    </span>
   </span>
 </p>
