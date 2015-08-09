@@ -1,0 +1,16 @@
+<p>
+  Next upgrade adds
+  <span ng-init="
+    effect=upgrade.effect[0];
+    car=effect.unit;
+  ">
+    <span ng-repeat="(name, val) in car.totalProduction()">
+      <span ng-if="!$first && !$last">, </span><span ng-if="!$first && $last"> and </span>
+      <span>{{car.stat('prod').times(effect.val)|longnum}}
+        <ng-pluralize count="car.stat('prod').times(effect.val)"
+                      when="{'one':game.unit(name).unittype.label, 'other':game.unit(name).unittype.plural}"></ng-pluralize>
+      </span>
+    </span>
+  </span>
+  to car production.
+</p>

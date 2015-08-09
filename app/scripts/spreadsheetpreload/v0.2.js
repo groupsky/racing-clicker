@@ -1608,7 +1608,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.2', {
         "cost.factor": 13,
         "cost.unittype": "money",
         "cost.val": 1000,
-        "description": "Hire driver",
+        "description": "-",
         "effect.stat": "base",
         "effect.type": "addStat",
         "effect.unittype": "car1",
@@ -1622,7 +1622,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.2', {
         "name": "car1_driver",
         "requires.unittype": "car1",
         "requires.val": 1,
-        "template": "",
+        "template": "car_driver",
         "unittype": "car1"
       },
       {
@@ -1674,7 +1674,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.2', {
         "cost.factor": 11.7,
         "cost.unittype": "money",
         "cost.val": 100000,
-        "description": "Hire driver",
+        "description": "-",
         "effect.stat": "base",
         "effect.type": "addStat",
         "effect.unittype": "car2",
@@ -1688,7 +1688,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.2', {
         "name": "car2_driver",
         "requires.unittype": "car2",
         "requires.val": 1,
-        "template": "",
+        "template": "car_driver",
         "unittype": "car2"
       },
       {
@@ -1696,7 +1696,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.2', {
         "cost.factor": 10.53,
         "cost.unittype": "money",
         "cost.val": 10000000,
-        "description": "Hire driver",
+        "description": "-",
         "effect.stat": "base",
         "effect.type": "addStat",
         "effect.unittype": "car3",
@@ -1710,7 +1710,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.2', {
         "name": "car3_driver",
         "requires.unittype": "car3",
         "requires.val": 1,
-        "template": "",
+        "template": "car_driver",
         "unittype": "car3"
       },
       {
@@ -1718,7 +1718,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.2', {
         "cost.factor": 9.477,
         "cost.unittype": "money",
         "cost.val": 1000000000,
-        "description": "Hire driver",
+        "description": "-",
         "effect.stat": "base",
         "effect.type": "addStat",
         "effect.unittype": "car4",
@@ -1732,7 +1732,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.2', {
         "name": "car4_driver",
         "requires.unittype": "car4",
         "requires.val": 1,
-        "template": "",
+        "template": "car_driver",
         "unittype": "car4"
       },
       {
@@ -1740,7 +1740,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.2', {
         "cost.factor": 8.5293,
         "cost.unittype": "money",
         "cost.val": 100000000000,
-        "description": "Hire driver",
+        "description": "-",
         "effect.stat": "base",
         "effect.type": "addStat",
         "effect.unittype": "car5",
@@ -1754,7 +1754,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.2', {
         "name": "car5_driver",
         "requires.unittype": "car5",
         "requires.val": 1,
-        "template": "",
+        "template": "car_driver",
         "unittype": "car5"
       },
       {
@@ -1762,7 +1762,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.2', {
         "cost.factor": 7.67637,
         "cost.unittype": "money",
         "cost.val": 10000000000000,
-        "description": "Hire driver",
+        "description": "-",
         "effect.stat": "base",
         "effect.type": "addStat",
         "effect.unittype": "car6",
@@ -1776,7 +1776,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.2', {
         "name": "car6_driver",
         "requires.unittype": "car6",
         "requires.val": 1,
-        "template": "",
+        "template": "car_driver",
         "unittype": "car6"
       },
       {
@@ -1784,7 +1784,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.2', {
         "cost.factor": 6.908733,
         "cost.unittype": "money",
         "cost.val": 1000000000000000,
-        "description": "Hire driver",
+        "description": "-",
         "effect.stat": "base",
         "effect.type": "addStat",
         "effect.unittype": "car7",
@@ -1798,7 +1798,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.2', {
         "name": "car7_driver",
         "requires.unittype": "car7",
         "requires.val": 1,
-        "template": "",
+        "template": "car_driver",
         "unittype": "car7"
       }
     ],
