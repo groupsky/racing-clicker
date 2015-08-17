@@ -33,6 +33,9 @@ angular.module('swarmApp').controller 'LoadSaveCtrl', ($scope, $log, game, sessi
     $scope.$emit 'loadGameFromStorageFailed', e.message
     return
 
+#  game.reset true
+#  return
+
   try
     session.load()
     $log.debug 'Game data loaded successfully.', this

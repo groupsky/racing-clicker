@@ -193,7 +193,7 @@ module.exports = function (grunt) {
     ngconstant: ngconstant,
 
     preloadSpreadsheet: {
-      'v0.2': 'https://docs.google.com/spreadsheets/d/1JhTtmHFy3E1VQ7v4Ov4IIut3X5bb7FpyivQUOzYYYL4/pubhtml',
+      'v0.2': 'https://docs.google.com/spreadsheets/d/1dXvqCPgCvKXk5CEFVdWvwr_NQUIjtrCCyf_OvS89E6w/pubhtml?gid=1582095012&single=true',
     },
     mxmlc: {
       options: {
