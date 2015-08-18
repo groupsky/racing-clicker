@@ -209,7 +209,7 @@ angular.module('swarmApp').factory 'effecttypes', (EffectType, EffectTypes, util
     name: 'addStat'
     calcStats: (effect, stats, schema, level) ->
       validateSchema effect.stat, schema, 'add'
-      stats[effect.stat] = (stats[effect.stat] ? new Decimal 0).plus(new Decimal(effect.val).times level)
+      stats[effect.stat] = (stats[effect.stat] ? new Decimal(effect.val2 ? 0)).plus(new Decimal(effect.val).times level)
   # multStat by a constant, level independent
   effecttypes.register
     name: 'initStat'
