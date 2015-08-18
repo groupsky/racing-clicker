@@ -1,6 +1,7 @@
 <tabs></tabs>
 
 <div class="container statistics">
+  <div google-chart chart="chartData()"></div>
   <h1>Statistics</h1>
   <div ng-repeat="unit in game.unitlist()">{{unit.label}}</div>
   <div class="table-responsive" ng-init="unitlist = (game.unitlist() | filter:showStats)">

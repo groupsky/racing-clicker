@@ -7,7 +7,7 @@
  # # StatisticsCtrl
  # Controller of the swarmApp
 ###
-angular.module('swarmApp').controller 'StatisticsCtrl', ($scope, session, statistics, game, options, util) ->
+angular.module('swarmApp').controller 'StatisticsCtrl', ($scope, session, statistics, game, options, util, $filter) ->
   $scope.listener = statistics
   $scope.session = session
   $scope.statistics = session.state.statistics
@@ -27,3 +27,38 @@ angular.module('swarmApp').controller 'StatisticsCtrl', ($scope, session, statis
       ustatistics.elapsedFirstStr = util.utcdoy ustatistics.elapsedFirst
     return ustatistics
   $scope.hasUpgradeStats = (upgrade) -> !!$scope.upgradeStats upgrade
+
+  bignumFilter = $filter('bignum')
+  durationFilter = $filter('duration')
+  $scope.chartData = () ->
+    @chart ?= {}
+    @chart.type = "LineChart"
+    @chart.data = {
+      "cols": [
+        {id: "time", label: "time", type: "string"}
+        {id: "research", label: "research point", type: "number"}
+        {id: "money", label: "money", type: "number"}
+      ]
+    }
+    @chart.data.rows = []
+    for time, timeKey in $scope.statistics.chartTimes
+      row = {c:[{v: time, f: durationFilter(time * 1000)}]}
+      for stat, value of $scope.statistics.chartData[timeKey]
+        row.c.push {v: value, f: bignumFilter(value)}
+      @chart.data.rows.push row
+
+    @chart.options = {
+      title: "resources income"
+      isStacked: "true"
+      fill: 20
+      displayExactValues: true
+      vAxis: {
+        title: "Amount"
+        logScale: true
+      }
+      hAxis: {
+        title: "Time"
+      }
+    }
+    @chart.formatters = {}
+    @chart

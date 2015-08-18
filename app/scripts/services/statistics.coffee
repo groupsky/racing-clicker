@@ -7,7 +7,7 @@
  # # statistics
  # Factory in the swarmApp.
 ###
-angular.module('swarmApp').factory 'StatisticsListener', (util, $log, kongregate) -> class StatisticsListener
+angular.module('swarmApp').factory 'StatisticsListener', (util, $log, kongregate, game) -> class StatisticsListener
   constructor: (@session, @scope) ->
     @_init()
 
@@ -16,7 +16,9 @@ angular.module('swarmApp').factory 'StatisticsListener', (util, $log, kongregate
     stats.byUnit ?= {}
     stats.byUpgrade ?= {}
     stats.clicks ?= 0
-  
+    stats.chartTimes ?= []
+    stats.chartData ?= []
+
   push: (cmd) ->
     stats = @session.state.statistics
     stats.clicks += 1
@@ -49,7 +51,34 @@ angular.module('swarmApp').factory 'StatisticsListener', (util, $log, kongregate
     delete cmd.unit
     delete cmd.upgrade
 
+  collectChartData: ->
+    stats = @session.state.statistics
+    seconds = game.elapsedSeconds()
+    [..., lastTime] = stats.chartTimes
+    lastTime ?= 0
+    reportInterval = 0
+    if seconds <= 10 #First 10 seconds
+      reportInterval = 1
+    else if seconds <= 1 * 60 #1 minute
+      reportInterval = 10
+    else if seconds <= 10 * 60 #10 minutes
+      reportInterval = 60
+    else if seconds <= 1 * 3600 #1 hour
+      reportInterval = 5 * 60
+    else if seconds <= 2 * 3600 #2hours
+      reportInterval = 10 * 60
+    else if seconds <= 12 * 360 #12 hours
+      reportInterval = 30 * 60
+    else
+      reportInterval = 3600
+    if seconds - lastTime >= reportInterval
+      stats.chartTimes.push seconds
+      stats.chartData.push {research: game.unit('research').velocity(), money: game.unit('money').velocity()}
+
+
   listen: (scope) ->
+    scope.$on 'tick', =>
+      this.collectChartData()
     scope.$on 'reset', =>
       @_init()
     scope.$on 'command', (event, cmd) =>
