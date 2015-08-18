@@ -23,7 +23,7 @@ angular.module('swarmApp').directive 'clicker', (game) ->
 
     $scope.doClick = ($event) =>
       $log.debug 'click!'
-      count = $scope.driving.count();
+      count = $scope.driving.count()
       commands.buyUnit
         unit: $scope.race
         num: count
