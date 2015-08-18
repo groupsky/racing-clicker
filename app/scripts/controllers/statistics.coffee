@@ -38,6 +38,7 @@ angular.module('swarmApp').controller 'StatisticsCtrl', ($scope, session, statis
         {id: "time", label: "time", type: "string"}
         {id: "research", label: "research point", type: "number"}
         {id: "money", label: "money", type: "number"}
+        {id: "fame", label: "fame", type: "number"}
       ]
     }
     @chart.data.rows = []
