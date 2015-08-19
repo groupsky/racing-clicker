@@ -119,7 +119,7 @@ angular.module('swarmApp').controller 'WelcomeBackCtrl', ($scope, $log, $interva
     # show all tab-leading units, and three leading generations of meat
     interestingUnits = []
     leaders = 0
-    for unit in game.tabs.byName.meat.sortedUnits
+    for unit in game.tabs.byName.technology.sortedUnits
       if leaders >= 3
         break
       if !unit.velocity().isZero()
