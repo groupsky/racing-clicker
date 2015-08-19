@@ -772,7 +772,8 @@ module.exports = function (grunt) {
     var done = this.async();
     Tabletop.init({
       key: url,
-      parseNumbers: true,
+
+      parseNumbers: false,
       debug: true,
       callback: function (data) {
         data = _.pick(data, ['unittypes', 'upgrades', 'achievements', 'tutorial']);

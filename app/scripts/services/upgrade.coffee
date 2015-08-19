@@ -267,6 +267,7 @@ angular.module('swarmApp').factory 'UpgradeTypes', (spreadsheetUtil, UpgradeType
     rows = spreadsheetUtil.parseRows {name:['requires','cost','effect']}, data.data.upgrades.elements
     ret = new UpgradeTypes unittypes, (new UpgradeType(row) for row in rows when row.name)
     for upgrade in ret.list
+      upgrade.maxlevel = +upgrade.maxlevel if upgrade.maxlevel
       spreadsheetUtil.resolveList [upgrade], 'unittype', unittypes.byName
       spreadsheetUtil.resolveList upgrade.cost, 'unittype', unittypes.byName
       spreadsheetUtil.resolveList upgrade.requires, 'unittype', unittypes.byName
@@ -274,10 +275,12 @@ angular.module('swarmApp').factory 'UpgradeTypes', (spreadsheetUtil, UpgradeType
       spreadsheetUtil.resolveList upgrade.effect, 'upgradetype', ret.byName, {required:false}
       spreadsheetUtil.resolveList upgrade.effect, 'type', effecttypes.byName
       for cost in upgrade.cost
-        util.assert cost.val > 0, "upgradetype cost.val must be positive", cost
+        cost.val = new Decimal cost.val
+        cost.factor = +cost.factor if cost.factor
+        util.assert cost.val.greaterThan(0), "upgradetype cost.val must be positive", cost, upgrade
         if upgrade.maxlevel == 1 and not cost.factor
           cost.factor = 1
-        util.assert cost.factor > 0, "upgradetype cost.factor must be positive", cost
+        util.assert cost.factor > 0, "upgradetype cost.factor must be positive", cost, upgrade
     # resolve unittype.require.upgradetype, since upgrades weren't available when it was parsed. kinda hacky.
     for unittype in unittypes.list
       spreadsheetUtil.resolveList unittype.requires, 'upgradetype', ret.byName, {required:false}
