@@ -59,7 +59,7 @@ https://github.com/erosson/swarm
 
     <div class="container">
       <div class="navbar navbar-default" role="navigation" ng-controller="HeaderCtrl">
-        <div class="container">
+        <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
             <!--button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
@@ -78,6 +78,42 @@ https://github.com/erosson/swarm
             <ul class="nav navbar-nav navbar-right">
             </ul>
           </div-->
+
+          <div class="navbar-right" ng-cloak>
+            <a class="navbar-brand" href>
+              <span>
+                <i class="fa fa-money"></i>
+                {{game.unit('money').count()|bignum}}<sup>+{{game.unit('money').velocity().times(options.getVelocityUnit({unit:game.unit('money')}).mult)|bignum}}/{{options.getVelocityUnit({unit:game.unit('money')}).short}}</sup>
+              </span>
+            </a>
+          </div>
+          <div class="navbar-right" ng-cloak>
+            <a class="navbar-brand" href>
+              <span>
+                <i class="fa fa-wrench"></i>
+                {{game.unit('technology').count()|bignum}}<sup>+{{game.unit('technology').velocity().times(options.getVelocityUnit({unit:game.unit('technology')}).mult)|bignum}}/{{options.getVelocityUnit({unit:game.unit('technology')}).short}}</sup>
+              </span>
+            </a>
+          </div>
+
+          <div class="navbar-right" ng-cloak>
+            <a class="navbar-brand" href>
+              <span>
+                <i class="fa fa-star"></i>
+                {{game.unit('fame').count()|bignum}}<sup>+{{game.unit('fame').velocity().times(options.getVelocityUnit({unit:game.unit('fame')}).mult)|bignum}}/{{options.getVelocityUnit({unit:game.unit('fame')}).short}}</sup>
+              </span>
+            </a>
+          </div>
+
+          <div class="navbar-right" ng-cloak>
+            <a class="navbar-brand" href>
+              <span>
+                <i class="fa fa-trophy"></i>
+                {{game.achievementPercent()*100|number:2}}%</sup>
+              </span>
+            </a>
+          </div>
+
         </div>
         <div ng-cloak>{{onRender()}}</div>
       </div>

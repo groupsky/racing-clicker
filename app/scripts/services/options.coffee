@@ -10,8 +10,8 @@
 angular.module('swarmApp').factory 'Options', ($log, util, env, game, $location) -> class Options
   constructor: (@session) ->
     @VELOCITY_UNITS = byName:{}, list:[]
-    addvunit = (name, label, plural, mult) =>
-      vu = name:name, label:label, plural:plural, mult:mult
+    addvunit = (name, label, plural, short, mult) =>
+      vu = name:name, label:label, plural:plural, mult:mult, short:short
       if _.isFunction mult
         vu._get = ->
           ret = _.clone this
@@ -21,11 +21,11 @@ angular.module('swarmApp').factory 'Options', ($log, util, env, game, $location)
         vu._get = -> return this
       @VELOCITY_UNITS.byName[vu.name] = vu
       @VELOCITY_UNITS.list.push vu
-    addvunit 'sec', 'second', 'seconds', 1
-    addvunit 'min', 'minute', 'minutes', 60
-    addvunit 'hr', 'hour', 'hours', 60 * 60
-    addvunit 'day', 'day', 'days', 60 * 60 * 24
-    addvunit 'warp', 'Swarmwarp', 'Swarmwarps', -> game.upgrade('swarmwarp').effect[0].output()
+    addvunit 'sec', 'second', 'seconds', 's', 1
+    addvunit 'min', 'minute', 'minutes', 'm', 60
+    addvunit 'hr', 'hour', 'hours', 'h', 60 * 60
+    addvunit 'day', 'day', 'days', 'd', 60 * 60 * 24
+    addvunit 'warp', 'Swarmwarp', 'Swarmwarps', 'w', -> game.upgrade('swarmwarp').effect[0].output()
 
   maybeSet: (field, val, valid) ->
     if val?
