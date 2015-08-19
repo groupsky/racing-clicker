@@ -1,0 +1,8 @@
+<span ng-if="unit.isVisible()" class="resource resource-{{unit.name}}">
+  <i class="icon-resource icon-{{unit.name}}"></i>
+  {{unit.count()|bignum}}<sup ng-if="!unit.velocity().isZero()">+{{unit.velocity().times(velocityUnit.mult)|bignum}}/{{velocityUnit.short}}</sup>
+  <span class="label-resource label-{{unit.name}}">
+    <span class="label-label">{{unit.unittype.label}}</span>
+    <span class="label-suffix">{{unit.suffix}}</span>
+  </span>
+</span>

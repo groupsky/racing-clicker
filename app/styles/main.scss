@@ -1,3 +1,6 @@
+@import "../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+@import "../../bower_components/fontawesome/scss/font-awesome";
+
 .strikethrough {
   text-decoration: line-through;
 }
@@ -326,4 +329,39 @@ body {
   transform: scaleX(-1);
   filter: FlipH;
   -ms-filter: "FlipH";
+}
+
+@mixin icon($icon) {
+  @include fa-icon;
+  &:before {
+    content: $icon;
+  }
+}
+
+.icon-resource {
+
+  &.icon-money {
+    @include icon($fa-var-money);
+  }
+
+  &.icon-technology {
+    @include icon($fa-var-wrench);
+  }
+
+  &.icon-fame {
+    @include icon($fa-var-star);
+  }
+}
+
+.resource {
+  @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
+  @include button-size($padding-large-vertical, $padding-large-horizontal, $font-size-large, $line-height-large, $border-radius-large);
+
+  .label-resource {
+    &.label-money,
+    &.label-technology,
+    &.label-fame {
+      display: none;
+    }
+  }
 }

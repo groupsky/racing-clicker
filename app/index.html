@@ -81,33 +81,24 @@ https://github.com/erosson/swarm
 
           <div class="navbar-right" ng-cloak>
             <a class="navbar-brand" href>
-              <span>
-                <i class="fa fa-money"></i>
-                {{game.unit('money').count()|bignum}}<sup>+{{game.unit('money').velocity().times(options.getVelocityUnit({unit:game.unit('money')}).mult)|bignum}}/{{options.getVelocityUnit({unit:game.unit('money')}).short}}</sup>
-              </span>
+              <resource unit="game.unit('money')"></resource>
             </a>
           </div>
           <div class="navbar-right" ng-cloak>
             <a class="navbar-brand" href>
-              <span>
-                <i class="fa fa-wrench"></i>
-                {{game.unit('technology').count()|bignum}}<sup>+{{game.unit('technology').velocity().times(options.getVelocityUnit({unit:game.unit('technology')}).mult)|bignum}}/{{options.getVelocityUnit({unit:game.unit('technology')}).short}}</sup>
-              </span>
+              <resource unit="game.unit('technology')"></resource>
             </a>
           </div>
 
           <div class="navbar-right" ng-cloak>
             <a class="navbar-brand" href>
-              <span>
-                <i class="fa fa-star"></i>
-                {{game.unit('fame').count()|bignum}}<sup>+{{game.unit('fame').velocity().times(options.getVelocityUnit({unit:game.unit('fame')}).mult)|bignum}}/{{options.getVelocityUnit({unit:game.unit('fame')}).short}}</sup>
-              </span>
+              <resource unit="game.unit('fame')"></resource>
             </a>
           </div>
 
           <div class="navbar-right" ng-cloak>
-            <a class="navbar-brand" href>
-              <span>
+            <a class="navbar-brand" href="#/achievements">
+              <span class="resource resource-achievements">
                 <i class="fa fa-trophy"></i>
                 {{game.achievementPercent()*100|number:2}}%</sup>
               </span>
@@ -357,6 +348,8 @@ https://github.com/erosson/swarm
         <script src="scripts/controllers/decimallegend.js"></script>
         <script src="scripts/directives/clicker.js"></script>
         <script src="scripts/filters/estimate.js"></script>
+        <script src="scripts/directives/resource.js"></script>
+        <script src="scripts/filters/velocity.js"></script>
         <!-- endbuild -->
 </body>
 </html>
