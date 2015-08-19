@@ -115,6 +115,7 @@ angular.module('swarmApp').factory 'AchievementTypes', (spreadsheetUtil, util, $
     for row in rows
       ret.register row
     for row in ret.list
+      row.points = +row.points if row.points
       spreadsheetUtil.resolveList row.requires, 'unittype', unittypes.byName, {required:false}
       spreadsheetUtil.resolveList row.requires, 'upgradetype', upgradetypes.byName, {required:false}
       spreadsheetUtil.resolveList row.visible, 'unittype', unittypes.byName, {required:false}
