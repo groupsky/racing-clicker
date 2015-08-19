@@ -339,15 +339,12 @@ body {
 }
 
 .icon-resource {
-
   &.icon-money {
     @include icon($fa-var-money);
   }
-
   &.icon-technology {
     @include icon($fa-var-wrench);
   }
-
   &.icon-fame {
     @include icon($fa-var-star);
   }
@@ -356,12 +353,12 @@ body {
 .resource {
   @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
   @include button-size($padding-large-vertical, $padding-large-horizontal, $font-size-large, $line-height-large, $border-radius-large);
+}
 
-  .label-resource {
-    &.label-money,
-    &.label-technology,
-    &.label-fame {
-      display: none;
-    }
+.label-resource {
+  &.label-money,
+  &.label-technology,
+  &.label-fame {
+    display: none;
   }
 }

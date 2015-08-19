@@ -7,10 +7,10 @@
  # # Main2Ctrl
  # Controller of the swarmApp
 ###
-angular.module('swarmApp').controller 'MainCtrl', ($scope, $log, game, $routeParams, $location, version, options) ->
+angular.module('swarmApp').controller 'MainCtrl', ($scope, $log, game, $routeParams, $location, version, options, commands) ->
   $scope.game = game
   $scope.options = options
-  
+
   $scope.cur = {}
   $scope.cur.unit = $scope.game.unitBySlug $routeParams.unit
   $scope.cur.tab = $scope.game.tabs.byName[$routeParams.tab] ? $scope.cur.unit?.tab ? $scope.game.tabs.list[0]
@@ -37,6 +37,12 @@ angular.module('swarmApp').controller 'MainCtrl', ($scope, $log, game, $routePar
     $location.url $scope.cur.tab.url unit
 
   $scope.filterVisible = (unit) -> unit.isVisible()
+  $scope.filterBought = (unit) -> !unit.count().isZero()
+  $scope.buy = (args) ->
+    args.upgrade = args.resource if args.resource
+    delete args.resource if args.resource
+    commands.buyUpgrade args
+
 
   findtab = (index, step) ->
     index += step + game.tabs.list.length
