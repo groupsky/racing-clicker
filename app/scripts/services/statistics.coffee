@@ -74,7 +74,7 @@ angular.module('swarmApp').factory 'StatisticsListener', (util, $log, kongregate
     if seconds - lastTime >= reportInterval
       stats.chartTimes.push seconds
       stats.chartData.push
-        research: game.unit('research').velocity()
+        research: game.unit('technology').velocity()
         money: game.unit('money').velocity()
         fame: game.unit('fake_fame').velocity()
 
