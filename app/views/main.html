@@ -1,3 +1,58 @@
+<div class="row">
+<div
+  ng-repeat="tab in game.tabs.list | filter:filterVisible"
+  class="col-md-4">
+  <div class="panel panel-default panel-units panel-{{name}}">
+    <div class="panel-heading">
+      <span ng-if="tab.isNewlyUpgradable()" title="New upgrade available" class="animif glyphicon glyphicon-circle-arrow-up pull-right"></span>
+      {{tab.leadunit.unittype.label}}
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="table-responsive">
+          <table class="table table-condensed unit-table table-hover">
+            <tr ng-repeat="unit in tab.sortUnits() | filter:filterVisible track by unit.name" ng-if="!$last">
+              <td class="upgrade-indicator">
+                <span ng-if="unit.isNewlyUpgradable()" title="New upgrade available" class="animif glyphicon glyphicon-circle-arrow-up"></span>
+              </td>
+              <td>
+                <button ng-disabled="!unit.isCostMet()" class="btn btn-default">
+                  <p>
+                  <span class="list-icon-resource icon-{{unit.name}}"></span>
+                  <span class="titlecase unselectedlist-label label-{{unit.name}}">
+                    <span class="label-label">{{unit.unittype.label}}</span>
+                    <span class="label-suffix">{{unit.suffix}}</span>
+                  </span>
+                  </p>
+                  <p ng-if="unit.isCostMet()">
+                    +{{unit.maxCostMet().times(unit.twinMult())|bignum}}
+                  </p>
+                  <p ng-if="!unit.isCostMet()">
+                    Can't buy
+                  </p>
+                </button>
+              </td>
+              <td class="text-right" style="padding-right: 0; white-space:nowrap">
+                {{unit.count()|bignum:0}}
+              </td>
+              <td class="text-left" style="padding-left: 0; white-space:nowrap">
+                <sup>
+                  <span ng-if="!unit.velocity().isZero()">
+                  +{{unit.velocity().times(options.getVelocityUnit({unit:unit}).mult)|bignum:2}}/{{options.getVelocityUnit({unit:unit}).name}}
+                  </span>
+                  <span ng-if="unit.velocity().isZero() && tab.name == 'territory' && !val.isZero()" ng-repeat="(name, val) in unit.totalProduction()">
+                    +{{val.times(options.getVelocityUnit({unit:name}).mult)|bignum:2}}/{{options.getVelocityUnit({unit:name}).name}}</span>
+                </sup>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
 <tabs cur="cur.tab"></tabs>
 
 <div class="tab-content">
