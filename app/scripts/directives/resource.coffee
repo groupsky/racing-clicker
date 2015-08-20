@@ -27,8 +27,8 @@ angular.module('swarmApp').directive 'unitResource', (options) ->
     <div class="unit-resource unit-{{unit.name}}">
       <resource
         name="{{unit.name}}"
-        value="unit.count()"
-        velocity="unit.velocity()"
+        value="value"
+        velocity="hideVelocity?false:unit.velocity()"
         units="units"
         label="{{unit.unittype.label}}"
         plural="{{unit.unittype.plural}}"
@@ -37,6 +37,11 @@ angular.module('swarmApp').directive 'unitResource', (options) ->
   """
   scope:
     unit: '='
+    value: '=?'
   restrict: 'E'
   link: (scope, element, attrs) ->
     scope.units = options.getVelocityUnit {unit: scope.unit}
+    if (scope.value)
+      scope.hideVelocity = true
+    else
+      scope.value = unit.count()

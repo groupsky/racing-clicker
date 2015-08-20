@@ -16,14 +16,7 @@
         <p>{{upgrade.type.label}}</p>
         <p>
           <span ng-repeat="cost in upgrade.totalCost() track by cost.unit.name">
-            <span class="-resource -resource-{{cost.unit.name}}" ng-class="{costNotMet:cost.unit.count().lessThan(cost.val)}">
-              <i class="icon-resource icon-{{cost.unit.name}}"></i>
-              {{cost.val | bignum}}
-              <span class="label-resource label-{{cost.unit.name}}">
-                <span class="label-label">{{cost.val.equalTo(1)?cost.unit.unittype.label:cost.unit.unittype.plural}}</span>
-                <span class="label-suffix">{{cost.unit.suffix}}</span>
-              </span>
-            </span>
+            <unit-resource value="cost.val" unit="cost.unit"></unit-resource>
           </span>
         </p>
       </button>
