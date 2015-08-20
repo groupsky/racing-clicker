@@ -1,15 +1,16 @@
 <div class="row">
   <div class="col-md-4">
-    <div class="panel panel-default panel-units panel-cars" ng-init="tab=game.tabs.byName.money">
+    <div class="panel panel-default panel-units panel-cars">
       <div class="panel-heading">
-        <span ng-if="tab.isNewlyUpgradable()" title="New upgrade available"
+        <span ng-if="game.tabs.byName.money.isNewlyUpgradable()" title="New upgrade available"
               class="animif glyphicon glyphicon-circle-arrow-up pull-right"></span>
-        <span>{{(tab.units | filter:filterVisible | filter:filterBought | count)-1}}</span>
+        <span>{{(game.tabs.byName.money.units | filter:filterVisible | filter:filterBought | count)-1}}</span>
         <span class="titlecase">Cars</span>
       </div>
       <div class="panel-body">
         <ul class="list-unstyled">
-          <li ng-repeat="unit in tab.sortUnits() | filter:filterVisible track by unit.name" ng-if="!$last"
+          <li ng-repeat="unit in game.tabs.byName.money.sortUnits() | filter:filterVisible track by unit.name"
+              ng-if="!$last"
               class="clearfix">
             <car unit="unit"></car>
           </li>
@@ -23,14 +24,15 @@
   </div>
 
   <div class="col-md-6">
-    <div class="panel panel-default panel-units panel-technology" ng-init="tab=game.tabs.byName.technology">
+    <div class="panel panel-default panel-units panel-technology">
       <div class="panel-heading">
-        <span>{{(tab.units | filter:filterVisible | filter:filterBought | count)-1}}</span>
+        <span>{{(game.tabs.byName.technology.units | filter:filterVisible | filter:filterBought | count)-1}}</span>
         <span class="titlecase">Technology</span>
       </div>
       <div class="panel-body">
         <ul class="list-unstyled">
-          <li ng-repeat="unit in tab.sortUnits() | filter:filterVisible track by unit.name" ng-if="!$last"
+          <li ng-repeat="unit in game.tabs.byName.technology.sortUnits() | filter:filterVisible track by unit.name"
+              ng-if="!$last"
               class="clearfix">
             <technology unit="unit"></technology>
           </li>
