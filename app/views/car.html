@@ -1,0 +1,31 @@
+<button ng-repeat="upgrade in unit.upgrades.byClass.upgrade | filter:filterVisible" class="btn pull-left"
+  ng-class="{'btn-primary': upgrade.isCostMet(), 'btn-default': !upgrade.isCostMet()}"
+  ng-click="buy({upgrade: upgrade})">
+  <p>{{upgrade.type.label}}</p>
+  <p>
+    <span ng-repeat="cost in upgrade.totalCost() track by cost.unit.name">
+      <span class="-resource -resource-{{cost.unit.name}}" ng-class="{costNotMet:cost.unit.count().lessThan(cost.val)}">
+        <i class="icon-resource icon-{{cost.unit.name}}"></i>
+        {{cost.val | bignum}}
+        <span class="label-resource label-{{cost.unit.name}}">
+          <span class="label-label">{{cost.val.equalTo(1)?cost.unit.unittype.label:cost.unit.unittype.plural}}</span>
+          <span class="label-suffix">{{cost.unit.suffix}}</span>
+        </span>
+      </span>
+    </span>
+  </p>
+</button>
+<span class="pull-right">
+  <span class="titlecase">{{unit.type.label}}</span>
+  <span ng-if="!unit.upgrades.byName[unit.name+'_upgrade'].count().isZero()">{{unit.upgrades.byName[unit.name+'_upgrade'].count()+""|number}}</span>
+</span>
+<span ng-init="velocityUnit = options.getVelocityUnit({prod:unit})">
+  <span ng-repeat="(name, val) in unit.totalProduction()">
+    <i class="icon-resource icon-{{name}}"></i>
+    {{val.times(velocityUnit.mult) | longnum:2}}
+    <span class="label-resource label-{{name}}" ng-init="prodUnit = game.unit(name)">
+      <span class="label-label">{{val.equalTo(1)?prodUnit.unittype.label:prodUnit.unittype.plural}}</span>
+      <span class="label-suffix">{{prodUnit.suffix}}</span>
+    </span>
+  </span>
+</span>
