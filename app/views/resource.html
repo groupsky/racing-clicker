@@ -1,8 +1,9 @@
-<span ng-if="unit.isVisible()" class="resource resource-{{unit.name}}">
-  <i class="icon-resource icon-{{unit.name}}"></i>
-  {{unit.count()|bignum}}<sup ng-if="!unit.velocity().isZero()">+{{unit.velocity().times(velocityUnit.mult)|bignum}}/{{velocityUnit.short}}</sup>
-  <span class="label-resource label-{{unit.name}}">
-    <span class="label-label">{{unit.unittype.label}}</span>
-    <span class="label-suffix">{{unit.suffix}}</span>
+<span class="resource resource-{{name}}">
+  <i class="icon-resource icon-{{name}}"></i>
+  {{value|formatter:filter:filterOpts}}<sup ng-if="velocity && !velocity.isZero()">+{{velocity.times(units.mult)|bignum}}/{{units.short}}</sup>
+  <span class="label-resource label-{{name}}">
+    <span ng-if="label && (value.equalTo(1) || !plural)" class="label-label">{{label}}</span>
+    <span ng-if="plural && (!value.equalTo(1) || !label)" class="label-label">{{plural}}</span>
+    <span ng-if="suffix" class="label-suffix">{{suffix}}</span>
   </span>
 </span>

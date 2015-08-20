@@ -81,27 +81,24 @@ https://github.com/erosson/swarm
 
           <div class="navbar-right" ng-cloak>
             <a class="navbar-brand" href>
-              <resource unit="game.unit('money')"></resource>
+              <unit-resource unit="game.unit('money')"></unit-resource>
             </a>
           </div>
           <div class="navbar-right" ng-cloak>
             <a class="navbar-brand" href>
-              <resource unit="game.unit('technology')"></resource>
+              <unit-resource unit="game.unit('technology')"></unit-resource>
             </a>
           </div>
 
           <div class="navbar-right" ng-cloak>
             <a class="navbar-brand" href>
-              <resource unit="game.unit('fame')"></resource>
+              <unit-resource unit="game.unit('fame')"></unit-resource>
             </a>
           </div>
 
           <div class="navbar-right" ng-cloak>
             <a class="navbar-brand" href="#/achievements">
-              <span class="resource resource-achievements">
-                <i class="fa fa-trophy"></i>
-                {{game.achievementPercent()*100|number:2}}%</sup>
-              </span>
+              <resource name="achievements" value="game.achievementPercent()" filter="percent" filter-opts="2"></resource>
             </a>
           </div>
 
@@ -180,8 +177,6 @@ https://github.com/erosson/swarm
       </div>
 
       <tutorial></tutorial>
-
-      <clicker></clicker>
 
       <div class="viewwrap"><div ng-view=""><center><img src="images/ajax-loader.gif"></center></div></div>
 
@@ -351,6 +346,7 @@ https://github.com/erosson/swarm
         <script src="scripts/directives/resource.js"></script>
         <script src="scripts/filters/velocity.js"></script>
         <script src="scripts/filters/count.js"></script>
+        <script src="scripts/filters/formatter.js"></script>
         <!-- endbuild -->
 </body>
 </html>

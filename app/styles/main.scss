@@ -348,6 +348,9 @@ body {
   &.icon-fame {
     @include icon($fa-var-star);
   }
+  &.icon-achievements {
+    @include icon($fa-var-trophy);
+  }
 }
 
 .resource {
@@ -358,7 +361,8 @@ body {
 .label-resource {
   &.label-money,
   &.label-technology,
-  &.label-fame {
+  &.label-fame,
+  &.label-achievements {
     display: none;
   }
 }
