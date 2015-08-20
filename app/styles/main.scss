@@ -369,6 +369,8 @@ body {
 
 .container-car {
 
+  height: 80px;
+
   .unit-title-container {
     white-space: nowrap;
   }
@@ -384,6 +386,12 @@ body {
 
   resource {
     display: block;
+  }
+
+  .unit-resource {
+    display: inline-block;
+    float: right;
+    margin-left: 10px;
   }
 
 

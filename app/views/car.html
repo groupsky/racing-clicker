@@ -10,16 +10,7 @@
       </span>
     </div>
     <div class="col-xs-8">
-      <button ng-repeat="upgrade in unit.upgrades.byClass.upgrade | filter:filterVisible" class="btn pull-right"
-        ng-class="{'btn-primary': upgrade.isCostMet(), 'btn-default': !upgrade.isCostMet()}"
-        ng-click="buy({upgrade: upgrade})">
-        <p>{{upgrade.type.label}}</p>
-        <p>
-          <span ng-repeat="cost in upgrade.totalCost() track by cost.unit.name">
-            <unit-resource value="cost.val" unit="cost.unit"></unit-resource>
-          </span>
-        </p>
-      </button>
+      <upgrade unit="unit"></upgrade>
     </div>
   </div>
 </div>
