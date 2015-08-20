@@ -388,3 +388,10 @@ body {
 
 
 }
+
+.panel-cars {
+  .panel-body {
+    max-height: 269px;
+    overflow-y: scroll;
+  }
+}
