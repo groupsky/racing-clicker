@@ -2,9 +2,9 @@
 
 ###*
 # @ngdoc directive
-# @name swarmApp.directive:car
+# @name swarmApp.directive:upgrade
 # @description
-# # car
+# # upgrade
 ###
 angular.module('swarmApp').directive 'upgrade', (commands) ->
   templateUrl: 'views/upgrade.html'
