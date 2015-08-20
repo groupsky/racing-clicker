@@ -12,7 +12,7 @@
       -->+{{units && units.mult ? velocity.times(units.mult) : velocity|formatter:filter:filterOpts}}<!-- // skip empty lines
       --><span ng-if="units" class="velocity-units">/{{units.short}}</span><!-- // skip empty lines
     --></span>
-  --></span>
+  </span>
   <span class="label-resource label-{{name}}">
     <span ng-if="label && (value.equalTo(1) || !plural)" class="label-label">{{label}}</span>
     <span ng-if="plural && (!value.equalTo(1) || !label)" class="label-label">{{plural}}</span>
