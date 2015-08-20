@@ -41,4 +41,4 @@ angular.module('swarmApp').directive 'unitResource', (options) ->
   restrict: 'E'
   link: (scope, element, attrs) ->
     scope.units = options.getVelocityUnit {unit: scope.unit}
-    scope.hideVelocity = true
+    scope.hideVelocity = scope.value?

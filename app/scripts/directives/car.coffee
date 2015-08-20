@@ -6,7 +6,7 @@
 # @description
 # # car
 ###
-angular.module('swarmApp').directive 'car', ->
+angular.module('swarmApp').directive 'car', (options) ->
   templateUrl: 'views/car.html'
   scope:
     unit: '='

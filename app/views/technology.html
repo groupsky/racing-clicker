@@ -8,8 +8,8 @@
         </div>
         <div>
           <span ng-repeat="(name, val) in unit.totalProduction()">
-            <resource name="{{name}}" velocity="val" units="velocityUnit" label="{{game.unit(name).label}}"
-                      plural="{{game.unit(name).plural}}"></resource>
+            <resource name="{{name}}" velocity="val" units="velocityUnit" label="{{game.unit(name).type.label}}"
+                      plural="{{game.unit(name).type.plural}}"></resource>
           </span>
         </div>
       </div>

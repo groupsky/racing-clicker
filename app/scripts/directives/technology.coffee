@@ -6,14 +6,16 @@
 # @description
 # # technology
 ###
-angular.module('swarmApp').directive 'technology', (commands, parseNumber) ->
+angular.module('swarmApp').directive 'technology', (commands, game, options, parseNumber) ->
   templateUrl: 'views/technology.html'
   scope:
     unit: "="
   restrict: 'E'
   link: (scope, element, attrs) ->
     scope.commands = commands
+    scope.game = game
     scope.form = {buyCount:''}
+    scope.velocityUnit = options.getVelocityUnit({prod: scope.unit})
     _buyCount = Decimal.ONE
     scope.buyCount = ->
       parsed = parseNumber(scope.form.buyCount or '1', scope.unit) ? Decimal.ONE

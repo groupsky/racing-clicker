@@ -7,9 +7,11 @@
  # # Main2Ctrl
  # Controller of the swarmApp
 ###
-angular.module('swarmApp').controller 'MainCtrl', ($scope, $log, game, $routeParams, $location, version, options, commands) ->
+angular.module('swarmApp').controller 'MainCtrl', ($scope, $log, game, $routeParams, $location, version, options, commands, util) ->
   $scope.game = game
   $scope.options = options
+
+  util.animateController $scope, game:game, options:options
 
   $scope.cur = {}
   $scope.cur.unit = $scope.game.unitBySlug $routeParams.unit
