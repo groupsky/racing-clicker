@@ -1,0 +1,25 @@
+<div class="container-float container-car">
+  <div class="row">
+    <div class="col-xs-4">
+      <p class="unit-title-container">
+        <span class="titlecase unit-title">{{unit.type.label}}</span>
+        <span ng-if="!unit.upgrades.byName[unit.name+'_upgrade'].count().isZero()" class="unit-level">{{unit.upgrades.byName[unit.name+'_upgrade'].count()+""|number}}</span>
+      </p>
+      <span ng-repeat="(name, val) in unit.totalProduction()">
+        <resource name="{{name}}" velocity="val" units="velocityUnit"></resource>
+      </span>
+    </div>
+    <div class="col-xs-8">
+      <button ng-repeat="upgrade in unit.upgrades.byClass.upgrade | filter:filterVisible" class="btn pull-right"
+              ng-class="{'btn-primary': upgrade.isCostMet(), 'btn-default': !upgrade.isCostMet()}"
+              ng-click="buy({upgrade: upgrade})">
+        <p>{{upgrade.type.label}}</p>
+        <p>
+          <span ng-repeat="cost in upgrade.totalCost() track by cost.unit.name">
+            <unit-resource value="cost.val" unit="cost.unit"></unit-resource>
+          </span>
+        </p>
+      </button>
+    </div>
+  </div>
+</div>
