@@ -23,7 +23,7 @@ angular.module('swarmApp').directive 'tabs', (game, util, options, version, comm
       if upgrades.length > 0
         commands.buyAllUpgrades upgrades:upgrades, percent:costPercent
 
-#    util.animateController scope, game:game, options:options
+    util.animateController scope, game:game, options:options
 
     scope.undo = ->
       if scope.isUndoable()
