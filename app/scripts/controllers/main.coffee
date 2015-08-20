@@ -38,11 +38,6 @@ angular.module('swarmApp').controller 'MainCtrl', ($scope, $log, game, $routePar
 
   $scope.filterVisible = (unit) -> unit.isVisible()
   $scope.filterBought = (unit) -> !unit.count().isZero()
-  $scope.buy = (args) ->
-    args.upgrade = args.resource if args.resource
-    delete args.resource if args.resource
-    commands.buyUpgrade args
-
 
   findtab = (index, step) ->
     index += step + game.tabs.list.length
