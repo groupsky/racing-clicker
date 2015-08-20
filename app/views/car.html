@@ -6,7 +6,7 @@
         <span ng-if="!unit.upgrades.byName[unit.name+'_upgrade'].count().isZero()" class="unit-level">{{unit.upgrades.byName[unit.name+'_upgrade'].count()+""|number}}</span>
       </p>
       <span ng-repeat="(name, val) in unit.totalProduction()">
-        <resource name="{{name}}" value="(valTimed = valTimed || val.times(velocityUnit.mult))"></resource>
+        <resource name="{{name}}" velocity="val" units="velocityUnit"></resource>
       </span>
     </div>
     <div class="col-xs-8">

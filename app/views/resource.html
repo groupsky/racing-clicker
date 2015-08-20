@@ -1,6 +1,18 @@
 <span class="resource resource-{{name}}">
   <i class="icon-resource icon-{{name}}"></i>
-  {{value|formatter:filter:filterOpts}}<sup ng-if="velocity && !velocity.isZero()">+{{velocity.times(units.mult)|bignum}}/{{units.short}}</sup>
+  <span ng-if="value" class="resource-value-container"><!-- //skip empty lines
+  --><span class="resource-value">{{value|formatter:filter:filterOpts}}</span><!-- // skip empty lines
+  --><span ng-if="velocity && !velocity.isZero()" class="resource-velocity"><!-- // skip empty lines
+    -->+{{units && units.mult ? velocity.times(units.mult) : velocity|formatter:filter:filterOpts}}<!-- // skip empty lines
+    --><span ng-if="units" class="velocity-units">/{{units.short}}</span><!-- // skip empty lines
+  --></span>
+  </span>
+  <span ng-if="!value && velocity" class="resource-velocity-container"><!-- // skip empty lines
+  --><span ng-if="velocity && !velocity.isZero()" class="resource-velocity"><!-- // skip empty lines
+      -->+{{units && units.mult ? velocity.times(units.mult) : velocity|formatter:filter:filterOpts}}<!-- // skip empty lines
+      --><span ng-if="units" class="velocity-units">/{{units.short}}</span><!-- // skip empty lines
+    --></span>
+  --></span>
   <span class="label-resource label-{{name}}">
     <span ng-if="label && (value.equalTo(1) || !plural)" class="label-label">{{label}}</span>
     <span ng-if="plural && (!value.equalTo(1) || !label)" class="label-label">{{plural}}</span>

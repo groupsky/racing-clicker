@@ -10,7 +10,7 @@ angular.module('swarmApp').directive 'resource', ->
   templateUrl: 'views/resource.html'
   scope:
     name: '@',
-    value: '=',
+    value: '=?',
     velocity: '=?'
     units: '=?'
     label: '@?'
