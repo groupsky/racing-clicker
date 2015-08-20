@@ -395,3 +395,32 @@ body {
     overflow-y: scroll;
   }
 }
+
+.panel-technology {
+
+  .unit-title-container {
+  }
+  .unit-title {
+    font-size: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .unit-level {
+    display: block;
+    span {
+      @extend .badge;
+    }
+  }
+
+  .unit-resource resource {
+    max-width: 60px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 60px;
+    overflow: hidden;
+    display: block;
+  }
+
+}
