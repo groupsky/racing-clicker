@@ -10,15 +10,17 @@ angular.module('swarmApp').directive 'actionEffect', ($log, $compile, $document,
     body = $document.find('body').eq(0)
 
     showEffect = (modified) ->
+      return if not modified.length
+
       scope = $rootScope.$new()
       scope.modified = modified
 
       template = angular.element '''
           <div class="action-effect">
             <unit-resource ng-repeat="cost in modified track by cost.unit.name"
-                           value="cost.val.absoluteValue()"
+                           value="cost.val"
                            unit="cost.unit"
-                           ng-class="{positive: !cost.val.isNegative(), negative: cost.val.isNegative()}"></unit-resource>
+                           ng-class="{positive: !cost.negative, negative: cost.negative}"></unit-resource>
           </div>
         '''
       linker = $compile(template)
@@ -46,10 +48,13 @@ angular.module('swarmApp').directive 'actionEffect', ($log, $compile, $document,
       return if args?.skipEffect
       modified = for name, cost of args.costs
         unit: game.unit(name)
-        val: new Decimal(-1).times(cost)
-      modified.unshift
-        unit: game.unit(args.unitname)
-        val: args.twinnum
+        val: cost
+        negative: true
+      if args.unitname
+        modified.unshift
+          unit: game.unit(args.unitname)
+          val: args.twinnum
+          negative: false
       showEffect modified
 
     element.bind 'click', ->

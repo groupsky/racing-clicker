@@ -198,10 +198,12 @@ angular.module('swarmApp').factory 'Upgrade', (util, Effect, $log) -> class Upgr
     num = Decimal.min num, @maxCostMet() if not free
     $log.debug 'buy', @name, num
     @game.withSave =>
+      costs = {}
       if not free
         for cost in @sumCost num
           util.assert cost.unit.count().greaterThanOrEqualTo(cost.val), "tried to buy more than we can afford. upgrade.maxCostMet is broken!", @name, name, cost
           util.assert cost.val.greaterThan(0), "zero cost from sumCost, yet cost was met?", @name, name, cost
+          costs[cost.unit.name] = cost.val
           cost.unit._subtractCount cost.val
       count = @count()
       @_addCount num
@@ -210,7 +212,7 @@ angular.module('swarmApp').factory 'Upgrade', (util, Effect, $log) -> class Upgr
       for i in [0...num.toNumber()]
         for effect in @effect
           effect.onBuy count.plus(i + 1)
-      return num
+      return {num:num, costs: costs}
 
   buyMax: (percent) ->
     @buy @maxCostMet percent

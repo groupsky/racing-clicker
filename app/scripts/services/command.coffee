@@ -59,45 +59,49 @@ angular.module('swarmApp').factory 'commands', (util, game, $rootScope, $log, lo
       twinnum:bought.twinnum
       percent:opts.percent
       ui:opts.ui
+      costs:bought.costs
 
   buyUpgrade: (opts) ->
     @_setUndo()
     upgrade = opts.upgrade
-    num = upgrade.buy opts.num
+    bought = upgrade.buy opts.num
     @_emit 'buyUpgrade',
       upgrade:upgrade
       upgradename:upgrade.name
       now:upgrade.game.now
       elapsed:upgrade.game.elapsedStartMillis()
-      num:num
+      num:bought.num
       ui:opts.ui
+      costs:bought.costs
 
   buyMaxUpgrade: (opts) ->
     @_setUndo()
     upgrade = opts.upgrade
-    num = upgrade.buyMax opts.percent
+    bought = upgrade.buyMax opts.percent
     @_emit 'buyMaxUpgrade',
       upgrade:upgrade
       upgradename:upgrade.name
       now:upgrade.game.now
       elapsed:upgrade.game.elapsedStartMillis()
-      num:num
+      num:bought.num
       percent:opts.percent
       ui:opts.ui
+      costs:bought.costs
 
   buyAllUpgrades: (opts) ->
     @_setUndo()
     upgrades = opts.upgrades
     for upgrade in upgrades
-      num = upgrade.buyMax opts.percent / upgrade.watchedDivisor()
+      bought = upgrade.buyMax opts.percent / upgrade.watchedDivisor()
       @_emit 'buyMaxUpgrade',
         upgrade:upgrade
         upgradename:upgrade.name
         now:upgrade.game.now
         elapsed:upgrade.game.elapsedStartMillis()
-        num:num
+        num:bought.num
         percent:opts.percent
         ui:'buyAllUpgrades'
+        costs:bought.costs
     if upgrades.length
       @_emit 'buyAllUpgrades',
         now:upgrades[0].game.now
