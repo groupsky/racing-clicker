@@ -382,8 +382,7 @@ body {
 }
 
 .unit {
-  height: 100px;
-  height: 10vw;
+  height: 90px;
 
   .unit-title-container {
     .unit-title {
@@ -434,8 +433,7 @@ body {
 }
 
 .action-effect {
-  // @include animation(0s, 1.5s, fadeout);
-  animation: action-effect 1s linear;
+  animation: action-effect 2s linear;
   opacity: 0;
   background: #eee;
   padding: 10px;
