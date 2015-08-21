@@ -12,7 +12,7 @@
           <li ng-repeat="unit in game.tabs.byName.money.sortUnits() | filter:filterVisible track by unit.name"
               ng-if="!$last"
               class="clearfix">
-            <car unit="unit"></car>
+            <unit unit="unit"></unit>
           </li>
         </ul>
       </div>
@@ -34,7 +34,7 @@
           <li ng-repeat="unit in game.tabs.byName.technology.sortUnits() | filter:filterVisible track by unit.name"
               ng-if="!$last"
               class="clearfix">
-            <technology unit="unit"></technology>
+            <unit unit="unit"></unit>
           </li>
         </ul>
       </div>
@@ -54,7 +54,7 @@
       <div class="panel-body">
         <ul class="list-unstyled">
           <li ng-repeat="unit in tab.sortUnits() | filter:filterVisible track by unit.name" ng-if="!$last">
-            <technology unit="unit"></technology>
+            <unit unit="unit"></unit>
           </li>
         </ul>
       </div>

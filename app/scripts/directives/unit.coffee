@@ -7,28 +7,16 @@
  # # unit
 ###
 angular.module('swarmApp').directive 'unit', ($log, game, commands, options, util, $location, parseNumber) ->
-  templateUrl: 'views/directive-unit.html'
+  templateUrl: 'views/unit.html'
   restrict: 'E'
   scope:
-    cur: '='
+    unit: '='
   link: (scope, element, attrs) ->
     scope.game = game
     scope.commands = commands
     scope.options = options
+    scope.velocityUnit = options.getVelocityUnit({prod: scope.unit})
 
-    formatDuration = (estimate) ->
-    scope.estimateUpgradeSecs = (upgrade) ->
-      estimate = upgrade.estimateSecsUntilBuyable()
-      val = estimate.val.toNumber()
-      if isFinite val
-        secs = moment.duration(val, 'seconds')
-        #add nonexact annotation for use by filter
-        secs.nonexact = not (estimate.unit?.isEstimateExact?() ? true)
-        return secs
-      # infinite estimate, but moment doesn't like infinite durations.
-      return Infinity
-
-    scope.form = {buyCount:''}
     search = $location.search()
     if search.num?
       scope.form.buyCount = search.num
@@ -38,7 +26,7 @@ angular.module('swarmApp').directive 'unit', ($log, game, commands, options, uti
 
     _buyCount = Decimal.ONE
     scope.buyCount = ->
-      parsed = parseNumber(scope.form.buyCount or '1', scope.cur) ? Decimal.ONE
+      parsed = parseNumber(scope.form.buyCount or '1', scope.unit) ? Decimal.ONE
       # caching required for angular
       if not parsed.equals _buyCount
         _buyCount = parsed
@@ -47,15 +35,12 @@ angular.module('swarmApp').directive 'unit', ($log, game, commands, options, uti
     scope.filterVisible = (upgrade) ->
       upgrade.isVisible()
 
-    scope.watched = {}
-    for upgrade in scope.cur.upgrades.byClass.upgrade ? []
-      scope.watched[upgrade.name] = upgrade.watchedAt()
-    for upgrade in scope.cur.upgrades.byClass.ability ? []
-      scope.watched[upgrade.name] = not upgrade.isManuallyHidden()
-    scope.updateWatched = (upgrade) ->
-      upgrade.watch scope.watched[upgrade.name]
-    scope.updateWatchedAbility = (upgrade) ->
-      upgrade.watch if scope.watched[upgrade.name] then 0 else -1
+    scope.$watch ->
+      for upgrade in scope.unit.upgrades.byClass.upgrade ? []
+        if upgrade.isVisible()
+          return true
+      false
+    , (has_upgrades) -> scope.has_upgrades = has_upgrades
 
     scope.unitCostAsPercent = (unit, cost) ->
       MAX = new Decimal 9999.99
@@ -64,7 +49,7 @@ angular.module('swarmApp').directive 'unit', ($log, game, commands, options, uti
         return MAX
       num = Decimal.max 1, unit.maxCostMet()
       Decimal.min MAX, cost.val.times(num).dividedBy(count)
-    
+
     scope.unitCostAsPercentOfVelocity = (unit, cost) ->
       MAX = new Decimal 9999.99
       count = cost.unit.velocity()
