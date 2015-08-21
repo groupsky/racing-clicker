@@ -373,23 +373,27 @@ body {
   }
 }
 
-.container-unit {
-
-  height: 80px;
-
-  .unit-title-container {
-    white-space: nowrap;
-
-    .unit-title {
-      font-size: 18px;
-      @include ellipsis;
+.resource {
+  .resource-value-container {
+    .resource-velocity {
+      @extend sup;
     }
   }
+}
 
-  .unit-level {
-    display: block;
-    span {
-      @extend .badge;
+.unit {
+  height: 100px;
+  height: 10vw;
+
+  .unit-title-container {
+    .unit-title {
+      @include ellipsis;
+      @extend .titlecase;
+      font-size: 15px;
+
+      .unit-level, .unit-count {
+        @extend .badge;
+      }
     }
   }
 

@@ -1,38 +1,39 @@
 <div class="well well-sm">
-  <div class="container-float container-unit container-{{unit.type.tab}} container-{{unit.name}}">
+  <div class="container-float unit unit-type-{{unit.type.tab}} unit-{{unit.name}}">
     <div class="row">
-      <div ng-class="{
-        'col-xs-3': !unit.type.unbuyable && has_upgrades,
-        'col-xs-4': unit.type.unbuyable && has_upgrades,
-        'col-xs-6': !unit.type.unbuyable && !has_upgrades,
-        'col-xs-12': unit.type.unbuyable && !has_upgrades,
-        'dummy': false
-        }">
-        <div class="unit-title-container">
-          <div class="titlecase unit-title">{{unit.type.label}}</div>
-          <div ng-if="(unit.type.unbuyable && !unit.upgrades.byName[unit.name+'_upgrade'].count().isZero()) || (!unit.type.unbuyable && !unit.count().isZero())" class="unit-level"><span>{{unit.type.unbuyable?unit.upgrades.byName[unit.name+'_upgrade'].count():unit.count()|bignum}}</span></div>
-        </div>
-        <div>
-          <span ng-repeat="(name, val) in unit.totalProduction()">
-            <resource ng-if="!val.isZero()"
+      <div class="col-xs-12 unit-title-container">
+        <div class="unit-production pull-right">
+            <resource ng-repeat="(name, val) in unit.totalProduction()"
+                      ng-if="!val.isZero()"
                       name="{{name}}"
                       velocity="val"
                       units="velocityUnit"
                       label="{{game.unit(name).type.label}}"
                       plural="{{game.unit(name).type.plural}}"></resource>
-          </span>
         </div>
+        <p class="unit-title">
+          {{unit.type.label}}
+          <span
+            ng-if="(unit.type.unbuyable && !unit.upgrades.byName[unit.name+'_upgrade'].count().isZero()) || (!unit.type.unbuyable && !unit.count().isZero())"
+            ng-class="{'unit-level': unit.type.unbuyable, 'unit-count': !unit.type.unbuyable}">
+            {{unit.type.unbuyable?unit.upgrades.byName[unit.name+'_upgrade'].count():unit.count()|bignum}}
+          </span>
+        </p>
       </div>
       <div ng-if="has_upgrades" ng-class="{
-        'col-xs-3':  !unit.type.unbuyable,
-        'col-xs-8':  unit.type.unbuyable,
+        'col-xs-4':  !unit.type.unbuyable,
+        'col-xs-12':  unit.type.unbuyable,
         'dummy': false
         }">
         <div ng-repeat="upgrade in unit.upgrades.byClass.upgrade | filter:filterVisible">
           <upgrade upgrade="upgrade"></upgrade>
         </div>
       </div>
-      <div ng-if="!unit.type.unbuyable" class="col-xs-6">
+      <div ng-if="!unit.type.unbuyable" ng-class="{
+        'col-xs-8': has_upgrades,
+        'col-xs-12': !has_upgrades,
+        'dummy': false
+        }">
         <buyunit unit="unit"></buyunit>
       </div>
     </div>
