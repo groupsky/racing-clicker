@@ -35,7 +35,8 @@
     "ravenjs": "~1.1.17",
     "angular-google-chart": "~0.0.11",
     "fontawesome": "~4.3.0",
-    "swarm-shared": "git://github.com/swarmsim/swarm-shared.git#master"
+    "swarm-shared": "git://github.com/swarmsim/swarm-shared.git#master",
+    "angular-bootstrap": "~0.13.3"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.23",
