@@ -1,23 +1,21 @@
 <div ng-if="upgrade.isCostMet()">
-  <button class="btn"
+  <button class="btn btn-upgrade"
           ng-class="{'btn-primary': upgrade.isCostMet(), 'btn-default': !upgrade.isCostMet()}"
           ng-click="commands.buyUpgrade({upgrade: upgrade})">
-    {{upgrade.type.label}}
+    LVL UP
   </button>
 </div>
 <div ng-if="!upgrade.isCostMet()">
-  <ul class="list-unstyled">
-    <li>
-      <div class="progress" style="margin-bottom:0">
-        <div class="progress-bar" role="progressbar" aria-valuenow="{{upgrade.costMetPercent().times(1000)}}"
-             aria-valuemin="0" aria-valuemax="1000" ng-style="{width:upgrade.costMetPercent().times(100)+'%'}">
-          {{upgrade.costMetPercent()|percent:{floor:true} }} {{upgrade|estimate|duration}}
-        </div>
-      </div>
-      <div style="clear:right"></div>
-    </li>
-  </ul>
+  <div class="progress" style="margin-bottom:0">
+    <div class="progress-bar" role="progressbar" aria-valuenow="{{upgrade.costMetPercent().times(1000)}}"
+         aria-valuemin="0" aria-valuemax="1000" ng-style="{width:upgrade.costMetPercent().times(100)+'%'}">
+      {{upgrade.costMetPercent()|percent:{floor:true} }} {{upgrade|estimate|duration}}
+    </div>
+  </div>
+  <div style="clear:right"></div>
 </div>
-<span ng-repeat="cost in upgrade.totalCost() track by cost.unit.name">
-  <unit-resource value="cost.val" unit="cost.unit"></unit-resource>
-</span>
+<div class="costs">
+  <unit-resource ng-repeat="cost in upgrade.totalCost() track by cost.unit.name"
+                 value="cost.val"
+                 unit="cost.unit"></unit-resource>
+</div>
