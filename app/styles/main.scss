@@ -426,6 +426,10 @@ body {
         margin-top: 0;
     }
 
+    50% {
+      opacity: 1;
+    }
+
     100% {
         opacity: 0;
         margin-top: -100px;
@@ -433,9 +437,26 @@ body {
 }
 
 .action-effect {
-  animation: action-effect 2s linear;
+  animation: action-effect 3s linear;
   opacity: 0;
-  background: #eee;
-  padding: 10px;
-  border-radius: 10px;
+
+  unit-resource {
+    @include clearfix;
+    display: block;
+    padding: 2px 4px;
+    margin: 1px;
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+  }
+
+  .positive {
+    background: #4e5;
+    border-color: #0a1;
+  }
+
+  .negative {
+    background: #e45;
+    border-color: #a01;
+  }
 }
