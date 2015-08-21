@@ -338,6 +338,12 @@ body {
   }
 }
 
+@mixin ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .icon-resource {
   &.icon-money {
     @include icon($fa-var-money);
@@ -367,56 +373,17 @@ body {
   }
 }
 
-.container-car {
+.container-unit {
 
   height: 80px;
 
   .unit-title-container {
     white-space: nowrap;
-  }
-  .unit-title {
-    // display: block;
-    @extend h4;
-  }
 
-  .unit-level {
-    // display: block;
-    @extend .badge;
-  }
-
-  resource {
-    display: block;
-  }
-
-  .unit-resource {
-    display: inline-block;
-    float: right;
-    margin-left: 10px;
-  }
-
-  .progress {
-    background-color: #fff;
-  }
-
-
-}
-
-.panel-cars {
-  .panel-body {
-    max-height: 269px;
-    overflow-y: scroll;
-  }
-}
-
-.panel-technology {
-
-  .unit-title-container {
-  }
-  .unit-title {
-    font-size: 18px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    .unit-title {
+      font-size: 18px;
+      @include ellipsis;
+    }
   }
 
   .unit-level {
@@ -427,10 +394,26 @@ body {
   }
 
   resource {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    @include ellipsis;
     display: block;
   }
 
+  upgrade {
+    button {
+      max-width: 100%;
+      @include ellipsis;
+    }
+
+    .progress {
+      background-color: #fff;
+    }
+  }
+
+}
+
+.panel-cars {
+  .panel-body {
+    max-height: 269px;
+    overflow-y: scroll;
+  }
 }
