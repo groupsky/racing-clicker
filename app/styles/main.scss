@@ -420,3 +420,24 @@ body {
     overflow-y: scroll;
   }
 }
+
+@keyframes action-effect {
+    0% {
+        opacity: 1;
+        margin-top: 0;
+    }
+
+    100% {
+        opacity: 0;
+        margin-top: -100px;
+    }
+}
+
+.action-effect {
+  // @include animation(0s, 1.5s, fadeout);
+  animation: action-effect 1s linear;
+  opacity: 0;
+  background: #eee;
+  padding: 10px;
+  border-radius: 10px;
+}

@@ -44,6 +44,7 @@ angular.module('swarmApp').factory 'commands', (util, game, $rootScope, $log, lo
       num:bought.num
       twinnum:bought.twinnum
       ui:opts.ui
+      costs:bought.costs
 
   buyMaxUnit: (opts) ->
     @_setUndo()

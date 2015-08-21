@@ -416,8 +416,10 @@ angular.module('swarmApp').factory 'Unit', (util, $log, Effect, ProducerPaths, U
       throw new Error "Cannot buy that unit"
     num = Decimal.min num, @maxCostMet()
     @game.withSave =>
+      costs = {}
       for cost in @eachCost()
-        cost.unit._subtractCount cost.val.times num
+        costs[cost.unit.name] = cost.val.times num
+        cost.unit._subtractCount costs[cost.unit.name]
       twinnum = num.times @twinMult()
       @_addCount twinnum
 
@@ -426,7 +428,7 @@ angular.module('swarmApp').factory 'Unit', (util, $log, Effect, ProducerPaths, U
       for effect in @effect
         effect.onBuy twinnum
 
-      return {num:num, twinnum:twinnum}
+      return {num:num, twinnum:twinnum, costs: costs}
 
   isNewlyUpgradable: ->
     upgrades = @showparent?.upgrades?.list ? @upgrades.list
