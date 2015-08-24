@@ -394,6 +394,12 @@ body {
         @extend .badge;
       }
     }
+
+    .unit-production {
+      &.estimate {
+        color: $btn-link-disabled-color;
+      }
+    }
   }
 
   resource {
@@ -412,11 +418,11 @@ body {
   }
 
   .positive .resource {
-    color: black;
+    color: $btn-default-color;
   }
 
   .negative .resource {
-    color: #888;
+    color: $btn-link-disabled-color;
   }
 }
 

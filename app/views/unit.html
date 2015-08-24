@@ -2,9 +2,16 @@
   <div class="container-float unit unit-type-{{unit.type.tab}} unit-{{unit.name}}">
     <div class="row">
       <div class="col-xs-12 unit-title-container">
-        <div class="unit-production pull-right">
+        <div ng-if="unit.count().isZero()" class="unit-production estimate pull-right">
+          <resource ng-repeat="(name, val) in unit.eachProduction()"
+                    name="{{name}}"
+                    velocity="val"
+                    units="velocityUnit"
+                    label="{{game.unit(name).type.label}}"
+                    plural="{{game.unit(name).type.plural}}"></resource>
+        </div>
+        <div ng-if="!unit.count().isZero()" class="unit-production pull-right">
             <resource ng-repeat="(name, val) in unit.totalProduction()"
-                      ng-if="!val.isZero()"
                       name="{{name}}"
                       velocity="val"
                       units="velocityUnit"
