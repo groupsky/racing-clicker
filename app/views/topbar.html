@@ -30,13 +30,13 @@
       </a>
     </div>
 
-    <div class="navbar-right" ng-cloak>
+    <div ng-if="game.unit('fame').isVisible()" class="navbar-right" ng-cloak>
       <a class="navbar-brand" href>
         <unit-resource unit="game.unit('fame')"></unit-resource>
       </a>
     </div>
 
-    <div class="navbar-right" ng-cloak>
+    <div ng-if="game.achievementPercent()" class="navbar-right" ng-cloak>
       <a class="navbar-brand" href="#/achievements">
         <resource name="achievements" value="game.achievementPercent()" filter="percent" filter-opts="2"></resource>
       </a>
