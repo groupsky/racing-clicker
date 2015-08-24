@@ -17,5 +17,6 @@
 <div class="costs">
   <unit-resource ng-repeat="cost in upgrade.totalCost() track by cost.unit.name"
                  value="cost.val"
-                 unit="cost.unit"></unit-resource>
+                 unit="cost.unit"
+                 ng-class="{positive: isCostMet(cost), negative: !isCostMet(cost)}"></unit-resource>
 </div>

@@ -411,6 +411,13 @@ body {
     }
   }
 
+  .positive .resource {
+    color: black;
+  }
+
+  .negative .resource {
+    color: #888;
+  }
 }
 
 .panel-cars {
