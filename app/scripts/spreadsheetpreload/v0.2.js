@@ -9445,6 +9445,28 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.2', {
         "requires.val": "1",
         "template": "",
         "unittype": "tech13"
+      },
+      {
+        "class": "upgrade",
+        "cost.factor": "66",
+        "cost.unittype": "technology",
+        "cost.val": "1.00E+12",
+        "description": "Increase driving multiplier with 1",
+        "effect.stat": "prod",
+        "effect.type": "addStat",
+        "effect.unittype": "driving",
+        "effect.unittype2": "",
+        "effect.upgradetype": "",
+        "effect.val": "1",
+        "effect.val2": "1",
+        "label": "Improve your driving skills",
+        "lol": "",
+        "maxlevel": "",
+        "name": "driving_upgrade",
+        "requires.unittype": "technology",
+        "requires.val": "1.00E+11",
+        "template": "",
+        "unittype": "driving"
       }
     ],
     "name": "upgrades"
