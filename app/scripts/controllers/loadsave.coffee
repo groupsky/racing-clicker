@@ -79,60 +79,34 @@ angular.module('swarmApp').controller 'LoadSaveCtrl', ($scope, $log, game, sessi
 angular.module('swarmApp').controller 'AprilFoolsCtrl', ($scope, options) ->
   $scope.options = options
 
-angular.module('swarmApp').controller 'WelcomeBackCtrl', ($scope, $log, $interval, game, $location) ->
-  interval = null
-  $scope.$on 'import', (event, args) ->
-    $log.debug 'welcome back: import', args?.success, args
-    if args?.success
-      run true, true
-  $scope.$on 'savedGameRecoveredFromFlash', (event, args) ->
-    $log.debug 'welcome back: saved game recovered from flash'
-    run()
-  $scope.$on 'reset', (event, args) ->
-    $scope.closeWelcomeBack?()?
-  do run = (force=false, ignoreHeartbeat=false) ->
-    # Show the welcome-back screen only if we've been gone for a while, ie. not when refreshing.
-    # Do all time-checks for the welcome-back screen *before* scheduling heartbeats/onclose.
-    $scope.durationSinceClosed = game.session.durationSinceClosed undefined, ignoreHeartbeat
-    $scope.showWelcomeBack = $scope.durationSinceClosed.asMinutes() >= 3 or $location.search().forcewelcome
-    reifiedToCloseDiffInSecs = (game.session.dateClosed(ignoreHeartbeat).getTime() - game.session.state.date.reified.getTime()) / 1000
-    $log.debug 'time since game closed', $scope.durationSinceClosed.humanize(),
-      millis:game.session.millisSinceClosed undefined, ignoreHeartbeat
-      reifiedToCloseDiffInSecs:reifiedToCloseDiffInSecs
+angular.module('swarmApp').controller 'WelcomeBackCtrl', ($scope, game, $log, ignoreHeartbeat, durationSinceClosed, $modalInstance) ->
+  $scope.closeWelcomeBack = ->
+    $log.debug 'closeWelcomeBack'
+    $modalInstance.dismiss()
+    return undefined #quiets an angular error
 
-    # Store when the game was closed. Try to use the browser's onclose (onunload); that's most precise.
-    # It's unreliable though (crashes fail, cross-browser's icky, ...) so use a heartbeat too.
-    # Wait until showWelcomeBack is set before doing these, or it'll never show
-    $(window).unload -> game.session.onClose()
-    interval ?= $interval (-> game.session.onHeartbeat()), 60000
-    game.session.onHeartbeat() # game.session time checks after this point will be wrong
+  reifiedToCloseDiffInSecs = (game.session.dateClosed(ignoreHeartbeat).getTime() - game.session.state.date.reified.getTime()) / 1000
+  $log.debug 'time since game closed', durationSinceClosed.humanize(),
+    millis:game.session.millisSinceClosed undefined, ignoreHeartbeat
+    reifiedToCloseDiffInSecs:reifiedToCloseDiffInSecs
 
-    if not $scope.showWelcomeBack
-      $log.debug 'skipping welcome back screen: offline time too short', $scope.durationSinceClosed.asMinutes()
-      return
-
-    $scope.closeWelcomeBack = ->
-      $log.debug 'closeWelcomeBack'
-      $('#welcomeback').alert('close')
-      return undefined #quiets an angular error
-
-    # show all tab-leading units, and three leading generations of meat
-    interestingUnits = []
-    leaders = 0
-    for unit in game.tabs.byName.technology.sortedUnits
-      if leaders >= 3
-        break
-      if !unit.velocity().isZero()
-        leaders += 1
-        interestingUnits.push unit
-    interestingUnits = interestingUnits.concat _.map game.tabs.list, 'leadunit'
-    uniq = {}
-    $scope.offlineGains = _.map interestingUnits, (unit) ->
-      if not uniq[unit.name]
-        uniq[unit.name] = true
-        countNow = unit.count()
-        countClosed = unit._countInSecsFromReified reifiedToCloseDiffInSecs
-        countDiff = countNow.minus countClosed
-        if countDiff.greaterThan 0
-          return unit:unit, val:countDiff
-    $scope.offlineGains = (g for g in $scope.offlineGains when g)
+  # show all tab-leading units, and three leading generations of meat
+  interestingUnits = []
+  leaders = 0
+  for unit in game.tabs.byName.technology.sortedUnits
+    if leaders >= 3
+      break
+    if !unit.velocity().isZero()
+      leaders += 1
+      interestingUnits.push unit
+  interestingUnits = interestingUnits.concat _.map game.tabs.list, 'leadunit'
+  uniq = {}
+  $scope.offlineGains = _.map interestingUnits, (unit) ->
+    if not uniq[unit.name]
+      uniq[unit.name] = true
+      countNow = unit.count()
+      countClosed = unit._countInSecsFromReified reifiedToCloseDiffInSecs
+      countDiff = countNow.minus countClosed
+      if countDiff.greaterThan 0
+        return unit:unit, val:countDiff
+  $scope.offlineGains = (g for g in $scope.offlineGains when g)

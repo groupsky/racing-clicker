@@ -1,0 +1,16 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="closeWelcomeBack()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <h4 class="modal-title">Welcome back!</h4>
+</div>
+<div class="modal-body">
+  <div>
+    <div id="welcomeback" class="alert alert-info alert-dismissible animif" role="alert">
+      <p title="Please don't go. The teams need you. They look up to you.">While you were away for {{durationSinceClosed.humanize()}}, your organization produced:</p>
+      <ul>
+        <li ng-repeat="gain in offlineGains">
+          {{gain.val | longnum}} {{gain.unit.unittype.plural}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
