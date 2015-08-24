@@ -85,7 +85,7 @@ module.exports = function (grunt) {
           autopushIntervalMs: 1000 * 15,
           googleApiKey: 'AIzaSyArP8wzscVTyD4wBWZrhPnGWwj7W7ROaSI',
           isAppcacheEnabled: true,
-          sentryDSN: 'https://4ee5233ada4c4c00ade28c3070b3a6f4@app.getsentry.com/50964',
+          sentryDSN: null,
           sentrySampleRate: 1,
           // Everyone's getting server-side accounts.
           //
@@ -122,7 +122,7 @@ module.exports = function (grunt) {
           googleApiKey: 'AIzaSyCS8nqXFvhdr0AR-ox-9n_wKP2std_fHHs',
           isAppcacheEnabled: false,
           sentryDSN: 'https://4ee5233ada4c4c00ade28c3070b3a6f4@app.getsentry.com/50964',
-          sentrySampleRate: 0.001,
+          sentrySampleRate: 1,
           isServerBackendEnabled: false,
           isServerFrontendEnabled: false,
           gaTrackingID: 'UA-66677344-1'
