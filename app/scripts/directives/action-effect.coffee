@@ -4,18 +4,15 @@
  # @ngdoc directive
  # @name swarmApp.directive:action-effect
 ###
-angular.module('swarmApp').directive 'actionEffect', ($log, $compile, $document, $rootScope, $timeout, $position, game) ->
+angular.module('swarmApp').directive 'actionEffect', (actionEffectPool) ->
   priority: -1
+  restrict: 'A'
   link: (scope, element, attrs) ->
-    body = $document.find('body').eq(0)
+    element.bind 'click', ->
+      actionEffectPool.button = angular.element(element)
 
-    showEffect = (modified) ->
-      return if not modified.length
-
-      scope = $rootScope.$new()
-      scope.modified = modified
-
-      template = angular.element '''
+angular.module('swarmApp').service 'actionEffectPool', ($compile, $document, $rootScope, $timeout, $position, game) ->
+  @template = angular.element '''
           <div class="action-effect">
             <unit-resource ng-repeat="cost in modified track by cost.unit.name"
                            value="cost.val"
@@ -23,53 +20,67 @@ angular.module('swarmApp').directive 'actionEffect', ($log, $compile, $document,
                            ng-class="{positive: !cost.negative, negative: cost.negative}"></unit-resource>
           </div>
         '''
-      linker = $compile(template)
+  linker = null
+  body = $document.find('body')
+  @pool = []
+  @index = 100
+  @linker = -> linker ?= $compile(@template)
+  @get = (data) ->
+    if @pool.length
+      tip = @pool.pop()
+      tip.show()
+    else
+      scope = $rootScope.$new()
+      tip = @linker() scope, (tip) ->
+        body.append tip
+    angular.extend tip.scope(), data
+    tip
+  @release = (tip) ->
+    tip.hide()
+    @pool.push(tip)
 
-      tip = linker scope, (tip) ->
-        $document.find('body').append tip
-      tip.css
-        top: 0
-        left: 0
-        display: 'block'
-        position: 'absolute'
+  @handleEvent = (args) ->
+    return if args?.skipEffect
+    modified = for name, cost of args.costs
+      unit: game.unit(name)
+      val: cost
+      negative: true
+    if args.unitname
+      modified.unshift
+        unit: game.unit(args.unitname)
+        val: args.twinnum
+        negative: false
+    @showEffect modified
 
-      position = $position.positionElements angular.element(element), tip, 'top', true
-      position.top -= 25*modified.length
-      position.top += 'px'
-      position.left += 'px'
-      tip.css position
+  @showEffect = (modified) ->
+    return if not modified.length or not @button
+    tip = @get
+      modified: modified
 
-      $timeout ->
-        tip.remove()
-      , 5000, false
+    tip.css
+      top: 0
+      left: 0
+      width: 0
+      height: 0
+      'z-index': @index+=1
+      display: 'block'
+      position: 'absolute'
 
+    position = $position.positionElements @button, tip, 'top', true
+    position.top -= 25*modified.length
+    position.top += 'px'
+    position.left += 'px'
+    position.width = 'auto'
+    position.height = 'auto'
+    tip.css position
 
-    handleEvent = (args) ->
-      return if args?.skipEffect
-      modified = for name, cost of args.costs
-        unit: game.unit(name)
-        val: cost
-        negative: true
-      if args.unitname
-        modified.unshift
-          unit: game.unit(args.unitname)
-          val: args.twinnum
-          negative: false
-      showEffect modified
+    $timeout =>
+      @release tip
+    , 5000, false
 
-    element.bind 'click', ->
-      deregister1 = $rootScope.$on 'command', (event, args) ->
-        deregister1()
-        deregister2()
-        deregister3()
-        handleEvent args
+  $rootScope.$on 'command', (event, args) =>
+    @handleEvent args
+  $rootScope.$on 'race', (event, args) =>
+    @handleEvent args
 
-      deregister3 = $rootScope.$on 'race', (event, args) ->
-        deregister1()
-        deregister2()
-        deregister3()
-        handleEvent args
-
-      deregister2 = scope.$on '$destroy', ->
-        deregister1()
-        deregister3()
+  this
