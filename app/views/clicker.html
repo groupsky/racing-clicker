@@ -19,6 +19,9 @@
       <i class="fa fa-flag-checkered"></i>
     </button>
   </p>
+  <div ng-repeat="upgrade in driving.upgrades.byClass.upgrade | filter:filterVisible">
+    <upgrade upgrade="upgrade"></upgrade>
+  </div>
   <!--<div ng-hide="race.isCostMet()" class="progress" style="margin-bottom:0; height: initial">-->
   <!--<div class="btn progress-bar" role="progressbar" aria-valuenow="{{race.costMetPercent().times(1000)}}" aria-valuemin="0" aria-valuemax="1000" ng-style="{width:race.costMetPercent().times(100)+'%'}">-->
   <!--{{race.costMetPercent()|percent:{floor:true} }} {{race|estimate|duration}}-->

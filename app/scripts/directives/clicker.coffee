@@ -22,6 +22,7 @@ angular.module('swarmApp').directive 'clicker', ($rootScope, $timeout, game) ->
     $scope.races = $scope.units.races
     $scope.driving = $scope.units.driving
     $scope.fame = game.unit('fame')
+    $scope.filterVisible = (upgrade) -> upgrade.isVisible()
 
     $scope.doClick = ($event) =>
       $log.debug 'click!'
