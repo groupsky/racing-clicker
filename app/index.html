@@ -8,7 +8,7 @@ https://github.com/erosson/swarm
 -->
   <head>
     <meta charset="utf-8">
-    <title>Racing Simulator</title>
+    <title>Racing Clicker Manager</title>
     <link rel="shortcut icon" type="image/png" href="favicon.ico">
     <meta name="description" content="An incremental game. Starting with just a few buck and big balls, grow a massive racing empire.">
     <!--<link rel="canonical" href="https://swarmsim.github.io">-->
@@ -94,20 +94,16 @@ https://github.com/erosson/swarm
       <div ng-cloak ng-controller="WelcomeBackCtrl">
         <div id="welcomeback" class="alert alert-info alert-dismissible animif" role="alert" ng-if="showWelcomeBack">
           <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <p title="Please don't go. The drones need you. They look up to you.">Welcome back! While you were away for {{durationSinceClosed.humanize()}}, your swarm produced:</p>
-          <!--span ng-repeat="gain in offlineGains">
-            <span ng-if="!$first && $last"> and </span>
-              {{gain.val | longnum}}
-              <a ng-href="#{{gain.unit.url()}}" ng-click="closeWelcomeBack()">{{gain.unit.unittype.plural}}</a><span ng-if="!$last && offlineGains.length > 2">, </span></span>.</p-->
+          <p title="Please don't go. The teams need you. They look up to you.">Welcome back! While you were away for {{durationSinceClosed.humanize()}}, your organization produced:</p>
           <ul>
             <li ng-repeat="gain in offlineGains">
               {{gain.val | longnum}}
               <a ng-href="#{{gain.unit.url()}}" ng-click="closeWelcomeBack()">{{gain.unit.unittype.plural}}</a>
             </li>
           </ul>
-          <newslink ng-cloak></newslink>
         </div>
       </div>
+      <!--
       <div ng-cloak ng-controller="AprilFoolsCtrl">
         <div id="aprilfools-news" class="alert alert-info alert-dismissable animif" role="alert" ng-if="options.aprilFoolsState() != 'off'">
           <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -133,6 +129,7 @@ https://github.com/erosson/swarm
       </div>
 
       <tutorial></tutorial>
+      -->
 
       <div class="viewwrap"><div ng-view=""><center><img src="images/ajax-loader.gif"></center></div></div>
 

@@ -29,13 +29,13 @@ angular.module('swarmApp').controller 'ContactCtrl', ($scope, feedback, version,
     $scope.urls.expand = data.id + '+'
 
   $scope.initTopic = if $location.search().error? then 'bug'
-    
+
   # has an actual error message - `?error=blah`, not just `?error`.
   # `"an error message" != true`
   hasErrorMessage = $location.search().error and $location.search().error != true
   topics =
     bug:
-      subject: -> "Swarm Simulator Bug Report (#{new Date().toLocaleString()})"
+      subject: -> "Racing Clicker Manager Bug Report (#{new Date().toLocaleString()})"
       message: -> """
 Describe the bug here. Step-by-step instructions saying how to make the bug reoccur are helpful.
 
@@ -43,7 +43,7 @@ Describe the bug here. Step-by-step instructions saying how to make the bug reoc
 
 Bug report information:
 
-* Swarm Simulator version: #{version}
+* Racing Clicker Manager version: #{version}
 * Saved game: #{$scope.urls.expand}
 * Source: #{if isKongregate() then "Kongregate" else "Standalone"}
 * Browser: #{$scope.userAgentGuess}#{
@@ -55,12 +55,12 @@ if hasErrorMessage then "\n* Error message: ```"+$location.search().error+'```' 
           error += '|'
         return "#{version}|#{$scope.userAgentGuess}|#{error}#{$scope.urls.expand}"
     other:
-      subject: -> "Swarm Simulator Feedback (#{new Date().toLocaleString()})"
+      subject: -> "Racing Clicker Manager Feedback (#{new Date().toLocaleString()})"
       message: -> ''
       anonDebug: -> ''
       emailTo: ->
         # because spam
-        LZString.decompressFromBase64 'GYUxBMCMEMGMGsACBnA7tATgW2QSywHSwD2WQA=='
+        LZString.decompressFromBase64 'E4Qwxglgdg5gdGANhMBrApsAAjAtiCRBAe1yA==='
 
   _get = (topic, key) ->
     (topics[topic]?[key] ? topics.other[key])()
@@ -73,7 +73,7 @@ if hasErrorMessage then "\n* Error message: ```"+$location.search().error+'```' 
   $scope.mailtoUrl = (topic) ->
     "mailto:#{emailTo topic}?subject=#{encodeURIComponent subject topic}&body=#{encodeURIComponent message topic}"
   $scope.anonForm = (topic) ->
-    url = "https://docs.google.com/a/swarmsim.com/forms/d/18ywqkqMlviAgKACVZUI6XkaGte2piKN3LGbii8Qwvmw/viewform?entry.1461412788=#{encodeURIComponent anonDebug topic}"
+    url = "https://docs.google.com/forms/d/1algpv-IpOx_W1LrlPD3_P41tOvxIFNWlkobfnUgh0_Y/viewform?entry.997621172=#{encodeURIComponent anonDebug topic}"
     # starts throwing bad requests for length around this point. Send whatever we can.
     LIMIT = 1950
     if url.length > LIMIT

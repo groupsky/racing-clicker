@@ -85,7 +85,7 @@ module.exports = function (grunt) {
           autopushIntervalMs: 1000 * 15,
           googleApiKey: 'AIzaSyArP8wzscVTyD4wBWZrhPnGWwj7W7ROaSI',
           isAppcacheEnabled: true,
-          sentryDSN: 'https://c133b1e19aec40ea8e7641eb94f57004@app.getsentry.com/39317',
+          sentryDSN: 'https://4ee5233ada4c4c00ade28c3070b3a6f4@app.getsentry.com/50964',
           sentrySampleRate: 1,
           // Everyone's getting server-side accounts.
           //
@@ -100,7 +100,7 @@ module.exports = function (grunt) {
           isServerBackendEnabled: true,
           isServerFrontendEnabled: false,
 
-          gaTrackingID: 'UA-53523462-3'
+          gaTrackingID: 'UA-66677344-1'
         }
       }
     },
@@ -111,7 +111,6 @@ module.exports = function (grunt) {
           isDebugEnabled: false,
           isDebugLogged: false,
           httpsAllowInsecure: false,
-          //gaTrackingID: 'UA-53523462-2'
           showSkipped: false,
           spreadsheetKey: 'v0.2',
           saveId: 'v0.2',
@@ -122,14 +121,14 @@ module.exports = function (grunt) {
           autopushIntervalMs: 1000 * 60 * 15,
           googleApiKey: 'AIzaSyCS8nqXFvhdr0AR-ox-9n_wKP2std_fHHs',
           isAppcacheEnabled: false,
-          sentryDSN: 'https://5b47c35e40a34619954d42f17712eb5f@app.getsentry.com/39331',
+          sentryDSN: 'https://4ee5233ada4c4c00ade28c3070b3a6f4@app.getsentry.com/50964',
           sentrySampleRate: 0.001,
           isServerBackendEnabled: false,
           isServerFrontendEnabled: false,
-          gaTrackingID: 'UA-53523462-1'
+          gaTrackingID: 'UA-66677344-1'
         }
       }
-    },
+    }
   };
   ngconstant.preprod = JSON.parse(JSON.stringify(ngconstant.prod));
   ngconstant.preprod.constants.env.saveServerUrl = 'https://api-preprod.swarmsim.com';
