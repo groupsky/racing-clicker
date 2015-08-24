@@ -68,11 +68,6 @@ angular.module('swarmApp').directive 'buyupgrade', ($log, game, commands) ->
       if num.isNaN()
         num = Decimal.ONE
       return num
-    scope.totalCostVal = (cost) ->
-      # stringifying scope.num is important to avoid decimal.js precision errors
-      cost.val.times(scope.fullnum()+'')
-    scope.isCostMet = (cost) ->
-      cost.unit.count().greaterThanOrEqualTo(scope.totalCostVal(cost))
 
     scope.upgrade = scope.resource = game.upgrade scope.upgrade
     $log.debug 'buyupgrade', scope.resource
