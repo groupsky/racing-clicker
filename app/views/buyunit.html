@@ -18,4 +18,11 @@
       {{verb}} {{resource.maxCostMet().times(statTwin())|bignum}}
     </a>
   </div>
+  <div>
+    <unit-resource ng-repeat="cost in unit.cost track by cost.unit.name"
+                 value="cost.val"
+                 unit="cost.unit"
+                 ng-class="{positive: !cost.negative, negative: cost.negative}">
+    </unit-resource>
+  </div
 </span>
