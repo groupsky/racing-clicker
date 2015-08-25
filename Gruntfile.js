@@ -51,7 +51,7 @@ module.exports = function (grunt) {
           isDebugLogged: false,
           httpsAllowInsecure: true,
           showSkipped: false,
-          spreadsheetKey: 'v0.2',
+          spreadsheetKey: 'v0.4.2',
           saveId: '0',
           dropboxAppKey: dropboxAppKey('dev'),
           isDropboxEnabled: true,
@@ -76,7 +76,7 @@ module.exports = function (grunt) {
           isDebugLogged: true,
           httpsAllowInsecure: true,
           showSkipped: true,
-          spreadsheetKey: 'v0.2',
+          spreadsheetKey: 'v0.4.2',
           saveId: 'v0.2',
           dropboxAppKey: dropboxAppKey('dev'),
           isDropboxEnabled: true,
@@ -112,7 +112,7 @@ module.exports = function (grunt) {
           isDebugLogged: false,
           httpsAllowInsecure: false,
           showSkipped: false,
-          spreadsheetKey: 'v0.2',
+          spreadsheetKey: 'v0.4.1',
           saveId: 'v0.2',
           dropboxAppKey: dropboxAppKey('prod'),
           isDropboxEnabled: true,
@@ -192,7 +192,8 @@ module.exports = function (grunt) {
     ngconstant: ngconstant,
 
     preloadSpreadsheet: {
-      'v0.2': 'https://docs.google.com/spreadsheets/d/1YM7SwuCE7XbwBIge8_MN5XFDvvufVIIT75QviTXRPoU/pubhtml?gid=0&single=true',
+      'v0.4.1': 'https://docs.google.com/spreadsheets/d/1YM7SwuCE7XbwBIge8_MN5XFDvvufVIIT75QviTXRPoU/pubhtml',
+      'v0.4.2': 'https://docs.google.com/spreadsheets/d/1lZb5_LX-UxsYKn6CVg36VefPbqZlr-1SGhtAt6Qh2Bc/pubhtml',
     },
     mxmlc: {
       options: {
