@@ -486,3 +486,83 @@ a:focus, button:focus{
     outline: 0 !important;
     /* add other styling to it */
 }
+
+//## tutorial
+@keyframes flash-button {
+  0% {
+    background-color: $btn-default-bg;
+    color: $btn-default-color;
+    border-color: $btn-default-border;
+  }
+  50% {
+    background-color: $btn-primary-bg;
+    color: $btn-primary-color;
+    border-color: $btn-primary-border;
+  }
+  100% {
+    background-color: $btn-default-bg;
+    color: $btn-default-color;
+    border-color: $btn-default-border;
+  }
+}
+
+@keyframes flash-resource {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: $btn-primary-bg;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes flash-well {
+  0% {
+    background-color: $well-bg;
+  }
+  50% {
+    background-color: $btn-primary-bg;
+  }
+  100% {
+    background-color: $well-bg;
+  }
+}
+
+.tutorial-step-1 .unit-tech1 buyunit .btn,
+.tutorial-step-2 topbar .navbar .resource.resource-technology,
+.tutorial-step-3 topbar .navbar .resource.resource-money,
+.tutorial-step-4 .unit-car1 .btn-upgrade,
+.tutorial-step-5 .unit-car1 .btn-upgrade,
+.tutorial-step-6 .unit-car2 .btn-upgrade,
+.tutorial-step-7 clicker .btn.btn-lg,
+.tutorial-step-8 clicker .btn.btn-lg,
+.tutorial-step-9 topbar .navbar .resource.resource-fame,
+.tutorial-step-9 .unit-tech1 .btn-upgrade {
+  background-color: inherit;
+  animation-name: flash-button;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+.tutorial-step-2 .unit-car1 .unit-technology {
+  animation-name: flash-resource;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+.tutorial-step-3 .unit-car1 .unit-money,
+.tutorial-step-5 .unit-car1 .negative .unit-resource,
+.tutorial-step-6 .unit-car2 .negative .unit-resource,
+.tutorial-step-9 .unit-tech1 .negative .unit-resource {
+  animation-name: flash-resource;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+.tutorial-step-9 .panel-other unit .well {
+  animation-name: flash-well;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
