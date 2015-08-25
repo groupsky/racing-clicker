@@ -79,6 +79,7 @@ angular.module('swarmApp').factory 'Game', (unittypes, upgradetypes, achievement
     @gameSpeed = 1
     @session.state.skippedMillis ?= 0
     @session.state.elapsedMillis ?= 0
+    @session.state.welcomeShowed ?= false
 
     for item in [].concat @_units.list, @_upgrades.list, @_achievements.list
       item._init()

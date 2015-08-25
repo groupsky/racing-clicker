@@ -6,14 +6,23 @@
  # @description
  # # tutorial
 ###
-angular.module('swarmApp').directive 'tutorial', (game) ->
+angular.module('swarmApp').directive 'tutorial', ($rootScope, $modal, game) ->
+  modalInstance = null
+  showWelcome = ->
+    game.session.state.welcomeShowed = true
+    modalInstance ?= $modal.open
+      templateUrl: 'views/welcome.html'
+      controller: ($scope, $modalInstance, game) ->
+        $scope.close = -> $modalInstance.dismiss()
+        $scope.game = game
+        game.setGameSpeed 0
+    modalInstance.result.finally -> game.setGameSpeed 1
+
   template: """
     <div ng-if="tutStep() > 0" class="alert animif alert-info" role="alert">
       <button ng-if="showCloseButton()" type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 
       <div ng-if="tutStep() == 1">
-        <p>Welcome to <strong>Racing Clicker Manager</strong>.</p>
-        <p>Using just your dad's <strong>{{game.unit('car1').type.label}}</strong> and a lot of balls try to create the racing career you always dreamed of.</p>
         <p>Upgrading your car and buying new ones will bring you closer to the finish, allow you to earn fame (<strong>{{game.unit('car1').type.label}}</strong> is just too much junk to get any fame or actual races) and most importantly hire other teams to race for you.</p>
         <p>Now go hire some <strong>{{game.unit('tech1').type.plural}}</strong> to help you fix this pile of junk and maybe even earn enough bucks to buy some real wheels.</p>
       </div>
@@ -55,4 +64,5 @@ angular.module('swarmApp').directive 'tutorial', (game) ->
         if units.tech1.greaterThan(0)
           return 2
         if units.tech1.isZero()
+          showWelcome() if not game.session.state.welcomeShowed
           return 1
