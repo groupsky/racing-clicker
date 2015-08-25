@@ -10,7 +10,7 @@
 angular.module('swarmApp').controller 'HeaderCtrl', ($scope, $window, env, version, session, timecheck, $http, $interval, $log, $location
 kongregateScrolling, pageTheme, remoteSaveInit, touchTooltipInit
 # analytics/statistics not actually used, just want them to init
-versioncheck, analytics, statistics, achievementslistener, favico
+versioncheck, analytics, statistics, achievementslistener, favico, $modal
 ) ->
   $scope.env = env
   $scope.version = version
@@ -37,6 +37,14 @@ versioncheck, analytics, statistics, achievementslistener, favico
   $scope.konami = new Konami ->
     $scope.$emit 'konami'
     $log.debug 'konami'
+
+  $scope.showAchievements = ($event) ->
+    $event.preventDefault() if $event?
+    modalInstance = $modal.open({
+      templateUrl: 'views/achievementsdialog.html'
+      controller: 'AchievementsCtrl'
+      size: 'lg'
+      })
 
   kongregateScrolling $scope
   pageTheme $scope

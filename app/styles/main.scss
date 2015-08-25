@@ -473,3 +473,16 @@ body {
     border-color: #a01;
   }
 }
+.modal-dialog .scrollable {
+  height: 70vh;
+  overflow-y: auto;
+}
+
+.achievements-dialog-header h2 {
+  display: inline;
+}
+
+a:focus, button:focus{
+    outline: 0 !important;
+    /* add other styling to it */
+}

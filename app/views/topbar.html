@@ -38,7 +38,7 @@
     </div>
 
     <div ng-if="game.achievementPercent()" class="navbar-right" ng-cloak>
-      <a class="navbar-brand" href="#/achievements">
+      <a class="navbar-brand" href ng-click="showAchievements($event)">
         <resource name="achievements" value="game.achievementPercent()" filter="percent" filter-opts="2"></resource>
       </a>
     </div>
