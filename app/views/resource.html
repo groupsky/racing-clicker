@@ -14,8 +14,7 @@
     --></span>
   </span>
   <span class="label-resource label-{{::name}}">
-    <span ng-if="::label && (value.equalTo(1) || !plural)" class="label-label">{{::label}}</span>
-    <span ng-if="::plural && (!value.equalTo(1) || !label)" class="label-label">{{::plural}}</span>
+    <span class="label-label">{{::(plural || label)}}</span>
     <span ng-if="::suffix" class="label-suffix">{{::suffix}}</span>
   </span>
 </span>
