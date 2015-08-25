@@ -79,16 +79,13 @@ angular.module('swarmApp').controller 'LoadSaveCtrl', ($scope, $log, game, sessi
 angular.module('swarmApp').controller 'AprilFoolsCtrl', ($scope, options) ->
   $scope.options = options
 
-angular.module('swarmApp').controller 'WelcomeBackCtrl', ($scope, game, $log, ignoreHeartbeat, durationSinceClosed, $modalInstance) ->
+angular.module('swarmApp').controller 'WelcomeBackCtrl', ($scope, game, $log, ignoreHeartbeat, durationSinceClosed, $modalInstance, reifiedToCloseDiffInSecs) ->
   $scope.closeWelcomeBack = ->
     $log.debug 'closeWelcomeBack'
     $modalInstance.dismiss()
     return undefined #quiets an angular error
 
-  reifiedToCloseDiffInSecs = (game.session.dateClosed(ignoreHeartbeat).getTime() - game.session.state.date.reified.getTime()) / 1000
-  $log.debug 'time since game closed', durationSinceClosed.humanize(),
-    millis:game.session.millisSinceClosed undefined, ignoreHeartbeat
-    reifiedToCloseDiffInSecs:reifiedToCloseDiffInSecs
+  $scope.durationSinceClosed = durationSinceClosed
 
   # show all tab-leading units, and three leading generations of meat
   interestingUnits = []
