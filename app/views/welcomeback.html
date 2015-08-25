@@ -5,10 +5,10 @@
 <div class="modal-body">
   <div>
     <div id="welcomeback" class="alert alert-info alert-dismissible animif" role="alert">
-      <p title="Please don't go. The teams need you. They look up to you.">While you were away for {{durationSinceClosed.humanize()}}, your organization produced:</p>
+      <p title="Please don't go. The teams need you. They look up to you.">While you were away for {{::durationSinceClosed.humanize()}}, your organization produced:</p>
       <ul>
-        <li ng-repeat="gain in offlineGains">
-          {{gain.val | longnum}} {{gain.unit.unittype.plural}}
+        <li ng-repeat="gain in ::offlineGains">
+          {{::gain.val | longnum}} {{::gain.unit.unittype.plural}}
         </li>
       </ul>
     </div>

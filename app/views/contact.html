@@ -6,12 +6,12 @@
       <span class="fa fa-bug"></span>
       Report a Bug or Problem
     </button>
-    <div id="contact-bug-body" class="panel-collapse collapse" ng-class="{in:initTopic=='bug'}" role="tabpanel" aria-labelledby="contact-bug-head">
+    <div id="contact-bug-body" class="panel-collapse collapse" ng-class="::{in:initTopic=='bug'}" role="tabpanel" aria-labelledby="contact-bug-head">
       <div class="panel-body">
         <p>Something broken? These links send a private message to the developer, and automatically include some information used to investigate your bug report.</p>
         <ul>
-          <li><a target="_blank" ng-href="{{mailtoUrl('bug')}}">E-mail {{emailTo()}}</a></li>
-          <li><a target="_blank" ng-href="{{anonForm('bug')}}">Report bug anonymously (no reply)</a></li>
+          <li><a target="_blank" ng-href="{{::mailtoUrl('bug')}}">E-mail {{::emailTo()}}</a></li>
+          <li><a target="_blank" ng-href="{{::anonForm('bug')}}">Report bug anonymously (no reply)</a></li>
         </ul>
       </div>
     </div>
@@ -23,8 +23,8 @@
     </button>
     <div id="contact-idea-body" class="panel-collapse collapse" role="tabpanel" aria-labelledby="contact-idea-head">
       <div class="panel-body">
-        <p>Your idea's most likely to make it into the game if other players like it too! The <a target="_blank" ng-href="{{anonForm('idea')}}">anonymous form</a> is the best places to post your suggestions and ideas. The developer reads everything, though I can't always reply.</p>
-        <p>If you prefer, you can also <a target="_blank" ng-href="{{anonForm('idea')}}">message the developer privately with your idea</a>. I can't reply to suggestions submitted privately, but I read them all.</p>
+        <p>Your idea's most likely to make it into the game if other players like it too! The <a target="_blank" ng-href="{{::anonForm('idea')}}">anonymous form</a> is the best places to post your suggestions and ideas. The developer reads everything, though I can't always reply.</p>
+        <p>If you prefer, you can also <a target="_blank" ng-href="{{::anonForm('idea')}}">message the developer privately with your idea</a>. I can't reply to suggestions submitted privately, but I read them all.</p>
       </div>
     </div>
   </div>
@@ -50,8 +50,8 @@
       <div class="panel-body">
         <p>Compliments, complaints, or any other comments - I'd like to hear from you!</p>
         <ul>
-          <li><a target="_blank" ng-href="{{mailtoUrl()}}">E-mail {{emailTo()}}</a></li>
-          <li><a target="_blank" ng-href="{{anonForm()}}">Send feedback anonymously (no reply)</a></li>
+          <li><a target="_blank" ng-href="{{::mailtoUrl()}}">E-mail {{::emailTo()}}</a></li>
+          <li><a target="_blank" ng-href="{{::anonForm()}}">Send feedback anonymously (no reply)</a></li>
         </ul>
       </div>
     </div>

@@ -24,15 +24,15 @@ angular.module('swarmApp').directive 'resource', ->
 
 angular.module('swarmApp').directive 'unitResource', (options) ->
   template: """
-    <div class="unit-resource unit-{{unit.name}}">
+    <div class="unit-resource unit-{{::unit.name}}">
       <resource
-        name="{{unit.name}}"
+        name="{{::unit.name}}"
         value="value | default:unit.count()"
         velocity="hideVelocity?false:unit.velocity()"
         units="units"
-        label="{{unit.unittype.label}}"
-        plural="{{unit.unittype.plural}}"
-        suffix="{{unit.suffix}}"></resource>
+        label="{{::unit.unittype.label}}"
+        plural="{{::unit.unittype.plural}}"
+        suffix="{{::unit.suffix}}"></resource>
     </div>
   """
   scope:

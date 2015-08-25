@@ -1,5 +1,3 @@
-<tabs></tabs>
-
 <h2><b>{{game.achievementPoints() | longnum}}</b> achievement points</h2>
 <div class="progress">
   <div class="progress-bar progress-bar-success"
@@ -25,35 +23,35 @@
   <li ng-repeat="achievement in game.achievementsSorted() | filter:isVisible:achievement | orderBy:order.pred:form.show.reverse" class="achieve">
     <div ng-if="state(achievement) == 'earned'" class="alert achievetext alert-success" ng-click="achieveclick(achievement)">
       <span class="achieveicon hidden-xs glyphicon glyphicon-ok" title="Someday I'll add real achievement icons"></span>
-      <span class="achievepoints hidden-xs" ng-if="achievement.type.points > 0">+{{achievement.type.points|number}}</span>
+      <span class="achievepoints hidden-xs" ng-if="::achievement.type.points > 0">+{{::achievement.type.points|number}}</span>
       <span class="achieveicon-xs visible-xs glyphicon glyphicon-ok" title="Someday I'll add real achievement icons"></span>
-      <span class="achievepoints-xs visible-xs" ng-if="achievement.type.points > 0">+{{achievement.type.points|number}}</span>
-      <h3>{{achievement.type.label}}</h3>
-      <p class="achievedesc">{{achievement.description()}}</p>
-      <p><em>{{achievement.type.longdesc || '&nbsp;'}}</em></p>
-      <span class="achievedate small" title="{{achievement.earnedAtMoment().format('dddd, MMMM Do YYYY, h:mm:ss a')}}">Earned {{achievement.earnedAtMoment().fromNow()}}</span>
+      <span class="achievepoints-xs visible-xs" ng-if="::achievement.type.points > 0">+{{::achievement.type.points|number}}</span>
+      <h3>{{::achievement.type.label}}</h3>
+      <p class="achievedesc">{{::achievement.description()}}</p>
+      <p><em>{{::achievement.type.longdesc || '&nbsp;'}}</em></p>
+      <span class="achievedate small" title="{{::achievement.earnedAtMoment().format('dddd, MMMM Do YYYY, h:mm:ss a')}}">Earned {{achievement.earnedAtMoment().fromNow()}}</span>
     </div>
     <div ng-if="state(achievement) == 'unearned'" class="alert achievetext alert-warning" ng-click="achieveclick(achievement)">
       <span class="achieveicon hidden-xs glyphicon glyphicon-ok" title="Someday I'll add real achievement icons"></span>
-      <span class="achievepoints hidden-xs" ng-if="achievement.type.points > 0">{{achievement.type.points|number}}</span>
+      <span class="achievepoints hidden-xs" ng-if="::achievement.type.points > 0">{{::achievement.type.points|number}}</span>
       <span class="achieveicon-xs visible-xs glyphicon glyphicon-ok" title="Someday I'll add real achievement icons"></span>
-      <span class="achievepoints-xs visible-xs" ng-if="achievement.type.points > 0">+{{achievement.type.points|number}}</span>
-      <h3>{{achievement.type.label}}</h3>
-      <p class="achievedesc">{{achievement.description()}}</p>
-      <p><em>{{achievement.type.longdesc || '&nbsp;'}}</em></p>
-      <div ng-if="achievement.hasProgress()" class="progress" style="margin-bottom:0">
+      <span class="achievepoints-xs visible-xs" ng-if="::achievement.type.points > 0">+{{::achievement.type.points|number}}</span>
+      <h3>{{::achievement.type.label}}</h3>
+      <p class="achievedesc">{{::achievement.description()}}</p>
+      <p><em>{{::achievement.type.longdesc || '&nbsp;'}}</em></p>
+      <div ng-if="::achievement.hasProgress()" class="progress" style="margin-bottom:0">
         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{achievement.progressVal().toNumber()|number}}" aria-valuemin="0" aria-valuemax="{{achievement.progressMax().toNumber()|number}}" ng-style="{width:achievement.progressPercent().times(100)+'%'}">
           {{achievement.progressPercent()|percent:0}}<span ng-if="achievement.progressPercent().greaterThan(0.3)">:
-            {{achievement.progressVal() | bignum:0}} of {{achievement.progressMax() | bignum:0}}
+            {{achievement.progressVal() | bignum:0}} of {{::achievement.progressMax() | bignum:0}}
           </span>
         </div>
       </div>
     </div>
     <div ng-if="state(achievement) == 'masked'" class="alert achievetext alert-warning" ng-click="achieveclick(achievement)">
       <span class="achieveicon hidden-xs glyphicon glyphicon-question-sign" title="it is a mystery"></span>
-      <span class="achievepoints hidden-xs" ng-if="achievement.type.points > 0">{{achievement.type.points|number}}</span>
+      <span class="achievepoints hidden-xs" ng-if="::achievement.type.points > 0">{{::achievement.type.points|number}}</span>
       <span class="achieveicon-xs visible-xs glyphicon glyphicon-question-sign" title="it is a mystery"></span>
-      <span class="achievepoints-xs visible-xs">+{{achievement.type.points|number}}</span>
+      <span class="achievepoints-xs visible-xs">+{{::achievement.type.points|number}}</span>
       <h3>???</h3>
       <p class="achievedesc">???</p>
       <p><em>&nbsp;</em></p>

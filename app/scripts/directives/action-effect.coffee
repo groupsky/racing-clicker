@@ -14,10 +14,10 @@ angular.module('swarmApp').directive 'actionEffect', (actionEffectPool) ->
 angular.module('swarmApp').service 'actionEffectPool', ($compile, $document, $rootScope, $timeout, $position, game) ->
   @template = angular.element '''
           <div class="action-effect">
-            <unit-resource ng-repeat="cost in modified track by cost.unit.name"
-                           value="cost.val"
-                           unit="cost.unit"
-                           ng-class="{positive: !cost.negative, negative: cost.negative}"></unit-resource>
+            <unit-resource ng-repeat="cost in ::modified track by cost.unit.name"
+                           value="::cost.val"
+                           unit="::cost.unit"
+                           ng-class="::{positive: !cost.negative, negative: cost.negative}"></unit-resource>
           </div>
         '''
   linker = null
