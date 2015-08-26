@@ -181,6 +181,8 @@ td.upgrade-indicator, td.upgrade-indicator .glyphicon {
 }
 // animations from ng-if docs: https://docs.angularjs.org/api/ng/directive/ngIf
 .animif.ng-enter, .animif.ng-leave {
+  overflow: hidden;
+  height: auto;
   -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
   transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
 }
@@ -188,11 +190,15 @@ td.upgrade-indicator, td.upgrade-indicator .glyphicon {
 .animif.ng-enter,
 .animif.ng-leave.ng-leave-active {
   opacity:0;
+  transform: scaleY(0);
+  max-height: 0;
 }
 
 .animif.ng-leave,
 .animif.ng-enter.ng-enter-active {
   opacity:1;
+  transform: scaleY(1);
+  max-height: 1000px;
 }
 
 .statistics td.name {
