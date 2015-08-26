@@ -381,8 +381,11 @@ body {
   }
 }
 
+$unit-height: 100px;
+$panel-body-height: $unit-height*2+40px*2+15px;
+
 .unit {
-  height: 100px;
+  height: $unit-height;
 
   .unit-title-container {
     .unit-title {
@@ -428,7 +431,7 @@ body {
 
 .panel-cars {
   .panel-body {
-    max-height: 269px;
+    height: $panel-body-height;
     overflow-y: scroll;
   }
 }
@@ -485,6 +488,13 @@ body {
 a:focus, button:focus{
     outline: 0 !important;
     /* add other styling to it */
+}
+
+.clicker {
+  @extend .jumbotron;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  height: $panel-body-height+$line-height-computed*2+3px;
 }
 
 //## tutorial
