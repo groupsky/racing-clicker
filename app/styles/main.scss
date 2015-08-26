@@ -496,7 +496,7 @@ a:focus, button:focus{
   }
   50% {
     background-color: $btn-primary-bg;
-    color: $btn-primary-color;
+    color: $btn-danger-color;
     border-color: $btn-primary-border;
   }
   100% {
@@ -511,7 +511,7 @@ a:focus, button:focus{
     background-color: transparent;
   }
   50% {
-    background-color: $btn-primary-bg;
+    background-color: transparentize($brand-danger, 0.75);
   }
   100% {
     background-color: transparent;
@@ -530,39 +530,36 @@ a:focus, button:focus{
   }
 }
 
-.tutorial-step-1 .unit-tech1 buyunit .btn,
+.tutorial-step-1 .unit-tech1 buyunit .btn:not(.disabled),
 .tutorial-step-2 topbar .navbar .resource.resource-technology,
 .tutorial-step-3 topbar .navbar .resource.resource-money,
 .tutorial-step-4 .unit-car1 .btn-upgrade,
 .tutorial-step-5 .unit-car1 .btn-upgrade,
-.tutorial-step-6 .unit-car2 .btn-upgrade,
-.tutorial-step-7 clicker .btn.btn-lg,
-.tutorial-step-8 clicker .btn.btn-lg,
-.tutorial-step-9 topbar .navbar .resource.resource-fame,
-.tutorial-step-9 .unit-tech1 .btn-upgrade {
+.tutorial-step-6 .unit-tech2 buyunit .btn:not(.disabled),
+.tutorial-step-7 .unit-car2 .btn-upgrade,
+.tutorial-step-8 clicker .btn.btn-lg:not(.disabled),
+.tutorial-step-9 clicker .btn.btn-lg:not(.disabled),
+.tutorial-step-99 topbar .navbar .resource.resource-fame,
+.tutorial-step-10 .unit-tech1 .btn-upgrade,
+.tutorial-step-11 .unit-sponsor1 .btn-upgrade {
   background-color: inherit;
-  animation-name: flash-button;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
+  color: inherit;
+  border-color: inherit;
+  animation: flash-button 2s infinite;
 }
 
-.tutorial-step-2 .unit-car1 .unit-technology {
-  animation-name: flash-resource;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-}
-
+.tutorial-step-2 .unit-car1 .unit-technology,
 .tutorial-step-3 .unit-car1 .unit-money,
 .tutorial-step-5 .unit-car1 .negative .unit-resource,
-.tutorial-step-6 .unit-car2 .negative .unit-resource,
-.tutorial-step-9 .unit-tech1 .negative .unit-resource {
-  animation-name: flash-resource;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
+.tutorial-step-6 .unit-tech2 .negative .unit-resource,
+.tutorial-step-7 .unit-car2 .negative .unit-resource,
+.tutorial-step-10 .unit-tech1 .negative .unit-resource,
+.tutorial-step-11 .unit-sponsor1 .negative .unit-resource {
+  background-color: inherit;
+  animation: flash-resource 2s infinite;
 }
 
-.tutorial-step-9 .panel-other unit .well {
-  animation-name: flash-well;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
+.tutorial-step-99 .panel-other unit .well {
+  background-color: inherit;
+  animation: flash-well 2s infinite;
 }
