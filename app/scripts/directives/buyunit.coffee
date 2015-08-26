@@ -27,6 +27,11 @@ angular.module('swarmApp').directive 'buyunit', ($log, game, commands) ->
       if num.isNaN()
         num = Decimal.ONE
       return num
+    scope.maxCosts = (percent=1) ->
+      return game.cache.unitMaxCosts["#{scope.unit.name}:#{percent}"] ?= do =>
+        count = scope.unit.maxCostMet percent
+        for cost in scope.unit.cost
+          angular.extend({}, cost, {val: cost.val.times(count)})
     scope.totalCostVal = (cost) ->
       # stringifying scope.num is important to avoid decimal.js precision errors
       cost.val.times(scope.fullnum()+'')
@@ -45,7 +50,7 @@ angular.module('swarmApp').directive 'buyunit', ($log, game, commands) ->
       commands.buyMaxUnit args
     scope.statTwin = -> scope.resource.twinMult()
     scope.isBuyButtonVisible = -> scope.resource.isBuyButtonVisible()
-    scope.verb = '+'
+    scope.verb = scope.unit.type.verb
 
 angular.module('swarmApp').directive 'buyupgrade', ($log, game, commands) ->
   templateUrl: 'views/buyunit.html'

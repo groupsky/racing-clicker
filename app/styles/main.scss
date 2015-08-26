@@ -1,5 +1,15 @@
+$grid-gutter-width: 20px;
+$panel-body-padding: $grid-gutter-width/2;
+$well-sm-padding: $panel-body-padding/2;
+$unit-height: 100px;
+$panel-body-height: $unit-height*2+$well-sm-padding*4+20px*2+10px;
+
 @import "../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 @import "../../bower_components/fontawesome/scss/font-awesome";
+
+.well-sm {
+  padding: $well-sm-padding;
+}
 
 .strikethrough {
   text-decoration: line-through;
@@ -348,7 +358,8 @@ body {
   &.icon-money {
     @include icon($fa-var-money);
   }
-  &.icon-technology {
+  &.icon-technology
+  {
     @include icon($fa-var-wrench);
   }
   &.icon-fame {
@@ -356,6 +367,15 @@ body {
   }
   &.icon-achievements {
     @include icon($fa-var-trophy);
+  }
+  &.icon-car {
+    @include icon($fa-var-car);
+  }
+  &.icon-sponsor {
+    @include icon($fa-var-newspaper-o);
+  }
+  &.icon-team {
+    @include icon($fa-var-users);
   }
 }
 
@@ -365,6 +385,17 @@ body {
 }
 
 .label-resource {
+
+  .label-resource-short {
+    @extend .hidden-sm;
+    @extend .hidden-md;
+    @extend .hidden-lg;
+  }
+
+  .label-resource-label {
+    @extend .hidden-xs;
+  }
+
   &.label-money,
   &.label-technology,
   &.label-fame,
@@ -381,11 +412,10 @@ body {
   }
 }
 
-$unit-height: 100px;
-$panel-body-height: $unit-height*2+40px*2+15px;
-
 .unit {
-  height: $unit-height;
+  @media (min-width: $screen-md-min) {
+    height: $unit-height;
+  }
 
   .unit-title-container {
     .unit-title {
@@ -393,6 +423,14 @@ $panel-body-height: $unit-height*2+40px*2+15px;
       @extend .titlecase;
       font-size: 15px;
 
+      .unit-title-short {
+        @extend .hidden-sm;
+        @extend .hidden-md;
+        @extend .hidden-lg;
+      }
+      .unit-title-label {
+        @extend .hidden-xs;
+      }
       .unit-level, .unit-count {
         @extend .badge;
       }
@@ -407,6 +445,7 @@ $panel-body-height: $unit-height*2+40px*2+15px;
 
   resource {
     display: block;
+    @include ellipsis;
   }
 
   upgrade {
@@ -427,12 +466,25 @@ $panel-body-height: $unit-height*2+40px*2+15px;
   .negative .resource {
     color: $btn-link-disabled-color;
   }
+
+  buyunit {
+    .costs {
+      padding-left: 5px;
+      padding-right: 5px;
+
+      &.max-costs {
+          text-align: right;
+      }
+    }
+  }
 }
 
 .panel-cars {
   .panel-body {
-    height: $panel-body-height;
-    overflow-y: scroll;
+    @media (min-width: $screen-md-min) {
+      height: $panel-body-height;
+      overflow-y: scroll;
+    }
   }
 }
 
@@ -491,10 +543,19 @@ a:focus, button:focus{
 }
 
 .clicker {
-  @extend .jumbotron;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  height: $panel-body-height+$line-height-computed*2+3px;
+  @extend .well;
+  @extend .well-lg;
+  text-align: center;
+
+  @media (min-width: $screen-md-min) {
+    // padding-top: 15px;
+    // padding-bottom: 15px;
+    height: $panel-body-height+$line-height-computed*2+3px;
+
+    // h1,.h1 {
+    //   font-size: ($font-size-base * 3);
+    // }
+  }
 }
 
 //## tutorial

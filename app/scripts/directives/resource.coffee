@@ -16,6 +16,7 @@ angular.module('swarmApp').directive 'resource', ->
     label: '@?'
     plural: '@?'
     suffix: '@?'
+    short: '@?'
     filter: '@?'
     filterOpts: '=?'
   restrict: 'E'
@@ -30,8 +31,9 @@ angular.module('swarmApp').directive 'unitResource', (options) ->
         value="value | default:unit.count()"
         velocity="hideVelocity?false:unit.velocity()"
         units="units"
-        label="{{::unit.unittype.label}}"
-        plural="{{::unit.unittype.plural}}"
+        label="{{::unit.type.label}}"
+        plural="{{::unit.type.plural}}"
+        short="{{::unit.type.short}}"
         suffix="{{::unit.suffix}}"></resource>
     </div>
   """

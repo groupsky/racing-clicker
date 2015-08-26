@@ -1,14 +1,17 @@
 <div class="well well-sm">
   <div class="container-float unit unit-type-{{::unit.type.tab}} unit-{{::unit.name}}">
     <div class="row">
-      <div class="col-xs-12 unit-title-container">
+      <div class="col-xs-12 unit-title-container"
+        tooltip="{{::unit.type.description}}"
+        tooltip-trigger="mouseenter click">
         <div ng-if="unit.count().isZero()" class="unit-production estimate pull-right">
           <resource ng-repeat="(name, val) in unit.eachProduction()"
                     name="{{::name}}"
                     velocity="val"
                     units="velocityUnit"
                     label="{{::game.unit(name).type.label}}"
-                    plural="{{::game.unit(name).type.plural}}"></resource>
+                    plural="{{::game.unit(name).type.plural}}"
+                    short="{{::game.unit(name).type.short}}"></resource>
         </div>
         <div ng-if="!unit.count().isZero()" class="unit-production pull-right">
             <resource ng-repeat="(name, val) in unit.totalProduction()"
@@ -16,10 +19,12 @@
                       velocity="val"
                       units="velocityUnit"
                       label="{{::game.unit(name).type.label}}"
-                      plural="{{::game.unit(name).type.plural}}"></resource>
+                      plural="{{::game.unit(name).type.plural}}"
+                      short="{{::game.unit(name).type.short}}"></resource>
         </div>
         <p class="unit-title">
-          {{::unit.type.label}}
+          <span class="unit-title-short">{{::unit.type.short}}</span>
+          <span class="unit-title-label">{{::unit.type.label}}</span>
           <span
             ng-if="(unit.type.unbuyable && !unit.upgrades.byName[unit.name+'_upgrade'].count().isZero()) || (!unit.type.unbuyable && !unit.count().isZero())"
             ng-class="::{'unit-level': unit.type.unbuyable, 'unit-count': !unit.type.unbuyable}">
