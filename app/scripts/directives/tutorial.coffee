@@ -12,10 +12,11 @@ angular.module('swarmApp').directive 'tutorial', ($rootScope, $modal, game) ->
     game.session.state.welcomeShowed = true
     modalInstance ?= $modal.open
       templateUrl: 'views/welcome.html'
-      controller: ($scope, $modalInstance, game) ->
+      controller: ['$scope', '$modalInstance', 'game', ($scope, $modalInstance, game) ->
         $scope.close = -> $modalInstance.dismiss()
         $scope.game = game
         game.setGameSpeed 0
+      ]
     modalInstance.result.finally -> game.setGameSpeed 1
 
   template: """
