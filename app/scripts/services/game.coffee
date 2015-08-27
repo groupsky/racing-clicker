@@ -362,5 +362,7 @@ angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievemen
     @cache.onRespec()
     util.assert mutagen.spent().isZero(), "respec didn't refund all mutagen!"
 
-angular.module('racingApp').factory 'game', (Game, session) ->
-  window.game = new Game session
+angular.module('racingApp').factory 'game', (Game, session, env) ->
+  game new Game session
+  window.game = game if env.isDebugEnabled
+  game
