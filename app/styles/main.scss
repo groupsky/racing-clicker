@@ -359,7 +359,7 @@ body {
   }
 }
 
-.navbar .resource {
+.navbar .resource, .navbar .btn-options {
   @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
   @include button-size($padding-large-vertical, $padding-large-horizontal, $font-size-large, $line-height-large, $border-radius-large);
 }
@@ -565,4 +565,18 @@ a:focus, button:focus{
   animation-name: flash-well;
   animation-duration: 2s;
   animation-iteration-count: infinite;
+}
+
+.btn-options {
+  @include icon($fa-var-gear);
+  display: inline;
+}
+
+.navbar-options {
+  @extend .navbar-brand;
+  padding-right: 0px;
+}
+
+.btn-options:hover {
+  text-decoration: none;
 }
