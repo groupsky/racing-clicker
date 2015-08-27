@@ -70,6 +70,7 @@ angular.module('swarmApp').directive 'debug', (env, game, util, $location) ->
       </div>
       <dl class="dl-horizontal col-md-4">
         <debugdd label="'performance.memory.usedJSHeapSize'" value="mem()" max="100000000"></debugdd>
+        <debugdd label="'performance.speed.tickMs'" value="game.tickTime" max="100"></debugdd>
       </dl>
     </div>
   </div>
