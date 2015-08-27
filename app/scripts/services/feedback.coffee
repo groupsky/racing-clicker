@@ -13,9 +13,9 @@ angular.module('racingApp').factory 'feedback', ($log, game, version, env, isKon
   createTinyurl: (exported=game.session.exportSave()) ->
     game.cache.tinyUrl[exported] ?= do =>
       if isKongregate()
-        load_url = "https://www.swarmsim.com?kongregate=1/#/importsplash?savedata=#{encodeURIComponent exported}"
+        load_url = "https://racing-clicker.herokuapp.com?kongregate=1/#/importsplash?savedata=#{encodeURIComponent exported}"
       else
-        load_url = "https://swarmsim.github.io/#/importsplash?savedata=#{encodeURIComponent exported}"
+        load_url = "https://racing-clicker.herokuapp.com/#/importsplash?savedata=#{encodeURIComponent exported}"
       jQuery.ajax('https://www.googleapis.com/urlshortener/v1/url',
         type: 'POST'
         data:JSON.stringify
