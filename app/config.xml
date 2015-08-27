@@ -3,18 +3,18 @@
   <widget xmlns   = "http://www.w3.org/ns/widgets"
       xmlns:gap   = "http://phonegap.com/ns/1.0"
       xmlns:android   = "http://schemas.android.com/apk/res/android"
-      id          = "org.erosson.swarmsim"
-      versionCode = "1" 
+      id          = "com.github.groupsky.racing-clicker"
+      versionCode = "1"
       version     = "0.0.1" >
 
-  <name>Swarm Simulator</name>
+  <name>Racing Clicker</name>
 
   <description>
-    An incremental game. Starting with just a few larvae and a small pile of meat, grow a massive swarm of giant bugs.
+    Racing Clicker Manager - An incremental clicker manager game. Starting with just a few buck and big balls, grow a massive racing empire.
   </description>
 
-  <author href="http://github.com/erosson/swarm" email="swarmsim@erosson.org">
-    Evan Rosson
+  <author href="http://github.com/groupsky" email="racing.clicker@gmail.com">
+    Geno Roupsky & Daniel Petrov
   </author>
 
   <!-- open reddit in the device's real browser. http://stackoverflow.com/questions/14070841/phonegap-open-link-in-browser -->
