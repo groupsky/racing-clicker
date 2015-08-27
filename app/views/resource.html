@@ -14,7 +14,8 @@
     --></span>
   </span>
   <span class="label-resource label-{{::name}}">
-    <span class="label-label">{{::(plural || label)}}</span>
+    <span class="label-resource-short">{{::(short || plural || label)}}</span>
+    <span class="label-resource-label">{{::(plural || label)}}</span>
     <span ng-if="::suffix" class="label-suffix">{{::suffix}}</span>
   </span>
 </span>

@@ -124,11 +124,11 @@ angular.module('swarmApp').factory 'AchievementTypes', (spreadsheetUtil, util, $
       util.assert _.isNumber(row.points), 'achievement points must be number', row.name, row
     return ret
 
-angular.module('swarmApp').factory 'AchievementsListener', (util, $log) -> class AchievementsListener
+angular.module('swarmApp').factory 'AchievementsListener', (util, $log, $timeout) -> class AchievementsListener
   constructor: (@game, @scope) ->
     @_listen @scope
 
-  achieveAny: ->
+  achieveAny: =>
     for achieve in @game.achievementlist()
       if not achieve.isEarned()
         for require in achieve.requires
@@ -208,7 +208,8 @@ angular.module('swarmApp').factory 'AchievementsListener', (util, $log) -> class
 #        @achieveUpgrade cmd.upgradename
 
       if cmd.unitname? or cmd.upgradename?
-        @achieveAny()
+        $timeout.cancel @deferedAchieveAny if @deferedAchieveAny
+        @deferedAchieveAny = $timeout @achieveAny, 1500
       if cmd.name == 'ascension'
         $log.debug 'ascending!', @game.unit('ascension').count()
         @achieveUnit 'ascension', true

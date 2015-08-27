@@ -2,8 +2,11 @@
   <div class="col-md-4">
     <div class="panel panel-default panel-units panel-cars">
       <div class="panel-heading">
-        <span>{{(game.tabs.byName.money.units | filter:filterVisible | filter:filterBought | count)-1}}</span>
-        <span class="titlecase">Cars</span>
+        <i class="icon-resource icon-car"></i>
+        <span class="pull-right">
+          {{(game.tabs.byName.money.units | filter:filterVisible | filter:filterBought | count)-1}}
+          cars
+        </span>
       </div>
       <div class="panel-body">
         <ul class="list-unstyled">
@@ -24,8 +27,11 @@
   <div class="col-md-6">
     <div class="panel panel-default panel-units panel-technology">
       <div class="panel-heading">
-        <span>{{(game.tabs.byName.technology.units | filter:filterVisible | filter:filterBought | count)-1}}</span>
-        <span class="titlecase">Technology</span>
+        <i class="icon-resource icon-technology"></i>
+        <span class="pull-right">
+          {{(game.tabs.byName.technology.units | filter:filterVisible | filter:filterBought | count)-1}}
+          technologies
+        </span>
       </div>
       <div class="panel-body">
         <ul class="list-unstyled">
@@ -44,9 +50,15 @@
       <div class="panel-heading">
         <div class="btn-group btn-group-justified" role="tablist">
           <a ng-show="game.tabs.byName.fame.isVisible()" href role="tab" class="btn btn-default"
-             ng-class="{active: tab == game.tabs.byName.fame}" ng-click="tab = game.tabs.byName.fame">Sponsors</a>
+             ng-class="{active: tab == game.tabs.byName.fame}" ng-click="tab = game.tabs.byName.fame">
+             <i class="icon-resource icon-sponsor"></i>
+             sponsors
+           </a>
           <a ng-show="game.tabs.byName.teams.isVisible()" href role="tab" class="btn btn-default"
-             ng-class="{active: tab == game.tabs.byName.teams}" ng-click="tab = game.tabs.byName.teams">Teams</a>
+             ng-class="{active: tab == game.tabs.byName.teams}" ng-click="tab = game.tabs.byName.teams">
+             <i class="icon-resource icon-team"></i>
+             teams
+           </a>
         </div>
       </div>
       <div class="panel-body">

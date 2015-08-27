@@ -37,8 +37,10 @@ angular.module('swarmApp').factory 'util', ($log, $rootScope, $timeout) -> new c
       # timeouts instead of intervals is less precise, but it automatically adjusts to options menu fps changes
       # intervals could work if we watched for options changes, but why bother?
       animatePromise = $timeout animateFn, options.fpsSleepMillis()
+      start = new Date().getTime()
       game.tick()
       $rootScope.$emit 'tick', game
+      game.tickTime = new Date().getTime() - start
     $scope.$on '$destroy', ->
       $timeout.cancel animatePromise
 

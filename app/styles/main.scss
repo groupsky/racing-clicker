@@ -1,5 +1,17 @@
+$grid-gutter-width: 20px;
+$panel-body-padding: $grid-gutter-width/2;
+$well-sm-padding: $panel-body-padding/2;
+$unit-height: 100px;
+$panel-body-height: $unit-height*2+$well-sm-padding*4+20px*2+10px;
+
+$icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+
 @import "../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 @import "../../bower_components/fontawesome/scss/font-awesome";
+
+.well-sm {
+  padding: $well-sm-padding;
+}
 
 .strikethrough {
   text-decoration: line-through;
@@ -171,6 +183,8 @@ td.upgrade-indicator, td.upgrade-indicator .glyphicon {
 }
 // animations from ng-if docs: https://docs.angularjs.org/api/ng/directive/ngIf
 .animif.ng-enter, .animif.ng-leave {
+  overflow: hidden;
+  height: auto;
   -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
   transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
 }
@@ -178,11 +192,15 @@ td.upgrade-indicator, td.upgrade-indicator .glyphicon {
 .animif.ng-enter,
 .animif.ng-leave.ng-leave-active {
   opacity:0;
+  transform: scaleY(0);
+  max-height: 0;
 }
 
 .animif.ng-leave,
 .animif.ng-enter.ng-enter-active {
   opacity:1;
+  transform: scaleY(1);
+  max-height: 1000px;
 }
 
 .statistics td.name {
@@ -348,7 +366,8 @@ body {
   &.icon-money {
     @include icon($fa-var-money);
   }
-  &.icon-technology {
+  &.icon-technology
+  {
     @include icon($fa-var-wrench);
   }
   &.icon-fame {
@@ -356,6 +375,15 @@ body {
   }
   &.icon-achievements {
     @include icon($fa-var-trophy);
+  }
+  &.icon-car {
+    @include icon($fa-var-car);
+  }
+  &.icon-sponsor {
+    @include icon($fa-var-newspaper-o);
+  }
+  &.icon-team {
+    @include icon($fa-var-users);
   }
 }
 
@@ -365,6 +393,17 @@ body {
 }
 
 .label-resource {
+
+  .label-resource-short {
+    @extend .hidden-sm;
+    @extend .hidden-md;
+    @extend .hidden-lg;
+  }
+
+  .label-resource-label {
+    @extend .hidden-xs;
+  }
+
   &.label-money,
   &.label-technology,
   &.label-fame,
@@ -382,7 +421,9 @@ body {
 }
 
 .unit {
-  height: 100px;
+  @media (min-width: $screen-md-min) {
+    height: $unit-height;
+  }
 
   .unit-title-container {
     .unit-title {
@@ -390,6 +431,14 @@ body {
       @extend .titlecase;
       font-size: 15px;
 
+      .unit-title-short {
+        @extend .hidden-sm;
+        @extend .hidden-md;
+        @extend .hidden-lg;
+      }
+      .unit-title-label {
+        @extend .hidden-xs;
+      }
       .unit-level, .unit-count {
         @extend .badge;
       }
@@ -404,6 +453,7 @@ body {
 
   resource {
     display: block;
+    @include ellipsis;
   }
 
   upgrade {
@@ -424,12 +474,25 @@ body {
   .negative .resource {
     color: $btn-link-disabled-color;
   }
+
+  buyunit {
+    .costs {
+      padding-left: 5px;
+      padding-right: 5px;
+
+      &.max-costs {
+          text-align: right;
+      }
+    }
+  }
 }
 
 .panel-cars {
   .panel-body {
-    max-height: 269px;
-    overflow-y: scroll;
+    @media (min-width: $screen-md-min) {
+      height: $panel-body-height;
+      overflow-y: scroll;
+    }
   }
 }
 
@@ -487,6 +550,22 @@ a:focus, button:focus{
     /* add other styling to it */
 }
 
+.clicker {
+  @extend .well;
+  @extend .well-lg;
+  text-align: center;
+
+  @media (min-width: $screen-md-min) {
+    // padding-top: 15px;
+    // padding-bottom: 15px;
+    height: $panel-body-height+$line-height-computed*2+3px;
+
+    // h1,.h1 {
+    //   font-size: ($font-size-base * 3);
+    // }
+  }
+}
+
 //## tutorial
 @keyframes flash-button {
   0% {
@@ -496,7 +575,7 @@ a:focus, button:focus{
   }
   50% {
     background-color: $btn-primary-bg;
-    color: $btn-primary-color;
+    color: $btn-danger-color;
     border-color: $btn-primary-border;
   }
   100% {
@@ -511,7 +590,7 @@ a:focus, button:focus{
     background-color: transparent;
   }
   50% {
-    background-color: $btn-primary-bg;
+    background-color: transparentize($brand-danger, 0.75);
   }
   100% {
     background-color: transparent;
@@ -530,41 +609,38 @@ a:focus, button:focus{
   }
 }
 
-.tutorial-step-1 .unit-tech1 buyunit .btn,
+.tutorial-step-1 .unit-tech1 buyunit .btn:not(.disabled),
 .tutorial-step-2 topbar .navbar .resource.resource-technology,
 .tutorial-step-3 topbar .navbar .resource.resource-money,
 .tutorial-step-4 .unit-car1 .btn-upgrade,
 .tutorial-step-5 .unit-car1 .btn-upgrade,
-.tutorial-step-6 .unit-car2 .btn-upgrade,
-.tutorial-step-7 clicker .btn.btn-lg,
-.tutorial-step-8 clicker .btn.btn-lg,
-.tutorial-step-9 topbar .navbar .resource.resource-fame,
-.tutorial-step-9 .unit-tech1 .btn-upgrade {
+.tutorial-step-6 .unit-tech2 buyunit .btn:not(.disabled),
+.tutorial-step-7 .unit-car2 .btn-upgrade,
+.tutorial-step-8 clicker .btn.btn-lg:not(.disabled),
+.tutorial-step-9 clicker .btn.btn-lg:not(.disabled),
+.tutorial-step-99 topbar .navbar .resource.resource-fame,
+.tutorial-step-10 .unit-tech1 .btn-upgrade,
+.tutorial-step-11 .unit-sponsor1 .btn-upgrade {
   background-color: inherit;
-  animation-name: flash-button;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
+  color: inherit;
+  border-color: inherit;
+  animation: flash-button 2s infinite;
 }
 
-.tutorial-step-2 .unit-car1 .unit-technology {
-  animation-name: flash-resource;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-}
-
+.tutorial-step-2 .unit-car1 .unit-technology,
 .tutorial-step-3 .unit-car1 .unit-money,
 .tutorial-step-5 .unit-car1 .negative .unit-resource,
-.tutorial-step-6 .unit-car2 .negative .unit-resource,
-.tutorial-step-9 .unit-tech1 .negative .unit-resource {
-  animation-name: flash-resource;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
+.tutorial-step-6 .unit-tech2 .negative .unit-resource,
+.tutorial-step-7 .unit-car2 .negative .unit-resource,
+.tutorial-step-10 .unit-tech1 .negative .unit-resource,
+.tutorial-step-11 .unit-sponsor1 .negative .unit-resource {
+  background-color: inherit;
+  animation: flash-resource 2s infinite;
 }
 
-.tutorial-step-9 .panel-other unit .well {
-  animation-name: flash-well;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
+.tutorial-step-99 .panel-other unit .well {
+  background-color: inherit;
+  animation: flash-well 2s infinite;
 }
 
 .btn-options {
