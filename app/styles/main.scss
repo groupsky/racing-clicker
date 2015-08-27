@@ -617,15 +617,15 @@ a:focus, button:focus{
 }
 
 .tutorial-step-1 .unit-tech1 buyunit .btn:not(.disabled),
-.tutorial-step-2 topbar .navbar .resource.resource-technology,
-.tutorial-step-3 topbar .navbar .resource.resource-money,
+.tutorial-step-2 topbar .navbar .nav-technology,
+.tutorial-step-3 topbar .navbar .nav-money,
 .tutorial-step-4 .unit-car1 .btn-upgrade,
 .tutorial-step-5 .unit-car1 .btn-upgrade,
 .tutorial-step-6 .unit-tech2 buyunit .btn:not(.disabled),
 .tutorial-step-7 .unit-car2 .btn-upgrade,
 .tutorial-step-8 clicker .btn.btn-lg:not(.disabled),
 .tutorial-step-9 clicker .btn.btn-lg:not(.disabled),
-.tutorial-step-99 topbar .navbar .resource.resource-fame,
+.tutorial-step-99 topbar .navbar .nav-fame,
 .tutorial-step-10 .unit-tech1 .btn-upgrade,
 .tutorial-step-11 .unit-sponsor1 .btn-upgrade {
   background-color: inherit;

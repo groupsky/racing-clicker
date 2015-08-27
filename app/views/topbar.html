@@ -22,22 +22,22 @@
 
     <ul class="nav nav-pills navbar-right" ng-cloak>
       <li ng-if="game.achievementPercent()">
-        <a href open-dialog="achievements">
+        <a href class="nav-achievements" open-dialog="achievements">
           <resource name="achievements" value="game.achievementPercent()" filter="percent" filter-opts="2"></resource>
         </a>
       </li>
       <li ng-if="game.unit('fame').isVisible()">
-        <a href>
+        <a href class="nav-fame">
           <unit-resource unit="::game.unit('fame')"></unit-resource>
         </a>
       </li>
       <li>
-        <a href>
+        <a href class="nav-technology">
           <unit-resource unit="::game.unit('technology')"></unit-resource>
         </a>
       </li>
       <li>
-        <a href>
+        <a href class="nav-money">
           <unit-resource unit="::game.unit('money')"></unit-resource>
         </a>
       </li>
