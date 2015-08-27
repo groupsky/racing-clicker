@@ -19,6 +19,9 @@ angular.module('swarmApp').service 'dialogService', ($rootScope, $log, $modal, $
       statistics:
         template: 'views/statistics.html'
         controller: 'StatisticsCtrl'
+      feedback:
+        template: 'views/contact.html'
+        controller: 'ContactCtrl'
   openDialog: (name) ->
     controllerScope = $rootScope.$new()
     controllerScope.closeDialog = () ->
