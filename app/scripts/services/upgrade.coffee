@@ -80,11 +80,12 @@ angular.module('swarmApp').factory 'Upgrade', (util, Effect, $log) -> class Upgr
       return cost
   isCostMet: ->
     return @game.cache.upgradeMaxCostMet["#{@name}:isCostMet"] ?= do =>
+      return true if @game.cache.upgradeIsCostMet[@name]?
       for cost in @totalCost()
         util.assert cost.val.greaterThan(0), 'upgrade cost <= 0', @name, this
         if cost.unit.count().lessThan cost.val
           return false
-      return true
+      return @game.cache.upgradeIsCostMet[@name] = true
   maxCostMet: (percent=1) ->
     return @game.cache.upgradeMaxCostMet["#{@name}:#{percent}"] ?= do =>
       # https://en.wikipedia.org/wiki/Geometric_progression#Geometric_series
@@ -125,15 +126,24 @@ angular.module('swarmApp').factory 'Upgrade', (util, Effect, $log) -> class Upgr
     return @type.maxlevel? and @maxCostMet().greaterThanOrEqualTo(@type.maxlevel)
 
   costMetPercent: ->
-    costOfMet = _.indexBy @sumCost(@maxCostMet()), (c) -> c.unit.name
-    max = new Decimal Infinity
-    if @isMaxAffordable()
-      return Decimal.ONE
-    for cost in @sumCost @maxCostMet().plus(1)
-      count = cost.unit.count().minus costOfMet[cost.unit.name].val
-      val = cost.val.minus costOfMet[cost.unit.name].val
-      max = Decimal.min max, (count.dividedBy val)
-    return Decimal.min 1, Decimal.max 0, max
+    return @game.cache.upgradeMaxCostMet["#{@name}:costMetPercent"] ?= do =>
+      if not @isCostMet()
+        max = new Decimal Infinity
+        for cost in @totalCost()
+          count = cost.unit.count()
+          val = cost.val
+          max = Decimal.min max, (count.dividedBy val)
+        return Decimal.min 1, Decimal.max 0, max
+
+      if @isMaxAffordable()
+        return Decimal.ONE
+      costOfMet = _.indexBy @sumCost(@maxCostMet()), (c) -> c.unit.name
+      max = new Decimal Infinity
+      for cost in @sumCost @maxCostMet().plus(1)
+        count = cost.unit.count().minus costOfMet[cost.unit.name].val
+        val = cost.val.minus costOfMet[cost.unit.name].val
+        max = Decimal.min max, (count.dividedBy val)
+      return Decimal.min 1, Decimal.max 0, max
 
   estimateSecsUntilBuyable: (noRecurse) ->
     if @isMaxAffordable()
