@@ -55,13 +55,15 @@ angular.module('swarmApp').directive 'tutorial', ($rootScope, $modal, game) ->
       game.session.state.tutorialClosed = true
     scope.tutStep = ->
       return game.cache.tutorialStep ?= do =>
+        if game.session.state.tutorialClosed
+          return 0
+
         units = game_.countUnits()
         upgrades = game_.countUpgrades()
 
-        if game.session.state.tutorialClosed
-          return 0
         if units.sponsor1.greaterThan(0)
           if units.car3.greaterThan(0) or units.sponsor1.greaterThan(1) or units.sponsor2.greaterThan(0) or units.tech3.greaterThan(0) or units.fame.greaterThan(1000000)
+            game.session.state.tutorialClosed = true
             return 0
         if units.sponsor1.greaterThan(0)
           return 12
