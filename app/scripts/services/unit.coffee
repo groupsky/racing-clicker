@@ -405,10 +405,11 @@ angular.module('swarmApp').factory 'Unit', (util, $log, Effect, ProducerPaths, U
     @buy @maxCostMet percent
 
   twinMult: ->
-    ret = new Decimal 1
-    ret = ret.plus @stat 'twinbase', 0
-    ret = ret.times @stat 'twin', 1
-    return Decimal.max 1, ret
+    return @game.cache.unitTwinMult[@name] ?= do =>
+      ret = new Decimal 1
+      ret = ret.plus @stat 'twinbase', 0
+      ret = ret.times @stat 'twin', 1
+      return Decimal.max 1, ret
   buy: (num=1) ->
     if not @isCostMet()
       throw new Error "We require more resources"
