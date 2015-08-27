@@ -1,7 +1,9 @@
-<tabs></tabs>
+<div class="modal-header achievements-dialog-header">
+  <button type="button" class="close" ng-click="closeDialog()"><h2><span aria-hidden="true">&times;</span><h2><span class="sr-only">Close</span></button>
+  <h2>Options</h2>
+</div>
 
-<div class="container">
-  <h1>Options</h1>
+<div class="modal-body">
   <div class="form-group">
     <label class="control-label">
       <span class="glyphicon glyphicon-eye-open"></span> Show advanced unit data
@@ -115,7 +117,7 @@
       <div ng-if="isAuth()">
         <img src="images/dropbox-logos_dropbox-vertical-blue.png" style="float:left">
         <div><label><input type="checkbox" ng-init="form.autopush=options.autopush()" ng-model="form.autopush" ng-change="options.autopush(form.autopush)" class="">Auto-export every 15 minutes and before closing</label></div>
-        
+
         <div><button class="btn btn-primary" ng-click="addSavegame()">Export saved data to Dropbox</button></div>
         <div><button class="btn btn-default" ng-click="fetch()">Check for new online saved data</button></div>
         <p ng-if="!syncer.savedgame">Nothing exported to Dropbox yet.</p>

@@ -20,6 +20,31 @@
       </ul>
     </div-->
 
+    <div class="navbar-right">
+      <a class="navbar-options" data-toggle="dropdown" href>
+        <span class="btn-options">
+          <span class="caret"></span>
+        </span>
+      </a>
+      <ul class="dropdown-menu" role="menu">
+        <li role="presentation"><a role="menuitem" tabindex="-1" href open-dialog="options">
+          <span class="glyphicon glyphicon-cog"></span> Options
+        </a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href open-dialog="achievements">
+          <span class="glyphicon glyphicon-ok"></span> Achievements
+        </a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href open-dialog="statistics">
+          <span class="glyphicon glyphicon-stats"></span> Statistics
+        </a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href open-dialog="feedback">
+          <span class="fa fa-comment"></span> Send Feedback
+        </a></li>
+        <!--li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:" ng-click="hotkeys.toggleCheatSheet()" target="_blank">
+          <span class="glyphicon glyphicon-share-alt"></span> Keyboard Shortcuts
+        </a></li-->
+      </ul>
+    </div>
+
     <div class="navbar-right" ng-cloak>
       <a class="navbar-brand" href>
         <unit-resource unit="::game.unit('money')"></unit-resource>
@@ -38,7 +63,7 @@
     </div>
 
     <div ng-if="game.achievementPercent()" class="navbar-right" ng-cloak>
-      <a class="navbar-brand" href ng-click="showAchievements($event)">
+      <a class="navbar-brand" href open-dialog="achievements">
         <resource name="achievements" value="game.achievementPercent()" filter="percent" filter-opts="2"></resource>
       </a>
     </div>

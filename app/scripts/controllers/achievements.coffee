@@ -7,7 +7,7 @@
  # # AchievementsCtrl
  # Controller of the swarmApp
 ###
-angular.module('swarmApp').controller 'AchievementsCtrl', ($scope, game, $location, $log, $modalInstance) ->
+angular.module('swarmApp').controller 'AchievementsCtrl', ($scope, game, $location, $log) ->
   $scope.game = game
   game.session.state.achievementsShown ?=
     earned: true
@@ -49,6 +49,3 @@ angular.module('swarmApp').controller 'AchievementsCtrl', ($scope, game, $locati
   $scope.achieveclick = (achievement) ->
     $log.debug 'achieveclick', achievement
     $scope.$emit 'achieveclick', achievement
-
-  $scope.closeDialog = () ->
-    $modalInstance.dismiss()
