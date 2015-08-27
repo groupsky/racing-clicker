@@ -44,11 +44,11 @@ angular.module('swarmApp').factory 'Upgrade', (util, Effect, $log) -> class Upgr
 
   isVisible: ->
     # disabled: hack for larvae/showparent. We really need to just remove showparent already...
-    if not @unit.isVisible() and not @unit.unittype.disabled
-      return false
-    if @type.maxlevel? and @count().greaterThanOrEqualTo @type.maxlevel
+    if not @unit.unittype.disabled and not @unit.isVisible()
       return false
     if @type.disabled
+      return false
+    if @type.maxlevel? and @count().greaterThanOrEqualTo @type.maxlevel
       return false
     if @game.cache.upgradeVisible[@name]
       return true
