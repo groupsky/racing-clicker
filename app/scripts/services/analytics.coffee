@@ -1,9 +1,9 @@
 'use strict'
 
-angular.module('swarmApp').value 'analyticsDimensionList',
+angular.module('racingApp').value 'analyticsDimensionList',
   ['version']
 
-angular.module('swarmApp').factory 'analyticsDimensions', (analyticsDimensionList) ->
+angular.module('racingApp').factory 'analyticsDimensions', (analyticsDimensionList) ->
   ret = {}
   i = 0
   for name in analyticsDimensionList
@@ -11,10 +11,10 @@ angular.module('swarmApp').factory 'analyticsDimensions', (analyticsDimensionLis
     ret[name] = "dimension#{i}"
   return ret
     
-angular.module('swarmApp').value 'analyticsMetricList',
+angular.module('racingApp').value 'analyticsMetricList',
   ['saveFileChars', 'clickLogChars']
 
-angular.module('swarmApp').factory 'analyticsMetrics', (analyticsMetricList) ->
+angular.module('racingApp').factory 'analyticsMetrics', (analyticsMetricList) ->
   ret = {}
   i = 0
   for name in analyticsMetricList
@@ -24,12 +24,12 @@ angular.module('swarmApp').factory 'analyticsMetrics', (analyticsMetricList) ->
     
 ###*
  # @ngdoc service
- # @name swarmApp.analytics
+ # @name racingApp.analytics
  # @description
  # # analytics
- # Factory in the swarmApp.
+ # Factory in the racingApp.
 ###
-angular.module('swarmApp').factory 'analytics', ($rootScope, $analytics, env, game, version, analyticsDimensions, analyticsMetrics, statistics, session, $log) ->
+angular.module('racingApp').factory 'analytics', ($rootScope, $analytics, env, game, version, analyticsDimensions, analyticsMetrics, statistics, session, $log) ->
   dims = analyticsDimensions
   metrics = analyticsMetrics
   # no analytics during testing. also, window.ga might be blank if someone blocks google analytics.

@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc service
- # @name swarmApp.favico
+ # @name racingApp.favico
  # @description
  # # favico
- # Factory in the swarmApp.
+ # Factory in the racingApp.
 ###
-angular.module('swarmApp').factory 'favico', (game, env, $rootScope, $log) ->
+angular.module('racingApp').factory 'favico', (game, env, $rootScope, $log) ->
   if window.Favico?
     ret = new class FavicoService
       constructor: ->

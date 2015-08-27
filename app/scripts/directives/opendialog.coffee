@@ -2,11 +2,11 @@
 
 ###*
 # @ngdoc directive
-# @name swarmApp.directive:open-dialog
+# @name racingApp.directive:open-dialog
 # @description
 # # open-dialog
 ###
-angular.module('swarmApp').directive 'openDialog', ($log, dialogService) ->
+angular.module('racingApp').directive 'openDialog', ($log, dialogService) ->
   restrict: 'A'
   link: (scope, element, attrs) ->
     scope.showDialog = () ->

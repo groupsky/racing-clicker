@@ -2,13 +2,13 @@
 
 ###*
  # @ngdoc service
- # @name swarmApp.Backfill
+ # @name racingApp.Backfill
  # @description
  # # Backfill
  #
  # fix up old/broken save data at load time
 ###
-angular.module('swarmApp').factory 'Backfill', ($log) -> class Backfill
+angular.module('racingApp').factory 'Backfill', ($log) -> class Backfill
   run: (game) ->
 #    # grant mutagen for old saves, created before mutagen existed
 #    do ->
@@ -46,4 +46,4 @@ angular.module('swarmApp').factory 'Backfill', ($log) -> class Backfill
 
     $log.debug 'backfill success'
 
-angular.module('swarmApp').factory 'backfill', (Backfill) -> new Backfill()
+angular.module('racingApp').factory 'backfill', (Backfill) -> new Backfill()

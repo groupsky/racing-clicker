@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc service
- # @name swarmApp.spreadsheetutil
+ # @name racingApp.spreadsheetutil
  # @description
  # # spreadsheetutil
- # Factory in the swarmApp.
+ # Factory in the racingApp.
 ###
-angular.module('swarmApp').factory 'spreadsheetUtil', (util) -> new class SpreadsheetUtil
+angular.module('racingApp').factory 'spreadsheetUtil', (util) -> new class SpreadsheetUtil
   defaultFilter: (val) ->
     # zero, or any truthy value
     !!val or _.isNumber val

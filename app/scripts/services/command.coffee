@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc service
- # @name swarmApp.command
+ # @name racingApp.command
  # @description
  # # command
- # Factory in the swarmApp.
+ # Factory in the racingApp.
 ###
-angular.module('swarmApp').factory 'commands', (util, game, $rootScope, $log, loginApi) -> new class Commands
+angular.module('racingApp').factory 'commands', (util, game, $rootScope, $log, loginApi) -> new class Commands
   constructor: ->
 
   _setUndo: (opts={}) ->

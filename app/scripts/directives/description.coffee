@@ -2,14 +2,14 @@
 
 ###*
  # @ngdoc directive
- # @name swarmApp.directive:description
+ # @name racingApp.directive:description
  # @description
  #
  # Use either static descriptions from the spreadsheet, or templated descriptions in /app/views/desc.
  # Spreadsheet descriptions of '' or '-' indicate that we should try to use a template.
  # (We used to do stupid $compile tricks to allow templating in the spreadsheet, but that caused memory leaks. #177)
 ###
-angular.module('swarmApp').directive 'unitdesc', (game, commands, options) ->
+angular.module('racingApp').directive 'unitdesc', (game, commands, options) ->
   template: '<p ng-if="templateUrl" ng-include="templateUrl" class="desc desc-unit desc-template desc-{{unit.name}}"></p><p ng-if="!templateUrl" class="desc desc-unit desc-text desc-{{unit.name}}">{{desc}}</p>'
   scope:
     unit: '='
@@ -27,7 +27,7 @@ angular.module('swarmApp').directive 'unitdesc', (game, commands, options) ->
         return "views/desc/unit/#{scope.unit.name}.html"
       return ''
 
-angular.module('swarmApp').directive 'upgradedesc', (game, commands, options) ->
+angular.module('racingApp').directive 'upgradedesc', (game, commands, options) ->
   template: '<p ng-if="templateUrl" ng-include="templateUrl" desc desc-upgrade desc-template desc-{{upgrade.name}}"></p><p ng-if="!templateUrl" class="desc desc-upgrade desc-text desc-{{upgrade.name}}">{{desc}}</p>'
   scope:
     upgrade: '='

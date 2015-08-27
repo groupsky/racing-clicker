@@ -1,3 +1,3 @@
-angular.module('swarmApp').directive 'topbar', ->
+angular.module('racingApp').directive 'topbar', ->
   templateUrl: 'views/topbar.html'
   restrict: 'E'

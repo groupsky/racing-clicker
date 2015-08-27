@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc function
- # @name swarmApp.controller:DebugapiCtrl
+ # @name racingApp.controller:DebugapiCtrl
  # @description
  # # DebugapiCtrl
- # Controller of the swarmApp
+ # Controller of the racingApp
 ###
-angular.module('swarmApp').controller 'DebugApiCtrl', ($scope, env, loginApi, $http, $log) ->
+angular.module('racingApp').controller 'DebugApiCtrl', ($scope, env, loginApi, $http, $log) ->
   $scope.env = env
   $scope.loginApi = loginApi
   $scope.form = {url:'/whoami'}

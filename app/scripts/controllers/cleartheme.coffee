@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc function
- # @name swarmApp.controller:ClearthemeCtrl
+ # @name racingApp.controller:ClearthemeCtrl
  # @description
  # # ClearthemeCtrl
- # Controller of the swarmApp
+ # Controller of the racingApp
 ###
-angular.module('swarmApp').controller 'ClearthemeCtrl', ($scope, options, $location) ->
+angular.module('racingApp').controller 'ClearthemeCtrl', ($scope, options, $location) ->
   if $location.search().custom and $location.search().theme
     options.customTheme $location.search().theme
   else

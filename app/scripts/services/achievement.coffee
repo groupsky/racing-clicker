@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('swarmApp').factory 'Achievement', (util, $log, $rootScope, $filter) -> class Achievement
+angular.module('racingApp').factory 'Achievement', (util, $log, $rootScope, $filter) -> class Achievement
   constructor: (@game, @type) ->
     @name = @type.name
   _init: ->
@@ -97,7 +97,7 @@ angular.module('swarmApp').factory 'Achievement', (util, $log, $rootScope, $filt
       return @progressPercent().toNumber()
     return -1
 
-angular.module('swarmApp').factory 'AchievementTypes', (spreadsheetUtil, util, $log) -> class AchievementTypes
+angular.module('racingApp').factory 'AchievementTypes', (spreadsheetUtil, util, $log) -> class AchievementTypes
   constructor: ->
     @list = []
     @byName = {}
@@ -124,7 +124,7 @@ angular.module('swarmApp').factory 'AchievementTypes', (spreadsheetUtil, util, $
       util.assert _.isNumber(row.points), 'achievement points must be number', row.name, row
     return ret
 
-angular.module('swarmApp').factory 'AchievementsListener', (util, $log, $timeout) -> class AchievementsListener
+angular.module('racingApp').factory 'AchievementsListener', (util, $log, $timeout) -> class AchievementsListener
   constructor: (@game, @scope) ->
     @_listen @scope
 
@@ -214,15 +214,15 @@ angular.module('swarmApp').factory 'AchievementsListener', (util, $log, $timeout
         $log.debug 'ascending!', @game.unit('ascension').count()
         @achieveUnit 'ascension', true
 
-angular.module('swarmApp').factory 'achievementslistener', (AchievementsListener, game, $rootScope) ->
+angular.module('racingApp').factory 'achievementslistener', (AchievementsListener, game, $rootScope) ->
   new AchievementsListener game, $rootScope
 
 ###*
  # @ngdoc service
- # @name swarmApp.achievements
+ # @name racingApp.achievements
  # @description
  # # achievements
- # Factory in the swarmApp.
+ # Factory in the racingApp.
 ###
-angular.module('swarmApp').factory 'achievements', (AchievementTypes, unittypes, upgradetypes, spreadsheet) ->
+angular.module('racingApp').factory 'achievements', (AchievementTypes, unittypes, upgradetypes, spreadsheet) ->
   AchievementTypes.parseSpreadsheet spreadsheet, unittypes, upgradetypes

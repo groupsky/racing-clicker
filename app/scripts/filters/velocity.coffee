@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc filter
- # @name swarmApp.filter:estimate
+ # @name racingApp.filter:estimate
  # @function
  # @description
  # # upgrade
- # Filter in the swarmApp.
+ # Filter in the racingApp.
 ###
-angular.module('swarmApp').filter 'velocity', (options) ->
+angular.module('racingApp').filter 'velocity', (options) ->
   (unit) ->
     unit.velocity().times(options.getVelocityUnit({unit: unit}).mult)

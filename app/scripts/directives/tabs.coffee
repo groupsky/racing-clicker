@@ -2,11 +2,11 @@
 
 ###*
  # @ngdoc directive
- # @name swarmApp.directive:tabs
+ # @name racingApp.directive:tabs
  # @description
  # # tabs
 ###
-angular.module('swarmApp').directive 'tabs', (game, util, options, version, commands) ->
+angular.module('racingApp').directive 'tabs', (game, util, options, version, commands) ->
   templateUrl: 'views/tabs.html'
   scope:
     cur: '='

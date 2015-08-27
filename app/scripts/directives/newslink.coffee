@@ -2,11 +2,11 @@
 
 ###*
  # @ngdoc directive
- # @name swarmApp.directive:newslink
+ # @name racingApp.directive:newslink
  # @description
  # # newslink
 ###
-angular.module 'swarmApp'
+angular.module 'racingApp'
   .directive 'newslink', ->
     restrict: 'EA'
     template: """

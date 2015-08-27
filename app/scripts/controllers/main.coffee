@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc function
- # @name swarmApp.controller:Main2Ctrl
+ # @name racingApp.controller:Main2Ctrl
  # @description
  # # Main2Ctrl
- # Controller of the swarmApp
+ # Controller of the racingApp
 ###
-angular.module('swarmApp').controller 'MainCtrl', ($scope, $log, game, $routeParams, $location, version, options, commands, util) ->
+angular.module('racingApp').controller 'MainCtrl', ($scope, $log, game, $routeParams, $location, version, options, commands, util) ->
   $scope.game = game
   $scope.options = options
 

@@ -1,15 +1,15 @@
 'use strict'
 
-angular.module('swarmApp').filter 'encodeURIComponent', ->
+angular.module('racingApp').filter 'encodeURIComponent', ->
   (text) -> window.encodeURIComponent text
 
 ###*
  # @ngdoc directive
- # @name swarmApp.directive:cost
+ # @name racingApp.directive:cost
  # @description
  # # cost
 ###
-angular.module('swarmApp').directive 'cost', ($log) ->
+angular.module('racingApp').directive 'cost', ($log) ->
   restrict: 'E'
   scope:
     costlist: '='

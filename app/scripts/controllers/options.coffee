@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc function
- # @name swarmApp.controller:OptionsCtrl
+ # @name racingApp.controller:OptionsCtrl
  # @description
  # # OptionsCtrl
- # Controller of the swarmApp
+ # Controller of the racingApp
 ###
-angular.module('swarmApp').controller 'OptionsCtrl', ($scope, $location, options, session, game, env, $log, backfill, isKongregate, storage, feedback, dropboxSyncer) ->
+angular.module('racingApp').controller 'OptionsCtrl', ($scope, $location, options, session, game, env, $log, backfill, isKongregate, storage, feedback, dropboxSyncer) ->
   $scope.options = options
   $scope.game = game
   $scope.session = session

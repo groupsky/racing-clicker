@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc function
- # @name swarmApp.controller:HeaderCtrl
+ # @name racingApp.controller:HeaderCtrl
  # @description
  # # HeaderCtrl
- # Controller of the swarmApp
+ # Controller of the racingApp
 ###
-angular.module('swarmApp').controller 'HeaderCtrl', ($scope, $window, env, version, session, timecheck, $http,
+angular.module('racingApp').controller 'HeaderCtrl', ($scope, $window, env, version, session, timecheck, $http,
                                                      $interval, $log, $location
 kongregateScrolling, pageTheme, remoteSaveInit, touchTooltipInit
 # analytics/statistics not actually used, just want them to init
@@ -46,7 +46,7 @@ versioncheck, analytics, statistics, achievementslistener
   remoteSaveInit $scope
   touchTooltipInit $scope
 
-angular.module('swarmApp').factory 'pageTheme', ($log, options) -> return ($scope) ->
+angular.module('racingApp').factory 'pageTheme', ($log, options) -> return ($scope) ->
   $scope.options = options
   themeEl = options.constructor.THEME_EL
   $scope.$watch 'options.theme()', (theme, oldval) =>
@@ -65,7 +65,7 @@ angular.module('swarmApp').factory 'pageTheme', ($log, options) -> return ($scop
       $scope.themeExtraEl.html css
       $log.debug 'extratheming', $scope.themeExtraEl, css
 
-angular.module('swarmApp').factory 'kongregateScrolling', ($log, kongregate, kongregateS3Syncer, options) -> return ($scope) ->
+angular.module('racingApp').factory 'kongregateScrolling', ($log, kongregate, kongregateS3Syncer, options) -> return ($scope) ->
   $scope.options = options
   if !kongregate.isKongregate()
     return
@@ -91,7 +91,7 @@ angular.module('swarmApp').factory 'kongregateScrolling', ($log, kongregate, kon
   $scope.onRender = ->
     kongregate.onResize()
 
-angular.module('swarmApp').factory 'remoteSaveInit', ($log, kongregate, kongregateS3Syncer, dropboxSyncer, options) -> return ($scope) ->
+angular.module('racingApp').factory 'remoteSaveInit', ($log, kongregate, kongregateS3Syncer, dropboxSyncer, options) -> return ($scope) ->
   $scope.$watch 'options.autopush()', (newval, oldval) =>
     for syncer in [kongregateS3Syncer, dropboxSyncer] then do (syncer) =>
       $log.debug 'autopush trying to setup', syncer.constructor.name
@@ -108,7 +108,7 @@ angular.module('swarmApp').factory 'remoteSaveInit', ($log, kongregate, kongrega
               $log.debug 'autopush setup', syncer.constructor.name
               syncer.initAutopush newval
 
-angular.module('swarmApp').factory 'touchTooltipInit', ($log, $location, $timeout) -> return ($scope) ->
+angular.module('racingApp').factory 'touchTooltipInit', ($log, $location, $timeout) -> return ($scope) ->
   # Show tooltips for touch-devices where the user's actually using touch.
   body = $('body')
   doc = $(window.document)

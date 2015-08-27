@@ -2,14 +2,14 @@
 
 ###*
  # @ngdoc service
- # @name swarmApp.seedrand
+ # @name racingApp.seedrand
  # @description
  # # seedrand
  #
  # Deterministic serializable random numbers.
  # Fights savestate scumming that would occur with math.rand().
 ###
-angular.module('swarmApp').service 'seedrand', (session) -> new class SeedRand
+angular.module('racingApp').service 'seedrand', (session) -> new class SeedRand
   constructor: ->
   # normal seeding uses session.date.started, but let unittests override it
   mkseed: (seedstring, baseseed=session.state.date.started) ->

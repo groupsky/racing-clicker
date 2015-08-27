@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc function
- # @name swarmApp.decorator:Exceptionhandler
+ # @name racingApp.decorator:Exceptionhandler
  # @description
  # # Exceptionhandler
- # Decorator of the swarmApp
+ # Decorator of the racingApp
 ###
-angular.module("swarmApp").config ($provide) ->
+angular.module("racingApp").config ($provide) ->
   # in most places minification can figure out what's going on without
   # argnames-as-list, but not here. Fails in dist-build without them.
   $provide.decorator "$exceptionHandler", ['$delegate', '$injector', ($delegate, $injector) ->

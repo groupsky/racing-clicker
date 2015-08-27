@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('swarmApp').factory 'userResource', ($log, $location, $routeParams, userApi, loginApi) -> new class UserResource
+angular.module('racingApp').factory 'userResource', ($log, $location, $routeParams, userApi, loginApi) -> new class UserResource
   constructor: ->
     # TODO htmlify descriptions
     @leagues =
@@ -44,12 +44,12 @@ angular.module('swarmApp').factory 'userResource', ($log, $location, $routeParam
 
 ###*
  # @ngdoc function
- # @name swarmApp.controller:UserCtrl
+ # @name racingApp.controller:UserCtrl
  # @description
  # # UserCtrl
- # Controller of the swarmApp
+ # Controller of the racingApp
 ###
-angular.module('swarmApp').controller 'UserCtrl', ($scope, $log, userResource, $routeParams, characterApi) ->
+angular.module('racingApp').controller 'UserCtrl', ($scope, $log, userResource, $routeParams, characterApi) ->
   $log.debug 'userctrl', $routeParams
   userResource.init $scope
 
@@ -72,7 +72,7 @@ angular.module('swarmApp').controller 'UserCtrl', ($scope, $log, userResource, $
         $log.debug 'duplicated character', character
         $scope.refreshUser()
 
-angular.module('swarmApp').controller 'NewCharacterCtrl', ($scope, $log, userResource, characterApi, $location) ->
+angular.module('racingApp').controller 'NewCharacterCtrl', ($scope, $log, userResource, characterApi, $location) ->
   userResource.init $scope
   $scope.form =
     name: 'Unnamed Swarm'

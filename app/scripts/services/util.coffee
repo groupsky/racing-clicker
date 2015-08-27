@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc service
- # @name swarmApp.util
+ # @name racingApp.util
  # @description
  # # util
- # Service in the swarmApp.
+ # Service in the racingApp.
 ###
-angular.module('swarmApp').factory 'util', ($log, $rootScope, $timeout) -> new class Util
+angular.module('racingApp').factory 'util', ($log, $rootScope, $timeout) -> new class Util
   sum: (ns) -> _.reduce ns, ((a,b) -> a+b), 0
   assert: (val, message...) ->
     if not val

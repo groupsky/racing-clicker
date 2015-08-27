@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc function
- # @name swarmApp.controller:ChangelogCtrl
+ # @name racingApp.controller:ChangelogCtrl
  # @description
  # # ChangelogCtrl
- # Controller of the swarmApp
+ # Controller of the racingApp
 ###
-angular.module('swarmApp').controller 'ChangelogCtrl', ($log, $scope, env, version) ->
+angular.module('racingApp').controller 'ChangelogCtrl', ($log, $scope, env, version) ->
   $scope.$emit 'changelog'
   $scope.env = env
   zone = -8

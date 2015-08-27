@@ -2,13 +2,13 @@
 
 ###*
  # @ngdoc overview
- # @name swarmApp
+ # @name racingApp
  # @description
- # # swarmApp
+ # # racingApp
  #
  # Main module of the application.
 ###
-angular.module 'swarmApp', [
+angular.module 'racingApp', [
     'ngAnimate'
     'ngCookies'
     'ngResource'
@@ -26,7 +26,7 @@ angular.module 'swarmApp', [
     'ui.bootstrap'
   ]
 
-angular.module('swarmApp').config (version, env) ->
+angular.module('racingApp').config (version, env) ->
   # run this first to log other init errors.
   # tests don't have a dsn, don't setup raven at all
   # skip multiple runs of setup for dev - happens when unittesting, clutters output - but prod must always run this
@@ -46,7 +46,7 @@ angular.module('swarmApp').config (version, env) ->
         return Math.random() < env.sentrySampleRate
     ).install()
 
-angular.module('swarmApp').config ($routeProvider, env) ->
+angular.module('racingApp').config ($routeProvider, env) ->
   if env.isOffline
     return $routeProvider
       .when '/debug',
@@ -120,13 +120,13 @@ angular.module('swarmApp').config ($routeProvider, env) ->
       redirectTo: '/'
 
 
-angular.module('swarmApp').config (env, $logProvider) ->
+angular.module('racingApp').config (env, $logProvider) ->
   $logProvider.debugEnabled env.isDebugLogged
 
 # http and https use different localstorage, which might confuse folks.
 # angular $location doesn't make protocol mutable, so use window.location.
 # allow an out for testing, though.
-angular.module('swarmApp').run (env, $location, $log) ->
+angular.module('racingApp').run (env, $location, $log) ->
   # ?allowinsecure=0 is false, for example
   falsemap = {0:false,'':false,'false':false}
   allowinsecure = $location.search().allowinsecure ? env.httpsAllowInsecure
@@ -155,12 +155,12 @@ angular.module('swarmApp').run (env, $location, $log) ->
 # swarmsim.com itself.
 #
 # Github automatically redirects the naked-domain to www.
-angular.module('swarmApp').run ($location, isKongregate) ->
+angular.module('racingApp').run ($location, isKongregate) ->
   if (window.location.host == 'swarmsim.com' || window.location.host == 'www.swarmsim.com') and not ($location.search().noredirect or isKongregate())
     window.location.host = 'swarmsim.github.io'
 
 # Google analytics setup. Run this only after redirects are done.
-angular.module('swarmApp').config (env, version) ->
+angular.module('racingApp').config (env, version) ->
   if env.gaTrackingID and window.ga? and not env.isOffline
     #console.log 'analytics', gaTrackingID
     window.ga 'create', env.gaTrackingID, 'auto'
@@ -173,19 +173,19 @@ angular.module('swarmApp').config (env, version) ->
     catch e
       # No parent, no worries. Use the original referrer.
 
-angular.module('swarmApp').run ($rootScope) ->
+angular.module('racingApp').run ($rootScope) ->
   $rootScope.floor = (val) -> Math.floor val
 
 # decimal.js does not play nice with tests. hacky workaround.
-angular.module('swarmApp').run ($rootScope) ->
+angular.module('racingApp').run ($rootScope) ->
   # are we running tests with decimal.js imported?
   if window.module and window.module.exports and not window.Decimal and window.module.exports.random
     window.Decimal = window.module.exports
     delete window.module.exports
 
-angular.module('swarmApp').value 'UNIT_LIMIT', '1e100000'
+angular.module('racingApp').value 'UNIT_LIMIT', '1e100000'
 
-angular.module('swarmApp').run ($rootScope, env) ->
+angular.module('racingApp').run ($rootScope, env) ->
   #Decimal.config errors:false
   if env.isAppcacheEnabled
     appCacheNanny.set('loaderPath', '/views/appcache-loader.html')

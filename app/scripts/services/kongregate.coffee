@@ -2,14 +2,14 @@
 
 ###*
  # @ngdoc service
- # @name swarmApp.Kongregate
+ # @name racingApp.Kongregate
  # @description
  # # Kongregate
- # Service in the swarmApp.
+ # Service in the racingApp.
  #
  # http://developers.kongregate.com/docs/api-overview/client-api
 ###
-angular.module('swarmApp').factory 'isKongregate', ->
+angular.module('racingApp').factory 'isKongregate', ->
   return ->
     # use the non-# querystring to avoid losing it when the url changes. $location.search() won't work.
     # a simple string-contains is hacky, but good enough as long as we're not using the querystring for anything else.
@@ -21,7 +21,7 @@ angular.module('swarmApp').factory 'isKongregate', ->
     # - when-framed-assume-kongregate? could work...
     # - hard-querystring (/?kongregate#/tab/meat) seems to work well! can't figure out how to get out of it in 30sec.
 
-angular.module('swarmApp').factory 'Kongregate', (isKongregate, $log, $location, game, $rootScope, $interval, options, $q, loginApi, env) -> class Kongregate
+angular.module('racingApp').factory 'Kongregate', (isKongregate, $log, $location, game, $rootScope, $interval, options, $q, loginApi, env) -> class Kongregate
   constructor: ->
   isKongregate: ->
     isKongregate()
@@ -223,7 +223,7 @@ angular.module('swarmApp').factory 'Kongregate', (isKongregate, $log, $location,
     if time
       @kongregate.stats.submit name, time
 
-angular.module('swarmApp').factory 'kongregate', ($log, Kongregate) ->
+angular.module('racingApp').factory 'kongregate', ($log, Kongregate) ->
   ret = new Kongregate()
   $log.debug 'isKongregate:', ret.isKongregate()
   if ret.isKongregate()

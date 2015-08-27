@@ -2,36 +2,36 @@
 
 ###*
  # @ngdoc service
- # @name swarmApp.userApi
+ # @name racingApp.userApi
  # @description
  # # userApi
- # Factory in the swarmApp.
+ # Factory in the racingApp.
 ###
-angular.module('swarmApp').factory 'userApi', ($resource, env) ->
+angular.module('racingApp').factory 'userApi', ($resource, env) ->
   if not env.isServerBackendEnabled
     return $resource "/DISABLED/user/:id"
   $resource "#{env.saveServerUrl}/user/:id"
 
-angular.module('swarmApp').factory 'characterApi', ($resource, env) ->
+angular.module('racingApp').factory 'characterApi', ($resource, env) ->
   if not env.isServerBackendEnabled
     return $resource "/DISABLED/character/:id"
   $resource "#{env.saveServerUrl}/character/:id"
 
-angular.module('swarmApp').factory 'commandApi', ($resource, env) ->
+angular.module('racingApp').factory 'commandApi', ($resource, env) ->
   if not env.isServerBackendEnabled
     return $resource "/DISABLED/command/:id"
   $resource "#{env.saveServerUrl}/command/:id"
 
 # shortcut
-angular.module('swarmApp').factory 'user', (loginApi) ->
+angular.module('racingApp').factory 'user', (loginApi) ->
   -> loginApi.user
 
-angular.module('swarmApp').config ($httpProvider) ->
+angular.module('racingApp').config ($httpProvider) ->
   # http://stackoverflow.com/questions/22100084/angularjs-withcredentials-not-sending?rq=1
   $httpProvider.defaults.useXDomain = true
   $httpProvider.defaults.withCredentials = true
 
-angular.module('swarmApp').factory 'loginApi', (loginApiEnabled, env) ->
+angular.module('racingApp').factory 'loginApi', (loginApiEnabled, env) ->
   if env.isServerBackendEnabled
     return loginApiEnabled
   ret = {}
@@ -44,7 +44,7 @@ angular.module('swarmApp').factory 'loginApi', (loginApiEnabled, env) ->
         throw new Error 'login backend is disabled'
   return ret
 
-angular.module('swarmApp').factory 'loginApiEnabled', ($http, env, util, $log, session, characterApi, isKongregate, commandApi) -> new class LoginApi
+angular.module('racingApp').factory 'loginApiEnabled', ($http, env, util, $log, session, characterApi, isKongregate, commandApi) -> new class LoginApi
   constructor: ->
     @characters = {}
     if env.isServerBackendEnabled

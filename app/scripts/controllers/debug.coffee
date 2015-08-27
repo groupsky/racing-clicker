@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc function
- # @name swarmApp.controller:DebugCtrl
+ # @name racingApp.controller:DebugCtrl
  # @description
  # # DebugCtrl
- # Controller of the swarmApp
+ # Controller of the racingApp
 ###
-angular.module('swarmApp').controller 'DebugCtrl', ($scope, session, game, spreadsheet, env, unittypes, flashqueue, $timeout, $log, util) ->
+angular.module('racingApp').controller 'DebugCtrl', ($scope, session, game, spreadsheet, env, unittypes, flashqueue, $timeout, $log, util) ->
   $scope.$emit 'debugPage'
 
   if not env.isDebugEnabled

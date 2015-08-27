@@ -2,13 +2,13 @@
 
 ###*
  # @ngdoc filter
- # @name swarmApp.filter:estimate
+ # @name racingApp.filter:estimate
  # @function
  # @description
  # # upgrade
- # Filter in the swarmApp.
+ # Filter in the racingApp.
 ###
-angular.module('swarmApp').filter 'estimate', ->
+angular.module('racingApp').filter 'estimate', ->
   (upgrade) ->
     estimate = upgrade.estimateSecsUntilBuyable()
     val = estimate.val.toNumber()

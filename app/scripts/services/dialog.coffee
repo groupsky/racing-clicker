@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc service
- # @name swarmApp.dialogService
+ # @name racingApp.dialogService
  # @description
  # # dialogService
  #
 ###
-angular.module('swarmApp').service 'dialogService', ($rootScope, $log, $modal, $controller) -> new class DialogService
+angular.module('racingApp').service 'dialogService', ($rootScope, $log, $modal, $controller) -> new class DialogService
   constructor: ->
     @dialogs =
       options:

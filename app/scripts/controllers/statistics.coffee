@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc function
- # @name swarmApp.controller:StatisticsCtrl
+ # @name racingApp.controller:StatisticsCtrl
  # @description
  # # StatisticsCtrl
- # Controller of the swarmApp
+ # Controller of the racingApp
 ###
-angular.module('swarmApp').controller 'StatisticsCtrl', ($scope, session, statistics, game, options, util, $filter) ->
+angular.module('racingApp').controller 'StatisticsCtrl', ($scope, session, statistics, game, options, util, $filter) ->
   $scope.listener = statistics
   $scope.session = session
   $scope.statistics = session.state.statistics

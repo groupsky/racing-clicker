@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc filter
- # @name swarmApp.filter:formatter
+ # @name racingApp.filter:formatter
  # @function
  # @description
  # # value, filtername
- # Filter in the swarmApp.
+ # Filter in the racingApp.
 ###
-angular.module('swarmApp').filter 'formatter', ($filter) ->
+angular.module('racingApp').filter 'formatter', ($filter) ->
   (val, filter, args...) ->
     $filter(filter)(val, args...)

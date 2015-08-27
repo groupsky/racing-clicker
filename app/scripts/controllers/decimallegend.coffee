@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc function
- # @name swarmApp.controller:DecimallegendCtrl
+ # @name racingApp.controller:DecimallegendCtrl
  # @description
  # # DecimallegendCtrl
- # Controller of the swarmApp
+ # Controller of the racingApp
 ###
-angular.module('swarmApp').controller 'DecimallegendCtrl', ($scope, numberSuffixesShort, numberSuffixesLong, $log) ->
+angular.module('racingApp').controller 'DecimallegendCtrl', ($scope, numberSuffixesShort, numberSuffixesLong, $log) ->
   zipped = _.zip [0...numberSuffixesShort.length], numberSuffixesShort, numberSuffixesLong
   $scope.rows = ({
     rownum:z[0]

@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('swarmApp').factory 'Upgrade', (util, Effect, $log) -> class Upgrade
+angular.module('racingApp').factory 'Upgrade', (util, Effect, $log) -> class Upgrade
   constructor: (@game, @type) ->
     @name = @type.name
     @unit = util.assert @game.unit @type.unittype
@@ -263,11 +263,11 @@ angular.module('swarmApp').factory 'Upgrade', (util, Effect, $log) -> class Upgr
       else
         delete @game.session.state.watched[@name]
 
-angular.module('swarmApp').factory 'UpgradeType', -> class UpgradeType
+angular.module('racingApp').factory 'UpgradeType', -> class UpgradeType
   constructor: (data) ->
     _.extend this, data
 
-angular.module('swarmApp').factory 'UpgradeTypes', (spreadsheetUtil, UpgradeType, util) -> class UpgradeTypes
+angular.module('racingApp').factory 'UpgradeTypes', (spreadsheetUtil, UpgradeType, util) -> class UpgradeTypes
   constructor: (@unittypes, upgrades=[]) ->
     @list = []
     @byName = {}
@@ -304,10 +304,10 @@ angular.module('swarmApp').factory 'UpgradeTypes', (spreadsheetUtil, UpgradeType
 
 ###*
  # @ngdoc service
- # @name swarmApp.upgrade
+ # @name racingApp.upgrade
  # @description
  # # upgrade
- # Factory in the swarmApp.
+ # Factory in the racingApp.
 ###
-angular.module('swarmApp').factory 'upgradetypes', (UpgradeTypes, unittypes, effecttypes, spreadsheet) ->
+angular.module('racingApp').factory 'upgradetypes', (UpgradeTypes, unittypes, effecttypes, spreadsheet) ->
   return UpgradeTypes.parseSpreadsheet unittypes, effecttypes, spreadsheet

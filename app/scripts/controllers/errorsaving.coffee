@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc function
- # @name swarmApp.controller:ErrorsavingCtrl
+ # @name racingApp.controller:ErrorsavingCtrl
  # @description
  # # ErrorsavingCtrl
- # Controller of the swarmApp
+ # Controller of the racingApp
 ###
-angular.module('swarmApp').controller 'ErrorSavingCtrl', ($scope, game, $rootScope) ->
+angular.module('racingApp').controller 'ErrorSavingCtrl', ($scope, game, $rootScope) ->
   successCount = failCount = 0
 
   $scope.game = game

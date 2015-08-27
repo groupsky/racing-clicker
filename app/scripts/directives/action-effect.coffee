@@ -2,16 +2,16 @@
 
 ###*
  # @ngdoc directive
- # @name swarmApp.directive:action-effect
+ # @name racingApp.directive:action-effect
 ###
-angular.module('swarmApp').directive 'actionEffect', (actionEffectPool) ->
+angular.module('racingApp').directive 'actionEffect', (actionEffectPool) ->
   priority: -1
   restrict: 'A'
   link: (scope, element, attrs) ->
     element.bind 'click', ->
       actionEffectPool.button = angular.element(element)
 
-angular.module('swarmApp').service 'actionEffectPool', ($compile, $document, $rootScope, $timeout, $position, game) ->
+angular.module('racingApp').service 'actionEffectPool', ($compile, $document, $rootScope, $timeout, $position, game) ->
   @template = angular.element '''
           <div class="action-effect">
             <unit-resource ng-repeat="cost in modified track by cost.unit.name"

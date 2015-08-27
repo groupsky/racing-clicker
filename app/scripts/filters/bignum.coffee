@@ -2,13 +2,13 @@
 
 ###*
  # @ngdoc filter
- # @name swarmApp.filter:bignum
+ # @name racingApp.filter:bignum
  # @function
  # @description
  # # bignum
- # Filter in the swarmApp.
+ # Filter in the racingApp.
 ###
-angular.module('swarmApp').factory 'bignumFormatter', (options) ->
+angular.module('racingApp').factory 'bignumFormatter', (options) ->
   (suffixes_, opts={}) ->
     opts.sigfigs ?= 3
     # special case: 99k or less looks nicer with the 'k' omitted
@@ -64,16 +64,16 @@ angular.module('swarmApp').factory 'bignumFormatter', (options) ->
       # always round down to fix #245
       return "#{toPrecision(num, noSigfigs)}#{suffix}"
 
-angular.module('swarmApp').filter 'bignum', (bignumFormatter, numberSuffixesShort) ->
+angular.module('racingApp').filter 'bignum', (bignumFormatter, numberSuffixesShort) ->
   bignumFormatter numberSuffixesShort
 
-angular.module('swarmApp').filter 'longnum', (bignumFormatter, numberSuffixesLong) ->
+angular.module('racingApp').filter 'longnum', (bignumFormatter, numberSuffixesLong) ->
   bignumFormatter numberSuffixesLong, {sigfigs:6, minsuffix:1e6}
 
-angular.module('swarmApp').filter 'ceil', ->
+angular.module('racingApp').filter 'ceil', ->
   (num) -> Math.ceil num
 
-angular.module('swarmApp').filter 'percent', ($filter) ->
+angular.module('racingApp').filter 'percent', ($filter) ->
   (num, opts={}) ->
     if _.isNumber opts
       opts = {places:opts}
@@ -90,7 +90,7 @@ angular.module('swarmApp').filter 'percent', ($filter) ->
       dec = $filter('number')(dec.toNumber(), opts.places)
     return "#{dec}%"
 
-angular.module('swarmApp').constant 'numberSuffixesShort', [
+angular.module('racingApp').constant 'numberSuffixesShort', [
   # These aren't official abbreviations, apparently, can't find them on google
   # for anything but cookie clicker. Other games have used them though.
   '', 'K', 'M', 'B', 'T', 'Qa', 'Qi', 'Sx', 'Sp', 'Oc', 'No'
@@ -107,7 +107,7 @@ angular.module('swarmApp').constant 'numberSuffixesShort', [
   'Og', 'UOg', 'DOg', 'TOg', 'QaOg', 'QiOg', 'SxOg', 'SpOg', 'OOg', 'NOg'
   ]
 
-angular.module('swarmApp').constant 'numberSuffixesLong', [
+angular.module('racingApp').constant 'numberSuffixesLong', [
   # http://home.kpn.nl/vanadovv/BignumbyN.html
   # http://mathforum.org/library/drmath/view/59154.html
   ''

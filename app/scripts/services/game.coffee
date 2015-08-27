@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('swarmApp').factory 'Cache', -> class Cache
+angular.module('racingApp').factory 'Cache', -> class Cache
   constructor: ->
     # Never cleared; hacky way to pass messages that get cleared on reload
     @firstSpawn = {}
@@ -49,12 +49,12 @@ angular.module('swarmApp').factory 'Cache', -> class Cache
 
 ###*
  # @ngdoc service
- # @name swarmApp.game
+ # @name racingApp.game
  # @description
  # # game
- # Factory in the swarmApp.
+ # Factory in the racingApp.
 ###
-angular.module('swarmApp').factory 'Game', (unittypes, upgradetypes, achievements, util, $log, Upgrade, Unit, Achievement, Tab, Cache) -> class Game
+angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievements, util, $log, Upgrade, Unit, Achievement, Tab, Cache) -> class Game
   constructor: (@session) ->
     @_init()
   _init: ->
@@ -362,5 +362,5 @@ angular.module('swarmApp').factory 'Game', (unittypes, upgradetypes, achievement
     @cache.onRespec()
     util.assert mutagen.spent().isZero(), "respec didn't refund all mutagen!"
 
-angular.module('swarmApp').factory 'game', (Game, session) ->
+angular.module('racingApp').factory 'game', (Game, session) ->
   window.game = new Game session

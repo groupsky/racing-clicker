@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('swarmApp').factory 'Tab', -> class Tab
+angular.module('racingApp').factory 'Tab', -> class Tab
   constructor: (@leadunit, @index, @name = @leadunit.name) ->
     @units = []
     @sortedUnits = []

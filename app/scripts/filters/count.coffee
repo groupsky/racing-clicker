@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc filter
- # @name swarmApp.filter:estimate
+ # @name racingApp.filter:estimate
  # @function
  # @description
  # # upgrade
- # Filter in the swarmApp.
+ # Filter in the racingApp.
 ###
-angular.module('swarmApp').filter 'count', () ->
+angular.module('racingApp').filter 'count', () ->
   (array) ->
     array.length if angular.isArray(array)

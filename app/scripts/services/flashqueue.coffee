@@ -2,14 +2,14 @@
 
 ###*
  # @ngdoc service
- # @name swarmApp.flashqueue
+ # @name racingApp.flashqueue
  # @description
  # # flashqueue
- # Factory in the swarmApp.
+ # Factory in the racingApp.
  #
  # Achievement UI notification and animation.
 ###
-angular.module('swarmApp').factory 'FlashQueue', ($log, $timeout, util) -> class FlashQueue
+angular.module('racingApp').factory 'FlashQueue', ($log, $timeout, util) -> class FlashQueue
   constructor: (@showTime=5000, @fadeTime=1000) ->
     @queue = []
     @_state = 'invisible'
@@ -41,7 +41,7 @@ angular.module('swarmApp').factory 'FlashQueue', ($log, $timeout, util) -> class
       $timeout.cancel @_timeout
     @_state = 'invisible'
 
-angular.module('swarmApp').factory 'flashqueue', ($log, FlashQueue, $rootScope) ->
+angular.module('racingApp').factory 'flashqueue', ($log, FlashQueue, $rootScope) ->
   queue = new FlashQueue()
 
   # TODO this really shouldn't be attached ot the main flashqueue...

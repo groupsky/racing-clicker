@@ -1,17 +1,17 @@
 'use strict'
 
-angular.module('swarmApp').factory 'saveId', (env, isKongregate) ->
+angular.module('racingApp').factory 'saveId', (env, isKongregate) ->
   suffix = if isKongregate() then '-kongregate' else ''
   return "#{env.saveId}#{suffix}"
 
 ###*
  # @ngdoc service
- # @name swarmApp.session
+ # @name racingApp.session
  # @description
  # # session
- # Factory in the swarmApp.
+ # Factory in the racingApp.
 ###
-angular.module('swarmApp').factory 'session', (storage, $rootScope, $log, util, version, env, saveId, isKongregate) ->
+angular.module('racingApp').factory 'session', (storage, $rootScope, $log, util, version, env, saveId, isKongregate) ->
   # TODO separate file, outside of source control?
   # Client-side encryption is inherently insecure anyway, probably not worth it.
   # All we can do is prevent the most casual of savestate hacking.
@@ -235,4 +235,4 @@ angular.module('swarmApp').factory 'session', (storage, $rootScope, $log, util, 
       ms = @millisSinceClosed now, ignoreHeartbeat
       return moment.duration ms, 'milliseconds'
 
-angular.module('swarmApp').factory 'remoteSession', (storage, $rootScope, $log, util, version, env, saveId, isKongregate) ->
+angular.module('racingApp').factory 'remoteSession', (storage, $rootScope, $log, util, version, env, saveId, isKongregate) ->

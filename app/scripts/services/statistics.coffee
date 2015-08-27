@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc service
- # @name swarmApp.statistics
+ # @name racingApp.statistics
  # @description
  # # statistics
- # Factory in the swarmApp.
+ # Factory in the racingApp.
 ###
-angular.module('swarmApp').factory 'StatisticsListener', (util, $log, kongregate, game) -> class StatisticsListener
+angular.module('racingApp').factory 'StatisticsListener', (util, $log, kongregate, game) -> class StatisticsListener
   constructor: (@session, @scope) ->
     @_init()
 
@@ -89,7 +89,7 @@ angular.module('swarmApp').factory 'StatisticsListener', (util, $log, kongregate
       @push cmd
       kongregate.reportStats()
 
-angular.module('swarmApp').factory 'statistics', (session, StatisticsListener, $rootScope) ->
+angular.module('racingApp').factory 'statistics', (session, StatisticsListener, $rootScope) ->
   stats = new StatisticsListener session, $rootScope
   stats.listen $rootScope
   return stats

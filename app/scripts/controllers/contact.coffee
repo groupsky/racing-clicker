@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc function
- # @name swarmApp.controller:FeedbackCtrl
+ # @name racingApp.controller:FeedbackCtrl
  # @description
  # # FeedbackCtrl
- # Controller of the swarmApp
+ # Controller of the racingApp
 ###
-angular.module('swarmApp').controller 'ContactCtrl', ($scope, feedback, version, $location, isKongregate, $log) ->
+angular.module('racingApp').controller 'ContactCtrl', ($scope, feedback, version, $location, isKongregate, $log) ->
   $scope.urls = {short:'???',expand:'???'}
   $scope.userAgentGuess = do =>
     # based on http://odyniec.net/blog/2010/09/decrypting-the-user-agent-string-in-javascript/

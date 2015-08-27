@@ -2,10 +2,10 @@
 
 ###*
  # @ngdoc function
- # @name swarmApp.controller:FlashqueueCtrl
+ # @name racingApp.controller:FlashqueueCtrl
  # @description
  # # FlashqueueCtrl
- # Controller of the swarmApp
+ # Controller of the racingApp
 ###
-angular.module('swarmApp').controller 'FlashQueueCtrl', ($scope, flashqueue) ->
+angular.module('racingApp').controller 'FlashQueueCtrl', ($scope, flashqueue) ->
   $scope.achieveQueue = flashqueue

@@ -6,7 +6,7 @@
 # Cookie storage has a smaller max size than localstorage in some browsers,
 # but lets us easily communicate between http and https
 # https://github.com/carhartl/jquery-cookie/tree/v1.4.1
-angular.module('swarmApp').factory 'cookieStorage', -> new class CookieStorage
+angular.module('racingApp').factory 'cookieStorage', -> new class CookieStorage
   getItem: (key) ->
     $.cookie key
   setItem: (key, val) ->
@@ -19,7 +19,7 @@ angular.module('swarmApp').factory 'cookieStorage', -> new class CookieStorage
 # work on desktops with third-party cookies blocked. This is important for
 # Kongregate users, who probably have flash persistence configured correctly.
 # https://github.com/nfriedly/Javascript-Flash-Cookies
-angular.module('swarmApp').factory 'flashStorage', ($q, $log, env) -> new class FlashStorage
+angular.module('racingApp').factory 'flashStorage', ($q, $log, env) -> new class FlashStorage
   constructor: ->
     # https://docs.angularjs.org/api/ng/service/$q
     deferred = $q.defer()
@@ -50,7 +50,7 @@ angular.module('swarmApp').factory 'flashStorage', ($q, $log, env) -> new class 
   clear: ->
     @storage.clearAll()
 
-angular.module('swarmApp').factory 'MultiStorage', ($log) -> class MultiStorage
+angular.module('racingApp').factory 'MultiStorage', ($log) -> class MultiStorage
   constructor: ->
     @storages =
       list: []
@@ -98,7 +98,7 @@ angular.module('swarmApp').factory 'MultiStorage', ($log) -> class MultiStorage
   toJSON: ->
     return undefined
 
-angular.module('swarmApp').factory 'storage', (MultiStorage, flashStorage, cookieStorage) ->
+angular.module('racingApp').factory 'storage', (MultiStorage, flashStorage, cookieStorage) ->
   return new MultiStorage()
     .addStorage 'local', window.localStorage
     .addStorage 'cookie', cookieStorage

@@ -1,5 +1,5 @@
 
-angular.module('swarmApp').controller 'ChartCtrl', ($scope, $log, game, options) ->
+angular.module('racingApp').controller 'ChartCtrl', ($scope, $log, game, options) ->
   $scope.game = game
   $scope.options = options
 

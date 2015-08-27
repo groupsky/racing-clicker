@@ -1,3 +1,3 @@
-angular.module('swarmApp').filter 'default', ->
+angular.module('racingApp').filter 'default', ->
   (value, def) ->
     value ? def

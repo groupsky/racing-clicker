@@ -2,14 +2,14 @@
 
 ###*
  # @ngdoc function
- # @name swarmApp.controller:LoadsaveCtrl
+ # @name racingApp.controller:LoadsaveCtrl
  # @description
  # # LoadsaveCtrl
- # Controller of the swarmApp
+ # Controller of the racingApp
  #
  # Loads a saved game upon refresh. If it fails, complain loudly and give the player a chance to recover their broken save.
 ###
-angular.module('swarmApp').controller 'LoadSaveCtrl', ($scope, $log, game, session, version, $location, backfill, isKongregate, storage, saveId) ->
+angular.module('racingApp').controller 'LoadSaveCtrl', ($scope, $log, game, session, version, $location, backfill, isKongregate, storage, saveId) ->
   $scope.form = {}
   $scope.isKongregate = isKongregate
 
@@ -76,10 +76,10 @@ angular.module('swarmApp').controller 'LoadSaveCtrl', ($scope, $log, game, sessi
 
   backfill.run game
 
-angular.module('swarmApp').controller 'AprilFoolsCtrl', ($scope, options) ->
+angular.module('racingApp').controller 'AprilFoolsCtrl', ($scope, options) ->
   $scope.options = options
 
-angular.module('swarmApp').controller 'WelcomeBackCtrl', ($scope, game, $log, ignoreHeartbeat, durationSinceClosed, $modalInstance, reifiedToCloseDiffInSecs) ->
+angular.module('racingApp').controller 'WelcomeBackCtrl', ($scope, game, $log, ignoreHeartbeat, durationSinceClosed, $modalInstance, reifiedToCloseDiffInSecs) ->
   $scope.closeWelcomeBack = ->
     $log.debug 'closeWelcomeBack'
     $modalInstance.dismiss()

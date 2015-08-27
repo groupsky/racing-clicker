@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('swarmApp').factory 'ProducerPath', ($log, UNIT_LIMIT) -> class ProducerPath
+angular.module('racingApp').factory 'ProducerPath', ($log, UNIT_LIMIT) -> class ProducerPath
   constructor: (@unit, @path) ->
     pathname = _.map(@path, (p) => p.parent.name).join '>'
     # unit.name's in the name twice, just so there's no confusion about where the path ends
@@ -33,7 +33,7 @@ angular.module('swarmApp').factory 'ProducerPath', ($log, UNIT_LIMIT) -> class P
     # c * (t^d)/d!
     return coeff.times(Decimal.pow(secs, degree)).dividedBy(math.factorial degree)
 
-angular.module('swarmApp').factory 'ProducerPaths', ($log, ProducerPath) -> class ProducerPaths
+angular.module('racingApp').factory 'ProducerPaths', ($log, ProducerPath) -> class ProducerPaths
   constructor: (@unit, @raw) ->
     @list = _.map @raw, (path) =>
       tailpath = path.concat [@unit]
@@ -90,7 +90,7 @@ angular.module('swarmApp').factory 'ProducerPaths', ($log, ProducerPath) -> clas
       ret = ret.plus coeff.times(Decimal.pow(secs, degree)).dividedBy(math.factorial degree)
     return ret
 
-angular.module('swarmApp').factory 'Unit', (util, $log, Effect, ProducerPaths, UNIT_LIMIT) -> class Unit
+angular.module('racingApp').factory 'Unit', (util, $log, Effect, ProducerPaths, UNIT_LIMIT) -> class Unit
   # TODO unit.unittype is needlessly long, rename to unit.type
   constructor: (@game, @unittype) ->
     @name = @unittype.name
@@ -494,12 +494,12 @@ angular.module('swarmApp').factory 'Unit', (util, $log, Effect, ProducerPaths, U
 
 ###*
  # @ngdoc service
- # @name swarmApp.unittypes
+ # @name racingApp.unittypes
  # @description
  # # unittypes
- # Factory in the swarmApp.
+ # Factory in the racingApp.
 ###
-angular.module('swarmApp').factory 'UnitType', -> class Unit
+angular.module('racingApp').factory 'UnitType', -> class Unit
   constructor: (data) ->
     _.extend this, data
     @producerPath = {}
@@ -510,7 +510,7 @@ angular.module('swarmApp').factory 'UnitType', -> class Unit
       _.map paths, (path) ->
         _.pluck path, 'name'
 
-angular.module('swarmApp').factory 'UnitTypes', (spreadsheetUtil, UnitType, util, $log) -> class UnitTypes
+angular.module('racingApp').factory 'UnitTypes', (spreadsheetUtil, UnitType, util, $log) -> class UnitTypes
   constructor: (unittypes=[]) ->
     @list = []
     @byName = {}
@@ -566,10 +566,10 @@ angular.module('swarmApp').factory 'UnitTypes', (spreadsheetUtil, UnitType, util
 
 ###*
  # @ngdoc service
- # @name swarmApp.units
+ # @name racingApp.units
  # @description
  # # units
- # Service in the swarmApp.
+ # Service in the racingApp.
 ###
-angular.module('swarmApp').factory 'unittypes', (UnitTypes, effecttypes, spreadsheet) ->
+angular.module('racingApp').factory 'unittypes', (UnitTypes, effecttypes, spreadsheet) ->
   return UnitTypes.parseSpreadsheet effecttypes, spreadsheet

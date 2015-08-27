@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('swarmApp').factory 'parseNumber', ($log, numberSuffixesShort, numberSuffixesLong) ->
+angular.module('racingApp').factory 'parseNumber', ($log, numberSuffixesShort, numberSuffixesLong) ->
   DecCeil = Decimal.constructor rounding:Decimal.ROUND_CEIL
 
   suffixToExp = {}

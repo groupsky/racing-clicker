@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('swarmApp').directive 'debugdd', (env, game, util) ->
+angular.module('racingApp').directive 'debugdd', (env, game, util) ->
   scope:
     label: '='
     min: '=?'
@@ -14,11 +14,11 @@ angular.module('swarmApp').directive 'debugdd', (env, game, util) ->
 
 ###*
  # @ngdoc directive
- # @name swarmApp.directive:debug
+ # @name racingApp.directive:debug
  # @description
  # # debug
 ###
-angular.module('swarmApp').directive 'debug', (env, game, util, $location) ->
+angular.module('racingApp').directive 'debug', (env, game, util, $location) ->
   template: """
   <div ng-cloak ng-if="env.isDebugEnabled" class="container well">
     <p class="small pull-right">{{heights()}}</p>

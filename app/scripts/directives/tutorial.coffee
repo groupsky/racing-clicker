@@ -2,11 +2,11 @@
 
 ###*
  # @ngdoc directive
- # @name swarmApp.directive:tutorial
+ # @name racingApp.directive:tutorial
  # @description
  # # tutorial
 ###
-angular.module('swarmApp').directive 'tutorial', ($rootScope, $modal, game) ->
+angular.module('racingApp').directive 'tutorial', ($rootScope, $modal, game) ->
   modalInstance = null
   showWelcome = ->
     game.session.state.welcomeShowed = true

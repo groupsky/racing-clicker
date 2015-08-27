@@ -2,11 +2,11 @@
 
 ###*
 # @ngdoc directive
-# @name swarmApp.directive:welcome-back
+# @name racingApp.directive:welcome-back
 # @description
 # # welcome-back
 ###
-angular.module('swarmApp').directive 'welcomeBack', ($log, $interval, game, $location, $modal) ->
+angular.module('racingApp').directive 'welcomeBack', ($log, $interval, game, $location, $modal) ->
   restrict: 'E'
   link: ($scope) ->
     showWelcomeBack = (ignoreHeartbeat, reifiedToCloseDiffInSecs) ->

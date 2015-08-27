@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc function
- # @name swarmApp.controller:LoginCtrl
+ # @name racingApp.controller:LoginCtrl
  # @description
  # # LoginCtrl
- # Controller of the swarmApp
+ # Controller of the racingApp
 ###
-angular.module('swarmApp').controller 'LoginCtrl', ($scope, loginApi) ->
+angular.module('racingApp').controller 'LoginCtrl', ($scope, loginApi) ->
   $scope.form = {}
   $scope.submit = ->
     loginApi.login 'local', $scope.form

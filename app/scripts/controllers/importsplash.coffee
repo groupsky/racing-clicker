@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc function
- # @name swarmApp.controller:ImportsplashCtrl
+ # @name racingApp.controller:ImportsplashCtrl
  # @description
  # # ImportsplashCtrl
- # Controller of the swarmApp
+ # Controller of the racingApp
 ###
-angular.module('swarmApp').controller 'ImportsplashCtrl', ($scope, isKongregate, game) ->
+angular.module('racingApp').controller 'ImportsplashCtrl', ($scope, isKongregate, game) ->
   # header/loadsave do the actual import
   $scope.isKongregate = isKongregate()
 

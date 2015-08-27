@@ -2,11 +2,11 @@
 
 ###*
 # @ngdoc directive
-# @name swarmApp.directive:resource
+# @name racingApp.directive:resource
 # @description
 # # resource
 ###
-angular.module('swarmApp').directive 'resource', ->
+angular.module('racingApp').directive 'resource', ->
   templateUrl: 'views/resource.html'
   scope:
     name: '@',
@@ -23,7 +23,7 @@ angular.module('swarmApp').directive 'resource', ->
   compile: (element, attrs) ->
     attrs.filter ?= 'bignum'
 
-angular.module('swarmApp').directive 'unitResource', (options) ->
+angular.module('racingApp').directive 'unitResource', (options) ->
   template: """
     <div class="unit-resource unit-{{::unit.name}}">
       <resource

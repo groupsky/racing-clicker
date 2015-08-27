@@ -2,11 +2,11 @@
 
 ###*
  # @ngdoc directive
- # @name swarmApp.directive:clicker
+ # @name racingApp.directive:clicker
  # @description
  # # clicker
 ###
-angular.module('swarmApp').directive 'clicker', ($rootScope, $timeout, game) ->
+angular.module('racingApp').directive 'clicker', ($rootScope, $timeout, game) ->
   templateUrl: 'views/clicker.html'
   restrict: 'E'
   scope:

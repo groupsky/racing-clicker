@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc service
- # @name swarmApp.options
+ # @name racingApp.options
  # @description
  # # options
- # Service in the swarmApp.
+ # Service in the racingApp.
 ###
-angular.module('swarmApp').factory 'Options', ($log, util, env, game, $location) -> class Options
+angular.module('racingApp').factory 'Options', ($log, util, env, game, $location) -> class Options
   constructor: (@session) ->
     @VELOCITY_UNITS = byName:{}, list:[]
     addvunit = (name, label, plural, short, mult) =>
@@ -186,5 +186,5 @@ angular.module('swarmApp').factory 'Options', ($log, util, env, game, $location)
     return @get('aprilFoolsTheme') ? false
 
 
-angular.module('swarmApp').factory 'options', (Options, session) ->
+angular.module('racingApp').factory 'options', (Options, session) ->
   return new Options session

@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('swarmApp').factory 'Effect', (util) -> class Effect
+angular.module('racingApp').factory 'Effect', (util) -> class Effect
   constructor: (@game, @parent, data) ->
     _.extend this, data
     if data.unittype?
@@ -38,18 +38,18 @@ angular.module('swarmApp').factory 'Effect', (util) -> class Effect
       ret = ret.times @parentStat("power.#{upname}", 1)
     return ret
 
-angular.module('swarmApp').factory 'EffectType', -> class EffectType
+angular.module('racingApp').factory 'EffectType', -> class EffectType
   constructor: (data) ->
     _.extend this, data
 
 ###*
  # @ngdoc service
- # @name swarmApp.effect
+ # @name racingApp.effect
  # @description
  # # effect
- # Factory in the swarmApp.
+ # Factory in the racingApp.
 ###
-angular.module('swarmApp').factory 'EffectTypes', -> class EffectTypes
+angular.module('racingApp').factory 'EffectTypes', -> class EffectTypes
   constructor: (effecttypes=[]) ->
     @list = []
     @byName = {}
@@ -61,7 +61,7 @@ angular.module('swarmApp').factory 'EffectTypes', -> class EffectTypes
     @byName[effecttype.name] = effecttype
     return this
 
-angular.module('swarmApp').factory 'romanize', ->
+angular.module('racingApp').factory 'romanize', ->
   # romanize() from http://blog.stevenlevithan.com/archives/javascript-roman-numeral-converter
   # MIT licensed, according to a comment from the author - safe to copy here
   # coffeelint: disable=no_backticks
@@ -83,7 +83,7 @@ angular.module('swarmApp').factory 'romanize', ->
   # coffeelint: enable=no_backticks
   return romanize
 
-angular.module('swarmApp').factory 'effecttypes', (EffectType, EffectTypes, util, seedrand, $log, romanize) ->
+angular.module('racingApp').factory 'effecttypes', (EffectType, EffectTypes, util, seedrand, $log, romanize) ->
   effecttypes = new EffectTypes()
   # Can't write functions in our spreadsheet :(
   # TODO: move this to upgrade parsing. this only asserts at runtime if a conflict happens, we want it to assert at loadtime

@@ -2,13 +2,13 @@
 
 ###*
  # @ngdoc function
- # @name swarmApp.controller:DropboxdatastoreCtrl
+ # @name racingApp.controller:DropboxdatastoreCtrl
  # @description
  # # DropboxdatastoreCtrl
- # Controller of the swarmApp
+ # Controller of the racingApp
 ###
 
-angular.module('swarmApp').controller 'DropboxdatastoreCtrl', ($scope, $log, env, dropboxSyncer) ->
+angular.module('racingApp').controller 'DropboxdatastoreCtrl', ($scope, $log, env, dropboxSyncer) ->
   $scope.env = env
   $scope.syncer = dropboxSyncer
 
@@ -58,7 +58,7 @@ angular.module('swarmApp').controller 'DropboxdatastoreCtrl', ($scope, $log, env
     return moment datestring
 
 
-angular.module('swarmApp').controller 'KongregateS3Ctrl', ($scope, $log, env, kongregate, kongregateS3Syncer, $timeout) ->
+angular.module('racingApp').controller 'KongregateS3Ctrl', ($scope, $log, env, kongregate, kongregateS3Syncer, $timeout) ->
   syncer = kongregateS3Syncer
   # http://www.kongregate.com/pages/general-services-api
   $scope.kongregate = kongregate

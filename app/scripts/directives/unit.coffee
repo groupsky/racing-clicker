@@ -2,11 +2,11 @@
 
 ###*
  # @ngdoc directive
- # @name swarmApp.directive:unit
+ # @name racingApp.directive:unit
  # @description
  # # unit
 ###
-angular.module('swarmApp').directive 'unit', ($log, game, commands, options, util, $location, parseNumber) ->
+angular.module('racingApp').directive 'unit', ($log, game, commands, options, util, $location, parseNumber) ->
   templateUrl: 'views/unit.html'
   restrict: 'E'
   scope:

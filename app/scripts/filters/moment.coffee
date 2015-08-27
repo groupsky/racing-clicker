@@ -2,13 +2,13 @@
 
 ###*
  # @ngdoc filter
- # @name swarmApp.filter:moment
+ # @name racingApp.filter:moment
  # @function
  # @description
  # # moment
- # Filter in the swarmApp.
+ # Filter in the racingApp.
 ###
-angular.module('swarmApp').filter 'duration', (options, $filter) ->
+angular.module('racingApp').filter 'duration', (options, $filter) ->
   (input, unitOfTime, template, precision) ->
     if input is Infinity
       return ''
@@ -38,6 +38,6 @@ angular.module('swarmApp').filter 'duration', (options, $filter) ->
 
     return duration.format(template, precision) + nonexact
 
-angular.module('swarmApp').filter 'momentFromNow', ($filter) ->
+angular.module('racingApp').filter 'momentFromNow', ($filter) ->
   (input) ->
     return moment(input).fromNow()

@@ -2,11 +2,11 @@
 
 ###*
  # @ngdoc directive
- # @name swarmApp.directive:buyunit
+ # @name racingApp.directive:buyunit
  # @description
  # # buyunit
 ###
-angular.module('swarmApp').directive 'buyunit', ($log, game, commands) ->
+angular.module('racingApp').directive 'buyunit', ($log, game, commands) ->
   templateUrl: 'views/buyunit.html'
   scope:
     num: '=?'
@@ -52,7 +52,7 @@ angular.module('swarmApp').directive 'buyunit', ($log, game, commands) ->
     scope.isBuyButtonVisible = -> scope.resource.isBuyButtonVisible()
     scope.verb = scope.unit.type.verb
 
-angular.module('swarmApp').directive 'buyupgrade', ($log, game, commands) ->
+angular.module('racingApp').directive 'buyupgrade', ($log, game, commands) ->
   templateUrl: 'views/buyunit.html'
   scope:
     num: '=?'
@@ -88,7 +88,7 @@ angular.module('swarmApp').directive 'buyupgrade', ($log, game, commands) ->
     scope.isBuyButtonVisible = -> true
     scope.verb = if scope.upgrade.type.class == 'ability' then 'cast' else 'buy'
 
-angular.module('swarmApp').directive 'buyunitdropdown', ($log, game, commands) ->
+angular.module('racingApp').directive 'buyunitdropdown', ($log, game, commands) ->
   templateUrl: 'views/buyunit-dropdown.html'
   scope:
     num: '=?'

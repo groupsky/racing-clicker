@@ -13,7 +13,7 @@
 #
 # TODO: refactor to actually use promises
 
-angular.module('swarmApp').factory 'kongregateS3Syncer', ($log, kongregate, storage, game, env, $interval, $q, $rootScope) -> new class KongregateS3Syncer
+angular.module('racingApp').factory 'kongregateS3Syncer', ($log, kongregate, storage, game, env, $interval, $q, $rootScope) -> new class KongregateS3Syncer
   constructor: ->
     jQuery.ajaxSetup cached:false
   isVisible: ->
@@ -175,7 +175,7 @@ angular.module('swarmApp').factory 'kongregateS3Syncer', ($log, kongregate, stor
         fn data, status, xhr
         # @fetch() # nope - S3 is eventually consistent, this might return old data
 
-angular.module('swarmApp').factory 'dropboxSyncer', ($log, env, session, game, $location, isKongregate, $interval, $rootScope) -> new class DropboxSyncer
+angular.module('racingApp').factory 'dropboxSyncer', ($log, env, session, game, $location, isKongregate, $interval, $rootScope) -> new class DropboxSyncer
   constructor: ->
     @_datastore = null
     @_recschanged = null

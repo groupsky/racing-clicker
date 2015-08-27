@@ -1,14 +1,14 @@
 'use strict'
 
 # Thu, 02 Oct 2014 07:34:29 GMT
-angular.module('swarmApp').value 'timecheckerServerFormat', 'ddd, DD MMM YYYY HH:mm:ss'
+angular.module('racingApp').value 'timecheckerServerFormat', 'ddd, DD MMM YYYY HH:mm:ss'
 
 ###*
  # @ngdoc service
- # @name swarmApp.timecheck
+ # @name racingApp.timecheck
  # @description
  # # timecheck
- # Factory in the swarmApp.
+ # Factory in the racingApp.
  #
  # Players can cheat by messing with their system clock. This is ultimately
  # unavoidable, but we can make it a little harder by asking the internet
@@ -16,7 +16,7 @@ angular.module('swarmApp').value 'timecheckerServerFormat', 'ddd, DD MMM YYYY HH
  # don't have to be 100% secure. It's better to reset only when we're sure
  # than to nuke someone innocent.
 ###
-angular.module('swarmApp').factory 'TimeChecker', ($rootScope, $http, $q, timecheckUrl, game, timecheckerServerFormat, $log) -> class TimeChecker
+angular.module('racingApp').factory 'TimeChecker', ($rootScope, $http, $q, timecheckUrl, game, timecheckerServerFormat, $log) -> class TimeChecker
   constructor: (thresholdHours) ->
     @threshold = moment.duration thresholdHours, 'hours'
 
@@ -69,17 +69,17 @@ angular.module('swarmApp').factory 'TimeChecker', ($rootScope, $http, $q, timech
         #game.reset() # not confident enough to do this yet, but we can disable the ui until analytics tells us more.
       return invalid
   
-#angular.module('swarmApp').value 'timecheckUrl', 'http://json-time.appspot.com/time.json?callback=JSON_CALLBACK'
-#angular.module('swarmApp').value 'timecheckUrl', '/'
+#angular.module('racingApp').value 'timecheckUrl', 'http://json-time.appspot.com/time.json?callback=JSON_CALLBACK'
+#angular.module('racingApp').value 'timecheckUrl', '/'
 # let's hack an autoupdater on to this
-angular.module('swarmApp').value 'timecheckUrl', './version.json'
+angular.module('racingApp').value 'timecheckUrl', './version.json'
 # Threshold at which a player is assumed to be timewarp-cheating
-angular.module('swarmApp').value 'timecheckThresholdHours', 24 * 4
+angular.module('racingApp').value 'timecheckThresholdHours', 24 * 4
 
-angular.module('swarmApp').factory 'timecheck', (TimeChecker, timecheckThresholdHours) ->
+angular.module('racingApp').factory 'timecheck', (TimeChecker, timecheckThresholdHours) ->
   new TimeChecker timecheckThresholdHours
 
-angular.module('swarmApp').factory 'VersionChecker', (env, util, $log) -> class VersionChecker
+angular.module('racingApp').factory 'VersionChecker', (env, util, $log) -> class VersionChecker
   constructor: (@version) ->
     # max version in any one chunk
     @_MAX = 100000
@@ -100,7 +100,7 @@ angular.module('swarmApp').factory 'VersionChecker', (env, util, $log) -> class 
       sum += chunk * Math.pow @_MAX, index
     return sum
 
-angular.module('swarmApp').factory 'versioncheck', ($rootScope, VersionChecker, version, $log) ->
+angular.module('racingApp').factory 'versioncheck', ($rootScope, VersionChecker, version, $log) ->
   ret = new VersionChecker version
   $rootScope.$on 'timecheck', (event, res) ->
     remote = res?.data?.version

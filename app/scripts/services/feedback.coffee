@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc service
- # @name swarmApp.feedback
+ # @name racingApp.feedback
  # @description
  # # feedback
- # Factory in the swarmApp.
+ # Factory in the racingApp.
 ###
-angular.module('swarmApp').factory 'feedback', ($log, game, version, env, isKongregate) -> new class Feedback
+angular.module('racingApp').factory 'feedback', ($log, game, version, env, isKongregate) -> new class Feedback
   # other alternatives: pastebin (rate-limited), github gist
   # tinyurl doesn't allow cross-site requests
   createTinyurl: (exported=game.session.exportSave()) ->

@@ -2,12 +2,12 @@
 
 ###*
  # @ngdoc function
- # @name swarmApp.controller:AchievementsCtrl
+ # @name racingApp.controller:AchievementsCtrl
  # @description
  # # AchievementsCtrl
- # Controller of the swarmApp
+ # Controller of the racingApp
 ###
-angular.module('swarmApp').controller 'AchievementsCtrl', ($scope, game, $location, $log) ->
+angular.module('racingApp').controller 'AchievementsCtrl', ($scope, game, $location, $log) ->
   $scope.game = game
   game.session.state.achievementsShown ?=
     earned: true

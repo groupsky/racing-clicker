@@ -2,11 +2,11 @@
 
 ###*
  # @ngdoc directive
- # @name swarmApp.directive:login
+ # @name racingApp.directive:login
  # @description
  # # login
 ###
-angular.module 'swarmApp'
+angular.module 'racingApp'
   .directive 'login', (loginApi, $log, kongregate, env) ->
     restrict: 'EA'
     template: """
