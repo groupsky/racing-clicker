@@ -1,8 +1,10 @@
-<tabs></tabs>
+<div class="modal-header achievements-dialog-header">
+  <button type="button" class="close" ng-click="closeDialog()"><h2><span aria-hidden="true">&times;</span><h2><span class="sr-only">Close</span></button>
+  <h2>Statistics</h2>
+</div>
 
-<div class="container statistics">
+<div class="modal-body">
   <div google-chart chart="chartData()"></div>
-  <h1>Statistics</h1>
   <div ng-repeat="unit in game.unitlist()">{{unit.label}}</div>
   <div class="table-responsive" ng-init="unitlist = (game.unitlist() | filter:showStats)">
     <table class="table" ng-if="unitlist.length > 0">
