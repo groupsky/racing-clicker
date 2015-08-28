@@ -11,8 +11,7 @@
       <div class="panel-body">
         <ul class="list-unstyled">
           <li ng-repeat="unit in game.tabs.byName.money.sortUnits() | filter:filterVisible track by unit.name"
-              ng-if="!$last"
-              class="clearfix">
+              ng-if="!$last">
             <unit unit="::unit"></unit>
           </li>
         </ul>
@@ -36,8 +35,7 @@
       <div class="panel-body">
         <ul class="list-unstyled">
           <li ng-repeat="unit in game.tabs.byName.technology.sortUnits() | filter:filterVisible track by unit.name"
-              ng-if="!$last"
-              class="clearfix">
+              ng-if="!$last">
             <unit unit="::unit"></unit>
           </li>
         </ul>
