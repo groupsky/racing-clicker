@@ -44,7 +44,7 @@ https://github.com/groupsky/racing-clicker
 <meta name="msapplication-TileImage" content="/mstile-144x144.png">
 <meta name="theme-color" content="#3a3a3a">
   </head>
-  <body ng-app="racingApp" class="tutorial-step-{{game.cache.tutorialStep}}">
+  <body ng-app="racingApp" class="tutorial-step-{{game.cache.tutorialStep}}" ng-class="{'fix-height': game.isFixHeight}">
     <!--[if lt IE 9]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -265,7 +265,6 @@ https://github.com/groupsky/racing-clicker
         <script src="scripts/directives/welcomeback.js"></script>
         <script src="scripts/directives/opendialog.js"></script>
         <script src="scripts/services/dialog.js"></script>
-        <script src="scripts/services/fixy.js"></script>
         <!-- endbuild -->
 </body>
 </html>

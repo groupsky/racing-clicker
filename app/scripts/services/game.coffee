@@ -58,6 +58,8 @@ angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievemen
   constructor: (@session) ->
     @_init()
   _init: ->
+    @isFixHeight = _.contains window.location.search, 'fixheight'
+
     @_units =
       list: _.map unittypes.list, (unittype) =>
         new Unit this, unittype
