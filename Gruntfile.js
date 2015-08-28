@@ -252,7 +252,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'swarmApp',
+          module: 'racingApp',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: '<%= yeoman.dist %>/scripts/scripts.js'
         },
@@ -268,7 +268,7 @@ module.exports = function (grunt) {
         dest: '.tmp/scripts/app.templates.js',
       },
       options: {
-        module: 'swarmApp',
+        module: 'racingApp',
         htmlmin: '<%= htmlmin.dist.options %>'
       }
     },
