@@ -750,7 +750,7 @@ a:focus, button:focus {
         .panel-body {
           padding-bottom: 0;
           padding-top: 0;
-          max-height: $panel-body-height*3/2 - 2*$panel-body-padding + 4px;
+          max-height: $panel-body-height*3/2 - 2*$panel-body-padding - 29px;
           overflow-y: auto;
 
           ul {
@@ -766,6 +766,12 @@ a:focus, button:focus {
         }
         &.panel-cars .panel-body {
           max-height: $panel-body-height - 4*$panel-body-padding + 9px;
+        }
+        &.panel-other {
+          .panel-heading {
+            padding: $panel-body-padding/2 + 1px;
+            padding-bottom: $panel-body-padding/2 + 1px;
+          }
         }
       }
 
