@@ -52,6 +52,7 @@ angular.module('racingApp').directive 'tutorial', ($rootScope, $modal, game) ->
     scope.showCloseButton = ->
       return scope.tutStep() == 12 or scope.tutStep() == 100
     scope.close = ->
+      game.cache.tutorialStep = null
       game.session.state.tutorialClosed = true
     scope.tutStep = ->
       return game.cache.tutorialStep ?= do =>
