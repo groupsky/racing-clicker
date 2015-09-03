@@ -182,7 +182,7 @@ module.exports = function (grunt) {
       prodGithubio: {
         options: {
           branch: 'master',
-          repo: 'git@github.com:swarmsim/swarmsim.github.io.git'
+          repo: 'git@github.com:racing-clicker/racing-clicker.github.io.git'
         },
         src: ['**']
       }
