@@ -39,7 +39,7 @@ angular.module('racingApp').controller 'MainCtrl', ($scope, $log, game, $locatio
     $location.url $scope.cur.tab.url unit
 
   $scope.filterVisible = (unit) -> unit.isVisible()
-  $scope.filterBought = (unit) -> !unit.count().isZero()
+  $scope.filterBought = (unit) -> not unit.count().isZero()
 
   # findtab = (index, step) ->
   #   index += step + game.tabs.list.length
