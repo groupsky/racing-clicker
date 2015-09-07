@@ -7,14 +7,14 @@
       versionCode = "1"
       version     = "0.0.1" >
 
-  <name>Racing Clicker</name>
+  <name>RCM</name>
 
   <description>
-    Racing Clicker Manager - An incremental clicker manager game. Starting with just a few buck and big balls, grow a massive racing empire.
+    RCM - An incremental clicker manager game. Starting with just a few buck and big balls, grow a massive racing empire.
   </description>
 
   <author href="http://github.com/groupsky" email="racing.clicker@gmail.com">
-    Geno Roupsky & Daniel Petrov
+    Geno Roupsky &amp; Daniel Petrov
   </author>
 
   <!-- open reddit in the device's real browser. http://stackoverflow.com/questions/14070841/phonegap-open-link-in-browser -->

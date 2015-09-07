@@ -1,7 +1,7 @@
 {
   "name": "racing-clicker",
   "version": "0.4.2",
-  "description": "Racing Clicker Manager - An incremental clicker manager game. Starting with just a few buck and big balls, grow a massive racing empire.",
+  "description": "RCM - An incremental clicker manager game. Starting with just a few buck and big balls, grow a massive racing empire.",
   "repository": {
     "url": "http://bitbucker.com/masconsult/racing.git",
     "type": "git"
