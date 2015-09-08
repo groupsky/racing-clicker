@@ -1,0 +1,107 @@
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+
+$brand-primary:         #3B3B3B;
+$brand-success:         #25CF26;
+$brand-info:            #2121CF;
+$brand-warning:         #FDF226;
+$brand-danger:          #EF484F;
+
+
+//== Scaffolding
+//
+//## Settings for some of the most global styles.
+
+//** Background color for `<body>`.
+$body-bg:               #3B3B3B;
+//** Global text color on `<body>`.
+$text-color:            #FFFFFF;
+
+
+$border-color:          #E0E0E0;
+$btn-primary-border:    darken($border-color, 15%);
+$btn-primary-color:              #FADC00;
+$btn-primary-bg:              #FF8800;
+$btn-primary-bg-pressed: #A85A00;
+
+
+$border-radius-base:        6px;
+$border-radius-large:      10px;
+$border-radius-small:       4px;
+
+//== Buttons
+//
+//## For each of Bootstrap's buttons, define text, background and border color.
+
+$btn-default-color:              $btn-primary-color;
+$btn-default-bg:                 $body-bg;
+$btn-default-border:             $border-color;
+
+//== Panels
+//
+//##
+
+$panel-bg:                    $body-bg;
+$panel-inner-border:          transparent;
+$panel-border-radius:         $border-radius-large;
+$panel-default-text:          $text-color;
+$panel-default-border:        $border-color;
+$panel-default-heading-bg:    transparent;
+
+//== Wells
+//
+//##
+
+$well-bg:                     transparent;
+$well-border:                 transparent;
+
+//== Jumbotron
+//
+//##
+
+$jumbotron-bg:                   $body-bg;
+
+
+//== Modals
+//
+//##
+
+//** Background color of modal content area
+$modal-content-bg:                             $body-bg;
+//** Modal content border color
+$modal-content-border-color:                   rgba(255,255,255,.8) !default;
+//** Modal content border color **for IE8**
+$modal-content-fallback-border-color:          $border-color;
+
+////** Modal backdrop background color
+//$modal-backdrop-bg:           #000 !default;
+////** Modal backdrop opacity
+//$modal-backdrop-opacity:      .5 !default;
+////** Modal header border color
+//$modal-header-border-color:   #e5e5e5 !default;
+////** Modal footer border color
+//$modal-footer-border-color:   $modal-header-border-color !default;
+
+
+//== Progress bars
+//
+//##
+
+//** Background color of the whole progress component
+$progress-bg:                 transparentize($text-color, 0.6);
+//** Progress bar text color
+$progress-bar-color:          #FF8800;
+
+
+
+//== Navbar
+//
+//##
+
+$navbar-default-color:             $text-color;
+$navbar-default-bg:                $body-bg;
+$navbar-default-border:            $border-color;
+
+$resource-color-positive: #FADC00;
+$resource-color-negative: #555555;
