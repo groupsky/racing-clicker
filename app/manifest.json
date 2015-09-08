@@ -1,5 +1,5 @@
 {
-	"name": "Racing Manager",
+	"name": "RCM",
 	"icons": [
 		{
 			"src": "\/android-chrome-36x36.png",
@@ -38,6 +38,6 @@
 			"density": "4.0"
 		}
 	],
-	"start_url": "http:\/\/racing-clicker.herokuapp.com",
+	"start_url": "http:\/\/racing-clicker.github.io",
 	"display": "standalone"
 }

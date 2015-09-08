@@ -35,7 +35,7 @@ angular.module('racingApp').controller 'ContactCtrl', ($scope, feedback, version
   hasErrorMessage = $location.search().error and $location.search().error != true
   topics =
     bug:
-      subject: -> "Racing Clicker Manager Bug Report (#{new Date().toLocaleString()})"
+      subject: -> "RCM Bug Report (#{new Date().toLocaleString()})"
       message: -> """
 Describe the bug here. Step-by-step instructions saying how to make the bug reoccur are helpful.
 
@@ -43,7 +43,7 @@ Describe the bug here. Step-by-step instructions saying how to make the bug reoc
 
 Bug report information:
 
-* Racing Clicker Manager version: #{version}
+* RCM version: #{version}
 * Saved game: #{$scope.urls.expand}
 * Source: #{if isKongregate() then "Kongregate" else "Standalone"}
 * Browser: #{$scope.userAgentGuess}#{
@@ -55,7 +55,7 @@ if hasErrorMessage then "\n* Error message: ```"+$location.search().error+'```' 
           error += '|'
         return "#{version}|#{$scope.userAgentGuess}|#{error}#{$scope.urls.expand}"
     other:
-      subject: -> "Racing Clicker Manager Feedback (#{new Date().toLocaleString()})"
+      subject: -> "RCM Feedback (#{new Date().toLocaleString()})"
       message: -> ''
       anonDebug: -> ''
       emailTo: ->
@@ -79,4 +79,3 @@ if hasErrorMessage then "\n* Error message: ```"+$location.search().error+'```' 
     if url.length > LIMIT
       url = url.substring(0,LIMIT) + encodeURIComponent "...TRUNCATED..."
     return url
-

@@ -17,7 +17,7 @@
     <label style="font-weight:normal"><input type="radio" ng-model="form.scrolling" value="none" ng-change="options.scrolling(form.scrolling)" ng-init="form.scrolling=options.scrolling()">Browser default</input></label>
     <label style="font-weight:normal"><input type="radio" ng-model="form.scrolling" value="resize" ng-change="options.scrolling(form.scrolling)">Resize automatically, no inner scrollbar</input></label>
     <label style="font-weight:normal"><input type="radio" ng-model="form.scrolling" value="lockhover" ng-change="options.scrolling(form.scrolling)"><span class="envalert">(beta)</span> Lock mousewheel scrolling</input></label>
-    <p ng-if="form.scrolling=='lockhover'">This makes mousewheel scrolling only affect Racing Clicker's scrollbar, instead of the whole Kongregate page, while your mouse is over the game. We're still testing this option - if it's broken for you, <a href="#/contact">please report it</a>!</p>
+    <p ng-if="form.scrolling=='lockhover'">This makes mousewheel scrolling only affect RCM's scrollbar, instead of the whole Kongregate page, while your mouse is over the game. We're still testing this option - if it's broken for you, <a href="#/contact">please report it</a>!</p>
     <p ng-if="options.isScrollingChangedFromResizeSincePageLoad && form.scrolling!='resize'">The game will widen to fill your screen when you refresh the page.</p>
     <p>Minimum size:
       <input ng-model="form.iframeMinSize.x" type="number" min="0" max="99999" ng-change="options.iframeMinX(form.iframeMinSize.y)">&times;
@@ -25,7 +25,7 @@
       <button class="btn btn-default" ng-class="{disabled:isDefaultMinSize()}" ng-click="resetMinSize()">Reset size</button>
     </p>
     <p ng-if="form.scrolling!='resize' && !isDefaultMinSize()">
-      Racing Clicker can't automatically stretch to fill the width of your screen when a minimum size is set.
+      RCM can't automatically stretch to fill the width of your screen when a minimum size is set.
     </p>
   </div>
 
@@ -139,9 +139,9 @@
   <div ng-cloak ng-controller="KongregateS3Ctrl">
     <div ng-if="isVisible">
       <div><label class="control-label"><img src="/images/badge16x16K.gif" width="16" height="16" alt="Kongregate logo"> Sync saved data with other devices <span class="envalert">(beta)</span></label></div>
-      <div ng-if="isGuest()"><a href="javascript:" ng-click="api.showSignInBox()">Sign in to Kongregate to save your game to Racing Clicker's servers.</a></div>
+      <div ng-if="isGuest()"><a href="javascript:" ng-click="api.showSignInBox()">Sign in to Kongregate to save your game to RCM's servers.</a></div>
       <div ng-if="!isGuest()">
-        <p>Hi {{api.getUsername()}}! Save your game to Racing Clicker's servers using your Kongregate account.</p>
+        <p>Hi {{api.getUsername()}}! Save your game to RCM's servers using your Kongregate account.</p>
         <div><label><input type="checkbox" ng-init="form.autopush=options.autopush()" ng-model="form.autopush" ng-change="options.autopush(form.autopush)" class="">Auto-export every 15 minutes and before closing</label></div>
         <div><button class="btn btn-primary" ng-class="{disabled:cooldown.byName.push}" ng-click="push()">Export online saved data</button></div>
         <div><button class="btn btn-default" ng-class="{disabled:cooldown.byName.fetch}" ng-click="fetch()">Check for new online saved data</button></div>
@@ -164,7 +164,7 @@
       </div>
       <div class="collapse" id="kongregateS3Details">
         <div class="well">
-          <p>A Racing Clicker server at <b>{{saveServerUrl}}</b> verifies you're logged into Kongregate, and grants your browser permission to upload/download saved data at <b>https://racing-clicker.herokuapp.com</b>. If you're having trouble syncing, make sure your browser isn't blocking either of these locations.</p>
+          <p>A RCM server at <b>{{saveServerUrl}}</b> verifies you're logged into Kongregate, and grants your browser permission to upload/download saved data at <b>https://racing-clicker.github.io</b>. If you're having trouble syncing, make sure your browser isn't blocking either of these locations.</p>
           <p ng-if="policy()">Refreshed S3 permissions {{policy().localDate.refreshed|momentFromNow}}, during {{isPolicyCached() ? "an earlier session" : "this session"}}. Expires {{policy().localDate.expires|momentFromNow}}.</p>
           <p ng-if="!policy()" class="text-danger">S3 permissions are missing!</p>
           <p><button class="btn btn-default" ng-class="{disabled:cooldown.byName.init}" ng-click="init(true)">Force permission refresh now</button></p>
@@ -191,11 +191,11 @@
   </div>
   <div>
     <p><a class="" data-toggle="collapse" data-target="#saveDetails" href="javascript:" aria-expanded="false" aria-controls="saveDetails">
-      Where is Racing Clicker's data saved?
+      Where is RCM's data saved?
     </a></p>
     <div class="collapse" id="saveDetails">
       <div class="well">
-        <p>Racing Clicker saves your progress in your browser's localstorage, cookies, and Flash (SWF) storage. Your saved game will be loaded if it's found in any one of these sources. This is done to avoid accidentally losing your saved data; it's not intended to track you or otherwise invade your privacy. The 'wipe all saved data' button below will clear all three storage locations.</p>
+        <p>RCM saves your progress in your browser's localstorage, cookies, and Flash (SWF) storage. Your saved game will be loaded if it's found in any one of these sources. This is done to avoid accidentally losing your saved data; it's not intended to track you or otherwise invade your privacy. The 'wipe all saved data' button below will clear all three storage locations.</p>
         <p ng-repeat="detail in savedDataDetails">
           <span class="titlecase">{{detail.name}}</span> storage:
           <span ng-if="detail.exists">{{detail.size}} chars</span>
@@ -213,13 +213,13 @@
   </div>
   <div class="form-group">
     <label class="control-label"><span class="glyphicon glyphicon-cloud-upload"></span> Analytics</label>
-    <p>Racing Clicker, like many websites, uses Google Analytics to track actions you take while playing. We use this data to improve the game. Feel free to <a target="_blank" href="https://tools.google.com/dlpage/gaoptout" title="I thought about asking Analytics to track how many people click this link, but decided not to.">opt out of Google Analytics</a>.</p>
+    <p>RCM, like many websites, uses Google Analytics to track actions you take while playing. We use this data to improve the game. Feel free to <a target="_blank" href="https://tools.google.com/dlpage/gaoptout" title="I thought about asking Analytics to track how many people click this link, but decided not to.">opt out of Google Analytics</a>.</p>
     <p><a target="_blank" href="http://www.google.com/policies/privacy/partners/">How Google uses data when you use our partners' sites or apps</a></p>
   </div>
   <div class="form-group">
     <label class="control-label"><span class="fa fa-copyright"></span> Copyright&License</label>
-    <p>Racing Clicker, Copyright &copy; 2015 Geno Roupsky & Daniel Petrov. Based on the <a href="https://github.com/swarmsim/swarm" target="_blank" rel="nofollow">Swarm Simulator</a> by Evan Rosson.<p>
-    <p>Racing Clicker comes with ABSOLUTELY NO WARRANTY.
+    <p>RCM, Copyright &copy; 2015 Geno Roupsky & Daniel Petrov. Based on the <a href="https://github.com/swarmsim/swarm" target="_blank" rel="nofollow">Swarm Simulator</a> by Evan Rosson.<p>
+    <p>RCM comes with ABSOLUTELY NO WARRANTY.
     <p>This is free software, and you are welcome to redistribute it under certain conditions;
       for details see <a href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.html" target="_blank" rel="nofollow">GNU General Public License, version 2</a>.</p>
   </div>
