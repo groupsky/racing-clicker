@@ -35,6 +35,7 @@
     "fontawesome": "~4.3.0",
     "swarm-shared": "git://github.com/swarmsim/swarm-shared.git#master",
     "angular-bootstrap": "~0.13.3",
+    "perfect-scrollbar": "~0.6.5",
     "angular-perfect-scrollbar": "~0.0.4"
   },
   "devDependencies": {
@@ -43,6 +44,7 @@
   },
   "appPath": "app",
   "resolutions": {
-    "angular": "~1.4.0"
+    "angular": "~1.4.0",
+    "perfect-scrollbar": "~0.6.5"
   }
 }

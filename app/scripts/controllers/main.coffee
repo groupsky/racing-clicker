@@ -7,7 +7,7 @@
  # # Main2Ctrl
  # Controller of the racingApp
 ###
-angular.module('racingApp').controller 'MainCtrl', ($scope, $log, game, $location, version, options, commands, util) ->
+angular.module('racingApp').controller 'MainCtrl', ($scope, $log, game, $location, version, options, commands, util, $timeout) ->
   $scope.game = game
   $scope.options = options
 
@@ -40,6 +40,15 @@ angular.module('racingApp').controller 'MainCtrl', ($scope, $log, game, $locatio
 
   $scope.filterVisible = (unit) -> unit.isVisible()
   $scope.filterBought = (unit) -> not unit.count().isZero()
+  $scope.scrollbarWatches = {cars: 0, technologies: 0, tab: ''}
+
+  # ugly hack to force display of scrollbars
+  forceUpdate = ->
+    if $('[perfect-scrollbar] .ps-scrollbar-y-rail')[0].clientHeight is 0
+      $scope.scrollbarWatches.update ?= 1
+      $scope.scrollbarWatches.update = $scope.scrollbarWatches.update + 1
+      $timeout forceUpdate, 100, false
+  $timeout forceUpdate, 0, false
 
   # findtab = (index, step) ->
   #   index += step + game.tabs.list.length
