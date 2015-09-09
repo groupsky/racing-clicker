@@ -8,8 +8,13 @@
           cars
         </span>
       </div>
-      <perfect-scrollbar class="scroller" wheel-propagation="true" wheel-speed="1" min-scrollbar-length="20">
-      <div class="panel-body">
+      <div class="panel-body"
+           perfect-scrollbar
+           wheel-propagation="true"
+           wheel-speed="1"
+           min-scrollbar-length="20"
+           suppress-scroll-x="true"
+        >
         <ul class="list-unstyled">
           <li ng-repeat="unit in game.tabs.byName.money.sortUnits() | filter:filterVisible track by unit.name"
               ng-if="!$last">
@@ -17,7 +22,6 @@
           </li>
         </ul>
       </div>
-      </perfect-scrollbar>
     </div>
   </div>
 
@@ -34,7 +38,14 @@
           technologies
         </span>
       </div>
-      <div class="panel-body">
+      <div class="panel-body"
+           perfect-scrollbar
+           wheel-propagation="true"
+           wheel-speed="1"
+           min-scrollbar-length="20"
+           suppress-scroll-x="true"
+           suppress-scroll-y="{{game.isFixHeight?'false':'true'}}"
+          >
         <ul class="list-unstyled">
           <li ng-repeat="unit in game.tabs.byName.technology.sortUnits() | filter:filterVisible track by unit.name"
               ng-if="!$last">
@@ -61,7 +72,14 @@
            </a>
         </div>
       </div>
-      <div class="panel-body">
+      <div class="panel-body"
+           perfect-scrollbar
+           wheel-propagation="true"
+           wheel-speed="1"
+           min-scrollbar-length="20"
+           suppress-scroll-x="true"
+           suppress-scroll-y="{{game.isFixHeight?'false':'true'}}"
+        >
         <ul class="list-unstyled">
           <li ng-repeat="unit in tab.sortUnits() | filter:filterVisible track by unit.name" ng-if="!$last">
             <unit unit="::unit"></unit>
