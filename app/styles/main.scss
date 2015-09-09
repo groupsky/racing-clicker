@@ -1,15 +1,16 @@
-@import "variables";
-
-$grid-gutter-width: 20px;
-$panel-body-padding: $grid-gutter-width/2;
-$well-sm-padding: $panel-body-padding/2;
-$unit-height: 100px;
-$panel-body-height: $unit-height*2+$well-sm-padding*4+20px*2+10px;
-
 $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
 
-@import "../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+
+@import "variables";
+@import "../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/variables";
+@import "variables";
+
+
+@import "../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/bootstrap";
+@import "bootswatch";
+
 @import "../../bower_components/fontawesome/scss/font-awesome";
+
 
 .jumbotron {
   @extend .panel;
@@ -513,7 +514,7 @@ body {
       }
       .unit-level, .unit-count {
         @extend .badge;
-        background-color: $btn-primary-bg;
+        background-color: $color-secondary;
       }
     }
 
