@@ -750,6 +750,13 @@ a:focus, button:focus {
   }
 }
 
+.panel-units {
+  .panel-body {
+    overflow-y: hidden;
+    position: relative;
+  }
+}
+
 .fix-height {
   height: 768px;
   overflow: hidden;
@@ -760,6 +767,7 @@ a:focus, button:focus {
   .container, .container-fluid {
     height: 100%;
     width: 100%;
+    max-width: 1160px;
 
     .panel, .clicker {
       margin-bottom: $grid-gutter-width / 3;
@@ -790,8 +798,6 @@ a:focus, button:focus {
           padding-bottom: 0;
           padding-top: 0;
           max-height: $panel-body-height*3/2 - 2*$panel-body-padding - 29px;
-          overflow-y: hidden;
-          position: relative;
 
           ul {
             margin: 0;
@@ -816,7 +822,7 @@ a:focus, button:focus {
       }
 
       .clicker {
-        height: $panel-body-height + $line-height-computed*2 - $panel-body-padding*3 + 2px + $padding-base-vertical + 5px - $panel-body-padding/2;
+        height: $panel-body-height + $line-height-computed*2 - $panel-body-padding*3 + 2px + $padding-base-vertical + 7px - $panel-body-padding/2;
       }
     }
 
