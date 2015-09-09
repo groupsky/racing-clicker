@@ -754,8 +754,46 @@ a:focus, button:focus {
   .panel-body {
     overflow-y: hidden;
     position: relative;
+    padding-bottom: 0;
+    padding-top: 0;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        .well {
+          margin-top: $panel-body-padding;
+          margin-bottom: $panel-body-padding;
+        }
+      }
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    &.panel-cars .panel-body {
+      max-height: $panel-body-height - 4*$panel-body-padding + 5px;
+    }
+    &.panel-technology, .panel-cars {
+      .panel-heading {
+        padding-top: $panel-body-padding/2+$padding-base-vertical+2px;
+        padding-bottom: $panel-body-padding/2+$padding-base-vertical+2px;
+      }
+    }
+    &.panel-other {
+      .panel-heading {
+        padding: $panel-body-padding/2 + 1px;
+        padding-bottom: $panel-body-padding/2 + 1px;
+      }
+    }
   }
 }
+
+@media (min-width: $screen-md-min) {
+  .clicker {
+    height: $panel-body-height + $line-height-computed*2 - $panel-body-padding*3 + $padding-base-vertical - $panel-body-padding/2 - 2.5px;
+  }
+}
+
 
 .fix-height {
   height: 768px;
@@ -793,43 +831,10 @@ a:focus, button:focus {
     }
 
     @media (min-width: $screen-md-min) {
-      .panel-units {
+      .panel-technology, .panel-other {
         .panel-body {
-          padding-bottom: 0;
-          padding-top: 0;
-          max-height: $panel-body-height*3/2 - 2*$panel-body-padding - 29px;
-
-          ul {
-            margin: 0;
-            padding: 0;
-            li {
-              .well {
-                margin-top: $panel-body-padding/2;
-                margin-bottom: $panel-body-padding/2;
-              }
-            }
-          }
+          max-height: $panel-body-height*3/2 - 2*$panel-body-padding - 15px;
         }
-        &.panel-cars .panel-body {
-          max-height: $panel-body-height - 4*$panel-body-padding + 9px;
-        }
-        &.panel-other {
-          .panel-heading {
-            padding: $panel-body-padding/2 + 1px;
-            padding-bottom: $panel-body-padding/2 + 1px;
-          }
-        }
-      }
-
-      .clicker {
-        height: $panel-body-height + $line-height-computed*2 - $panel-body-padding*3 + 2px + $padding-base-vertical + 7px - $panel-body-padding/2;
-      }
-    }
-
-    .panel-technology, .panel-cars {
-      .panel-heading {
-        padding-top: $panel-body-padding/2+$padding-base-vertical+2px;
-        padding-bottom: $panel-body-padding/2+$padding-base-vertical+2px;
       }
     }
   }

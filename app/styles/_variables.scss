@@ -1,6 +1,6 @@
 $grid-gutter-width: 20px;
-$panel-body-padding: $grid-gutter-width/2;
-$well-sm-padding: $panel-body-padding/2;
+$panel-body-padding: $grid-gutter-width/4;
+$well-sm-padding: $grid-gutter-width/4;
 $unit-height: 100px;
 $panel-body-height: $unit-height*2+$well-sm-padding*4+20px*2+10px;
 
