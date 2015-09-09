@@ -4,26 +4,16 @@ $well-sm-padding: $panel-body-padding/2;
 $unit-height: 100px;
 $panel-body-height: $unit-height*2+$well-sm-padding*4+20px*2+10px;
 
-$btn-primary-bg-pressed: #A85A00;
-
-
-$resource-color-positive: #FFFFFF;
-$resource-color-negative: #555555;
-
-
-
-
-
-
 $bootstrap-sass-asset-helper: false !default;
 // Cyborg 3.3.5
 // Variables
 // --------------------------------------------------
 
-
 //== Colors
 //
 //## Gray and brand colors for use across Bootstrap.
+
+$white:                 #FFF;
 
 $gray-base:              #000 !default;
 $gray-darker:            #222 !default; // #222
@@ -39,6 +29,9 @@ $brand-warning:         #2A9FD6 !default;
 $brand-danger:          #CC0000 !default;
 $brand-secondary:       $brand-info;
 
+$resource-color-positive: $white;
+$resource-color-negative: $gray;
+
 //== Scaffolding
 //
 //## Settings for some of the most global styles.
@@ -46,7 +39,7 @@ $brand-secondary:       $brand-info;
 //** Background color for `<body>`.
 $body-bg:               #060606 !default;
 //** Global text color on `<body>`.
-$text-color:            #FFFFFF !default;
+$text-color:            $gray-light !default;
 
 //** Global textual link color.
 $link-color:            $brand-primary !default;
@@ -730,7 +723,7 @@ $panel-border-radius:         $border-radius-base !default;
 $panel-inner-border:          $gray-dark !default;
 $panel-footer-bg:             lighten($gray-darker, 10%) !default;
 
-$panel-default-text:          $text-color !default;
+$panel-default-text:          $white !default;
 $panel-default-border:        $panel-inner-border !default;
 $panel-default-heading-bg:    $panel-footer-bg !default;
 

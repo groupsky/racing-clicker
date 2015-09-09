@@ -17,7 +17,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 }
 
 .well-sm {
-  padding: $well-sm-padding;
+  // padding: $well-sm-padding;
 }
 
 .strikethrough {
@@ -501,6 +501,7 @@ body {
       @include ellipsis;
       @extend .titlecase;
       font-size: 15px;
+      color: $white;
 
       .unit-title-short {
         @extend .hidden-sm;
@@ -517,9 +518,7 @@ body {
     }
 
     .unit-production {
-      &.estimate {
-        color: $btn-link-disabled-color;
-      }
+      color: $btn-link-disabled-color;
     }
   }
 
@@ -831,7 +830,7 @@ a:focus, button:focus {
 
 // redesign
 .clicker {
-  background-color: $panel-bg;
+  background-color: $panel-default-heading-bg;
 }
 
 .scroller {
