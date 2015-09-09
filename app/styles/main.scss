@@ -845,3 +845,12 @@ a:focus, button:focus {
     overflow-y: hidden;
     position: relative;
 }
+
+.ps-container>.ps-scrollbar-y-rail {
+  right: 0px !important;
+}
+
+.panel-units .ps-container>.ps-scrollbar-x-rail,
+.panel-units .ps-container>.ps-scrollbar-y-rail {
+  opacity: 0.3;
+}
