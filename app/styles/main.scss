@@ -672,7 +672,7 @@ a:focus, button:focus {
     background-color: transparent;
   }
   50% {
-    background-color: transparentize($brand-danger, 0.75);
+    background-color: transparentize($brand-danger, 0);
   }
   100% {
     background-color: transparent;
@@ -774,16 +774,18 @@ a:focus, button:focus {
     &.panel-cars .panel-body {
       max-height: $panel-body-height - 4*$panel-body-padding + 5px;
     }
-    &.panel-technology, .panel-cars {
+    &.panel-technology, &.panel-cars {
       .panel-heading {
-        padding-top: $panel-body-padding/2+$padding-base-vertical+2px;
-        padding-bottom: $panel-body-padding/2+$padding-base-vertical+2px;
+        padding-top: $panel-body-padding/2+$padding-xs-vertical;
+        padding-bottom: $panel-body-padding/2+$padding-xs-vertical;
       }
     }
     &.panel-other {
       .panel-heading {
-        padding: $panel-body-padding/2 + 1px;
-        padding-bottom: $panel-body-padding/2 + 1px;
+        padding: $panel-body-padding/2;
+        .btn-group .btn {
+          @include button-size($padding-xs-vertical, $padding-xs-horizontal, $font-size-small, $line-height-small, $border-radius-small);
+        }
       }
     }
   }
@@ -791,7 +793,7 @@ a:focus, button:focus {
 
 @media (min-width: $screen-md-min) {
   .clicker {
-    height: $panel-body-height + $line-height-computed*2 - $panel-body-padding*3 + $padding-base-vertical - $panel-body-padding/2 - 2.5px;
+    height: $panel-body-height + $line-height-computed*2 - $panel-body-padding*3 + $padding-base-vertical - $panel-body-padding/2 - 6.5px - 9px;
   }
 }
 
