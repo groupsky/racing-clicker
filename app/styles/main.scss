@@ -13,7 +13,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 
 .jumbotron {
   @extend .panel;
-  @extend .panel-primary;
+  @extend .panel-warning;
+  border-color: white;
 }
 
 .well-sm {
@@ -460,6 +461,7 @@ body {
   @extend .navbar-btn;
   margin-left: 5px;
   margin-right: 5px;
+  border-width: 0;
 }
 
 .label-resource {
@@ -511,7 +513,7 @@ body {
       }
       .unit-level, .unit-count {
         @extend .badge;
-        background-color: #9933CC;
+        background-color: $btn-primary-bg;
       }
     }
 
@@ -562,7 +564,7 @@ body {
   .panel-body {
     @media (min-width: $screen-md-min) {
       height: $panel-body-height;
-      overflow-y: scroll;
+      overflow-y: visible;
     }
   }
 }
@@ -858,4 +860,10 @@ button.btn.btn-primary:active:focus {
 
 .panel.panel-default>.panel-heading {
   color: $text-color;
+}
+
+.scroller {
+    height: $panel-body-height;
+    overflow-y: hidden;
+    position: relative;
 }

@@ -2,6 +2,8 @@
 //
 //## Gray and brand colors for use across Bootstrap.
 
+$color-primary:         #FF8800;
+
 $brand-primary:         #3B3B3B;
 $brand-success:         #25CF26;
 $brand-info:            #2121CF;
@@ -19,10 +21,10 @@ $body-bg:               #3B3B3B;
 $text-color:            #FFFFFF;
 
 
-$border-color:          #E0E0E0;
+$border-color:          $color-primary;
 $btn-primary-border:    darken($border-color, 15%);
-$btn-primary-color:              #FADC00;
-$btn-primary-bg:              #FF8800;
+$btn-primary-color:              #FFFFFF;
+$btn-primary-bg:              $color-primary;
 $btn-primary-bg-pressed: #A85A00;
 
 
@@ -91,7 +93,7 @@ $modal-content-fallback-border-color:          $border-color;
 //** Background color of the whole progress component
 $progress-bg:                 transparentize($text-color, 0.6);
 //** Progress bar text color
-$progress-bar-color:          #FF8800;
+$progress-bar-color:          $color-primary;
 
 
 
@@ -103,5 +105,5 @@ $navbar-default-color:             $text-color;
 $navbar-default-bg:                $body-bg;
 $navbar-default-border:            $border-color;
 
-$resource-color-positive: #FADC00;
+$resource-color-positive: #FFFFFF;
 $resource-color-negative: #555555;
