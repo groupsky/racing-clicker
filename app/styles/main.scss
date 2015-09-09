@@ -1,9 +1,7 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
 
-
 @import "variables";
 @import "../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/variables";
-@import "variables";
 
 
 @import "../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/bootstrap";
@@ -514,7 +512,7 @@ body {
       }
       .unit-level, .unit-count {
         @extend .badge;
-        background-color: $color-secondary;
+        background-color: $brand-secondary;
       }
     }
 
@@ -834,33 +832,6 @@ a:focus, button:focus {
 // redesign
 .clicker {
   background-color: $panel-bg;
-}
-
-.navbar-right resource {
-  color: $resource-color-positive;
-}
-
-.progress .progress-bar {
-  background-color: $progress-bar-color;
-}
-
-button.btn.btn-primary {
-  background-color: $btn-primary-bg;
-  border-color: $btn-primary-bg;
-}
-
-button.btn.btn-primary:active:focus {
-  background-color: $btn-primary-bg-pressed;
-  border-color: $btn-primary-bg-pressed;
-}
-
-
-.unit-title {
-  color: $text-color;
-}
-
-.panel.panel-default>.panel-heading {
-  color: $text-color;
 }
 
 .scroller {

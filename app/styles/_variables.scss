@@ -4,14 +4,6 @@ $well-sm-padding: $panel-body-padding/2;
 $unit-height: 100px;
 $panel-body-height: $unit-height*2+$well-sm-padding*4+20px*2+10px;
 
-
-//== Colors
-//
-//## Gray and brand colors for use across Bootstrap.
-
-$color-primary:         #FF8800;
-$color-secondary:       #2A9FD6;
-
 $btn-primary-bg-pressed: #A85A00;
 
 
@@ -45,7 +37,7 @@ $brand-success:         #77B300 !default;
 $brand-info:            #9933CC !default;
 $brand-warning:         #2A9FD6 !default;
 $brand-danger:          #CC0000 !default;
-
+$brand-secondary:       $brand-info;
 
 //== Scaffolding
 //
@@ -54,7 +46,7 @@ $brand-danger:          #CC0000 !default;
 //** Background color for `<body>`.
 $body-bg:               #060606 !default;
 //** Global text color on `<body>`.
-$text-color:            $gray-light !default;
+$text-color:            #FFFFFF !default;
 
 //** Global textual link color.
 $link-color:            $brand-primary !default;
