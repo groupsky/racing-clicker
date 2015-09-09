@@ -8,6 +8,7 @@
           cars
         </span>
       </div>
+      <perfect-scrollbar class="scroller" wheel-propagation="true" wheel-speed="1" min-scrollbar-length="20">
       <div class="panel-body">
         <ul class="list-unstyled">
           <li ng-repeat="unit in game.tabs.byName.money.sortUnits() | filter:filterVisible track by unit.name"
@@ -16,6 +17,7 @@
           </li>
         </ul>
       </div>
+      </perfect-scrollbar>
     </div>
   </div>
 
