@@ -112,7 +112,7 @@ module.exports = function (grunt) {
           isDebugLogged: false,
           httpsAllowInsecure: false,
           showSkipped: false,
-          spreadsheetKey: 'v0.4.2',
+          spreadsheetKey: 'v0.4.3',
           saveId: 'v0.2',
           dropboxAppKey: dropboxAppKey('prod'),
           isDropboxEnabled: true,
