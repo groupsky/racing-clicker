@@ -25,13 +25,21 @@
           <resource name="achievements" value="game.achievementPercent()" filter="percent" filter-opts="2"></resource>
         </a>
       </li>
-      <li ng-if="game.unit('fame').isVisible()">
+      <li ng-if="game.unit('fame').isVisible()"
+          tooltip-template="'views/desc/unit/fame.html'"
+          tooltip-trigger="click"
+          tooltip-placement="bottom"
+          tooltip-class="tooltip-chart">
         <a href class="nav-fame">
           <unit-resource unit="::game.unit('fame')"></unit-resource>
         </a>
       </li>
       <li>
-        <a href class="nav-technology">
+        <a href class="nav-technology"
+           tooltip-template="'views/desc/unit/technology.html'"
+           tooltip-trigger="click"
+           tooltip-placement="bottom"
+           tooltip-class="tooltip-chart">
           <unit-resource unit="::game.unit('technology')"></unit-resource>
         </a>
       </li>

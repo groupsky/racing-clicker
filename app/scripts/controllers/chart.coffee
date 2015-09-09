@@ -32,17 +32,18 @@ angular.module('racingApp').controller 'ChartCtrl', ($scope, $log, game, options
     # tooltips refuse to display bignums properly, so don't show it at all
     tooltip: {trigger:'none'}
 
-  totalVelocity = $scope.game.unit('money').velocity()
+  unit = $scope.unit
+  totalVelocity = unit.velocity()
   $scope.updatecharts = ->
     $log.debug "updating chart data"
     #populate data.. move this to function so it can update.
     # also need to get the 'correct' units
     prodchart.data = [ ["Unit Name", "Production" ] ]
-    for unit in $scope.game.unitlist()
-      if unit.isVisible() and not unit.count().isZero() and unit.totalProduction().money?
+    for u in $scope.game.unitlist()
+      if u.isVisible() and not u.count().isZero() and unit.name of u.totalProduction()
         #$log.debug unit
         #need Number() for full pie.. will die with bignumbers!!!
-        prodchart.data.push [unit.type.label, unit.totalProduction().money.dividedBy(totalVelocity).toNumber()]
+        prodchart.data.push [u.type.label, u.totalProduction()[unit.name].dividedBy(totalVelocity).toNumber()]
 
   # this works since you can't buy territory units with the chart visible
   $scope.updatecharts()
