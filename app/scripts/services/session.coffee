@@ -80,7 +80,7 @@ angular.module('racingApp').factory 'session', (storage, $rootScope, $log, util,
       [sM, sm, sp] = saveversion.split('.').map (n) -> parseInt n
       [gM, gm, gp] = gameversion.split('.').map (n) -> parseInt n
       # during beta, 0.n.0 resets all games from 0.n-1.x. Don't import older games.
-      if sM == gM == 0 and sm != gm
+      if sM == gM == 0 and sm != gm and sm > 4
         throw new Error 'Beta save from different minor version'
       # No importing 1.0.x games into 0.2.x. Need this for publictest.
       # Importing 0.2.x into 1.0.x is fine.
@@ -158,7 +158,7 @@ angular.module('racingApp').factory 'session', (storage, $rootScope, $log, util,
       @_exportCache = encoded
       if not transient
         @_write()
-    
+
     _write: ->
       # write the game in @_exportCache without building a new one. usually
       # you'll want @save() instead, but @importSave() uses this to save the
