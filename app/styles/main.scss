@@ -586,6 +586,7 @@ body {
 .action-effect {
   animation: action-effect 3s linear;
   opacity: 0;
+  color: $white;
 
   unit-resource {
     @include clearfix;
@@ -598,12 +599,12 @@ body {
   }
 
   .positive {
-    background: #4e5;
+    background: $brand-success;
     border-color: #0a1;
   }
 
   .negative {
-    background: #e45;
+    background: $brand-danger;
     border-color: #a01;
   }
 }
