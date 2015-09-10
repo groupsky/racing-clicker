@@ -799,11 +799,16 @@ a:focus, button:focus {
 
 
 .fix-height {
-  height: 768px;
-  overflow: hidden;
   padding-bottom: 0;
   margin-bottom: 0;
   padding-top: $navbar-height+$grid-gutter-width / 3;
+
+  @media (min-width: $screen-md-min) {
+    & {
+      height: 768px;
+      overflow: hidden;
+    }
+  }
 
   .container, .container-fluid {
     height: 100%;
