@@ -4,7 +4,7 @@
       <div class="panel-heading">
         <i class="icon-resource icon-car"></i>
         <span class="pull-right">
-          {{(scrollbarWatches.cars = (game.tabs.byName.money.units | filter:filterVisible | filter:filterBought | count)-1)}}
+          {{(scrollbarWatches.cars = (game.tabs.byName.money.units | filter:filterVisible | count)-1)}}
           cars
         </span>
       </div>
@@ -35,7 +35,7 @@
       <div class="panel-heading">
         <i class="icon-resource icon-technology"></i>
         <span class="pull-right">
-          {{(scrollbarWatches.technologies = (game.tabs.byName.technology.units | filter:filterVisible | filter:filterBought | count)-1)}}
+          {{(scrollbarWatches.technologies = (game.tabs.byName.technology.units | filter:filterVisible | count)-1)}}
           technologies
         </span>
       </div>
@@ -82,7 +82,7 @@
            suppress-scroll-y="{{game.isFixHeight?'false':'true'}}"
            refresh-on-change="scrollbarWatches"
         >
-        <ul class="list-unstyled" count="{{(scrollbarWatches.other = (tab.sortUnits() | filter:filterVisible))}}">
+        <ul class="list-unstyled" count="{{(scrollbarWatches.other = (tab.sortUnits() | filter:filterVisible | count)-1)}}">
           <li ng-repeat="unit in tab.sortUnits() | filter:filterVisible track by unit.name" ng-if="!$last">
             <unit unit="::unit"></unit>
           </li>
