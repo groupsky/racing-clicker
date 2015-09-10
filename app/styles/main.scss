@@ -862,3 +862,7 @@ a:focus, button:focus {
 .panel-units .ps-container>.ps-scrollbar-y-rail {
   opacity: 0.3;
 }
+
+.modal {
+  overflow-y: auto;
+}
