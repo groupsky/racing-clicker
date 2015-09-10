@@ -203,7 +203,7 @@ angular.module('racingApp').factory 'Kongregate', (isKongregate, $log, $location
       #  @kongregate.stats.submit 'Initialized', 1
       @lastReported = now
       @kongregate.stats.submit 'Racing Upgrades', @_count game.upgrade 'driving_upgrade'
-      @kongregate.stats.submit 'Cars Bought', @_countBought game.tabs.byName.money.units
+      @kongregate.stats.submit 'Cars Bought', @_countBought(game.tabs.byName.money.units)-1
       # @kongregate.stats.submit 'GameComplete', @_count game.unit 'ascension'
       # @kongregate.stats.submit 'Mutations Unlocked', @_count game.upgrade 'mutatehidden'
       @kongregate.stats.submit 'Achievement Points', game.achievementPoints()
