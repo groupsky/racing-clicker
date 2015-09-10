@@ -25,7 +25,7 @@ angular.module('racingApp').factory 'Options', ($log, util, env, game, $location
     addvunit 'min', 'minute', 'minutes', 'm', 60
     addvunit 'hr', 'hour', 'hours', 'h', 60 * 60
     addvunit 'day', 'day', 'days', 'd', 60 * 60 * 24
-    addvunit 'warp', 'Swarmwarp', 'Swarmwarps', 'w', -> game.upgrade('swarmwarp').effect[0].output()
+#    addvunit 'warp', 'Swarmwarp', 'Swarmwarps', 'w', -> game.upgrade('swarmwarp').effect[0].output()
 
   maybeSet: (field, val, valid) ->
     if val?
