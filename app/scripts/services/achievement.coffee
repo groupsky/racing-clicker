@@ -140,7 +140,8 @@ angular.module('racingApp').factory 'AchievementsListener', (util, $log, $timeou
               # requirements are 'or'ed
               achieve.earn()
           if not require.event and require.unit and require.val
-            count = require.unit.count()
+            count = require.unit.statistics().twinnum ? 0
+            count = new Decimal count
             $log.debug 'achievement check: unitcount after command', require.unit.name, count, count? && count >= require.val
             if count? && count.greaterThanOrEqualTo(require.val)
               $log.debug 'earned', achieve.name, achieve
