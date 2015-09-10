@@ -82,7 +82,7 @@
            suppress-scroll-y="{{game.isFixHeight?'false':'true'}}"
            refresh-on-change="scrollbarWatches"
         >
-        <ul class="list-unstyled">
+        <ul class="list-unstyled" count="{{(scrollbarWatches.other = (tab.sortUnits() | filter:filterVisible))}}">
           <li ng-repeat="unit in tab.sortUnits() | filter:filterVisible track by unit.name" ng-if="!$last">
             <unit unit="::unit"></unit>
           </li>
