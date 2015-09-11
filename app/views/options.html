@@ -54,7 +54,7 @@
     <label ng-repeat="vu in options.VELOCITY_UNITS.list" style="font-weight:normal" class="titlecase">
       <input type="radio" ng-model="form.velocityUnit" value="{{vu.name}}" ng-change="options.velocityUnit(form.velocityUnit)">{{vu.plural}}</input>
     </label>
-    <p>Example: {{10 * options.velocityUnit().mult|longnum}} meat/{{options.velocityUnit().name}}</p>
+    <p>Example: {{10 * options.velocityUnit().mult|longnum}} bucks/{{options.velocityUnit().name}}</p>
   </div>
 
   <div class="form-group">
