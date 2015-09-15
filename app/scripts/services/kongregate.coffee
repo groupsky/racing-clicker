@@ -67,44 +67,46 @@ angular.module('racingApp').factory 'Kongregate', (isKongregate, $log, $location
     scrolling = options.scrolling()
     $log.debug 'updating kong scroll option', scrolling
 
-    if scrolling == 'resize'
-      # no blinking scrollbar on resize. https://stackoverflow.com/questions/2469529/how-to-disable-scrolling-the-document-body
-      document.body.style.overflow = 'hidden'
-      @onResize = @_onResize
-      # selecting autoresize should always trigger a resize
-      @onResize true
-    else
-      document.body.style.overflow = ''
-      @onResize = ->
+    # if scrolling == 'resize'
+    #   # no blinking scrollbar on resize. https://stackoverflow.com/questions/2469529/how-to-disable-scrolling-the-document-body
+    #   document.body.style.overflow = 'hidden'
+    #   @onResize = @_onResize
+    #   # selecting autoresize should always trigger a resize
+    #   @onResize true
+    # else
+    #   document.body.style.overflow = ''
+    #   @onResize = ->
+    #
+    # if scrolling == 'lockhover'
+    #   @bindLockhover()
+    # else
+    #   @unbindLockhover()
+    #
+    # if scrolling != 'resize' and oldscroll == 'resize' and @isLoaded and not noresizedefault
+    #   @_resizeGame null, null
 
-    if scrolling == 'lockhover'
-      @bindLockhover()
-    else
-      @unbindLockhover()
-
-    if scrolling != 'resize' and oldscroll == 'resize' and @isLoaded and not noresizedefault
-      @_resizeGame null, null
+    @bindLockhover()
 
   unbindLockhover: ->
     $('html').off 'DOMMouseScroll mousewheel'
   bindLockhover: ->
     # heavily based on https://stackoverflow.com/questions/5802467/prevent-scrolling-of-parent-element
-    body = $('body')[0]
-    $both = $('body,html')
+    # body = $('body')[0]
+    # $both = $('body,html')
     $('html').on 'DOMMouseScroll mousewheel', (ev) ->
-      $this = $(this)
-      scrollTop = this.scrollTop or body.scrollTop
-      scrollHeight = this.scrollHeight
-      #height = $this.height()
-      #height = $this.outerHeight true
-      height = window.innerHeight
-      if ev.type == 'DOMMouseScroll'
-        delta = ev.originalEvent.detail * -40
-      else
-        delta = ev.originalEvent.wheelDelta
-      up = delta > 0
-      # not even log.debugs; scroll events are performance-sensitve.
-      #console.log 'mousewheelin', delta, up, scrollTop, scrollHeight, height
+      # $this = $(this)
+      # scrollTop = this.scrollTop or body.scrollTop
+      # scrollHeight = this.scrollHeight
+      # #height = $this.height()
+      # #height = $this.outerHeight true
+      # height = window.innerHeight
+      # if ev.type == 'DOMMouseScroll'
+      #   delta = ev.originalEvent.detail * -40
+      # else
+      #   delta = ev.originalEvent.wheelDelta
+      # up = delta > 0
+      # # not even log.debugs; scroll events are performance-sensitve.
+      # #console.log 'mousewheelin', delta, up, scrollTop, scrollHeight, height
 
       prevent = ->
         ev.stopPropagation()
@@ -112,18 +114,20 @@ angular.module('racingApp').factory 'Kongregate', (isKongregate, $log, $location
         ev.returnValue = false
         return false
 
-      #console.log 'mousewheelin check down', !up, -delta, scrollHeight - height - scrollTop
-      #console.log 'mousewheelin check up', up, delta, scrollTop
-      if !up && -delta > scrollHeight - height - scrollTop
-        #console.log 'mousewheelin blocks down', delta, up
-        # Scrolling down, but this will take us past the bottom.
-        $both.scrollTop scrollHeight
-        return prevent()
-      else if up && delta > scrollTop
-        # Scrolling up, but this will take us past the top.
-        #console.log 'mousewheelin blocks up', delta, up
-        $both.scrollTop(0)
-        return prevent()
+      return prevent()
+
+      # #console.log 'mousewheelin check down', !up, -delta, scrollHeight - height - scrollTop
+      # #console.log 'mousewheelin check up', up, delta, scrollTop
+      # if !up && -delta > scrollHeight - height - scrollTop
+      #   #console.log 'mousewheelin blocks down', delta, up
+      #   # Scrolling down, but this will take us past the bottom.
+      #   $both.scrollTop scrollHeight
+      #   return prevent()
+      # else if up && delta > scrollTop
+      #   # Scrolling up, but this will take us past the top.
+      #   #console.log 'mousewheelin blocks up', delta, up
+      #   $both.scrollTop(0)
+      #   return prevent()
 
   # Login to swarmsim using Kongregate userid/token as credentials.
   _swarmApiLogin: ->
