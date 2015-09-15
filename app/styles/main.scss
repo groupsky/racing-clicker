@@ -753,7 +753,7 @@ a:focus, button:focus {
 
 .panel-units {
   .panel-body {
-    overflow-y: hidden;
+    overflow-y: auto;
     position: relative;
     padding-bottom: 0;
     padding-top: 0;
@@ -808,6 +808,15 @@ a:focus, button:focus {
       height: 768px;
       overflow: hidden;
     }
+
+    .modal {
+      overflow-y: hidden;
+
+      .scrollable {
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+    }
   }
 
   .container, .container-fluid {
@@ -853,21 +862,26 @@ a:focus, button:focus {
   background-color: $panel-default-heading-bg;
 }
 
-.scroller {
-    height: $panel-body-height;
-    overflow-y: hidden;
-    position: relative;
+
+.panel .panel-body::-webkit-scrollbar, .modal .scrollable::-webkit-scrollbar {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+.panel .panel-body::-webkit-scrollbar, .modal .scrollable::-webkit-scrollbar {
+  width: 8px;
+  background-color: rgba(238, 238, 238, 0);
+}
+.panel:hover .panel-body::-webkit-scrollbar, .modal:hover .scrollable::-webkit-scrollbar {
+  background-color: rgba(238, 238, 238, 0.9);
 }
 
-.ps-container>.ps-scrollbar-y-rail {
-  right: 0px !important;
+.panel .panel-body::-webkit-scrollbar-thumb, .modal .scrollable::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: rgba(153, 153, 153, 0.3);
 }
 
-.panel-units .ps-container>.ps-scrollbar-x-rail,
-.panel-units .ps-container>.ps-scrollbar-y-rail {
-  opacity: 0.3;
-}
-
-.modal {
-  overflow-y: auto !important;
+.panel:hover .panel-body::-webkit-scrollbar-thumb, .modal:hover .scrollable::-webkit-scrollbar-thumb {
+  background-color: rgba(153, 153, 153, 1);
 }

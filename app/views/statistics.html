@@ -3,7 +3,7 @@
   <h2>Statistics</h2>
 </div>
 
-<div class="modal-body">
+<div class="modal-body scrollable">
   <div google-chart chart="chartData()"></div>
   <div ng-repeat="unit in game.unitlist()">{{unit.label}}</div>
   <div class="table-responsive" ng-init="unitlist = (game.unitlist() | filter:showStats)">

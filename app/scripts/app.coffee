@@ -23,7 +23,6 @@ angular.module 'racingApp', [
     #'cfp.hotkeys'
     'googlechart'
     'ui.bootstrap'
-    'perfect_scrollbar'
   ]
 
 angular.module('racingApp').config (version, env) ->
