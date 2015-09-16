@@ -3719,7 +3719,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.0', {
       },
       {
         "cost.unittype": "money",
-        "cost.val": "4.00E+03",
+        "cost.val": "2.00E+03",
         "description": "",
         "disabled": "",
         "effect.stat": "",
@@ -3787,7 +3787,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.0', {
       },
       {
         "cost.unittype": "money",
-        "cost.val": "1.60E+05",
+        "cost.val": "4.00E+04",
         "description": "",
         "disabled": "",
         "effect.stat": "",
@@ -3855,7 +3855,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.0', {
       },
       {
         "cost.unittype": "money",
-        "cost.val": "1.28E+07",
+        "cost.val": "1.20E+06",
         "description": "",
         "disabled": "",
         "effect.stat": "",
@@ -3923,7 +3923,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.0', {
       },
       {
         "cost.unittype": "money",
-        "cost.val": "2.05E+09",
+        "cost.val": "4.80E+07",
         "description": "",
         "disabled": "",
         "effect.stat": "",
@@ -3991,7 +3991,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.0', {
       },
       {
         "cost.unittype": "money",
-        "cost.val": "6.55E+11",
+        "cost.val": "2.40E+09",
         "description": "",
         "disabled": "",
         "effect.stat": "",
@@ -4059,7 +4059,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.0', {
       },
       {
         "cost.unittype": "money",
-        "cost.val": "4.19E+14",
+        "cost.val": "1.44E+11",
         "description": "",
         "disabled": "",
         "effect.stat": "",
@@ -4127,7 +4127,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.0', {
       },
       {
         "cost.unittype": "money",
-        "cost.val": "5.37E+17",
+        "cost.val": "1.01E+13",
         "description": "",
         "disabled": "",
         "effect.stat": "",
@@ -4195,7 +4195,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.0', {
       },
       {
         "cost.unittype": "money",
-        "cost.val": "1.37E+21",
+        "cost.val": "8.06E+14",
         "description": "",
         "disabled": "",
         "effect.stat": "",
@@ -4263,7 +4263,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.0', {
       },
       {
         "cost.unittype": "money",
-        "cost.val": "7.04E+24",
+        "cost.val": "7.26E+16",
         "description": "",
         "disabled": "",
         "effect.stat": "",
@@ -4331,7 +4331,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.0', {
       },
       {
         "cost.unittype": "money",
-        "cost.val": "7.21E+28",
+        "cost.val": "7.26E+18",
         "description": "",
         "disabled": "",
         "effect.stat": "",
@@ -4399,7 +4399,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.0', {
       },
       {
         "cost.unittype": "money",
-        "cost.val": "1.48E+33",
+        "cost.val": "7.98E+20",
         "description": "",
         "disabled": "",
         "effect.stat": "",
@@ -4467,7 +4467,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.0', {
       },
       {
         "cost.unittype": "money",
-        "cost.val": "6.04E+37",
+        "cost.val": "9.58E+22",
         "description": "",
         "disabled": "",
         "effect.stat": "",
