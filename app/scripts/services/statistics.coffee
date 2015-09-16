@@ -20,14 +20,16 @@ angular.module('racingApp').factory 'StatisticsListener', (util, $log, kongregat
     stats.chartData ?= []
 
   push: (cmd) ->
+    cmd.clicks ?= 1
     stats = @session.state.statistics
-    stats.clicks += 1
+    stats.clicks += cmd.clicks
     if cmd.unitname?
       ustats = stats.byUnit[cmd.unitname]
       if not ustats?
         ustats = stats.byUnit[cmd.unitname] = {clicks:0,num:0,twinnum:0,elapsedFirst:cmd.elapsed}
         @scope.$emit 'buyFirst', cmd
-      ustats.clicks += 1
+      ustats.clicks += cmd.clicks
+      ustats.cps = Math.max(ustats.cps || 0, cmd.cps) if cmd.cps?
       try
         ustats.num = new Decimal(ustats.num).plus(cmd.num)
         ustats.twinnum = new Decimal(ustats.twinnum).plus(cmd.twinnum)
@@ -40,7 +42,7 @@ angular.module('racingApp').factory 'StatisticsListener', (util, $log, kongregat
       if not ustats?
         ustats = stats.byUpgrade[cmd.upgradename] = {clicks:0,num:0,elapsedFirst:cmd.elapsed}
         @scope.$emit 'buyFirst', cmd
-      ustats.clicks += 1
+      ustats.clicks += cmd.clicks
       try
         ustats.num = new Decimal(ustats.num).plus(cmd.num)
       catch e
