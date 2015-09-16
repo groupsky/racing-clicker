@@ -30,11 +30,24 @@ angular.module('racingApp').directive 'clickero', ($rootScope, $timeout, game, A
   priority: -100
   link: ($scope, element, attrs) ->
     actionEffectPool = new ActionEffectPool()
+
     working = false
     savePromise = false
     aggregated = new Decimal 0
     count = 0
     start = false
+
+    fame = game.unit('fame')
+    driving = game.unit('driving')
+    production = driving.totalProduction().fake_fame
+
+    $scope.$watch ->
+      newProduction = driving.totalProduction().fake_fame
+      if not production.equals newProduction then newProduction else production
+    , (newProd) ->
+      production = newProd
+      actionEffectPool.clearPool()
+
     element.bind 'click', (e) ->
       element.disabled = true
       if not working
@@ -42,17 +55,16 @@ angular.module('racingApp').directive 'clickero', ($rootScope, $timeout, game, A
         actionEffectPool.button = angular.element(element)
         working = true
 
-        for name, val of $scope.driving.totalProduction()
-          $scope.fame._addCount val
+        fame._addCount production
 
         actionEffectPool.handleEvent
-          unit: $scope.fame
-          unitname: $scope.fame.name
-          num: val
-          twinnum: val
+          unit: fame
+          unitname: fame.name
+          num: production
+          twinnum: production
           costs: {}
 
-        aggregated = aggregated.plus(val)
+        aggregated = aggregated.plus(production)
         count += 1
         start = new Date().getTime() if not start
         end = new Date().getTime()
@@ -62,8 +74,8 @@ angular.module('racingApp').directive 'clickero', ($rootScope, $timeout, game, A
           game.save()
           $rootScope.$emit "command",
             name: 'race'
-            unit: $scope.fame
-            unitname: $scope.fame.name
+            unit: fame
+            unitname: fame.name
             now: game.now
             elapsed: game.elapsedStartMillis()
             attempt: aggregated

@@ -29,6 +29,11 @@ angular.module('racingApp').factory 'ActionEffectPool', ($compile, $document, $r
     tip.hide()
     @pool.push(tip)
 
+  clearPool: ->
+    for tip in @pool
+      tip.remove()
+    @pool = []
+
   handleEvent: (args) ->
     return if args?.skipEffect
     modified = for name, cost of args.costs
@@ -66,8 +71,12 @@ angular.module('racingApp').factory 'ActionEffectPool', ($compile, $document, $r
 
     @button = false
 
+    pool = @pool
     $timeout =>
-      @release tip
+      if @pool isnt pool
+        tip.remove()
+      else
+        @release tip
     , 5000, false
 
 angular.module('racingApp').factory 'actionEffectPool', ($rootScope, ActionEffectPool) ->
