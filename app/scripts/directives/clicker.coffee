@@ -25,10 +25,11 @@ angular.module('racingApp').directive 'clicker', ($rootScope, $timeout, game) ->
     $scope.filterVisible = (upgrade) -> upgrade.isVisible()
 
 
-angular.module('racingApp').directive 'clickero', ($rootScope, $timeout, game, actionEffectPool) ->
+angular.module('racingApp').directive 'clickero', ($rootScope, $timeout, game, ActionEffectPool) ->
   restrict: 'A'
   priority: -100
   link: ($scope, element, attrs) ->
+    actionEffectPool = new ActionEffectPool()
     working = false
     savePromise = false
     aggregated = new Decimal 0
