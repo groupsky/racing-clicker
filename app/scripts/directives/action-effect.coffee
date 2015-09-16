@@ -80,7 +80,5 @@ angular.module('racingApp').service 'actionEffectPool', ($compile, $document, $r
 
   $rootScope.$on 'command', (event, args) =>
     @handleEvent args
-  $rootScope.$on 'race', (event, args) =>
-    @handleEvent args
 
   this
