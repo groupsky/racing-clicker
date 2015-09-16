@@ -1,5 +1,9 @@
 <div class="modal-header achievements-dialog-header">
-  <button type="button" class="close" ng-click="closeDialog()"><h2><span aria-hidden="true">&times;</span><h2><span class="sr-only">Close</span></button>
+  <button type="button" class="close" ng-click="closeDialog()">
+    <span aria-hidden="true">&times;</span>
+
+    <span class="sr-only">Close 2</span>
+  </button>
   <h2>Changelog</h2>
 </div>
 
@@ -16,53 +20,60 @@
     <p>Last week: {{changestats.lastHeaders(7).length|number}} releases, {{changestats.lastHeaders(7).length/7|number:2}} releases per day</p>
   </div> -->
   <div class="changelog">
-  <!-- template
-  <h4>0.0.1 <span>2009/09/09</span></h4>
-  <ul>
-    <li>blah</li>
-  </ul>
-  -->
+    <!-- template
+    <h4>0.0.1 <span>2009/09/09</span></h4>
+    <ul>
+      <li>blah</li>
+    </ul>
+    -->
 
-  <div class="panel-group" id="accordion">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" data-target="#changelog05x" href="javascript:">
-            Version 0.5.X
-          </a>
-        </h4>
-      </div>
-      <div id="changelog05x" class="panel-collapse collapse in">
-        <div class="panel-body">
-  <h4>0.5.1 <span>2015/09/15</span></h4>
-  <ul>
-    <li>Fixed car buying achievements </li>
-    <li>Fixed initial redirect after game loaded </li>
-    <li>Fixed scrollbars </li>
-    <li>Added changelog menu</li>
-  </ul>
-  <h4>0.5.0 <span>2015/09/10</span></h4>
-  <ul>
-    <li>Initial release.</li>
-  </ul>
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#changelog05x" href="javascript:">
+              Version 0.5.X
+            </a>
+          </h4>
+        </div>
+        <div id="changelog05x" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <h4>0.5.2 <span>2015/09/16</span></h4>
+            <ul>
+              <li>Added changelog menu</li>
+              <li>Optimized race button</li>
+              <li>Fix saving game state after racing</li>
+              <li>Fix fame achievements</li>
+              <li>Fixed initial redirect after game loaded</li>
+              <li>Lock page scrolling inside scrollable panels</li>
+            </ul>
+            <h4>0.5.1 <span>2015/09/15</span></h4>
+            <ul>
+              <li>Fixed car buying achievements</li>
+              <li>Fixed scrollbars</li>
+            </ul>
+            <h4>0.5.0 <span>2015/09/10</span></h4>
+            <ul>
+              <li>Initial release.</li>
+            </ul>
+          </div>
         </div>
       </div>
+      <!--div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" data-target="#collapseThree" href="javascript:">
+              Collapsible Group Item #3
+            </a>
+          </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse">
+          <div class="panel-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+          </div>
+        </div>
+      </div-->
     </div>
-    <!--div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" data-target="#collapseThree" href="javascript:">
-            Collapsible Group Item #3
-          </a>
-        </h4>
-      </div>
-      <div id="collapseThree" class="panel-collapse collapse">
-        <div class="panel-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-        </div>
-      </div>
-    </div-->
-  </div>
 
   </div>
 </div>
