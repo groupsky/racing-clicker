@@ -8,7 +8,7 @@
           cars
         </span>
       </div>
-      <div class="panel-body">
+      <div class="panel-body scrollable">
         <ul class="list-unstyled">
           <li ng-repeat="unit in game.tabs.byName.money.sortUnits() | filter:filterVisible track by unit.name"
               ng-if="!$last">
@@ -32,7 +32,7 @@
           technologies
         </span>
       </div>
-      <div class="panel-body">
+      <div class="panel-body scrollable">
         <ul class="list-unstyled">
           <li ng-repeat="unit in game.tabs.byName.technology.sortUnits() | filter:filterVisible track by unit.name"
               ng-if="!$last">
@@ -59,7 +59,7 @@
            </a>
         </div>
       </div>
-      <div class="panel-body">
+      <div class="panel-body scrollable">
         <ul class="list-unstyled">
           <li ng-repeat="unit in tab.sortUnits() | filter:filterVisible track by unit.name" ng-if="!$last">
             <unit unit="::unit"></unit>

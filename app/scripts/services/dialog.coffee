@@ -22,11 +22,14 @@ angular.module('racingApp').service 'dialogService', ($rootScope, $log, $modal, 
       feedback:
         template: 'views/contact.html'
         controller: 'ContactCtrl'
+      changelog:
+        template: 'views/changelog.html'
   openDialog: (name) ->
     controllerScope = $rootScope.$new()
     controllerScope.closeDialog = () ->
       controllerScope.modalInstance.dismiss()
-    $controller(@dialogs[name].controller, {$scope: controllerScope})
+    if(@dialogs[name].controller)
+      $controller(@dialogs[name].controller, {$scope: controllerScope})
     controllerScope.modalInstance = $modal.open({
       templateUrl: @dialogs[name].template
       scope: controllerScope
