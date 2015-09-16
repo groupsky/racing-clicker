@@ -31,6 +31,9 @@ angular.module('racingApp').directive 'clickero', ($rootScope, $timeout, game, a
   link: ($scope, element, attrs) ->
     working = false
     savePromise = false
+    aggregated = new Decimal 0
+    count = 0
+    start = false
     element.bind 'click', (e) ->
       element.disabled = true
       if not working
@@ -48,20 +51,31 @@ angular.module('racingApp').directive 'clickero', ($rootScope, $timeout, game, a
           twinnum: val
           costs: {}
 
+        aggregated = aggregated.plus(val)
+        count += 1
+        start = new Date().getTime() if not start
+        end = new Date().getTime()
+
         $timeout.cancel savePromise if savePromise
         savePromise = $timeout ->
-          game.save
+          game.save()
           $rootScope.$emit "command",
-            name: 'buyUnit'
+            name: 'race'
             unit: $scope.fame
             unitname: $scope.fame.name
             now: game.now
             elapsed: game.elapsedStartMillis()
-            attempt: val
-            num: val
-            twinnum: val
+            attempt: aggregated
+            num: aggregated
+            twinnum: aggregated
             costs: {}
             skipEffect: true
+            clicks: count
+            cps: if count > 1 then count*1000.0/(end-start) else count
+          aggregated = new Decimal 0
+          count = 0
+          start = false
+          end = false
         , 1500
 
         $timeout ->
