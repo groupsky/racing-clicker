@@ -448,6 +448,9 @@ body {
   &.icon-team {
     @include icon($fa-var-users);
   }
+  &.icon-upgrades {
+    @include icon($fa-var-level-up)
+  }
 }
 
 //.navbar .resource, .navbar .btn-options {
@@ -518,7 +521,11 @@ body {
     }
 
     .unit-production {
-      color: $btn-link-disabled-color;
+      color: $btn-default-color;
+
+      &.estimate {
+        color: $btn-link-disabled-color;
+      }
     }
   }
 
@@ -884,4 +891,8 @@ a:focus, button:focus {
 
 .panel:hover .panel-body::-webkit-scrollbar-thumb, .modal:hover .scrollable::-webkit-scrollbar-thumb {
   background-color: rgba(153, 153, 153, 1);
+}
+
+.upgradable {
+  color: $brand-primary !important;
 }
