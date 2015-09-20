@@ -28,7 +28,8 @@
           <span
             ng-if="(unit.type.unbuyable && !unit.upgrades.byName[unit.name+'_upgrade'].count().isZero()) || (!unit.type.unbuyable && !unit.count().isZero())"
             ng-class="::{'unit-level': unit.type.unbuyable, 'unit-count': !unit.type.unbuyable}">
-            {{unit.type.unbuyable?unit.upgrades.byName[unit.name+'_upgrade'].count():unit.count()|bignum}}
+            <span class="value">{{unit.type.unbuyable?unit.upgrades.list[unit.upgrades.list.length-1].count():unit.count()|bignum}}</span>
+            <span ng-if="(max = (unit.type.unbuyable?unit.upgrades.list[unit.upgrades.list.length-1].type.maxlevel:unit._getCap()))" class="max">/{{max|bignum}}</span>
           </span>
         </p>
       </div>
