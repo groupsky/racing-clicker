@@ -19,6 +19,7 @@ angular.module('racingApp').factory 'ProducerPath', ($log, UNIT_LIMIT) -> class 
         val = new Decimal(ancestordata.prod.val).plus ancestordata.parent.stat 'base', 0
         ret = ret.times val
         ret = ret.times ancestordata.parent.stat 'prod', 1
+        ret = ret.times ancestordata.parent.stat 'prod2', 1
         # Cap ret, just like count(). This prevents Infinity * 0 = NaN problems, too.
         ret = Decimal.min ret, UNIT_LIMIT
       return ret
@@ -448,7 +449,7 @@ angular.module('racingApp').factory 'Unit', (util, $log, Effect, ProducerPaths, 
     return @game.cache.eachProduction[@name] ?= do =>
       ret = {}
       for prod in @prod
-        ret[prod.unit.unittype.name] = (prod.val.plus @stat 'base', 0).times @stat 'prod', 1
+        ret[prod.unit.unittype.name] = (prod.val.plus @stat 'base', 0).times(@stat 'prod', 1).times(@stat 'prod2', 1)
       return ret
 
   eachCost: ->
