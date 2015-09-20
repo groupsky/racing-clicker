@@ -43,7 +43,7 @@
     </div>
   </div>
 
-  <div ng-if="game.tabs.byName.fame.isVisible() || game.tabs.byName.teams.isVisible()" class="col-md-6">
+  <div ng-if="game.tabs.byName.fame.isVisible() || game.tabs.byName.teams.isVisible() || game.tabs.byName.upgrades.isVisible()" class="col-md-6">
     <div class="panel panel-default panel-units panel-other" ng-init="tab = game.tabs.byName.fame">
       <div class="panel-heading">
         <div class="btn-group btn-group-justified" role="tablist">
@@ -57,12 +57,22 @@
              <i class="icon-resource icon-team"></i>
              teams
            </a>
+          <a ng-show="game.tabs.byName.upgrades.isVisible()" href role="tab" class="btn btn-default"
+             ng-class="{active: tab == game.tabs.byName.upgrades}" ng-click="tab = game.tabs.byName.upgrades">
+            <i class="icon-resource icon-upgrades"></i>
+            upgrades
+          </a>
         </div>
       </div>
       <div class="panel-body scrollable">
-        <ul class="list-unstyled">
+        <ul ng-if="tab !== 'upgrades'" class="list-unstyled">
           <li ng-repeat="unit in tab.sortUnits() | filter:filterVisible track by unit.name" ng-if="!$last">
             <unit unit="::unit"></unit>
+          </li>
+        </ul>
+        <ul ng-if="tab == 'upgrades'" class="list-unstiled">
+          <li ng-repeat="upgrade in game.unit('upgrades').upgrades.byClass.upgrade | filter:filterVisible">
+            <upgrade upgrade="::upgrade"></upgrade>
           </li>
         </ul>
       </div>

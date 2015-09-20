@@ -76,7 +76,7 @@ module.exports = function (grunt) {
           isDebugLogged: true,
           httpsAllowInsecure: true,
           showSkipped: true,
-          spreadsheetKey: 'v0.5.0',
+          spreadsheetKey: 'v0.5.2',
           saveId: 'v0.2',
           dropboxAppKey: dropboxAppKey('dev'),
           isDropboxEnabled: true,
@@ -194,6 +194,8 @@ module.exports = function (grunt) {
     preloadSpreadsheet: {
       'v0.4.3': 'https://docs.google.com/spreadsheets/d/1bMUTTMRvbbdLN5MRE2W611jORVjURjEMcfSsXmWwFQk/pubhtml',
       'v0.5.0': 'https://docs.google.com/spreadsheets/d/1t1Oz8qxUSFjggdfnCmbjfCcXBz7w7dYngq8ZVIwPncQ/pubhtml',
+      'v0.5.1': 'https://docs.google.com/spreadsheets/d/1xF1tutiVPOpv8zgpn3LSd5RLy2OFYDApMrTahAh0cbU/pubhtml',
+      'v0.5.2': 'https://docs.google.com/spreadsheets/d/1li_01Co0ZL0ZfSgkiuFzqd48jQZzmkLKgQkudPRM62Y/pubhtml',
     },
     mxmlc: {
       options: {
