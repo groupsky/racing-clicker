@@ -24,6 +24,9 @@ angular.module('racingApp').service 'dialogService', ($rootScope, $log, $modal, 
         controller: 'ContactCtrl'
       changelog:
         template: 'views/changelog.html'
+      endgame:
+        template: 'views/endgame.html'
+        size: 'md'
   openDialog: (name) ->
     controllerScope = $rootScope.$new()
     controllerScope.closeDialog = () ->
@@ -33,5 +36,5 @@ angular.module('racingApp').service 'dialogService', ($rootScope, $log, $modal, 
     controllerScope.modalInstance = $modal.open({
       templateUrl: @dialogs[name].template
       scope: controllerScope
-      size: 'lg'
+      size: @dialogs[name].size ? 'lg'
       })

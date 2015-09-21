@@ -11,7 +11,7 @@ angular.module('racingApp').controller 'HeaderCtrl', ($scope, $window, env, vers
                                                      $interval, $log, $location
 kongregateScrolling, pageTheme, remoteSaveInit, touchTooltipInit
 # analytics/statistics not actually used, just want them to init
-versioncheck, analytics, statistics, achievementslistener
+versioncheck, analytics, statistics, achievementslistener, endgame
 # favico is not used for the moment
 #                                                     favico
 ) ->

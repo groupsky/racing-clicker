@@ -1,0 +1,18 @@
+<div class="modal-header achievements-dialog-header">
+  <button type="button" class="close" ng-click="closeDialog()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <h2>Congratulations!</h2>
+</div>
+
+<div class="modal-body endgame scrollable">
+  <h1 class="pull-left"><i class="fa fa-trophy"></i></h1>
+  <h4>You have completed the game in <strong>{{game.elapsedStartMillis() | duration}}</strong>!</h4>
+  <p class="text-warning">You may continue playing or start from the beginning. Be warned that owning the <strong>{{::game.unit('car26').type.label}}</strong> car takes weeks and even months of dedication and hard work!</p>
+</div>
+
+<div class="modal-footer" ng-controller="OptionsCtrl">
+  <button class="btn resetalert" ng-click="confirmReset()">
+    <span class="glyphicon glyphicon-warning-sign"></span>
+    Restart
+  </button>
+  <button type="button" class="btn btn-warning" ng-click="closeDialog()">Continue</button>
+</div>

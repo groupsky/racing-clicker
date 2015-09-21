@@ -206,13 +206,15 @@ angular.module('racingApp').factory 'Kongregate', (isKongregate, $log, $location
       @lastReported = now
       @kongregate.stats.submit 'Racing Upgrades', @_count game.upgrade 'driving_upgrade'
       @kongregate.stats.submit 'Cars Bought', @_countBought(game.tabs.byName.money.units)-1
+      @kongregate.stats.submit 'Racer Level', @_count game.upgrade 'autoclicker_upgrade'
       # @kongregate.stats.submit 'GameComplete', @_count game.unit 'ascension'
       # @kongregate.stats.submit 'Mutations Unlocked', @_count game.upgrade 'mutatehidden'
       @kongregate.stats.submit 'Achievement Points', game.achievementPoints()
       @_submitTimetrialMins 'Minutes to First Racing Upgrade', game.upgrade 'driving_upgrade'
-      @_submitTimetrialMins 'Minutes to First Team', game.unit 'team1'
       @_submitTimetrialMins 'Minutes to First Sponsor', game.unit 'sponsor1'
-      @_submitTimetrialMins 'Minutes to Last Car', game.unit 'car26'
+      @_submitTimetrialMins 'Minutes to Racer', game.upgrade 'autoclicker_buy'
+      @_submitTimetrialMins 'Minutes to End Game', game.upgrade 'car10_buy'
+      @_submitTimetrialMins 'Minutes to Last Car', game.upgrade 'car26_buy'
       # @_submitTimetrialMins 'Minutes to First Ascension', game.unit 'ascension'
     catch e
       $log.warn 'kongregate reportstats failed - continuing', e
