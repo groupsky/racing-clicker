@@ -1,0 +1,5 @@
+<div class="text-left">
+  <p>Double the fame from racing.</p>
+  Current level: <span class="pull-right text-primary">&times;{{upgrade.effect[0].calcStats({}, {}, upgrade.count()).prod | bignum}}</span><br>
+  Next level: <span class="pull-right text-primary">&times;{{upgrade.effect[0].calcStats({}, {}, upgrade.count().plus(1)).prod | bignum}}</span>
+</div>

@@ -5393,7 +5393,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car2"
       },
       {
@@ -5439,7 +5439,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car3"
       },
       {
@@ -5485,7 +5485,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car4"
       },
       {
@@ -5531,7 +5531,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car5"
       },
       {
@@ -5577,7 +5577,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car6"
       },
       {
@@ -5623,7 +5623,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car7"
       },
       {
@@ -5669,7 +5669,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car8"
       },
       {
@@ -5715,7 +5715,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car9"
       },
       {
@@ -5761,7 +5761,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car10"
       },
       {
@@ -5807,7 +5807,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car11"
       },
       {
@@ -5853,7 +5853,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car12"
       },
       {
@@ -5899,7 +5899,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car13"
       },
       {
@@ -5945,7 +5945,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car14"
       },
       {
@@ -5991,7 +5991,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car15"
       },
       {
@@ -6037,7 +6037,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car16"
       },
       {
@@ -6083,7 +6083,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car17"
       },
       {
@@ -6129,7 +6129,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car18"
       },
       {
@@ -6175,7 +6175,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car19"
       },
       {
@@ -6221,7 +6221,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car20"
       },
       {
@@ -6267,7 +6267,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car21"
       },
       {
@@ -6313,7 +6313,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car22"
       },
       {
@@ -6359,7 +6359,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car23"
       },
       {
@@ -6405,7 +6405,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car24"
       },
       {
@@ -6451,7 +6451,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car25"
       },
       {
@@ -6497,7 +6497,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "",
         "requires.val": "",
         "short": "BUY",
-        "template": "",
+        "template": "cars_buy.html",
         "unittype": "car26"
       },
       {
@@ -6543,7 +6543,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car1",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car1"
       },
       {
@@ -6589,7 +6589,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car2",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car2"
       },
       {
@@ -6635,7 +6635,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car3",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car3"
       },
       {
@@ -6681,7 +6681,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car4",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car4"
       },
       {
@@ -6727,7 +6727,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car5",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car5"
       },
       {
@@ -6773,7 +6773,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car6",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car6"
       },
       {
@@ -6819,7 +6819,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car7",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car7"
       },
       {
@@ -6865,7 +6865,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car8",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car8"
       },
       {
@@ -6911,7 +6911,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car9",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car9"
       },
       {
@@ -6957,7 +6957,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car10",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car10"
       },
       {
@@ -7003,7 +7003,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car11",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car11"
       },
       {
@@ -7049,7 +7049,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car12",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car12"
       },
       {
@@ -7095,7 +7095,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car13",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car13"
       },
       {
@@ -7141,7 +7141,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car14",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car14"
       },
       {
@@ -7187,7 +7187,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car15",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car15"
       },
       {
@@ -7233,7 +7233,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car16",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car16"
       },
       {
@@ -7279,7 +7279,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car17",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car17"
       },
       {
@@ -7325,7 +7325,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car18",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car18"
       },
       {
@@ -7371,7 +7371,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car19",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car19"
       },
       {
@@ -7417,7 +7417,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car20",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car20"
       },
       {
@@ -7463,7 +7463,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car21",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car21"
       },
       {
@@ -7509,7 +7509,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car22",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car22"
       },
       {
@@ -7555,7 +7555,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car23",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car23"
       },
       {
@@ -7601,7 +7601,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car24",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car24"
       },
       {
@@ -7647,7 +7647,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car25",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car25"
       },
       {
@@ -7693,7 +7693,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "car26",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "cars_upgrade.html",
         "unittype": "car26"
       },
       {
@@ -7724,7 +7724,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "cost.factor": "10",
         "cost.unittype": "fame",
         "cost.val": "1.00E+02",
-        "description": "Increase production multiplier with 2",
+        "description": "Double mechanic production.",
         "effect.stat": "prod",
         "effect.type": "multStat",
         "effect.unittype": "tech1",
@@ -7739,7 +7739,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "fame",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "techs_upgrade.html",
         "unittype": "tech1"
       },
       {
@@ -7747,7 +7747,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "cost.factor": "10",
         "cost.unittype": "sponsor1",
         "cost.val": "1.00E+02",
-        "description": "Increase production multiplier with 2",
+        "description": "Double supervisor production.",
         "effect.stat": "prod",
         "effect.type": "multStat",
         "effect.unittype": "tech2",
@@ -7762,7 +7762,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "sponsor1",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "techs_upgrade.html",
         "unittype": "tech2"
       },
       {
@@ -7770,7 +7770,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "cost.factor": "10",
         "cost.unittype": "sponsor2",
         "cost.val": "1.00E+02",
-        "description": "Increase production multiplier with 2",
+        "description": "Double brigade production.",
         "effect.stat": "prod",
         "effect.type": "multStat",
         "effect.unittype": "tech3",
@@ -7785,7 +7785,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "tech3",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "techs_upgrade.html",
         "unittype": "tech3"
       },
       {
@@ -7793,7 +7793,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "cost.factor": "10",
         "cost.unittype": "sponsor3",
         "cost.val": "1.00E+02",
-        "description": "Increase production multiplier with 2",
+        "description": "Double technology facility production.",
         "effect.stat": "prod",
         "effect.type": "multStat",
         "effect.unittype": "tech4",
@@ -7808,7 +7808,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "tech4",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "techs_upgrade.html",
         "unittype": "tech4"
       },
       {
@@ -7816,7 +7816,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "cost.factor": "10",
         "cost.unittype": "sponsor4",
         "cost.val": "1.00E+02",
-        "description": "Increase production multiplier with 2",
+        "description": "Double technology center production.",
         "effect.stat": "prod",
         "effect.type": "multStat",
         "effect.unittype": "tech5",
@@ -7831,7 +7831,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "tech5",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "techs_upgrade.html",
         "unittype": "tech5"
       },
       {
@@ -7839,7 +7839,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "cost.factor": "10",
         "cost.unittype": "sponsor5",
         "cost.val": "1.00E+02",
-        "description": "Increase production multiplier with 2",
+        "description": "Double technology campus production.",
         "effect.stat": "prod",
         "effect.type": "multStat",
         "effect.unittype": "tech6",
@@ -7854,7 +7854,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "tech6",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "techs_upgrade.html",
         "unittype": "tech6"
       },
       {
@@ -7862,7 +7862,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "cost.factor": "10",
         "cost.unittype": "sponsor6",
         "cost.val": "1.00E+02",
-        "description": "Increase production multiplier with 2",
+        "description": "Double technology complex production.",
         "effect.stat": "prod",
         "effect.type": "multStat",
         "effect.unittype": "tech7",
@@ -7877,7 +7877,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "tech7",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "techs_upgrade.html",
         "unittype": "tech7"
       },
       {
@@ -7885,7 +7885,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "cost.factor": "10",
         "cost.unittype": "sponsor7",
         "cost.val": "1.00E+02",
-        "description": "Increase production multiplier with 2",
+        "description": "Double technology cluster production.",
         "effect.stat": "prod",
         "effect.type": "multStat",
         "effect.unittype": "tech8",
@@ -7900,7 +7900,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "tech8",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "techs_upgrade.html",
         "unittype": "tech8"
       },
       {
@@ -7908,7 +7908,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "cost.factor": "10",
         "cost.unittype": "sponsor8",
         "cost.val": "1.00E+02",
-        "description": "Increase production multiplier with 2",
+        "description": "Double technology neuron production.",
         "effect.stat": "prod",
         "effect.type": "multStat",
         "effect.unittype": "tech9",
@@ -7923,7 +7923,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "tech9",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "techs_upgrade.html",
         "unittype": "tech9"
       },
       {
@@ -7931,7 +7931,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "cost.factor": "10",
         "cost.unittype": "sponsor9",
         "cost.val": "1.00E+02",
-        "description": "Increase production multiplier with 2",
+        "description": "Double neuron network production.",
         "effect.stat": "prod",
         "effect.type": "multStat",
         "effect.unittype": "tech10",
@@ -7946,7 +7946,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "tech10",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "techs_upgrade.html",
         "unittype": "tech10"
       },
       {
@@ -7954,7 +7954,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "cost.factor": "10",
         "cost.unittype": "sponsor10",
         "cost.val": "1.00E+02",
-        "description": "Increase production multiplier with 2",
+        "description": "Double artificial intelligence production.",
         "effect.stat": "prod",
         "effect.type": "multStat",
         "effect.unittype": "tech11",
@@ -7969,7 +7969,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "tech11",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "techs_upgrade.html",
         "unittype": "tech11"
       },
       {
@@ -7977,7 +7977,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "cost.factor": "10",
         "cost.unittype": "sponsor11",
         "cost.val": "1.00E+02",
-        "description": "Increase production multiplier with 2",
+        "description": "Double artificial colony production.",
         "effect.stat": "prod",
         "effect.type": "multStat",
         "effect.unittype": "tech12",
@@ -7992,7 +7992,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "tech12",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "techs_upgrade.html",
         "unittype": "tech12"
       },
       {
@@ -8000,7 +8000,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "cost.factor": "10",
         "cost.unittype": "sponsor12",
         "cost.val": "1.00E+02",
-        "description": "Increase production multiplier with 2",
+        "description": "Double artificial civilization production.",
         "effect.stat": "prod",
         "effect.type": "multStat",
         "effect.unittype": "tech13",
@@ -8015,7 +8015,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "tech13",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "techs_upgrade.html",
         "unittype": "tech13"
       },
       {
@@ -8038,7 +8038,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "technology",
         "requires.val": "1.00E+11",
         "short": "LVL UP",
-        "template": "",
+        "template": "driving_upgrade.html",
         "unittype": "driving"
       },
       {
@@ -8069,7 +8069,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "cost.factor": "1",
         "cost.unittype": "technology",
         "cost.val": "1.00E+17",
-        "description": "Buy autoclicker",
+        "description": "Hire a racer",
         "effect.stat": "",
         "effect.type": "addUnit",
         "effect.unittype": "autoclicker",
@@ -8077,14 +8077,14 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "effect.upgradetype": "",
         "effect.val": "1",
         "effect.val2": "",
-        "label": "Buy autoclicker",
+        "label": "Hire a racer",
         "lol": "",
         "maxlevel": "1",
         "name": "autoclicker_buy",
         "requires.unittype": "autoclicker",
         "requires.val": "0",
-        "short": "BUY",
-        "template": "",
+        "short": "HIRE",
+        "template": "autoclicker_buy.html",
         "unittype": "autoclicker"
       },
       {
@@ -8092,7 +8092,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "cost.factor": "6.66E+02",
         "cost.unittype": "technology",
         "cost.val": "6.66E+19",
-        "description": "Upgrade autoclicker",
+        "description": "Hire additional racer",
         "effect.stat": "prod2",
         "effect.type": "addStat",
         "effect.unittype": "autoclicker",
@@ -8100,15 +8100,38 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "effect.upgradetype": "",
         "effect.val": "1",
         "effect.val2": "1",
-        "label": "Upgrade autoclicker",
+        "label": "Hire additional racer",
         "lol": "",
         "maxlevel": "",
         "name": "autoclicker_upgrade",
         "requires.unittype": "autoclicker",
         "requires.val": "1",
         "short": "LVL UP",
-        "template": "",
+        "template": "autoclicker_upgrade.html",
         "unittype": "autoclicker"
+      },
+      {
+        "class": "",
+        "cost.factor": "",
+        "cost.unittype": "",
+        "cost.val": "",
+        "description": "",
+        "effect.stat": "upgradecostmult",
+        "effect.type": "addStat",
+        "effect.unittype": "autoclicker",
+        "effect.unittype2": "",
+        "effect.upgradetype": "",
+        "effect.val": "66.6",
+        "effect.val2": "1",
+        "label": "",
+        "lol": "",
+        "maxlevel": "",
+        "name": "autoclicker_upgrade",
+        "requires.unittype": "",
+        "requires.val": "",
+        "short": "",
+        "template": "",
+        "unittype": ""
       },
       {
         "class": "",
@@ -9096,7 +9119,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "upgrade_sponsors",
         "requires.val": "0",
         "short": "LVL UP",
-        "template": "",
+        "template": "sponsor_upgrades.html",
         "unittype": "upgrade_sponsors"
       },
       {
@@ -9353,6 +9376,29 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "unittype": ""
       },
       {
+        "class": "",
+        "cost.factor": "",
+        "cost.unittype": "",
+        "cost.val": "",
+        "description": "",
+        "effect.stat": "upgradecostmult",
+        "effect.type": "multStat",
+        "effect.unittype": "upgrade_sponsors",
+        "effect.unittype2": "",
+        "effect.upgradetype": "",
+        "effect.val": "10",
+        "effect.val2": "1",
+        "label": "",
+        "lol": "",
+        "maxlevel": "",
+        "name": "sponsor_upgrades",
+        "requires.unittype": "",
+        "requires.val": "",
+        "short": "",
+        "template": "",
+        "unittype": ""
+      },
+      {
         "class": "upgrade",
         "cost.factor": "1.00E+13",
         "cost.unittype": "technology",
@@ -9372,7 +9418,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "requires.unittype": "upgrade_cars",
         "requires.val": "0",
         "short": "LVL UP",
-        "template": "",
+        "template": "car_upgrades.html",
         "unittype": "upgrade_cars"
       },
       {
@@ -9940,6 +9986,29 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "effect.upgradetype": "",
         "effect.val": "0.1",
         "effect.val2": "",
+        "label": "",
+        "lol": "",
+        "maxlevel": "",
+        "name": "car_upgrade",
+        "requires.unittype": "",
+        "requires.val": "",
+        "short": "",
+        "template": "",
+        "unittype": ""
+      },
+      {
+        "class": "",
+        "cost.factor": "",
+        "cost.unittype": "",
+        "cost.val": "",
+        "description": "",
+        "effect.stat": "upgradecostmult",
+        "effect.type": "multStat",
+        "effect.unittype": "upgrade_cars",
+        "effect.unittype2": "",
+        "effect.upgradetype": "",
+        "effect.val": "10",
+        "effect.val2": "1",
         "label": "",
         "lol": "",
         "maxlevel": "",

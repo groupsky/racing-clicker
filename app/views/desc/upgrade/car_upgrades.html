@@ -1,0 +1,5 @@
+<div class="text-left">
+  <p>Cars production increased by {{::upgrade.effect[0].val | percent:0}} per achievement point.</p>
+  Current level: <span class="pull-right text-primary">&times;{{upgrade.effect[0].calcStats({}, {}, upgrade.count()).prod2 | bignum}}</span><br>
+  Next level: <span class="pull-right text-primary">&times;{{upgrade.effect[0].calcStats({}, {}, upgrade.count().plus(1)).prod2 | bignum}}</span>
+</div>

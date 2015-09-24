@@ -1,0 +1,11 @@
+<div class="text-left">
+  <p>Increase {{::upgrade.effect[0].unit.type.label}} production.</p>
+  Current level: <span class="pull-right text-primary">&times;{{upgrade.effect[0].calcStats({}, {}, upgrade.count()).prod | bignum}}</span><br>
+  Next level: <span class="pull-right text-primary">&times;{{upgrade.effect[0].calcStats({}, {}, upgrade.count().plus(1)).prod | bignum}}</span>
+</div>
+<div ng-if="upgrade.effect[2]" class="text-left">
+  <hr>
+  <p>Increase fame from races.</p>
+  Current level: <span class="pull-right text-primary"><i class="icon-resource icon-fame"></i> {{upgrade.game.unit('driving').count() | bignum}}</span><br>
+  Next level: <span class="pull-right text-primary"><i class="icon-resource icon-fame"></i> {{upgrade.game.unit('driving').count().plus(upgrade.effect[2].calcStats({}, {}, upgrade.count().plus(1)).base).minus(upgrade.effect[2].calcStats({}, {}, upgrade.count()).base) | bignum}}</span>
+</div>
