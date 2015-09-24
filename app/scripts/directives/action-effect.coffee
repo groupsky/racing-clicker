@@ -3,7 +3,7 @@
 angular.module('racingApp').factory 'ActionEffectPool', ($compile, $document, $rootScope, $timeout, $position, game) -> class ActionEffectPool
   constructor: ->
     @pool = []
-    @index = 100
+    @index = 10000
     @_linker = null
     @_template = angular.element '''
             <div class="action-effect">
