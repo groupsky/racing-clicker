@@ -1,5 +1,5 @@
 <div class="upgrade upgrade-{{::upgrade.name}}"
-  tooltip="{{::upgrade.type.description}}"
+  tooltip-template="::('views/desc/upgrade/' + (upgrade.type.template || 'default.html'))"
   tooltip-trigger="mouseenter click"
   tooltip-placement="bottom"
   tooltip-append-to-body="true">
