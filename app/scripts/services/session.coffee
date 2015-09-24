@@ -80,7 +80,7 @@ angular.module('racingApp').factory 'session', (storage, $rootScope, $log, util,
       [sM, sm, sp] = saveversion.split('.').map (n) -> parseInt n
       [gM, gm, gp] = gameversion.split('.').map (n) -> parseInt n
       # during beta, 0.n.0 resets all games from 0.n-1.x. Don't import older games.
-      if sM == gM == 0 and sm != gm and sm > 4
+      if sM == gM == 0 and sm != gm and sm <= 4
         throw new Error 'Beta save from different minor version'
       # No importing 1.0.x games into 0.2.x. Need this for publictest.
       # Importing 0.2.x into 1.0.x is fine.
@@ -88,8 +88,8 @@ angular.module('racingApp').factory 'session', (storage, $rootScope, $log, util,
       if (sM > 0) and (gM == 0)
         throw new Error '1.0 save in 0.x game'
       # 0.1.x saves are blacklisted for 1.0.x, already reset
-      if (gM > 0) and (sM == 0) and (sm < 2)
-        throw new Error 'nice try, no 0.1.x saves'
+      if (sM == 0) and (sm < 5)
+        throw new Error "nice try, no 0.#{sm}.x saves"
       ## save state must not be newer than the game running it
       ## actually, let's allow this. support for fast rollbacks is more important.
       #if sM > gM or (sM == gM and (sm > gm or (sm == gm and sp > gp)))
