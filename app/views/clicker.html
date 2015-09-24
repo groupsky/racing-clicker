@@ -1,14 +1,6 @@
 <div ng-show="race.isVisible()" class="clicker">
-  <h1>Race to win prize!</h1>
-
-  <p>
-    Participate in a race and win
-    <span ng-repeat="(name, val) in driving.totalProduction()">
-      <span ng-if="!$first && !$last">, </span><span ng-if="!$first && $last"> and </span>
-      <span>{{val|longnum:2}} <ng-pluralize count="val" when="::{'one':game.unit(name).unittype.label, 'other':game.unit(name).unittype.plural}"></ng-pluralize></span>
-    </span>
-    per race.
-  </p>
+  <h1 ng-if="!driving.upgrades.list[0].isVisible()">Race to win prize!</h1>
+  <h3 ng-if="driving.upgrades.list[0].isVisible()">Race to win prize!</h3>
   <p>
     <button ng-if="!race.isCostMet()" type="button" class="btn btn-primary btn-lg disabled">
       Can't race
@@ -19,7 +11,33 @@
       <i class="fa fa-flag-checkered"></i>
     </button>
   </p>
-  <div ng-repeat="upgrade in driving.upgrades.byClass.upgrade | filter:filterVisible">
-    <upgrade upgrade="::upgrade"></upgrade>
+
+  <p>
+    Racing earns
+    <span ng-repeat="(name, val) in driving.totalProduction()">
+      <span ng-if="!$first && !$last">, </span><span ng-if="!$first && $last"> and </span>
+      <span>{{val|longnum:2}} <ng-pluralize count="val" when="::{'one':game.unit(name).unittype.label, 'other':game.unit(name).unittype.plural}"></ng-pluralize></span>
+    </span>
+    (&times;{{driving.stat('prod') | bignum}} bonus).
+  </p>
+  <div ng-if="driving.upgrades.list[0].isVisible()" class="container-fluid">
+    <hr>
+    <div class="row -text-left">
+      <div ng-class="{'col-xs-6': game.tabs.byName.upgrades.isVisible(), 'col-xs-12': !game.tabs.byName.upgrades.isVisible()}">
+        <p class="unit-title">
+          <span class="unit-title-label">{{::driving.upgrades.list[0].type.label}}</span>
+        </p>
+        <upgrade upgrade="::driving.upgrades.list[0]"></upgrade>
+      </div>
+      <div class="col-xs-6" ng-if="game.tabs.byName.upgrades.isVisible()">
+        <p class="unit-title">
+          <span class="unit-title-label">{{::game.upgrade('autoclicker_upgrade').type.label}}</span>
+        </p>
+        <upgrade upgrade="::game.upgrade('autoclicker_upgrade')"></upgrade>
+      </div>
+    </div>
   </div>
+  <!--<div ng-repeat="upgrade in driving.upgrades.byClass.upgrade | filter:filterVisible">-->
+    <!--<upgrade upgrade="::upgrade"></upgrade>-->
+  <!--</div>-->
 </div>

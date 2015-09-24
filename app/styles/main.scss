@@ -565,7 +565,7 @@ body {
   }
 }
 
-.panel-cars {
+.panel-cars, .panel-upgrades {
   .panel-body {
     @media (min-width: $screen-md-min) {
       height: $panel-body-height;
@@ -576,12 +576,12 @@ body {
 
 @keyframes action-effect {
   0% {
-    opacity: 1;
+    opacity: 0.9;
     margin-top: 0;
   }
 
   50% {
-    opacity: 1;
+    opacity: 0.75;
   }
 
   100% {
@@ -643,6 +643,16 @@ a:focus, button:focus {
   @extend .well;
   @extend .well-lg;
   text-align: center;
+  padding-top: 5px;
+
+  h1 {
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
+
+  hr {
+    margin: 10px 0;
+  }
 
   @media (min-width: $screen-md-min) {
     // padding-top: 15px;
@@ -727,7 +737,8 @@ a:focus, button:focus {
   animation: flash-resource 2s infinite;
 }
 
-.tutorial-step-99 .panel-other unit .well {
+.tutorial-step-99 .panel-other unit .well,
+.tutorial-step-99 .panel-sponsors unit .well {
   background-color: inherit;
   animation: flash-well 2s infinite;
 }
@@ -778,10 +789,10 @@ a:focus, button:focus {
   }
 
   @media (min-width: $screen-md-min) {
-    &.panel-cars .panel-body {
+    &.panel-cars .panel-body, &.panel-upgrades .panel-body {
       max-height: $panel-body-height - 4*$panel-body-padding + 5px;
     }
-    &.panel-technology, &.panel-cars {
+    &.panel-technology, &.panel-cars, &.panel-sponsors, &.panel-upgrades {
       .panel-heading {
         padding-top: $panel-body-padding/2+$padding-xs-vertical;
         padding-bottom: $panel-body-padding/2+$padding-xs-vertical;
@@ -855,7 +866,7 @@ a:focus, button:focus {
     }
 
     @media (min-width: $screen-md-min) {
-      .panel-technology, .panel-other {
+      .panel-technology, .panel-sponsors, .panel-other {
         .panel-body {
           max-height: $panel-body-height*3/2 - 2*$panel-body-padding - 15px;
         }

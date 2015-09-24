@@ -1,80 +1,88 @@
-<div class="row" ng-controller="MainCtrl">
-  <div class="col-md-4">
-    <div class="panel panel-default panel-units panel-cars">
-      <div class="panel-heading">
-        <i class="icon-resource icon-car"></i>
+<div ng-controller="MainCtrl">
+  <div id="firstrow" class="row">
+    <div id="cars" class="col-md-4">
+      <div class="panel panel-default panel-units panel-cars">
+        <div class="panel-heading">
+          <i class="icon-resource icon-car"></i>
         <span class="pull-right">
           {{(game.tabs.byName.money.units | filter:filterVisible | filter:filterBought | count)-1}}
           cars
         </span>
+        </div>
+        <div class="panel-body scrollable">
+          <ul class="list-unstyled">
+            <li ng-repeat="unit in game.tabs.byName.money.sortUnits() | filter:filterVisible track by unit.name"
+                ng-if="!$last">
+              <unit unit="::unit"></unit>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="panel-body scrollable">
-        <ul class="list-unstyled">
-          <li ng-repeat="unit in game.tabs.byName.money.sortUnits() | filter:filterVisible track by unit.name"
-              ng-if="!$last">
-            <unit unit="::unit"></unit>
-          </li>
-        </ul>
+    </div>
+
+    <div id="clicker"
+         ng-class="{'col-md-5': game.tabs.byName.upgrades.isVisible(), 'col-md-8': !game.tabs.byName.upgrades.isVisible()}">
+      <clicker></clicker>
+    </div>
+
+    <div id="upgrades" ng-if="game.tabs.byName.upgrades.isVisible()" class="col-md-3">
+      <div class="panel panel-default panel-units panel-upgrades">
+        <div class="panel-heading" ng-class="{upgradable: game.tabs.byName.upgrades.isNewlyUpgradable()}">
+          <i class="icon-resource icon-upgrades"></i>
+        <span class="pull-right">
+          upgrades
+        </span>
+        </div>
+        <div class="panel-body">
+          <ul class="list-unstyled">
+            <li ng-repeat="unit in game.tabs.byName.upgrades.sortUnits() | filter:filterVisible track by unit.name"
+                ng-if="!$last">
+              <unit unit="::unit"></unit>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="col-md-8">
-    <clicker></clicker>
-  </div>
-
-  <div class="col-md-6">
-    <div class="panel panel-default panel-units panel-technology">
-      <div class="panel-heading" ng-class="{upgradable: game.tabs.byName.technology.isNewlyUpgradable()}">
-        <i class="icon-resource icon-technology"></i>
+  <div id="secondrow" class="row">
+    <div id="technologies" class="col-md-6">
+      <div class="panel panel-default panel-units panel-technology">
+        <div class="panel-heading" ng-class="{upgradable: game.tabs.byName.technology.isNewlyUpgradable()}">
+          <i class="icon-resource icon-technology"></i>
         <span class="pull-right">
           {{(game.tabs.byName.technology.units | filter:filterVisible | filter:filterBought | count)-1}}
           technologies
         </span>
-      </div>
-      <div class="panel-body scrollable">
-        <ul class="list-unstyled">
-          <li ng-repeat="unit in game.tabs.byName.technology.sortUnits() | filter:filterVisible track by unit.name"
-              ng-if="!$last">
-            <unit unit="::unit"></unit>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div ng-if="game.tabs.byName.fame.isVisible() || game.tabs.byName.teams.isVisible() || game.tabs.byName.upgrades.isVisible()" class="col-md-6">
-    <div class="panel panel-default panel-units panel-other" ng-init="tab = game.tabs.byName.fame">
-      <div class="panel-heading">
-        <div class="btn-group btn-group-justified" role="tablist">
-          <a ng-show="game.tabs.byName.fame.isVisible()" href role="tab" class="btn btn-default"
-             ng-class="{active: tab == game.tabs.byName.fame, upgradable: game.tabs.byName.fame.isNewlyUpgradable()}" ng-click="tab = game.tabs.byName.fame">
-             <i class="icon-resource icon-sponsor"></i>
-             sponsors
-           </a>
-          <a ng-show="game.tabs.byName.teams.isVisible()" href role="tab" class="btn btn-default"
-             ng-class="{active: tab == game.tabs.byName.teams, upgradable: game.tabs.byName.teams.isNewlyUpgradable()}" ng-click="tab = game.tabs.byName.teams">
-             <i class="icon-resource icon-team"></i>
-             teams
-           </a>
-          <a ng-show="game.tabs.byName.upgrades.isVisible()" href role="tab" class="btn btn-default"
-             ng-class="{active: tab == game.tabs.byName.upgrades, upgradable: game.tabs.byName.upgrades.isNewlyUpgradable()}" ng-click="tab = game.tabs.byName.upgrades">
-            <i class="icon-resource icon-upgrades"></i>
-            upgrades
-          </a>
+        </div>
+        <div class="panel-body scrollable">
+          <ul class="list-unstyled">
+            <li ng-repeat="unit in game.tabs.byName.technology.sortUnits() | filter:filterVisible track by unit.name"
+                ng-if="!$last">
+              <unit unit="::unit"></unit>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="panel-body scrollable">
-        <ul ng-if="tab !== 'upgrades'" class="list-unstyled">
-          <li ng-repeat="unit in tab.sortUnits() | filter:filterVisible track by unit.name" ng-if="!$last">
-            <unit unit="::unit"></unit>
-          </li>
-        </ul>
-        <ul ng-if="tab == 'upgrades'" class="list-unstiled">
-          <li ng-repeat="upgrade in game.unit('upgrades').upgrades.byClass.upgrade | filter:filterVisible">
-            <upgrade upgrade="::upgrade"></upgrade>
-          </li>
-        </ul>
+    </div>
+
+    <div id="sponsors" ng-if="game.tabs.byName.fame.isVisible()" class="col-md-6">
+      <div class="panel panel-default panel-units panel-sponsors" ng-init="tab = game.tabs.byName.fame">
+        <div class="panel-heading">
+          <i class="icon-resource icon-sponsor"></i>
+        <span class="pull-right">
+          {{Math.max(0, (game.tabs.byName.fame.units | filter:filterVisible | filter:filterBought | count)-1)}}
+          sponsors
+          </span>
+        </div>
+        <div class="panel-body scrollable">
+          <ul class="list-unstyled">
+            <li ng-repeat="unit in game.tabs.byName.fame.sortUnits() | filter:filterVisible track by unit.name"
+                ng-if="!$last">
+              <unit unit="::unit"></unit>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
