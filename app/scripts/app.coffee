@@ -100,6 +100,7 @@ angular.module('racingApp').config (env, version) ->
 
 angular.module('racingApp').run ($rootScope) ->
   $rootScope.floor = (val) -> Math.floor val
+  $rootScope.Math = Math
 
 # decimal.js does not play nice with tests. hacky workaround.
 angular.module('racingApp').run ($rootScope) ->
