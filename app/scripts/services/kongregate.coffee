@@ -206,14 +206,21 @@ angular.module('racingApp').factory 'Kongregate', (isKongregate, $log, $location
       @lastReported = now
       @kongregate.stats.submit 'Racing Upgrades', @_count game.upgrade 'driving_upgrade'
       @kongregate.stats.submit 'Cars Bought', @_countBought(game.tabs.byName.money.units)-1
-      @kongregate.stats.submit 'Racer Level', @_count game.upgrade 'autoclicker_upgrade'
+      @kongregate.stats.submit 'Racers', @_count(game.upgrade 'autoclicker_upgrade')+@_count(game.upgrade 'autoclicker_buy')
+      @kongregate.stats.submit 'Sponsors Upgrades', @_count game.upgrade 'sponsor_upgrades'
+      @kongregate.stats.submit 'Cars Upgrades', @_count game.upgrade 'car_upgrade'
+
       # @kongregate.stats.submit 'GameComplete', @_count game.unit 'ascension'
       # @kongregate.stats.submit 'Mutations Unlocked', @_count game.upgrade 'mutatehidden'
       @kongregate.stats.submit 'Achievement Points', game.achievementPoints()
+      @kongregate.stats.submit 'Bucks', @_countE game.unit 'money'
+      @kongregate.stats.submit 'Technology', @_countE game.unit 'technology'
+      @kongregate.stats.submit 'Fame', @_countE game.unit 'fame'
+
       @_submitTimetrialMins 'Minutes to First Racing Upgrade', game.upgrade 'driving_upgrade'
       @_submitTimetrialMins 'Minutes to First Sponsor', game.unit 'sponsor1'
-      @_submitTimetrialMins 'Minutes to Racer', game.upgrade 'autoclicker_buy'
-      @_submitTimetrialMins 'Minutes to End Game', game.upgrade 'car10_buy'
+      @_submitTimetrialMins 'Minutes to First Racer', game.upgrade 'autoclicker_buy'
+      @_submitTimetrialMins 'Minutes to Complete Game', game.upgrade 'car10_buy'
       @_submitTimetrialMins 'Minutes to Last Car', game.upgrade 'car26_buy'
       # @_submitTimetrialMins 'Minutes to First Ascension', game.unit 'ascension'
     catch e
@@ -221,6 +228,8 @@ angular.module('racingApp').factory 'Kongregate', (isKongregate, $log, $location
 
   _count: (u) ->
     return u.count().floor().toNumber()
+  _countE: (u) ->
+    return u.count().floor().log(10).floor().toNumber()
   _timetrialMins: (u) ->
     if (millis = u.statistics()?.elapsedFirst)
       return Math.ceil millis / 1000 / 60
