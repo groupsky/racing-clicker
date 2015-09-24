@@ -144,7 +144,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
       },
       {
         "description": "Train $REQUIRED brigades",
-        "label": "Sociaty",
+        "label": "Society",
         "longdesc": "brigades trained from technology facilities don't count.",
         "name": "tech3_3",
         "points": "30",
@@ -5366,7 +5366,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
         "effect.val2": "",
         "effect.val3": "",
         "init": "",
-        "label": "Upgrade sponosrs",
+        "label": "Upgrade sponsors",
         "lol": "",
         "name": "upgrade_sponsors",
         "plural": "Upgrade sponsors",
