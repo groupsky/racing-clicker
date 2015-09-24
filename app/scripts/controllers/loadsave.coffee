@@ -72,6 +72,7 @@ angular.module('racingApp').controller 'LoadSaveCtrl', ($scope, $log, game, sess
     $log.info 'loading game from url...'
     # transient=true: don't overwrite the saved data until we buy something
     game.importSave savedata, true
+    $location.search('')
     $log.info 'loading game from url successful!'
 
   backfill.run game

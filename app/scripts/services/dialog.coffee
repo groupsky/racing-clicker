@@ -27,6 +27,10 @@ angular.module('racingApp').service 'dialogService', ($rootScope, $log, $modal, 
       endgame:
         template: 'views/endgame.html'
         size: 'md'
+      importsplash:
+        template: 'views/importsplash.html'
+        controller: 'ImportsplashCtrl'
+        size: 'md'
   openDialog: (name) ->
     controllerScope = $rootScope.$new()
     controllerScope.closeDialog = () ->

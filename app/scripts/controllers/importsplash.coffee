@@ -11,9 +11,10 @@ angular.module('racingApp').controller 'ImportsplashCtrl', ($scope, isKongregate
   # header/loadsave do the actual import
   $scope.isKongregate = isKongregate()
 
-  $scope.click = ->
+  $scope.click = (cb) ->
     game.withSave ->
     if $scope.isKongregate
-      window.location.href = 'http://www.kongregate.com/games/swarmsim/swarm-simulator'
+      window.location.href = 'http://www.kongregate.com/games/groupsky/rcm'
     else
-      window.location = '#/'
+      window.location.hash = '/'
+    cb?()

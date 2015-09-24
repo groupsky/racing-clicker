@@ -54,7 +54,7 @@ angular.module('racingApp').factory 'Cache', -> class Cache
  # # game
  # Factory in the racingApp.
 ###
-angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievements, util, $log, Upgrade, Unit, Achievement, Tab, Cache) -> class Game
+angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievements, util, $log, Upgrade, Unit, Achievement, Tab, Cache, $location, dialogService) -> class Game
   constructor: (@session) ->
     @_init()
   _init: ->
@@ -239,6 +239,7 @@ angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievemen
     @session.importSave encoded, transient
     # Force-clear various caches.
     @_init()
+    dialogService.openDialog 'importsplash' if $location.search().importsplash
 
   # A common pattern: change something (reifying first), then save the changes.
   # Use game.withSave(myFunctionThatChangesSomething) to do that.
