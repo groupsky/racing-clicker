@@ -29,7 +29,13 @@
         </p>
         <upgrade upgrade="::driving.upgrades.list[0]"></upgrade>
       </div>
-      <div class="col-xs-6" ng-if="game.tabs.byName.upgrades.isVisible()">
+      <div class="col-xs-6" ng-if="game.upgrade('autoclicker_buy').isVisible()">
+        <p class="unit-title">
+          <span class="unit-title-label">{{::game.upgrade('autoclicker_buy').type.label}}</span>
+        </p>
+        <upgrade upgrade="::game.upgrade('autoclicker_buy')"></upgrade>
+      </div>
+      <div class="col-xs-6" ng-if="game.upgrade('autoclicker_upgrade').isVisible()">
         <p class="unit-title">
           <span class="unit-title-label">{{::game.upgrade('autoclicker_upgrade').type.label}}</span>
         </p>
