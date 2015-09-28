@@ -4,12 +4,20 @@
   tooltip-placement="bottom"
   tooltip-append-to-body="true">
   <div ng-if="upgrade.isCostMet()">
-    <button class="btn btn-upgrade"
-            title="{{::upgrade.type.label}}"
-            ng-class="{'btn-primary': upgrade.isCostMet(), 'btn-default': !upgrade.isCostMet()}"
-            ng-click="commands.buyUpgrade({upgrade: upgrade})" action-effect>
-      {{::upgrade.type.short}}
-    </button>
+    <div class="btn-group">
+      <button class="btn btn-upgrade"
+              title="{{::upgrade.type.label}}"
+              ng-class="{'btn-primary': upgrade.isCostMet(), 'btn-default': !upgrade.isCostMet()}"
+              ng-click="commands.buyUpgrade({upgrade: upgrade})" action-effect>
+        {{::upgrade.type.short}}
+      </button>
+      <button ng-if="upgrade.maxCostMet() > 1"
+              class="btn btn-upgrade btn-primary"
+              title="{{::upgrade.type.label}}"
+              ng-click="commands.buyMaxUpgrade({upgrade: upgrade})" action-effect>
+        MAX
+      </button>
+    </div>
   </div>
   <div ng-if="!upgrade.isCostMet()">
     <div class="progress" style="margin-bottom:0">
