@@ -93,10 +93,9 @@ https://github.com/groupsky/racing-clicker
       </div>
 
       <div class="footer">
-        <!--div ng-cloak class="alert alert-dismissible alert-warning animif" role="alert">
-          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          this is a test footer
-        </div-->
+        <div ng-cloak ng-if="!isKongregate()" class="container">
+          <p class="text-muted">Highscores are available when you play on <a href="http://www.kongregate.com/games/groupsky/rcm?referrer=groupsky">Kongregate</a>.</p>
+        </div>
       </div>
     </div>
 

@@ -98,9 +98,10 @@ angular.module('racingApp').config (env, version) ->
     catch e
       # No parent, no worries. Use the original referrer.
 
-angular.module('racingApp').run ($rootScope) ->
+angular.module('racingApp').run ($rootScope, isKongregate) ->
   $rootScope.floor = (val) -> Math.floor val
   $rootScope.Math = Math
+  $rootScope.isKongregate = isKongregate
 
 # decimal.js does not play nice with tests. hacky workaround.
 angular.module('racingApp').run ($rootScope) ->
