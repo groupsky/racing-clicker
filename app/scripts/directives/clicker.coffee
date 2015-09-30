@@ -33,7 +33,6 @@ angular.module('racingApp').directive 'clickero', ($rootScope, $timeout, game, A
     powerActionEffectPool = new ActionEffectPool
       actionClass: "action-critical"
 
-    working = false
     savePromise = false
     aggregated = new Decimal 0
     count = 0
@@ -48,7 +47,10 @@ angular.module('racingApp').directive 'clickero', ($rootScope, $timeout, game, A
 
     $scope.$watch ->
       newProduction = driving.totalProduction().fake_fame
-      if not production.equals newProduction then newProduction else production
+      if production.equals newProduction
+        return production
+      else
+        return newProduction
     , (newProd) ->
       production = newProd
       actionEffectPool.clearPool()
@@ -56,8 +58,8 @@ angular.module('racingApp').directive 'clickero', ($rootScope, $timeout, game, A
     $scope.$watch ->
       base = 10
       base += game.session.state.statistics.byUnit.fame.cps if game.session.state.statistics.byUnit.fame? and game.session.state.statistics.byUnit.fame.cps
-      newPower = production.times(driving.stat 'critical.power', 100).times(''+Math.max(1, powerChance*3)).plus(''+base)
-      if not powerProduction.equals newPower then newPower else powerProduction
+      newPower = production.times(driving.stat 'critical.power', 100).times(Decimal.max(1, ''+(powerChance*3))).plus(''+base)
+      if powerProduction.equals newPower then return powerProduction else return newPower
     , (power) ->
       powerProduction = power
       powerActionEffectPool.clearPool()
@@ -74,27 +76,15 @@ angular.module('racingApp').directive 'clickero', ($rootScope, $timeout, game, A
       rng = seedrand.rng seed
 
     element.bind 'touchend mouseup keyup pointerup', (e) ->
-      element.disabled = true
-      e.preventDefault()
-      e.stopPropagation()
-      e.stopImmediatePropagation()
-      e.returnValue = false
-      if working
-        $log.debug 'skipped'
-        return false
-
-      $log.debug 'click!'
-      working = true
-
       roll = rng()
-      chance = Math.min(powerChance, 0.34) + Math.log10(game.session.state.statistics.clicks+count)/50
+      chance = Decimal.min(''+powerChance, 0.34).plus(Decimal.log(game.session.state.statistics.clicks+count, 10).div(50)).toNumber()
       $log.debug "rolled #{roll}/#{chance}"
 
       if roll <= chance
         $log.debug "critical!"
         fame._addCount powerProduction
 
-        if new Date().getTime() - e.timeStamp < 50
+        if (not e.timeStamp) or (new Date().getTime() - e.timeStamp < 100)
           powerActionEffectPool.button = angular.element(element)
           powerActionEffectPool.handleEvent
             unit: fame
@@ -107,7 +97,7 @@ angular.module('racingApp').directive 'clickero', ($rootScope, $timeout, game, A
       else
         fame._addCount production
 
-        if new Date().getTime() - e.timeStamp < 50
+        if (not e.timeStamp) or (new Date().getTime() - e.timeStamp < 100)
           actionEffectPool.button = angular.element(element)
           actionEffectPool.handleEvent
             unit: fame
@@ -143,9 +133,4 @@ angular.module('racingApp').directive 'clickero', ($rootScope, $timeout, game, A
         start = false
         end = false
       , 1500
-
-#      $timeout ->
-      working = false
-      element.disabled = false
-#      , 0, false
 
