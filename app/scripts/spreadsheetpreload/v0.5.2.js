@@ -1671,7 +1671,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
       {
         "description": "Earn $REQUIRED fame from races",
         "label": "Recognized",
-        "longdesc": "",
+        "longdesc": "Fame from racers doesn't count",
         "name": "fame1",
         "points": "10",
         "requires.event": "",
@@ -1685,7 +1685,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
       {
         "description": "Earn $REQUIRED fame from races",
         "label": "Influential",
-        "longdesc": "",
+        "longdesc": "Fame from racers doesn't count",
         "name": "fame2",
         "points": "20",
         "requires.event": "",
@@ -1699,7 +1699,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
       {
         "description": "Earn $REQUIRED fame from races",
         "label": "Famous",
-        "longdesc": "",
+        "longdesc": "Fame from racers doesn't count",
         "name": "fame3",
         "points": "30",
         "requires.event": "",
@@ -1713,7 +1713,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
       {
         "description": "Earn $REQUIRED fame from races",
         "label": "Popular",
-        "longdesc": "",
+        "longdesc": "Fame from racers doesn't count",
         "name": "fame4",
         "points": "40",
         "requires.event": "",
@@ -1727,7 +1727,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
       {
         "description": "Earn $REQUIRED fame from races",
         "label": "Celebrity",
-        "longdesc": "",
+        "longdesc": "Fame from racers doesn't count",
         "name": "fame5",
         "points": "50",
         "requires.event": "",
@@ -1741,7 +1741,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
       {
         "description": "Earn $REQUIRED fame from races",
         "label": "World Recognized",
-        "longdesc": "",
+        "longdesc": "Fame from racers doesn't count",
         "name": "fame6",
         "points": "60",
         "requires.event": "",
@@ -1755,7 +1755,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
       {
         "description": "Earn $REQUIRED fame from races",
         "label": "World Influential",
-        "longdesc": "",
+        "longdesc": "Fame from racers doesn't count",
         "name": "fame7",
         "points": "70",
         "requires.event": "",
@@ -1769,7 +1769,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
       {
         "description": "Earn $REQUIRED fame from races",
         "label": "World Famous",
-        "longdesc": "",
+        "longdesc": "Fame from racers doesn't count",
         "name": "fame8",
         "points": "80",
         "requires.event": "",
@@ -1783,7 +1783,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
       {
         "description": "Earn $REQUIRED fame from races",
         "label": "World Popular",
-        "longdesc": "",
+        "longdesc": "Fame from racers doesn't count",
         "name": "fame9",
         "points": "90",
         "requires.event": "",
@@ -1797,7 +1797,7 @@ angular.module('swarmSpreadsheetPreload').value('spreadsheetPreload-v0.5.2', {
       {
         "description": "Earn $REQUIRED fame from races",
         "label": "World Celebrity",
-        "longdesc": "",
+        "longdesc": "Fame from racers doesn't count",
         "name": "fame10",
         "points": "100",
         "requires.event": "",
