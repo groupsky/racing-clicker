@@ -94,6 +94,15 @@ angular.module('racingApp').factory 'Upgrade', (util, Effect, $log) -> class Upg
         if cost.unit.count().lessThan cost.val
           return false
       return @game.cache.upgradeIsCostMet[@name] = true
+  isNextCostMet: ->
+    return @game.cache.upgradeMaxCostMet["#{@name}:isNextCostMet"] ?= do =>
+      return false if not @game.cache.upgradeIsCostMet[@name]?
+      return true if @game.cache.upgradeIsNextCostMet[@name]?
+      for cost in @totalCost()
+        util.assert cost.val.greaterThan(0), 'upgrade cost <= 0', @name, this
+        if cost.unit.count().lessThan cost.val.times(2)
+          return false
+      return @game.cache.upgradeIsNextCostMet[@name] = true
   maxCostMet: (percent=1) ->
     return @game.cache.upgradeMaxCostMet["#{@name}:#{percent}"] ?= do =>
       # https://en.wikipedia.org/wiki/Geometric_progression#Geometric_series
@@ -217,12 +226,12 @@ angular.module('racingApp').factory 'Upgrade', (util, Effect, $log) -> class Upg
       throw new Error "We require more resources"
     if not free and not @isBuyable()
       throw new Error "Cannot buy that upgrade"
-    num = Decimal.min num, @maxCostMet() if not free
+    num = Decimal.ONE
     $log.debug 'buy', @name, num
     @game.withDeferedSave =>
       costs = {}
       if not free
-        for cost in @sumCost num
+        for cost in @totalCost()
           util.assert cost.unit.count().greaterThanOrEqualTo(cost.val), "tried to buy more than we can afford. upgrade.maxCostMet is broken!", @name, name, cost
           util.assert cost.val.greaterThan(0), "zero cost from sumCost, yet cost was met?", @name, name, cost
           costs[cost.unit.name] = cost.val
@@ -236,8 +245,18 @@ angular.module('racingApp').factory 'Upgrade', (util, Effect, $log) -> class Upg
           effect.onBuy count.plus(i + 1)
       return {num:num, costs: costs}
 
-  buyMax: (percent) ->
-    @buy @maxCostMet percent
+  buyMax: ->
+    ret = {num: new Decimal(0), costs: {}}
+    while @isCostMet()
+      r = @buy()
+      ret.num = ret.num.plus r.num
+      for name,val of r.costs
+        ret.costs[name] = if ret.costs[name]? then ret.costs[name].plus val else val
+
+      # clear cached vals
+      @game.cache.onUpdate()
+
+    return ret
 
   calcStats: (stats={}, schema={}, target) ->
     count = @count()

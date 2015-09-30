@@ -11,7 +11,7 @@
               ng-click="commands.buyUpgrade({upgrade: upgrade})" action-effect>
         {{::upgrade.type.short}}
       </button>
-      <button ng-if="upgrade.maxCostMet() > 1"
+      <button ng-if="upgrade.isNextCostMet()"
               class="btn btn-upgrade btn-primary"
               title="{{::upgrade.type.label}}"
               ng-click="commands.buyMaxUpgrade({upgrade: upgrade})" action-effect>
