@@ -10,6 +10,44 @@
 ###
 angular.module('racingApp').factory 'Backfill', ($log) -> class Backfill
   run: (game) ->
+    do ->
+      [sM, sm, sp] = game.session.state.version.saved.split('.').map (n) -> parseInt n
+
+      if sM is 0 and sm is 5
+        @fixTechUpgrades game
+
+  fixTechUpgrades: (game) ->
+    for i in [1..13]
+      upgrade = game.upgrade "tech#{i}_prod"
+      count = upgrade.count()
+      over = game.session.state.upgrades[upgrade.name]?.minus count
+      if over?.gt 0
+        oldCount = game.session.state.upgrades[upgrade.name]
+        game.session.state.upgrades[upgrade.name] = count
+        overspent = upgrade.sumCost(oldCount.minus(count).toNumber(), count.toNumber())
+
+        $log.debug "spent", overspent[0].val+''
+
+        upgrade2 = game.upgrade "tech#{i}_prod2"
+        upgrade2._addCount(1) while _.every upgrade2._totalCost(), (req) ->
+          for have in overspent
+            if have.unit is req.unit
+              if req.val.gt have.val
+                return false
+              have.val = have.val.minus req.val
+              return true
+          return false
+
+        $log.debug "left to spent", overspent[0].val+''
+
+        for left in overspent
+          left.unit._addCount left.val
+
+        $log.debug "decreased with ", oldCount.minus(upgrade2.count()).toNumber()
+
+
+
+
 #    # grant mutagen for old saves, created before mutagen existed
 #    do ->
 #      premutagen = game.unit 'premutagen'
