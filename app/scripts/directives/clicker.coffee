@@ -54,7 +54,9 @@ angular.module('racingApp').directive 'clickero', ($rootScope, $timeout, game, A
       actionEffectPool.clearPool()
 
     $scope.$watch ->
-      newPower = production.times(driving.stat 'critical.power', 100).times(''+Math.max(1, powerChance*3))
+      base = 10
+      base += game.session.state.statistics.byUnit.fame.cps if game.session.state.statistics.byUnit.fame? and game.session.state.statistics.byUnit.fame.cps
+      newPower = production.times(driving.stat 'critical.power', 100).times(''+Math.max(1, powerChance*3)).plus(''+base)
       if not powerProduction.equals newPower then newPower else powerProduction
     , (power) ->
       powerProduction = power
