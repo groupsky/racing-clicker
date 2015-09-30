@@ -925,3 +925,14 @@ a:focus, button:focus {
   }
 
 }
+
+// possible fix for missing sponsors tab on some users
+#firstrow, #secondrow {
+  position: relative;
+
+  #sponsors, #upgrades {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
