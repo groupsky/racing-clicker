@@ -417,7 +417,7 @@ angular.module('racingApp').factory 'Unit', (util, $log, Effect, ProducerPaths, 
     if not @isBuyable()
       throw new Error "Cannot buy that unit"
     num = Decimal.min num, @maxCostMet()
-    @game.withSave =>
+    @game.withDeferedSave =>
       costs = {}
       for cost in @eachCost()
         costs[cost.unit.name] = cost.val.times num

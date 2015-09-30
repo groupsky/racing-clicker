@@ -54,7 +54,7 @@ angular.module('racingApp').factory 'Cache', -> class Cache
  # # game
  # Factory in the racingApp.
 ###
-angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievements, util, $log, Upgrade, Unit, Achievement, Tab, Cache, $location, dialogService) -> class Game
+angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievements, util, $log, Upgrade, Unit, Achievement, Tab, Cache, $location, dialogService, $rootScope, backfill) -> class Game
   constructor: (@session) ->
     @_init()
   _init: ->
@@ -93,6 +93,12 @@ angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievemen
       item._init2()
 
     @cache = new Cache()
+
+    @_deferedSave = _.debounce =>
+      $rootScope.$apply =>
+        @session.save()
+        @cache.onUpdate()
+    , 250
 
     # tick to reified-time, then to now. this ensures things explode here, instead of later, if they've gone back in time since saving
     delete @now
@@ -239,6 +245,7 @@ angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievemen
     @session.importSave encoded, transient
     # Force-clear various caches.
     @_init()
+    backfill.run game
     dialogService.openDialog 'importsplash' if $location.search().importsplash
 
   # A common pattern: change something (reifying first), then save the changes.
@@ -251,6 +258,12 @@ angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievemen
     @reify()
     @session.save()
     @cache.onUpdate()
+    return ret
+
+  withDeferedSave: (fn) ->
+    @reify()
+    ret = fn()
+    @_deferedSave()
     return ret
 
   withUnreifiedSave: (fn) ->

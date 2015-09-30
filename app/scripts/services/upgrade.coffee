@@ -15,10 +15,14 @@ angular.module('racingApp').factory 'Upgrade', (util, Effect, $log) -> class Upg
       @costByName[ret.unit.name] = ret
       return ret
     @requires = _.map @type.requires, (require) =>
-      util.assert require.unittype, 'upgrade require without a unittype', @name, name, require
+      util.assert require.unittype or require.upgradetype, 'upgrade require without a unittype or upgradetype', @name, name, require
+      util.assert not (require.unittype and require.upgradetype), 'upgrade require with both unittype and upgradetype', @name, name, require
       ret = _.clone require
-      ret.unit = util.assert @game.unit require.unittype
       ret.val = new Decimal ret.val
+      if require.unittype?
+        ret.resource = ret.unit = util.assert @game.unit require.unittype
+      if require.upgradetype?
+        ret.resource = ret.upgrade = util.assert @game.upgrade require.upgradetype
       return ret
     @effect = _.map @type.effect, (effect) =>
       ret = new Effect @game, this, effect
@@ -57,8 +61,12 @@ angular.module('racingApp').factory 'Upgrade', (util, Effect, $log) -> class Upg
     if @count().greaterThan 0
       return true
     for require in @requires
-      if require.val.greaterThan require.unit.count()
-        return false
+      if require.val.greaterThan require.resource.count()
+        if require.op != 'OR' # most requirements are ANDed, any one failure fails them all
+          return false
+        # req-not-met for OR requirements: no-op
+      else if require.op == 'OR' # single necessary requirement is met
+        return true
     return true
   totalCost: ->
     return @game.cache.upgradeTotalCost[@name] ?= @_totalCost()
@@ -211,7 +219,7 @@ angular.module('racingApp').factory 'Upgrade', (util, Effect, $log) -> class Upg
       throw new Error "Cannot buy that upgrade"
     num = Decimal.min num, @maxCostMet() if not free
     $log.debug 'buy', @name, num
-    @game.withSave =>
+    @game.withDeferedSave =>
       costs = {}
       if not free
         for cost in @sumCost num
@@ -286,7 +294,8 @@ angular.module('racingApp').factory 'UpgradeTypes', (spreadsheetUtil, UpgradeTyp
       upgrade.maxlevel = +upgrade.maxlevel if upgrade.maxlevel
       spreadsheetUtil.resolveList [upgrade], 'unittype', unittypes.byName
       spreadsheetUtil.resolveList upgrade.cost, 'unittype', unittypes.byName
-      spreadsheetUtil.resolveList upgrade.requires, 'unittype', unittypes.byName
+      spreadsheetUtil.resolveList upgrade.requires, 'unittype', unittypes.byName, {required:false}
+      spreadsheetUtil.resolveList upgrade.requires, 'upgradetype', ret.byName, {required:false}
       spreadsheetUtil.resolveList upgrade.effect, 'unittype', unittypes.byName, {required:false}
       spreadsheetUtil.resolveList upgrade.effect, 'upgradetype', ret.byName, {required:false}
       spreadsheetUtil.resolveList upgrade.effect, 'type', effecttypes.byName
