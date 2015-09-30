@@ -35,7 +35,13 @@
     <!--button ng-click="options.reset('fps');form.fps=options.fps()">Reset</button-->
     <p><input type="number" min="0" ng-init="form.fpsNum=options.fps()" ng-model="form.fpsNum" ng-change="options.fps(form.fpsNum);form.fps=options.fps()"> fps. Time between frames: {{options.fpsSleepMillis()|number:0}}ms</p>
     <p>Reduce this setting if the game is slowing down your computer. This doesn't affect gameplay; your units won't produce resources any faster or slower.</p>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" ng-init="form.actionEffect = options.actionEffect()" ng-model="form.actionEffect" ng-change="options.actionEffect(form.actionEffect)"> Display action texts. Can help reduce lag.
+      </label>
+    </div>
   </div>
+
 
   <div class="form-group">
     <div><label class="control-label"><span class="glyphicon glyphicon-barcode"></span> Number format</label></div>

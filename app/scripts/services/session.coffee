@@ -24,6 +24,21 @@ angular.module('racingApp').factory 'session', (storage, $rootScope, $log, util,
 
   return new class Session
     constructor: ->
+      @_deferedSave = _.debounce =>
+        $rootScope.$apply =>
+          if env.isOffline
+            $log.warn 'cannot save, game is offline'
+          # exportCache is necessary because sjcl encryption isn't deterministic,
+          # but exportSave() must be ...not necessarily deterministic, but
+          # consistent enough to not confuse angular's $apply().
+          # Careful to delete it while saving, so saves don't contain other saves recursively!
+          # TODO: refactor so it's in another object and we don't have to do this exclusion silliness
+          delete @_exportCache
+          @_exportCache = @_saves()
+          @_write()
+          $log.debug 'saving game (fresh export)'
+      , 250
+
       @reset()
       $log.debug 'save id', @id
       util.assert @id, 'no save id defined'
@@ -172,17 +187,7 @@ angular.module('racingApp').factory 'session', (storage, $rootScope, $log, util,
       if success
         $rootScope.$broadcast 'save', this
     save: ->
-      if env.isOffline
-        $log.warn 'cannot save, game is offline'
-      # exportCache is necessary because sjcl encryption isn't deterministic,
-      # but exportSave() must be ...not necessarily deterministic, but
-      # consistent enough to not confuse angular's $apply().
-      # Careful to delete it while saving, so saves don't contain other saves recursively!
-      # TODO: refactor so it's in another object and we don't have to do this exclusion silliness
-      delete @_exportCache
-      @_exportCache = @_saves()
-      @_write()
-      $log.debug 'saving game (fresh export)'
+      @_deferedSave()
 
     _setItem: (key, val) ->
       storage.setItem key, val
