@@ -1,12 +1,13 @@
 'use strict'
 
-angular.module('racingApp').factory 'ActionEffectPool', ($compile, $document, $rootScope, $timeout, $position, game) -> class ActionEffectPool
-  constructor: ->
+angular.module('racingApp').factory 'ActionEffectPool', ($compile, $document, $rootScope, $timeout, $position, game, options) -> class ActionEffectPool
+  index = 10000
+  constructor: (@params={}) ->
+    @lastEffect = 0
     @pool = []
-    @index = 10000
     @_linker = null
     @_template = angular.element '''
-            <div class="action-effect">
+            <div class="action-effect" ng-class="actionClass">
               <unit-resource ng-repeat="cost in modified track by cost.unit.name"
                              value="cost.val"
                              unit="::cost.unit"
@@ -22,7 +23,7 @@ angular.module('racingApp').factory 'ActionEffectPool', ($compile, $document, $r
       scope = $rootScope.$new()
       tip = @linker() scope, (tip) =>
         @body.append tip
-    angular.extend tip.scope(), data
+    angular.extend tip.scope(), @params, data
     tip.show()
     tip
   release: (tip) ->
@@ -36,6 +37,9 @@ angular.module('racingApp').factory 'ActionEffectPool', ($compile, $document, $r
 
   handleEvent: (args) ->
     return if args?.skipEffect
+    return if not options.actionEffect()
+    return if new Date().getTime() - @lastEffect < 100
+    @lastEffect = new Date().getTime()
     modified = for name, cost of args.costs
       unit: game.unit(name)
       val: cost
@@ -57,7 +61,7 @@ angular.module('racingApp').factory 'ActionEffectPool', ($compile, $document, $r
       left: 0
       width: 0
       height: 0
-      'z-index': @index+=1
+      'z-index': index+=1
       display: 'block'
       position: 'absolute'
 

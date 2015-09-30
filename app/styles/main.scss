@@ -581,7 +581,7 @@ body {
   }
 
   50% {
-    opacity: 0.75;
+    opacity: 0.66;
   }
 
   100% {
@@ -591,9 +591,19 @@ body {
 }
 
 .action-effect {
-  animation: action-effect 3s linear;
+  animation: action-effect 2s linear;
   opacity: 0;
   color: $white;
+
+  &.action-critical {
+    //font-size: $font-size-large;
+    transform: scale(1.25, 1.25);
+
+    .positive {
+      background: $brand-primary;
+      border-color: darken($brand-primary, 25%);
+    }
+  }
 
   unit-resource {
     @include clearfix;

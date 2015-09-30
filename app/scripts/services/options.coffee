@@ -52,6 +52,10 @@ angular.module('racingApp').factory 'Options', ($log, util, env, game, $location
     @maybeSet 'showAdvancedUnitData', val
     !!@get 'showAdvancedUnitData'
 
+  actionEffect: (val) ->
+    @maybeSet 'actionEffect', val
+    @get 'actionEffect', true
+
   durationFormat: (val) ->
     if val?
       valid = {'human':true, 'full':true, 'abbreviated':true}
