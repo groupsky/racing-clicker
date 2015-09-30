@@ -11,7 +11,6 @@ angular.module('racingApp').factory 'Cache', -> class Cache
     @_lastPeriodicClear = new Date().getTime()
     @upgradeIsUpgradable = {}
     @upgradeEstimateSecsUntilBuyablePeriodic = {}
-    @upgradeMaxCostMet = {}
 
   onUpdate: ->
     @onPeriodic()
@@ -35,6 +34,7 @@ angular.module('racingApp').factory 'Cache', -> class Cache
     @unitCount = {}
     @velocity = {}
     @totalProduction = {}
+    @upgradeMaxCostMet = {}
     @unitMaxCostMet = {}
     @unitMaxCostMetOfVelocity = {}
     @unitMaxCosts = {}
