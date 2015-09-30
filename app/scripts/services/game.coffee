@@ -246,7 +246,7 @@ angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievemen
     @session.importSave encoded, transient
     # Force-clear various caches.
     @_init()
-    backfill.run game
+    backfill.run this
     dialogService.openDialog 'importsplash' if $location.search().importsplash
 
   # A common pattern: change something (reifying first), then save the changes.
