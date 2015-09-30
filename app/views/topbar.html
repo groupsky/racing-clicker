@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button-->
-      <a class="navbar-brand page-title" href="http://www.kongregate.com/games/groupsky/rcm?referrer=groupsky"><span>RCM</span></a>
+      <a class="navbar-brand page-title" ng-href="{{isKongregate()?'#':'http://www.kongregate.com/games/groupsky/rcm?referrer=groupsky'}}"><span>RCM</span></a>
       <a ng-cloak ng-if="::env.isDebugEnabled" class="envalert navbar-brand hidden-xs" ng-href="#/debug"> ({{::env.name}})</a>
       <a class="navbar-brand" href open-dialog="changelog"><span class="text-muted small hidden-xs" ng-cloak>v{{::version}}</span></a>
     </div>
