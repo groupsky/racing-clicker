@@ -61,7 +61,9 @@ angular.module('racingApp').directive 'clickero', ($rootScope, $timeout, game, A
       powerActionEffectPool.clearPool()
 
     $scope.$watch ->
-      new Decimal(driving.stat 'critical.chance', 1).toNumber()/100 + game.session.state.statistics.byUnit.fame.cps/256
+      chance = new Decimal(driving.stat 'critical.chance', 1).toNumber()/100
+      chance += game.session.state.statistics.byUnit.fame.cps/256 if game.session.state.statistics.byUnit.fame? and game.session.state.statistics.byUnit.fame.cps
+      return chance
     , (chance) ->
       powerChance = chance
       # consistent random seed. No savestate scumming.
