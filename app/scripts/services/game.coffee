@@ -12,9 +12,6 @@ angular.module('racingApp').factory 'Cache', -> class Cache
     @upgradeIsUpgradable = {}
     @upgradeEstimateSecsUntilBuyablePeriodic = {}
     @upgradeMaxCostMet = {}
-    @unitMaxCostMet = {}
-    @unitMaxCostMetOfVelocity = {}
-    @unitMaxCosts = {}
 
   onUpdate: ->
     @onPeriodic()
@@ -38,6 +35,9 @@ angular.module('racingApp').factory 'Cache', -> class Cache
     @unitCount = {}
     @velocity = {}
     @totalProduction = {}
+    @unitMaxCostMet = {}
+    @unitMaxCostMetOfVelocity = {}
+    @unitMaxCosts = {}
     delete @tutorialStep
 
     # clear periodic caches every few seconds
