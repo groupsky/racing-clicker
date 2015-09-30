@@ -100,7 +100,7 @@ angular.module('racingApp').factory 'Upgrade', (util, Effect, $log) -> class Upg
       return true if @game.cache.upgradeIsNextCostMet[@name]?
       for cost in @totalCost()
         util.assert cost.val.greaterThan(0), 'upgrade cost <= 0', @name, this
-        if cost.unit.count().lessThan cost.val.times(2)
+        if cost.unit.count().lessThan cost.val.times(cost.factor)
           return false
       return @game.cache.upgradeIsNextCostMet[@name] = true
   maxCostMet: (percent=1) ->
