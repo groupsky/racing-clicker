@@ -84,27 +84,25 @@ angular.module('racingApp').directive 'clickero', ($rootScope, $timeout, game, A
         $log.debug "critical!"
         fame._addCount powerProduction
 
-        if (not e.timeStamp) or (new Date().getTime() - e.timeStamp < 100)
-          powerActionEffectPool.button = angular.element(element)
-          powerActionEffectPool.handleEvent
-            unit: fame
-            unitname: fame.name
-            num: powerProduction
-            twinnum: powerProduction
-            costs: {}
+        powerActionEffectPool.button = angular.element(element)
+        powerActionEffectPool.handleEvent
+          unit: fame
+          unitname: fame.name
+          num: powerProduction
+          twinnum: powerProduction
+          costs: {}
 
         aggregated = aggregated.plus(powerProduction)
       else
         fame._addCount production
 
-        if (not e.timeStamp) or (new Date().getTime() - e.timeStamp < 100)
-          actionEffectPool.button = angular.element(element)
-          actionEffectPool.handleEvent
-            unit: fame
-            unitname: fame.name
-            num: production
-            twinnum: production
-            costs: {}
+        actionEffectPool.button = angular.element(element)
+        actionEffectPool.handleEvent
+          unit: fame
+          unitname: fame.name
+          num: production
+          twinnum: production
+          costs: {}
 
         aggregated = aggregated.plus(production)
 
