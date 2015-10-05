@@ -927,12 +927,14 @@ a:focus, button:focus {
 }
 
 // possible fix for missing sponsors tab on some users
-#firstrow, #secondrow {
-  position: relative;
+@media (min-width: $screen-md-min) {
+  #firstrow, #secondrow {
+    position: relative;
 
-  #sponsors, #upgrades {
-    position: absolute;
-    right: 0;
-    top: 0;
+    #sponsors, #upgrades {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
   }
 }
