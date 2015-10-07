@@ -58,7 +58,7 @@ angular.module('racingApp').directive 'clickero', ($rootScope, $timeout, game, A
     $scope.$watch ->
       base = 10
       base += game.session.state.statistics.byUnit.fame.cps if game.session.state.statistics.byUnit.fame? and game.session.state.statistics.byUnit.fame.cps
-      newPower = production.times(driving.stat 'critical.power', 100).times(Decimal.max(1, ''+(powerChance*3))).plus(''+base)
+      newPower = production.times(driving.stat('critical.power', 100).plus(''+base)).times(Decimal.max(1, ''+(powerChance*3)))
       if powerProduction.equals newPower then return powerProduction else return newPower
     , (power) ->
       powerProduction = power
