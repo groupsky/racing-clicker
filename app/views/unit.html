@@ -1,9 +1,7 @@
 <div class="well well-sm">
   <div class="container-float unit unit-type-{{::unit.type.tab}} unit-{{::unit.name}}">
     <div class="row">
-      <div class="col-xs-12 unit-title-container"
-        tooltip="{{::unit.type.description}}"
-        tooltip-trigger="mouseenter click">
+      <div class="col-xs-12 unit-title-container">
         <div ng-if="unit.count().isZero()" class="unit-production estimate pull-right">
           <resource ng-repeat="(name, val) in unit.eachProduction()"
                     name="{{::name}}"
