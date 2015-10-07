@@ -19,7 +19,7 @@ angular.module('racingApp').controller 'StatisticsCtrl', ($scope, session, stati
       ustatistics.elapsedFirstStr = util.utcdoy ustatistics.elapsedFirst
     return ustatistics
   $scope.hasUnitStats = (unit) -> !!$scope.unitStats unit
-  $scope.showStats = (unit) -> $scope.hasUnitStats(unit) or (!unit.isBuyable() and unit.isVisible())
+  $scope.showStats = (unit) -> $scope.hasUnitStats(unit) and (!unit.isBuyable() and unit.isVisible())
 
   $scope.upgradeStats = (upgrade) ->
     ustatistics = $scope.statistics.byUpgrade[upgrade.name]
