@@ -594,6 +594,7 @@ body {
   animation: action-effect 2s linear;
   opacity: 0;
   color: $white;
+  pointer-events: none;
 
   &.action-critical {
     //font-size: $font-size-large;
