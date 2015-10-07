@@ -68,6 +68,8 @@ angular.module('racingApp').factory 'session', (storage, $rootScope, $log, util,
       # undefined if not isKongregate
       if isKongregate()
         @state.kongregate = true
+      else
+        delete @state.kongregate
       $rootScope.$broadcast 'reset', {session:this}
 
     _saves: (data=@state, setdates=true) ->
@@ -97,6 +99,8 @@ angular.module('racingApp').factory 'session', (storage, $rootScope, $log, util,
       # during beta, 0.n.0 resets all games from 0.n-1.x. Don't import older games.
       if sM == gM == 0 and sm != gm and sm < 5
         throw new Error 'Beta save from different minor version'
+      if (sM > gM) or (sM = gM and sm > gm) or (sM = gM and sm = gm and sp > gp)
+        throw new Error 'Save from newer version'
       # No importing 1.0.x games into 0.2.x. Need this for publictest.
       # Importing 0.2.x into 1.0.x is fine.
       # Keep in mind - 0.2.x might not be running this code, but older code that resets at 1.0. (Should make no difference.)
@@ -111,7 +115,7 @@ angular.module('racingApp').factory 'session', (storage, $rootScope, $log, util,
       #  throw new Error "save version newer than game version: #{saveversion} > #{gameversion}"
 
       # coffeescript: two-dot range is inclusive
-      blacklisted = [/^1\.0\.0-publictest/]
+      blacklisted = [/-publictest/]
       # never blacklist the current version; also makes tests pass before we do `npm version 1.0.0`
       if saveversion != gameversion
         for b in blacklisted
@@ -120,7 +124,7 @@ angular.module('racingApp').factory 'session', (storage, $rootScope, $log, util,
 
     _validateFormatVersion: (formatversion, gameversion=version) ->
       # coffeescript: two-dot range is inclusive
-      blacklisted = [/^1\.0\.0-publictest/]
+      blacklisted = [/-publictest/]
       # never blacklist the current version; also makes tests pass before we do `npm version 1.0.0`
       if formatversion != gameversion
         for b in blacklisted
