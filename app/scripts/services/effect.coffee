@@ -206,6 +206,14 @@ angular.module('racingApp').factory 'effecttypes', (EffectType, EffectTypes, uti
       #stats[effect.stat] *= (effect.val3 ? 1) * (Math.log(effect.val2 + effect.val * level)/Math.log(effect.val2) - 1) + 1
       stats[effect.stat] = (stats[effect.stat] ? Decimal.ONE).times(new Decimal(effect.val3 ? 1).times(Decimal.log(level.times(effect.val).plus(effect.val2)).dividedBy(Decimal.log(effect.val2)).minus(1)).plus(1))
   effecttypes.register
+    name: 'logStat2'
+    calcStats: (effect, stats, schema, level) ->
+# val: log multiplier; val2: log base
+# minimum value is 1.
+      validateSchema effect.stat, schema, 'mult' # this isn't multstat, but it's commutative with it
+      #stats[effect.stat] *= (effect.val3 ? 1) * (Math.log(effect.val2 + effect.val * level)/Math.log(effect.val2) - 1) + 1
+      stats[effect.stat] = (stats[effect.stat] ? Decimal.ONE).times(new Decimal(effect.val3 ? 2).pow(Decimal.log(level.pow(effect.val).plus(effect.val2)).dividedBy(Decimal.log(effect.val2)).minus(1)))
+  effecttypes.register
     name: 'addStat'
     calcStats: (effect, stats, schema, level) ->
       validateSchema effect.stat, schema, 'add'
