@@ -230,6 +230,8 @@ angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievemen
   # by other units - ex. derivative clicker mathematicians - can't be supported.)
   reify: (skipSeconds=0) ->
     secs = @diffSeconds()
+    # in 0.1s the change should be small enough to risk incorrect counts for speed
+    return if secs < 0.1
     counts = @counts secs
     _.extend @session.state.unittypes, counts
     @skippedMillis = 0
