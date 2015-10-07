@@ -29,6 +29,7 @@ angular.module('racingApp').factory 'Cache', -> class Cache
     @unitTwinMult = {}
     @upgradeIsCostMet = {}
     @upgradeIsNextCostMet = {}
+    @untilUpdate = {}
 
   onTick: ->
     @unitCount = {}

@@ -207,6 +207,13 @@ angular.module('racingApp').factory 'Unit', (util, $log, Effect, ProducerPaths, 
     if (secs = @capDurationSeconds())?
       return moment.duration secs, 'seconds'
 
+  lvl: ->
+    return @game.cache.untilUpdate["Unit.lvl-#{@name}"] ?= do =>
+      lvl = new Decimal(0)
+      for upgrade in @upgrades.list
+        lvl = lvl.plus upgrade.count()
+      lvl
+
   @ESTIMATE_BISECTION: true
   isEstimateExact: ->
     # Bisection estimates are precise enough to not say "or less" next to, too.
