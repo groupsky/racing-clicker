@@ -7,7 +7,7 @@
  # # FeedbackCtrl
  # Controller of the racingApp
 ###
-angular.module('racingApp').controller 'ContactCtrl', ($scope, feedback, version, $location, isKongregate, $log) ->
+angular.module('racingApp').controller 'ContactCtrl', ($scope, feedback, version, $location, isKongregate, $log, $timeout) ->
   $scope.urls = {short:'???',expand:'???'}
   $scope.userAgentGuess = do =>
     # based on http://odyniec.net/blog/2010/09/decrypting-the-user-agent-string-in-javascript/
@@ -24,19 +24,24 @@ angular.module('racingApp').controller 'ContactCtrl', ($scope, feedback, version
         return "#{browser.name} #{m[1]}"
     return ua
 
-  feedback.createTinyurl().done (data, status, xhr) =>
-    $scope.urls.short = data.id
-    $scope.urls.expand = data.id + '+'
-
   $scope.initTopic = if $location.search().error? then 'bug'
-
   # has an actual error message - `?error=blah`, not just `?error`.
   # `"an error message" != true`
   hasErrorMessage = $location.search().error and $location.search().error != true
-  topics =
-    bug:
-      subject: -> "RCM Bug Report (#{new Date().toLocaleString()})"
-      message: -> """
+
+  topics = null
+  _get = (topic, key) ->
+    (topics[topic]?[key] ? topics.other[key])()
+  subject = (topic) -> _get topic, 'subject'
+  message = (topic) -> _get topic, 'message'
+  anonDebug = (topic) -> _get topic, 'anonDebug'
+
+  do update = =>
+
+    topics =
+      bug:
+        subject: -> "RCM Bug Report (#{new Date().toLocaleString()})"
+        message: -> """
 Describe the bug here. Step-by-step instructions saying how to make the bug reoccur are helpful.
 
 *****
@@ -50,32 +55,37 @@ Bug report information:
 if hasErrorMessage then "\n* Error message: ```"+$location.search().error+'```' else ''}
 """
 #* Full user agent: https://www.whatismybrowser.com/developers/custom-parse?useragent=#{encodeURIComponent window?.navigator?.userAgent}
-      anonDebug: ->
-        if (error = $location.search().error or '')
-          error += '|'
-        return "#{version}|#{$scope.userAgentGuess}|#{error}#{$scope.urls.expand}"
-    other:
-      subject: -> "RCM Feedback (#{new Date().toLocaleString()})"
-      message: -> ''
-      anonDebug: -> ''
-      emailTo: ->
-        # because spam
-        LZString.decompressFromBase64 'E4Qwxglgdg5gdGANhMBrApsAAjAtiCRBAe1yA==='
+        anonDebug: ->
+          if (error = $location.search().error or '')
+            error += '|'
+          return "#{version}|#{$scope.userAgentGuess}|#{error}#{$scope.urls.expand}"
+      other:
+        subject: -> "RCM Feedback (#{new Date().toLocaleString()})"
+        message: -> ''
+        anonDebug: -> ''
+        emailTo: ->
+          # because spam
+          LZString.decompressFromBase64 'E4Qwxglgdg5gdGANhMBrApsAAjAtiCRBAe1yA==='
 
-  _get = (topic, key) ->
-    (topics[topic]?[key] ? topics.other[key])()
-  subject = (topic) -> _get topic, 'subject'
-  message = (topic) -> _get topic, 'message'
-  anonDebug = (topic) -> _get topic, 'anonDebug'
-  $scope.emailTo = emailTo = (topic) -> _get topic, 'emailTo'
-  $scope.redditUrl = (topic) ->
-    "https://www.reddit.com/message/compose/?to=kawaritai&subject=#{encodeURIComponent subject topic}&message=#{encodeURIComponent message topic}"
-  $scope.mailtoUrl = (topic) ->
-    "mailto:#{emailTo topic}?subject=#{encodeURIComponent subject topic}&body=#{encodeURIComponent message topic}"
-  $scope.anonForm = (topic) ->
-    url = "https://docs.google.com/forms/d/1algpv-IpOx_W1LrlPD3_P41tOvxIFNWlkobfnUgh0_Y/viewform?entry.997621172=#{encodeURIComponent anonDebug topic}"
-    # starts throwing bad requests for length around this point. Send whatever we can.
-    LIMIT = 1950
-    if url.length > LIMIT
-      url = url.substring(0,LIMIT) + encodeURIComponent "...TRUNCATED..."
-    return url
+    $scope.emailTo = emailTo = (topic) -> _get topic, 'emailTo'
+    $scope.redditUrl = (topic) ->
+      "https://www.reddit.com/message/compose/?to=kawaritai&subject=#{encodeURIComponent subject topic}&message=#{encodeURIComponent message topic}"
+    $scope.mailtoUrl = (topic) ->
+      "mailto:#{emailTo topic}?subject=#{encodeURIComponent subject topic}&body=#{encodeURIComponent message topic}"
+    $scope.anonForm = (topic) ->
+      url = "https://docs.google.com/forms/d/1algpv-IpOx_W1LrlPD3_P41tOvxIFNWlkobfnUgh0_Y/viewform?entry.997621172=#{encodeURIComponent anonDebug topic}"
+      # starts throwing bad requests for length around this point. Send whatever we can.
+      LIMIT = 1950
+      if url.length > LIMIT
+        url = url.substring(0,LIMIT) + encodeURIComponent "...TRUNCATED..."
+      return url
+
+  feedback.createTinyurl()
+  .done (data, status, xhr) =>
+    $scope.urls.short = data.id
+    $scope.urls.expand = data.id + '+'
+    $timeout update
+  .fail ->
+    $scope.urls.short = '????'
+    $scope.urls.expand = '????'
+    $timeout update

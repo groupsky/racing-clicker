@@ -64,7 +64,7 @@ https://github.com/groupsky/racing-clicker
           <p>Here's your saved game data. <b>Save this</b>: once the bug is fixed, you can import this to restore your game.</p>
           <input type="text" class="form-control" readonly style="cursor:auto" ng-model="form.export" ng-click="select($event)">
           <p>The error message was: <code>{{form.error}}</code></p>
-          <p>Please <a ng-href="{{contactUrl()}}">report this bug</a>. Thanks!</p>
+          <p>Please <a href open-dialog="feedback">report this bug</a>. Thanks!</p>
         </div>
         <div class="alert alert-danger alert-dismissible animif" role="alert" ng-if="form.errored && !form.export">
           <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
