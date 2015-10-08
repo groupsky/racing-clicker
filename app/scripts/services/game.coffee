@@ -56,7 +56,7 @@ angular.module('racingApp').factory 'Cache', -> class Cache
  # # game
  # Factory in the racingApp.
 ###
-angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievements, util, $log, Upgrade, Unit, Achievement, Tab, Cache, $location, dialogService, $rootScope, backfill) -> class Game
+angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievements, util, $log, Upgrade, Unit, Achievement, Tab, Cache, $location, dialogService, $rootScope, backfill, $timeout) -> class Game
   constructor: (@session) ->
     @_init()
   _init: ->
@@ -97,7 +97,7 @@ angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievemen
     @cache = new Cache()
 
     @_deferedSave = _.debounce =>
-      $rootScope.$apply =>
+      $timeout =>
         @session.save()
         @cache.onUpdate()
     , 250

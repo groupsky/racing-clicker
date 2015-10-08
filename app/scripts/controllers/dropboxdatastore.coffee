@@ -8,7 +8,7 @@
  # Controller of the racingApp
 ###
 
-angular.module('racingApp').controller 'DropboxdatastoreCtrl', ($scope, $log, env, dropboxSyncer) ->
+angular.module('racingApp').controller 'DropboxdatastoreCtrl', ($scope, $log, $timeout, env, dropboxSyncer) ->
   $scope.env = env
   $scope.syncer = dropboxSyncer
 
@@ -84,7 +84,7 @@ angular.module('racingApp').controller 'KongregateS3Ctrl', ($scope, $log, env, k
   onload = ->
     $scope.api = kongregate.kongregate.services
     $scope.api.addEventListener 'login', (event) ->
-      $scope.$apply()
+      $timeout ->
     $scope.init()
 
   $scope.isBrowserSupported = -> window.FormData? and window.Blob?
@@ -114,12 +114,12 @@ angular.module('racingApp').controller 'KongregateS3Ctrl', ($scope, $log, env, k
   $scope.fetch = ->
     cooldown.set 'fetch'
     xhr = syncer.fetch (data, status, xhr) ->
-      $scope.$apply()
+      $timeout ->
       cooldown.clear 'fetch'
       $log.debug 'kong syncer fetched', data, status
       return xhr
     xhr.error (data, status, xhr) ->
-      $scope.$apply()
+      $timeout ->
       cooldown.clear 'fetch'
       # 404 is fine. no game saved yet
       if data.status != 404
@@ -130,7 +130,7 @@ angular.module('racingApp').controller 'KongregateS3Ctrl', ($scope, $log, env, k
       cooldown.set 'push'
       xhr = syncer.push ->
         cooldown.clear 'push'
-        $scope.$apply()
+        $timeout ->
         return xhr
       xhr.error (data, status, xhr) ->
         cooldown.clear 'push'
@@ -147,7 +147,7 @@ angular.module('racingApp').controller 'KongregateS3Ctrl', ($scope, $log, env, k
     cooldown.set 'clear'
     xhr = syncer.clear (data, status, xhr) ->
       cooldown.clear 'clear'
-      $scope.$apply()
+      $timeout ->
       return xhr
     xhr.error (data, status, xhr) ->
       cooldown.clear 'clear'

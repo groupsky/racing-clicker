@@ -11,7 +11,7 @@ angular.module('racingApp').factory 'saveId', (env, isKongregate) ->
  # # session
  # Factory in the racingApp.
 ###
-angular.module('racingApp').factory 'session', (storage, $rootScope, $log, util, version, env, saveId, isKongregate) ->
+angular.module('racingApp').factory 'session', (storage, $rootScope, $log, $timeout, util, version, env, saveId, isKongregate) ->
   # TODO separate file, outside of source control?
   # Client-side encryption is inherently insecure anyway, probably not worth it.
   # All we can do is prevent the most casual of savestate hacking.
@@ -25,7 +25,7 @@ angular.module('racingApp').factory 'session', (storage, $rootScope, $log, util,
   return new class Session
     constructor: ->
       @_deferedSave = _.debounce =>
-        $rootScope.$apply =>
+        $timeout =>
           if env.isOffline
             $log.warn 'cannot save, game is offline'
           # exportCache is necessary because sjcl encryption isn't deterministic,
