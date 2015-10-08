@@ -87,7 +87,7 @@ angular.module('racingApp').factory 'StatisticsListener', (util, $log, kongregat
     scope.$on 'reset', =>
       @_init()
     scope.$on 'command', (event, cmd) =>
-      $log.debug 'statistics', event, cmd
+      $log.debug? 'statistics', event, cmd
       @push cmd
       kongregate.reportStats()
 

@@ -23,11 +23,11 @@ angular.module('racingApp').directive 'welcomeBack', ($log, $interval, game, $lo
         })
     interval = null
     $scope.$on 'import', (event, args) ->
-      $log.debug 'welcome back: import', args?.success, args
+      $log.debug? 'welcome back: import', args?.success, args
       if args?.success
         run true, true
     $scope.$on 'savedGameRecoveredFromFlash', (event, args) ->
-      $log.debug 'welcome back: saved game recovered from flash'
+      $log.debug? 'welcome back: saved game recovered from flash'
       run()
     $scope.$on 'reset', (event, args) ->
       $scope.closeWelcomeBack?()?
@@ -37,7 +37,7 @@ angular.module('racingApp').directive 'welcomeBack', ($log, $interval, game, $lo
       $scope.durationSinceClosed = game.session.durationSinceClosed undefined, ignoreHeartbeat
       $scope.showWelcomeBack = $scope.durationSinceClosed.asMinutes() >= 3 or $location.search().forcewelcome
       reifiedToCloseDiffInSecs = (game.session.dateClosed(ignoreHeartbeat).getTime() - game.session.state.date.reified.getTime()) / 1000
-      $log.debug 'time since game closed', $scope.durationSinceClosed.humanize(),
+      $log.debug? 'time since game closed', $scope.durationSinceClosed.humanize(),
         millis:game.session.millisSinceClosed undefined, ignoreHeartbeat
         reifiedToCloseDiffInSecs:reifiedToCloseDiffInSecs
 
@@ -50,5 +50,5 @@ angular.module('racingApp').directive 'welcomeBack', ($log, $interval, game, $lo
       interval ?= $interval (-> game.session.onHeartbeat()), 60000
       game.session.onHeartbeat() # game.session time checks after this point will be wrong
       if not $scope.showWelcomeBack
-        $log.debug 'skipping welcome back screen: offline time too short', $scope.durationSinceClosed.asMinutes()
+        $log.debug? 'skipping welcome back screen: offline time too short', $scope.durationSinceClosed.asMinutes()
         return
