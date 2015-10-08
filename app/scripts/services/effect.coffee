@@ -222,7 +222,7 @@ angular.module('racingApp').factory 'effecttypes', (EffectType, EffectTypes, uti
     name: 'addStatInc'
     calcStats: (effect, stats, schema, level) ->
       validateSchema effect.stat, schema, 'add'
-      stats[effect.stat] = (stats[effect.stat] ? new Decimal(effect.val2 ? 0)).plus(new Decimal(effect.val).times(Decimal.pow(level, 2).plus(level).times(0.5)))
+      stats[effect.stat] = (stats[effect.stat] ? new Decimal(effect.val2 ? 0)).plus(new Decimal(effect.val ? 1).times(Decimal.pow(level, 2).plus(level).times(0.5)))
   # multStat by a constant, level independent
   effecttypes.register
     name: 'initStat'

@@ -39,6 +39,7 @@ angular.module('racingApp').factory 'Cache', -> class Cache
     @unitMaxCostMet = {}
     @unitMaxCostMetOfVelocity = {}
     @unitMaxCosts = {}
+    @untilTick = {}
     delete @tutorialStep
 
     # clear periodic caches every few seconds
@@ -308,31 +309,100 @@ angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievemen
   ascendCostDurationMoment: (cost) ->
     if (secs=@ascendCostDurationSecs cost)?
       return moment.duration secs, 'seconds'
-  ascend: (free=false) ->
-    if !free and @ascendCostPercent() < 1
-      throw new Error "We require more resources (ascension cost)"
+  experienceGainFromAscend: (experienceGain) ->
+    return @cache.untilTick['experienceGainFromAscend'] ?= do =>
+      experienceGain ? @unit('fake_fame').count().times(new Decimal(2).pow(@unit('ascension').count()))
+  experienceAfterAscend: (experienceGain) ->
+    return @cache.untilTick['experienceAfterAscend'] ?= do =>
+      @unit('experience').count().plus @experienceGainFromAscend(experienceGain)
+  experienceToEffect: (experience) ->
+    ef = @unit('experience').effect[0].calcStats({}, {}, experience)
+    for key, value of ef
+      return value
+  currentExperienceEffect: ->
+    return @cache.untilTick['currentExperienceEffect'] ?= do =>
+      @experienceToEffect @unit('experience').count()
+  experienceEffectGainFromAscend: (experienceGain) ->
+    return @cache.untilTick['experienceEffectGainFromAscend'] ?= do =>
+      @experienceEffectAfterAscend(experienceGain).minus @currentExperienceEffect()
+  experienceEffectAfterAscend: (experienceGain) ->
+    return @cache.untilTick['experienceEffectAfterAscend'] ?= do =>
+      @experienceToEffect @experienceAfterAscend(experienceGain)
+  ascendOffers: ->
+    offers = []
+
+    ascendLvl = do =>
+      ascension = @unit 'ascension'
+      return Decimal.ln(Decimal.max 1, ascension.count()).ceil().toNumber()
+
+    offers.push
+      exp: @experienceGainFromAscend()
+      effect: @experienceEffectAfterAscend()
+      persistUnit: 'tech1'
+      persistUnitCount: Decimal.pow(10, ascendLvl+1)
+
+    # skip offers for now
+    return offers
+
+    return offers if ascendLvl < 1
+
+    maxCar = 1
+    for i in [25..1]
+      if not @unit("car#{i}").count().isZero()
+        maxCar = i
+        if not @upgrade("car#{i}_upgrade").count().isZero()
+          return offers
+        break
+
+    maxTech = 0
+    for i in [13..1]
+      if not @unit("tech#{i}").count().isZero()
+        maxTech = i
+        break
+
+    if 1 < ascendLvl < maxCar
+      offers.push
+        exp: @experienceGainFromAscend().times 0.1
+        effect: @experienceEffectGainFromAscend(@experienceGainFromAscend().times 0.1)
+        persistCarLevels: ascendLvl
+
+    if ascendLvl < maxTech
+      offers.push
+        exp: @experienceGainFromAscend().times 0.1
+        effect: @experienceEffectGainFromAscend(@experienceGainFromAscend().times 0.1)
+        persistUnit: "tech#{Decimal.min(12, ascendLvl).toNumber()+1}"
+        persistUnitCount: 1
+
+    offers
+
+  ascend: (opts={}) ->
+#    if !free and @ascendCostPercent() < 1
+#      throw new Error "We require more resources (ascension cost)"
     @withSave =>
       # hardcode ascension bonuses. TODO: spreadsheetify
-      premutagen = @unit 'premutagen'
-      mutagen = @unit 'mutagen'
+      fake_fame = @unit 'fake_fame'
+      experience = @unit 'experience'
       ascension = @unit 'ascension'
-      mutagen._addCount premutagen.count()
-      premutagen._setCount 0
+      experience._addCount @experienceGainFromAscend(opts?.exp)
+      fake_fame._setCount 0
       ascension._addCount 1
+
       @session.state.date.restarted = @now
-      # grant a free respec every 3 ascensions
-      if ascension.count().modulo(3).isZero()
-        @unit('freeRespec')._addCount 1
       # do not use @reset(): we don't want achievements, etc. reset
       @_init()
       # show tutorial message for first ascension. must go after @_init, or cache is cleared
       if ascension.count().equals(1)
         @cache.firstSpawn.ascension = true
       for unit in @unitlist()
-        if unit.tab?.name != 'mutagen'
+        continue if opts?.persistCarLevels >= unit.name.match(/^car(\d+)$/)?[1]
+        if opts?.persistUnit is unit.name
+          unit._setCount opts.persistUnitCount ? 1
+          continue
+        if not unit.type.persist?
           unit._setCount unit.unittype.init or 0
       for upgrade in @upgradelist()
-        if upgrade.unit.tab?.name != 'mutagen'
+        continue if opts?.persistCarLevels >= upgrade.name.match(/^car(\d+)_buy$/)?[1]
+        if not upgrade.type.persist?
           upgrade._setCount 0
 
   respecRate: ->

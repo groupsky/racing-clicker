@@ -1,0 +1,58 @@
+<div class="modal-header ascend-dialog-header">
+  <button type="button" class="close" ng-click="closeDialog()"><span aria-hidden="true">&times;</span><span
+    class="sr-only">Close</span></button>
+  <h2>Buyout offers</h2>
+</div>
+
+<div class="modal-body ascend scrollable">
+  <p class="lead">You have <strong>
+    <ng-pluralize count="offers.length" when="{
+    '0': 'no offers',
+    one: 'one offer',
+    '2': 'two offers',
+    '3': 'three offers',
+    other: '{} offers'
+  }">
+  </strong> to buyout your organization.
+  </p>
+
+  <table class="table">
+    <tr ng-repeat="offer in offers">
+      <td>
+        <dl class="dl-horizontal">
+          <dt>Bonus to racing</dt>
+          <dd><strong>&times;{{::offer.effect|bignum}}</strong> <span class="text-muted">(current <strong>&times;{{::game.currentExperienceEffect()|bignum}}</strong>)</span></dd>
+        </dl>
+        <dl class="dl-horizontal" ng-if="offer.persistCarLevels > 1">
+          <dt>Keep all cars up to</dt>
+          <dd><strong>{{::game.unit('car'+offer.persistCarLevels).type.label}}</strong></dd>
+        </dl>
+        <dl class="dl-horizontal" ng-if="offer.persistUnit">
+          <dt>Keep</dt>
+          <dd><strong>{{::offer.persistUnitCount|bignum}} {{::game.unit(offer.persistUnit).type[offer.persistUnitCount.eq(1)?'label':'plural']}}</strong></dd>
+        </dl>
+      </td>
+      <td class="col-xs-1">
+        <button type="button"
+                class="btn btn-default"
+                ng-click="closeDialog();game.ascend(offer)">
+          Take offer
+        </button>
+      </td>
+    </tr>
+  </table>
+
+  <dl class="dl-horizontal" ng-if="::!game.unit('ascension').count().isZero()">
+    <dt>Buyouts</dt>
+    <dd>{{::game.unit('ascension').count()|bignum}}</dd>
+    <dt>Last buyout</dt>
+    <dd>{{game.session.state.date.restarted|momentFromNow}}</dd>
+  </dl>
+
+  <p class="text-danger">Everything you have will be sold and you will need to start fresh!</p>
+
+</div>
+
+<div class="modal-footer" ng-controller="OptionsCtrl">
+  <button type="button" class="btn btn-default" ng-click="closeDialog()">Cancel</button>
+</div>

@@ -10,7 +10,7 @@
 ###
 angular.module('racingApp').factory 'Backfill', ($log) -> class Backfill
   run: (game) ->
-    do ->
+    do =>
       [sM, sm, sp] = game.session.state.version.saved.split('.').map (n) -> parseInt n
 
       if sM is 0 and sm is 5

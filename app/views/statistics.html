@@ -1,13 +1,13 @@
 <div class="modal-header achievements-dialog-header">
-  <button type="button" class="close" ng-click="closeDialog()"><h2><span aria-hidden="true">&times;</span><h2><span class="sr-only">Close</span></button>
+  <button type="button" class="close" ng-click="closeDialog()"><h2><span aria-hidden="true">&times;</span></h2><span class="sr-only">Close</span></button>
   <h2>Statistics</h2>
 </div>
 
 <div class="modal-body scrollable">
   <div google-chart chart="chartData()"></div>
-  <div ng-repeat="unit in game.unitlist()">{{unit.label}}</div>
+  <div ng-repeat="unit in ::game.unitlist()">{{unit.label}}</div>
   <div class="table-responsive" ng-init="unitlist = (game.unitlist() | filter:showStats)">
-    <table class="table" ng-if="unitlist.length > 0">
+    <table class="table" ng-if="::unitlist.length > 0">
       <tr>
         <th>unit</th>
         <th>first bought</th>
@@ -15,20 +15,20 @@
         <th>bought manually</th>
       </tr>
       <tbody>
-        <tr ng-repeat="unit in unitlist" ng-init="ustats = unitStats(unit)">
-          <td class="name">{{unit.unittype.label}}</td>
-          <td>{{ustats.elapsedFirstStr}}</td>
-          <td>{{ustats.clicks | bignum}}</td>
-          <td>{{ustats.num | bignum}}</td>
+        <tr ng-repeat="unit in ::unitlist" ng-init="ustats = unitStats(unit)">
+          <td class="name">{{::unit.unittype.label}}</td>
+          <td>{{::ustats.elapsedFirstStr}}</td>
+          <td>{{::ustats.clicks | bignum}}</td>
+          <td>{{::ustats.num | bignum}}</td>
         </tr>
       </tbody>
     </table>
-    <div ng-if="unitlist.length == 0">
+    <div ng-if="::unitlist.length == 0">
       No units purchased.
     </div>
   </div>
   <div class="table-responsive" ng-init="upgradelist = (game.upgradelist() | filter:hasUpgradeStats)">
-    <table class="table" ng-if="upgradelist.length > 0">
+    <table class="table" ng-if="::upgradelist.length > 0">
       <tr>
         <th>upgrade</th>
         <th>first bought</th>
@@ -36,25 +36,25 @@
         <th>total bought</th>
       </tr>
       <tbody>
-        <tr ng-repeat="upgrade in upgradelist" ng-init="ustats = upgradeStats(upgrade)">
+        <tr ng-repeat="upgrade in ::upgradelist" ng-init="ustats = upgradeStats(upgrade)">
           <td class="name">{{upgrade.type.label}}</td>
-          <td>{{ustats.elapsedFirstStr}}</td>
-          <td>{{ustats.clicks | number}}</td>
-          <td>{{ustats.num | number}}</td>
+          <td>{{::ustats.elapsedFirstStr}}</td>
+          <td>{{::ustats.clicks | number}}</td>
+          <td>{{::ustats.num | number}}</td>
         </tr>
       </tbody>
     </table>
-    <div ng-if="upgradelist.length == 0">
+    <div ng-if="::upgradelist.length == 0">
       No upgrades purchased.
     </div>
   </div>
   <dl class="dl-horizontal">
     <dt>save file size</dt>
-    <dd>{{session.exportSave().length | number}} base64 chars</dd>
+    <dd>{{::session.exportSave().length | number}} base64 chars</dd>
     <dt>start date</dt>
-    <dd>{{game.momentStarted().fromNow()}} - {{game.dateStarted().toString()}}</dd>
-    <!--<dt>last ascended</dt>-->
-    <!--<dd ng-if="game.unit('ascension').count().isZero()">never</dd>-->
-    <!--<dd ng-if="!game.unit('ascension').count().isZero()">{{game.session.state.date.restarted|momentFromNow}} - {{game.session.state.date.restarted.toString()}}</dd>-->
+    <dd>{{game.momentStarted().fromNow()}} - {{::game.dateStarted().toString()}}</dd>
+    <dt>last buyout</dt>
+    <dd ng-if="::game.unit('ascension').count().isZero()">never</dd>
+    <dd ng-if="::!game.unit('ascension').count().isZero()">{{game.session.state.date.restarted|momentFromNow}} - {{::game.session.state.date.restarted.toString()}}</dd>
   </dl>
 </div>

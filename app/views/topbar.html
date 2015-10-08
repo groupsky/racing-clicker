@@ -20,6 +20,12 @@
     </div-->
 
     <ul class="nav nav-pills navbar-right" ng-cloak>
+      <li ng-if="game.unit('car6').isVisible()">
+        <a href class="buyout" open-dialog="ascend" title="Buyout offers">
+          <i class="icon-resource icon-experience"></i>
+          <!--<span class="badge">1</span>-->
+        </a>
+      </li>
       <li ng-if="game.achievementPercent()">
         <a href class="nav-achievements" open-dialog="achievements">
           <resource name="achievements" value="game.achievementPercent()" filter="percent" filter-opts="2"></resource>

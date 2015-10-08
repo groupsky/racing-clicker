@@ -36,3 +36,17 @@ describe 'Service: effecttypes', ->
     expect(romanize 1000).toBe 'M'
     expect(romanize 3999).toBe 'MMMCMXCIX'
     #expect(romanize 4000).toBe '4000'
+
+  describe 'addStatInc', ->
+
+    addStatInc = null
+    beforeEach ->
+      addStatInc = effecttypes.byName.addStatInc
+
+    describe 'default', ->
+      it 'calculates', ->
+        expect(addStatInc.calcStats {}, {}, 0).toBe 0
+        expect(addStatInc.calcStats {}, {}, 1).toBe 1
+        expect(addStatInc.calcStats {}, {}, 2).toBe 3
+        expect(addStatInc.calcStats {}, {}, 3).toBe 6
+        expect(addStatInc.calcStats {}, {}, 5).toBe 15

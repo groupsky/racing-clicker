@@ -108,7 +108,7 @@ angular.module('racingApp').factory 'commands', (util, game, $rootScope, $log, l
         elapsed:upgrades[0].game.elapsedStartMillis()
         percent:opts.percent
 
-  ascend: (opts) ->
+  ascend: (opts) =>
     @_setUndo()
     game = opts.game
     game.ascend()

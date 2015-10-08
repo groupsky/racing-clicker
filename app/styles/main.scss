@@ -449,7 +449,10 @@ body {
     @include icon($fa-var-users);
   }
   &.icon-upgrades {
-    @include icon($fa-var-level-up)
+    @include icon($fa-var-level-up);
+  }
+  &.icon-experience {
+    @include icon($fa-var-fire);
   }
 }
 
@@ -464,6 +467,10 @@ body {
   margin-left: 5px;
   margin-right: 5px;
   border-width: 0;
+
+  &.buyout {
+    background-color: $brand-info;
+  }
 }
 
 .label-resource {
@@ -942,6 +949,15 @@ a:focus, button:focus {
       position: absolute;
       right: 0;
       top: 0;
+    }
+  }
+}
+
+.modal-body.ascend {
+  p {
+    strong {
+      color: #fff;
+      font-weight: inherit;
     }
   }
 }
