@@ -65,7 +65,7 @@ angular.module('racingApp').factory 'pageTheme', ($log, options) -> return ($sco
       $scope.themeExtraEl.html css
       $log.debug 'extratheming', $scope.themeExtraEl, css
 
-angular.module('racingApp').factory 'kongregateScrolling', ($log, kongregate, kongregateS3Syncer, options) -> return ($scope) ->
+angular.module('racingApp').factory 'kongregateScrolling', ($log, kongregate, options) -> return ($scope) ->
   $scope.options = options
   if !kongregate.isKongregate()
     return

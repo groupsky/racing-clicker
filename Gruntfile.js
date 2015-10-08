@@ -24,8 +24,9 @@ module.exports = function (grunt) {
   var dropboxAppKey = function(configuredKey) {
     var KEYS = {
       shoelaceDev:'6hagxaf8041upxz',
-      dev:'q5b8awxy8r3qjus', //account dropbox@swarmsim.com
-      prod:'n2mff9wz6bv0f91' //account dropbox@swarmsim.com
+      dev:'vns5lr5dsjyqhdd', //account rcm game dev
+      prod:'834cau1gsculq4q', //account rcm game
+      publictest:'6ljx7oifu4s5j1o' //account rcm game publictest
     };
     // `--dropboxAppKey=x` can always override this file's configuration
     var key = grunt.option('dropboxAppKey') || configuredKey;
@@ -62,7 +63,7 @@ module.exports = function (grunt) {
           isAppcacheEnabled: true,
           sentryDSN: null,
           sentrySampleRate: 0,
-          isServerBackendEnabled: true,
+          isServerBackendEnabled: false,
           isServerFrontendEnabled: false,
           gaTrackingID: null
         }
@@ -97,7 +98,7 @@ module.exports = function (grunt) {
           //
           // relevant issues: https://github.com/swarmsim/swarm/milestones/pre-1.1
           // enable backend-only (silent release) in prod (phase 1): https://github.com/swarmsim/swarm/issues/586
-          isServerBackendEnabled: true,
+          isServerBackendEnabled: false,
           isServerFrontendEnabled: false,
 
           gaTrackingID: 'UA-66677344-1'
