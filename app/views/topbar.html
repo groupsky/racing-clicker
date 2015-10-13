@@ -20,7 +20,7 @@
     </div-->
 
     <ul class="nav nav-pills navbar-right" ng-cloak>
-      <li ng-if="game.unit('car6').isVisible()">
+      <li ng-if="game.hasBuyOut()">
         <a href class="buyout" open-dialog="ascend" title="Buyout offers">
           <i class="icon-resource icon-experience"></i>
           <!--<span class="badge">1</span>-->

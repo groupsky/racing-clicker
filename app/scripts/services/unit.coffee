@@ -329,6 +329,7 @@ angular.module('racingApp').factory 'Unit', (util, $log, Effect, ProducerPaths, 
   _countInSecsFromNow: (secs=new Decimal 0) ->
     return @_countInSecsFromReified secs.plus(@game.diffSeconds())
   _countInSecsFromReified: (secs=0) ->
+    return @rawCount() if secs < 0.1
     return @capValue @_producerPath.count secs
 
   # All units that cost this unit.

@@ -234,7 +234,7 @@ angular.module('racingApp').factory 'Upgrade', (util, Effect, $log) -> class Upg
       costs = {}
       if not free
         for cost in @totalCost()
-          util.assert cost.unit.count().greaterThanOrEqualTo(cost.val), "tried to buy more than we can afford. upgrade.maxCostMet is broken!", @name, name, cost
+          util.assert cost.unit.rawCount().greaterThanOrEqualTo(cost.val), "tried to buy more than we can afford. upgrade.maxCostMet is broken!", @name, name, cost
           util.assert cost.val.greaterThan(0), "zero cost from sumCost, yet cost was met?", @name, name, cost
           costs[cost.unit.name] = cost.val
           cost.unit._subtractCount cost.val
