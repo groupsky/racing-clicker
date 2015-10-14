@@ -122,7 +122,7 @@ module.exports = function (grunt) {
           autopushIntervalMs: 1000 * 60 * 15,
           googleApiKey: 'AIzaSyCKodSXhv09Azbu580One8U-0TUQGkTp6c',
           isAppcacheEnabled: false,
-          sentryDSN: 'https://4ee5233ada4c4c00ade28c3070b3a6f4@app.getsentry.com/50964',
+          sentryDSN: 'https://24c3eeb81d4844c5916554339b9809ff@app.getsentry.com/54547',
           sentrySampleRate: 1,
           isServerBackendEnabled: false,
           isServerFrontendEnabled: false,
