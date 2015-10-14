@@ -6,6 +6,7 @@ angular.module('racingApp').factory 'Cache', -> class Cache
     @firstSpawn = {}
     @onUpdate()
     @onRespec()
+    @forever = {}
 
   onPeriodic: ->
     @_lastPeriodicClear = new Date().getTime()
