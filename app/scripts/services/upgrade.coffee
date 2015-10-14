@@ -249,7 +249,7 @@ angular.module('racingApp').factory 'Upgrade', (util, Effect, $log) -> class Upg
 
   buyMax: ->
     ret = {num: new Decimal(0), costs: {}}
-    while @isCostMet()
+    while @isBuyable()
       r = @buy()
       ret.num = ret.num.plus r.num
       for name,val of r.costs
