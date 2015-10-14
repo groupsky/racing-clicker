@@ -160,7 +160,7 @@ angular.module('racingApp').factory 'Unit', (util, $log, Effect, ProducerPaths, 
     return @game.cache.unitRawCount[@name] ?= do =>
       # caching's helpful to avoid re-parsing session strings
       ret = @game.session.state.unittypes[@name] ? 0
-      if _.isNaN ret
+      if _.isNaN(ret) or ret.isNegative?()
         util.error 'NaN count. oops.', @name, ret
         ret = 0
       # toPrecision avoids Decimal errors when converting old saves
@@ -168,7 +168,9 @@ angular.module('racingApp').factory 'Unit', (util, $log, Effect, ProducerPaths, 
         ret = ret.toPrecision 15
       return new Decimal ret
   _setCount: (val) ->
-    @game.session.state.unittypes[@name] = new Decimal val
+    val = new Decimal val
+    val = new Decimal 0 if val.isNegative()
+    @game.session.state.unittypes[@name] = val
     @game.cache.onUpdate()
   _addCount: (val) ->
     @_setCount @rawCount().plus(val)
