@@ -23,7 +23,7 @@
   <div ng-if="driving.upgrades.list[0].isVisible()" class="container-fluid">
     <hr>
     <div class="row -text-left">
-      <div ng-class="{'col-xs-6': game.tabs.byName.upgrades.isVisible(), 'col-xs-12': !game.tabs.byName.upgrades.isVisible()}">
+      <div ng-class="(game.upgrade('autoclicker_buy').isVisible() || game.upgrade('autoclicker_upgrade').isVisible())?'col-xs-6':'col-xs-12'">
         <p class="unit-title">
           <span class="unit-title-label">{{::driving.upgrades.list[0].type.label}}</span>
         </p>

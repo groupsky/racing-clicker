@@ -309,9 +309,12 @@ angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievemen
   ascendCostDurationMoment: (cost) ->
     if (secs=@ascendCostDurationSecs cost)?
       return moment.duration secs, 'seconds'
+  ascendLvl: ->
+    ascension = @unit 'ascension'
+    return Decimal.ln(Decimal.max 1, ascension.count()).ceil().toNumber()
   experienceGainFromAscend: (experienceGain) ->
     return @cache.untilTick['experienceGainFromAscend'] ?= do =>
-      experienceGain ? @unit('fake_fame').count().times(Decimal.log(@unit('experience').count()).plus(1).pow(@unit('ascension').count())).pow(1.2)
+      experienceGain ? @unit('fake_fame').count().times(Decimal.log(@unit('experience').count()) .plus(1) .pow(@ascendLvl()) )
   experienceAfterAscend: (experienceGain) ->
     return @cache.untilTick['experienceAfterAscend'] ?= do =>
       @unit('experience').count().plus @experienceGainFromAscend(experienceGain)
@@ -329,10 +332,7 @@ angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievemen
     return @cache.untilTick['experienceEffectAfterAscend'] ?= do =>
       @experienceToEffect @experienceAfterAscend(experienceGain)
   hasBuyOut: ->
-    ascendLvl = do =>
-      ascension = @unit 'ascension'
-      return Decimal.ln(Decimal.max 1, ascension.count()).ceil().toNumber()
-    switch ascendLvl
+    switch @ascendLvl()
       when 0 then return @unit('car10').isVisible()
       when 1 then return @unit('car9').isVisible()
       when 2 then return @unit('car8').isVisible()
@@ -341,9 +341,7 @@ angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievemen
   ascendOffers: ->
     offers = []
 
-    ascendLvl = do =>
-      ascension = @unit 'ascension'
-      return Decimal.ln(Decimal.max 1, ascension.count()).ceil().toNumber()
+    ascendLvl = @ascendLvl()
 
     offers.push
       exp: @experienceGainFromAscend()
