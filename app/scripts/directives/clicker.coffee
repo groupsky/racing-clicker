@@ -39,6 +39,7 @@ angular.module('racingApp').directive 'clickero', ($rootScope, $timeout, game, A
     start = false
 
     fame = game.unit('fame')
+    fake_fame = game.unit('fake_fame')
     driving = game.unit('driving')
     production = new Decimal(0)
     powerProduction = new Decimal(0)
@@ -83,6 +84,7 @@ angular.module('racingApp').directive 'clickero', ($rootScope, $timeout, game, A
       if roll <= chance
         $log.debug "critical!"
         fame._addCount powerProduction
+        fake_fame._addCount powerProduction
 
         powerActionEffectPool.button = angular.element(element)
         powerActionEffectPool.handleEvent
@@ -95,6 +97,7 @@ angular.module('racingApp').directive 'clickero', ($rootScope, $timeout, game, A
         aggregated = aggregated.plus(powerProduction)
       else
         fame._addCount production
+        fake_fame._addCount production
 
         actionEffectPool.button = angular.element(element)
         actionEffectPool.handleEvent
