@@ -314,7 +314,7 @@ angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievemen
     return Decimal.ln(Decimal.max 1, ascension.count()).ceil().toNumber()
   experienceGainFromAscend: (experienceGain) ->
     return @cache.untilTick['experienceGainFromAscend'] ?= do =>
-      experienceGain ? @unit('fake_fame').count().times(Decimal.log(@unit('experience').count()) .plus(1) .pow(@ascendLvl()) )
+      experienceGain ? @unit('fake_fame').count().times(Decimal.ln(@unit('experience').count()) .plus(1) .pow(@ascendLvl()) )
   experienceAfterAscend: (experienceGain) ->
     return @cache.untilTick['experienceAfterAscend'] ?= do =>
       @unit('experience').count().plus @experienceGainFromAscend(experienceGain)
