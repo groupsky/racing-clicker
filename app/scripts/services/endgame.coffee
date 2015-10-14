@@ -6,9 +6,7 @@
  # @description
  # # endgame
 ###
-angular.module('racingApp').service 'endgame', ($rootScope, dialogService) ->
+angular.module('racingApp').service 'endgame', ($rootScope, dialogService, game) ->
   console.info 'endGame'
-  $rootScope.$on 'command', (event, cmd) ->
-    console.info 'endGame', cmd
-    if cmd.upgradename is 'car10_buy'
-      dialogService.openDialog('endgame')
+  $rootScope.$on 'achieve', ->
+    dialogService.openDialog('endgame') if game.achievementPoints() >= game.achievementPointsPossible
