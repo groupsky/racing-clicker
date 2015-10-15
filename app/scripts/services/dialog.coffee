@@ -11,38 +11,41 @@ angular.module('racingApp').service 'dialogService', ($rootScope, $log, $modal, 
   constructor: ->
     @dialogs =
       options:
-        template: 'views/options.html'
+        templateUrl: 'views/options.html'
         controller: 'OptionsCtrl'
       achievements:
-        template: 'views/achievementsdialog.html'
+        templateUrl: 'views/achievementsdialog.html'
         controller: 'AchievementsCtrl'
       statistics:
-        template: 'views/statistics.html'
+        templateUrl: 'views/statistics.html'
         controller: 'StatisticsCtrl'
       feedback:
-        template: 'views/contact.html'
+        templateUrl: 'views/contact.html'
         controller: 'ContactCtrl'
       changelog:
-        template: 'views/changelog.html'
+        templateUrl: 'views/changelog.html'
       endgame:
-        template: 'views/endgame.html'
+        templateUrl: 'views/endgame.html'
         size: 'md'
       importsplash:
-        template: 'views/importsplash.html'
+        templateUrl: 'views/importsplash.html'
         controller: 'ImportsplashCtrl'
         size: 'md'
       ascend:
-        template: 'views/ascend.html',
+        templateUrl: 'views/ascend.html',
         controller: 'AscendCtrl',
         size: 'md'
+      backfillProgress:
+        templateUrl: 'views/backfillprogress.html'
+        size: 'sm'
+        backdrop: 'static'
   openDialog: (name) ->
     controllerScope = $rootScope.$new()
     controllerScope.closeDialog = () ->
       controllerScope.modalInstance.dismiss()
     if(@dialogs[name].controller)
       $controller(@dialogs[name].controller, {$scope: controllerScope})
-    controllerScope.modalInstance = $modal.open({
-      templateUrl: @dialogs[name].template
+    controllerScope.modalInstance = $modal.open(angular.extend({
       scope: controllerScope
-      size: @dialogs[name].size ? 'lg'
-      })
+      size: 'lg'
+      }, @dialogs[name]))

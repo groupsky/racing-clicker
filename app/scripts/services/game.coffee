@@ -112,6 +112,7 @@ angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievemen
   diffMillis: ->
     @_realDiffMillis() * @gameSpeed + @skippedMillis
   _realDiffMillis: ->
+    return 0 if @paused
     ret = @now.getTime() - @session.state.date.reified.getTime()
     return Math.max 0, ret
   diffSeconds: ->
@@ -145,6 +146,7 @@ angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievemen
     moment @dateStarted()
 
   tick: (now=new Date(), skipExpire=false) ->
+    return if @paused
     util.assert now, "can't tick to undefined time", now
     if (not @now) or @now <= now
       @now = now
@@ -460,6 +462,21 @@ angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievemen
     mutagen._addCount spent.times(@respecRate()).floor()
     @cache.onRespec()
     util.assert mutagen.spent().isZero(), "respec didn't refund all mutagen!"
+
+  showBackfillProgress: ->
+    @pause()
+    @modalInstance = dialogService.openDialog('backfillProgress')
+  closeBackfillProgress: ->
+    @modalInstance?.opened.then =>
+      @modalInstance.dismiss()
+      @resume()
+
+  pause: ->
+    @paused = true
+    return @paused
+  resume: ->
+    @paused = false
+    return @paused
 
 angular.module('racingApp').factory 'game', (Game, session, env) ->
   game = new Game session

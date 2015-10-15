@@ -21,6 +21,7 @@ angular.module('racingApp').directive 'clicker', ($rootScope, $timeout, game) ->
     $scope.race = $scope.units.race
     $scope.races = $scope.units.races
     $scope.driving = $scope.units.driving
+    $scope.racing = $scope.units.racing
     $scope.fame = game.unit('fame')
     $scope.filterVisible = (upgrade) -> upgrade.isVisible()
 
@@ -41,6 +42,7 @@ angular.module('racingApp').directive 'clickero', ($rootScope, $timeout, game, A
     fame = game.unit('fame')
     fake_fame = game.unit('fake_fame')
     driving = game.unit('driving')
+    racing = game.unit('racing')
     production = new Decimal(0)
     powerProduction = new Decimal(0)
     powerChance = 0.01
@@ -59,14 +61,14 @@ angular.module('racingApp').directive 'clickero', ($rootScope, $timeout, game, A
     $scope.$watch ->
       base = 10
       base += game.session.state.statistics.byUnit.fame.cps if game.session.state.statistics.byUnit.fame? and game.session.state.statistics.byUnit.fame.cps
-      newPower = production.times(driving.stat('critical.power', 100).plus(''+base)).times(Decimal.max(1, ''+(powerChance*3)))
+      newPower = production.times(racing.stat('critical.power', 100).plus(''+base)).times(Decimal.max(1, ''+(powerChance*3)))
       if powerProduction.equals newPower then return powerProduction else return newPower
     , (power) ->
       powerProduction = power
       powerActionEffectPool.clearPool()
 
     $scope.$watch ->
-      chance = new Decimal(driving.stat 'critical.chance', 1).toNumber()/100
+      chance = new Decimal(racing.stat 'critical.chance', 1).toNumber()/100
       chance += game.session.state.statistics.byUnit.fame.cps/256 if game.session.state.statistics.byUnit.fame? and game.session.state.statistics.byUnit.fame.cps
       return chance
     , (chance) ->

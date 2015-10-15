@@ -68,24 +68,12 @@ angular.module('racingApp').factory 'Upgrade', (util, Effect, $log) -> class Upg
       else if require.op == 'OR' # single necessary requirement is met
         return true
     return true
-  _factorLevel: (factor, level) ->
-    key = "Upgrade.factorLevel(#{factor})"
-    lvl = level
-    val = 1
-    if @game.cache.forever[key]?.level.lte level
-      lvl = level.minus @game.cache.forever[key].level
-      val = @game.cache.forever[key].value
-    if not lvl.isZero()
-      @game.cache.forever[key] =
-        level: level
-        value: Decimal.pow(factor, lvl).times val
-    return @game.cache.forever[key].value
   totalCost: ->
     return @game.cache.upgradeTotalCost[@name] ?= @_totalCost()
   _totalCost: (count=@count().plus(@unit.stat 'upgradecost', 0)) ->
     _.map @cost, (cost) =>
       total = _.clone cost
-      total.val = total.val.times(@_factorLevel total.factor, count)
+      total.val = total.val.times(Decimal.pow total.factor, count)
       total.val = total.val.times(@unit.stat "upgradecostmult", 1) if @unit.hasStat "upgradecostmult"
       total.val = total.val.times(@unit.stat "upgradecostmult.#{@name}", 1) if @unit.hasStat "upgradecostmult.#{@name}"
       return total

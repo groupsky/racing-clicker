@@ -1,6 +1,6 @@
 <div ng-show="race.isVisible()" class="clicker">
-  <h1 ng-if="!driving.upgrades.list[0].isVisible()">Race to win prize!</h1>
-  <h3 ng-if="driving.upgrades.list[0].isVisible()">Race to win prize!</h3>
+  <h1 ng-if="!game.upgrade('driving_upgrade').isVisible()">Race to win prize!</h1>
+  <h3 ng-if="game.upgrade('driving_upgrade').isVisible()">Race to win prize!</h3>
   <p>
     <button ng-if="!race.isCostMet()" type="button" class="btn btn-primary btn-lg disabled">
       Can't race
@@ -20,14 +20,14 @@
     </span>
     (&times;{{driving.stat('prod') | bignum}} bonus).
   </p>
-  <div ng-if="driving.upgrades.list[0].isVisible()" class="container-fluid">
+  <div ng-if="game.upgrade('driving_upgrade').isVisible()" class="container-fluid">
     <hr>
     <div class="row -text-left">
       <div ng-class="(game.upgrade('autoclicker_buy').isVisible() || game.upgrade('autoclicker_upgrade').isVisible())?'col-xs-6':'col-xs-12'">
         <p class="unit-title">
-          <span class="unit-title-label">{{::driving.upgrades.list[0].type.label}}</span>
+          <span class="unit-title-label">{{::game.upgrade('driving_upgrade').type.label}}</span>
         </p>
-        <upgrade upgrade="::driving.upgrades.list[0]"></upgrade>
+        <upgrade upgrade="::game.upgrade('driving_upgrade')"></upgrade>
       </div>
       <div class="col-xs-6" ng-if="game.upgrade('autoclicker_buy').isVisible()">
         <p class="unit-title">
@@ -43,7 +43,4 @@
       </div>
     </div>
   </div>
-  <!--<div ng-repeat="upgrade in driving.upgrades.byClass.upgrade | filter:filterVisible">-->
-    <!--<upgrade upgrade="::upgrade"></upgrade>-->
-  <!--</div>-->
 </div>

@@ -482,7 +482,7 @@ angular.module('racingApp').factory 'Unit', (util, $log, Effect, ProducerPaths, 
     util.assert key?
     if default_?
       default_ = new Decimal default_
-    ret = @stats()[key] ? default_
+    ret = @stats(key)[key] ? default_
     util.assert ret?, 'no such stat', @name, key
     return new Decimal ret
   stats: ->
