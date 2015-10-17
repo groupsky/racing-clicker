@@ -345,12 +345,16 @@ angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievemen
     offers = []
 
     ascendLvl = @ascendLvl()
-
+#    if ascendLvl < 2
     offers.push
       exp: @experienceGainFromAscend()
       effect: @experienceEffectAfterAscend()
-      persistUnit: 'tech1'
-      persistUnitCount: Decimal.pow(10, ascendLvl+1)
+#    else if ascendLvl < 10
+#      offers.push
+#        exp: @experienceGainFromAscend()
+#        effect: @experienceEffectAfterAscend()
+#        persistUnit: "tech#{ascendLvl}"
+#        persistUnitCount: 1000
 
     # skip offers for now
     return offers
@@ -410,7 +414,7 @@ angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievemen
           unit._setCount opts.persistUnitCount ? 1
           continue
         if not unit.type.persist?
-          unit._setCount unit.unittype.init or 0
+          unit._setCount Decimal.pow(unit.unittype.init or 0, @ascendLvl())
       for upgrade in @upgradelist()
         continue if opts?.persistCarLevels >= upgrade.name.match(/^car(\d+)_buy$/)?[1]
         if not upgrade.type.persist?
