@@ -115,7 +115,7 @@ angular.module('racingApp').factory 'session', (storage, $rootScope, $log, $time
       #  throw new Error "save version newer than game version: #{saveversion} > #{gameversion}"
 
       # coffeescript: two-dot range is inclusive
-      blacklisted = [/-publictest/]
+      blacklisted = [/-privatetest/]
       # never blacklist the current version; also makes tests pass before we do `npm version 1.0.0`
       if saveversion != gameversion
         for b in blacklisted
@@ -124,7 +124,7 @@ angular.module('racingApp').factory 'session', (storage, $rootScope, $log, $time
 
     _validateFormatVersion: (formatversion, gameversion=version) ->
       # coffeescript: two-dot range is inclusive
-      blacklisted = [/-publictest/]
+      blacklisted = [/-privatetest/]
       # never blacklist the current version; also makes tests pass before we do `npm version 1.0.0`
       if formatversion != gameversion
         for b in blacklisted
