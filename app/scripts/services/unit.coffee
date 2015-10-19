@@ -397,7 +397,7 @@ angular.module('racingApp').factory 'Unit', (util, $log, Effect, ProducerPaths, 
 
   maxCostMet: (percent=1) ->
     return @game.cache.unitMaxCostMet["#{@name}:#{percent}"] ?= do =>
-      @_costMetPercent().times(percent).floor()
+      @_costMetPercent().times(''+percent).floor()
 
   maxCostMetOfVelocity: () ->
     return @game.cache.unitMaxCostMetOfVelocity["#{@name}"] ?= do =>

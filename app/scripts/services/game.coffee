@@ -58,7 +58,7 @@ angular.module('racingApp').factory 'Cache', -> class Cache
  # # game
  # Factory in the racingApp.
 ###
-angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievements, util, $log, Upgrade, Unit, Achievement, Tab, Cache, $location, dialogService, $rootScope, backfill, $timeout) -> class Game
+angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievements, util, $log, Upgrade, Unit, Achievement, Tab, Cache, $location, dialogService, $rootScope, backfill, $timeout, env) -> class Game
   constructor: (@session) ->
     @_init()
   _init: ->
@@ -317,7 +317,7 @@ angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievemen
     return Decimal.ln(Decimal.max 1, ascension.count()).ceil().toNumber()
   experienceGainFromAscend: (experienceGain) ->
     return @cache.untilTick['experienceGainFromAscend'] ?= do =>
-      experienceGain ? @unit('fake_fame').count().times(Decimal.ln(@unit('experience').count()) .plus(1) .pow(@ascendLvl()) )
+      experienceGain ? @unit('fake_fame').count().times(Decimal.ln(@unit('experience').count()) .plus(1) .pow(@ascendLvl()) ).plus(@unit('experience').count().times(Decimal.pow(@ascendLvl(), @ascendLvl())))
   experienceAfterAscend: (experienceGain) ->
     return @cache.untilTick['experienceAfterAscend'] ?= do =>
       @unit('experience').count().plus @experienceGainFromAscend(experienceGain)
@@ -401,6 +401,8 @@ angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievemen
       experience._addCount @experienceGainFromAscend(opts?.exp)
       fake_fame._setCount 0
       ascension._addCount 1
+
+      return if env.isDebugEnabled and opts.debug
 
       @session.state.date.restarted = @now
       # do not use @reset(): we don't want achievements, etc. reset
