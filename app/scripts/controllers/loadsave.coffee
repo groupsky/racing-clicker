@@ -75,6 +75,8 @@ angular.module('racingApp').controller 'LoadSaveCtrl', ($scope, $log, game, sess
     $location.search('')
     $log.info 'loading game from url successful!'
 
+  backfill.run game
+
 angular.module('racingApp').controller 'AprilFoolsCtrl', ($scope, options) ->
   $scope.options = options
 
