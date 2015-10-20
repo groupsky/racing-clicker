@@ -416,7 +416,7 @@ angular.module('racingApp').factory 'Game', (unittypes, upgradetypes, achievemen
           unit._setCount opts.persistUnitCount ? 1
           continue
         if not unit.type.persist?
-          unit._setCount Decimal.pow(unit.unittype.init or 0, @ascendLvl())
+          unit._setCount if unit.unittype.init and @ascendLvl() > 0 then Decimal.pow(unit.unittype.init, @ascendLvl()) else unit.unittype.init or 0
       for upgrade in @upgradelist()
         continue if opts?.persistCarLevels >= upgrade.name.match(/^car(\d+)_buy$/)?[1]
         if not upgrade.type.persist?
