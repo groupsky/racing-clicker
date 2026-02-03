@@ -1,6 +1,8 @@
 [RCM](http://racing-clicker.github.io/)
 ==============================================
 
+> **⚠️ ARCHIVED:** This repository is archived and no longer maintained.
+
 <!---
 [![Build Status](https://travis-ci.org/swarmsim/swarm.svg?branch=master)](https://travis-ci.org/swarmsim/swarm)
 [![Dependency Status](https://david-dm.org/swarmsim/swarm.svg)](https://david-dm.org/swarmsim/swarm)
